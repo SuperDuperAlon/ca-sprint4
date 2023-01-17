@@ -14,11 +14,43 @@ export function RootCmp() {
             <main>
                 <Routes>
                     <Route path="/" element={<StayIndex />} />
+                        {/* cmps
+                            filter by where and dates
+                            filter by prefrence 
+                            list:
+                                preview
+                             */}
                     <Route path="/room/:id" element={<StayDetails />} />
-                    <Route path="/book/stay/:id" element={<StayReservation />} />
+                            {/* 
+                                cmps:
+                                -phtose
+                                -amenities
+                                -reviews
+                                -loaction
+                                -resrvation preview */}
+                    <Route path="/book/stay/:id" element={<StayReservation />} />   
+                                {/* 
+                                cmps:
+                                -resrvation deatils
+                                -payment options
+                                -resrvation preview*/}
                     <Route path="/guest/inbox/:id" element={<UserMsgs />} />
+                                {/* cmps:
+                                    -messages preview
+                                    -chet box
+                                    -resrvation deatials */}
+                               
                     <Route path="/contact_host/:id" element={<SendMsgsToHost />} />
+                                {/* 
+                                cmps:
+                                -location ask about
+                                -text box
+                                -resrvation preview*/}
                     <Route path="/users/show/:id" element={<UserDetails />} />
+                                {/* 
+                                cmps:
+                                -user deatails
+                                -reviews wrote on */}
                     <Route path="/hosting" element={<PropertyCollcation />} />
                 </Routes>
             </main>
