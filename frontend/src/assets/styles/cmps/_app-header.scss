@@ -1,5 +1,5 @@
 .app-header {
-    background-color: $clr4;
+    // background-color: $clr4;
     padding: 10px;
 
 
@@ -7,11 +7,11 @@
         // background-color: $clr2;
         // padding: 2px 8px;
         padding-left: 100px;
-        color: $clr1;
+        // color: $clr1;
 
         .score {
-            background-color: $clr2;
-            color: $clr6;
+            // background-color: $clr2;
+            // color: $clr6;
             padding: 8px;
             margin: 10px;
             border-radius: 50%;
@@ -26,12 +26,12 @@
     }
 
     .user-info .btn-link {
-        color: $clr2;
+        // color: $clr2;
     }
 
     nav {
         font-size: .8em;
-        background-color: $clr5;
+        // background-color: $clr5;
         padding: 5px;
 
     }
@@ -41,13 +41,13 @@
     }
 
     nav a:not(:first-child) {
-        border-top: 1px solid $clr1;
+        // border-top: 1px solid $clr1;
         padding: 0 5px;
         margin: 10px;
     }
 
     nav .active {
-        color: $clr1;
+        // color: $clr1;
     }
 
 }

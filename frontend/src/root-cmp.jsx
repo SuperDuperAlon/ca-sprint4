@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router'
 
 
 import { AppHeader } from './cmps/app-header'
-import { AppFooter } from './cmps/app-footer'
-import { UserDetails } from './pages/user-details'
+// import { AppFooter } from './cmps/app-footer'
+// import { UserDetails } from './pages/user-details'
 
 export function RootCmp() {
 
@@ -13,14 +13,14 @@ export function RootCmp() {
             <AppHeader />
             <main>
                 <Routes>
-                    <Route path="/" element={<StayIndex />} />
+                    {/* <Route path="/" element={<StayIndex />} /> */}
                         {/* cmps
                             filter by where and dates
                             filter by prefrence 
                             list:
                                 preview
                              */}
-                    <Route path="/room/:id" element={<StayDetails />} />
+                    {/* <Route path="/room/:id" element={<StayDetails />} /> */}
                             {/* 
                                 cmps:
                                 -phtose
@@ -28,33 +28,33 @@ export function RootCmp() {
                                 -reviews
                                 -loaction
                                 -resrvation preview */}
-                    <Route path="/book/stay/:id" element={<StayReservation />} />   
+                    {/* <Route path="/book/stay/:id" element={<StayReservation />} />    */}
                                 {/* 
                                 cmps:
                                 -resrvation deatils
                                 -payment options
                                 -resrvation preview*/}
-                    <Route path="/guest/inbox/:id" element={<UserMsgs />} />
+                    {/* <Route path="/guest/inbox/:id" element={<UserMsgs />} /> */}
                                 {/* cmps:
                                     -messages preview
                                     -chet box
                                     -resrvation deatials */}
                                
-                    <Route path="/contact_host/:id" element={<SendMsgsToHost />} />
+                    {/* <Route path="/contact_host/:id" element={<SendMsgsToHost />} /> */}
                                 {/* 
                                 cmps:
                                 -location ask about
                                 -text box
                                 -resrvation preview*/}
-                    <Route path="/users/show/:id" element={<UserDetails />} />
+                    {/* <Route path="/users/show/:id" element={<UserDetails />} /> */}
                                 {/* 
                                 cmps:
                                 -user deatails
                                 -reviews wrote on */}
-                    <Route path="/hosting" element={<PropertyCollcation />} />
+                    {/* <Route path="/hosting" element={<PropertyCollcation />} /> */}
                 </Routes>
             </main>
-            <AppFooter />
+            {/* <AppFooter /> */}
         </div>
     )
 }
