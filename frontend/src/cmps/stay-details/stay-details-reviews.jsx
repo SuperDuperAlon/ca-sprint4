@@ -1,6 +1,6 @@
 
-export function StayDetailsHostDetails() {
-    return <section>
+export function StayDetailsReviews() {
+    return (<section>
         4.88 out of 5 stars from 303 reviews
 4.88 · 303 reviews
 Cleanliness
@@ -56,7 +56,7 @@ October 2022
 Chris
 Amazing views and relaxation at Birdbox. Would recommend to any couple looking to get away for a one of a kind “glamping” experience in Norway.
 Show all 303 reviews
-    </section>
+    </section>)
 }
 
 

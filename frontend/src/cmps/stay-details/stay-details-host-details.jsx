@@ -1,5 +1,5 @@
 
-export function StayDetailsGallery() {
+export function StayDetailsHostDetails() {
     return (<section>
 Torstein is a superhost. Learn more about Torstein.
 Hosted by Torstein

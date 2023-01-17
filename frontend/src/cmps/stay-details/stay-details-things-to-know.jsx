@@ -1,5 +1,5 @@
 
-export function StayDetailsGallery() {
+export function StayDetailsThingsToKnow() {
     return (
         <section>
             Things to know

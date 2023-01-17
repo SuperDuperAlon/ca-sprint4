@@ -1,5 +1,5 @@
 export function StayDetailsReservationModal() {
-    return <section>
+    return (<section>
         ₪1,174 
 night
 ₪1,174 per night
@@ -25,5 +25,5 @@ Show price breakdown
 ₪497
 Total
 ₪4,020
-    </section>
+    </section>)
 }
