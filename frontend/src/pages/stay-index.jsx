@@ -5,7 +5,7 @@ import { loadCars, addCar, updateCar, removeCar, addToCart } from '../store/car.
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { carService } from '../services/car.service.js'
 
-export function CarIndex() {
+export function StayIndex() {
 
     const cars = useSelector(storeState => storeState.carModule.cars)
 
