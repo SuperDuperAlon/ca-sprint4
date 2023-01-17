@@ -1,7 +1,6 @@
 import React from 'react'
 import { Routes, Route } from 'react-router'
 
-import routes from './routes'
 
 import { AppHeader } from './cmps/app-header'
 import { AppFooter } from './cmps/app-footer'
@@ -14,8 +13,13 @@ export function RootCmp() {
             <AppHeader />
             <main>
                 <Routes>
-                    {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
-                    <Route path="user/:id" element={<UserDetails />} />
+                    <Route path="/" element={<StayIndex />} />
+                    <Route path="/room/:id" element={<StayDetails />} />
+                    <Route path="/book/stay/:id" element={<StayReservation />} />
+                    <Route path="/guest/inbox/:id" element={<UserMsgs />} />
+                    <Route path="/contact_host/:id" element={<SendMsgsToHost />} />
+                    <Route path="/users/show/:id" element={<UserDetails />} />
+                    <Route path="/hosting" element={<PropertyCollcation />} />
                 </Routes>
             </main>
             <AppFooter />
