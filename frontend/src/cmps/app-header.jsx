@@ -54,7 +54,7 @@ export function AppHeader() {
                     </section>
                 }
             </nav>
-            <h1>My App</h1>
+            <h1>AnyPlace</h1>
         </header>
     )
 }
