@@ -1,0 +1,52 @@
+.details-locations-info {
+  display: flex;
+  flex-direction: column;
+  color: $dark-grey;
+
+  .secondary-info {
+    display: flex;
+    justify-content: space-between;
+
+    .locations-attr {
+      // color: $pink;
+    }
+    &.actions {
+    }
+  }
+}
+
+.stay-details-host-info {
+  text-align: left;
+  > * {
+    border-top: 1px rgba(221, 221, 221, 1) solid;
+  }
+
+  .basic-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .host-info {
+      display: flex;
+      flex-direction: column;
+      h1 {
+        font-size: 22px;
+      }
+      h4 {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .host {
+    padding-top: 32px;
+    .host-content {
+      padding-bottom: 32px;
+    }
+  }
+}
+
+.air-cover {
+    display: flex;
+    flex-direction: column;
+}
