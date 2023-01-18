@@ -1,5 +1,5 @@
-import React from 'react'
-import { Routes, Route } from 'react-router'
+import React from "react";
+import { Routes, Route } from "react-router";
 
 
 import { AppHeader } from './cmps/app-header'
@@ -31,12 +31,14 @@ export function RootCmp() {
                                 -reviews
                                 -loaction
                                 -resrvation preview */}
+
                     {/* <Route path="/book/stay/:id" element={<StayReservation />} />    */}
                                 {/* 
                                 cmps:
                                 -resrvation deatils
                                 -payment options
                                 -resrvation preview*/}
+
                     {/* <Route path="/guest/inbox/:id" element={<UserMsgs />} /> */}
                                 {/* cmps:
                                     -messages preview
@@ -49,8 +51,8 @@ export function RootCmp() {
                                 -location ask about
                                 -text box
                                 -resrvation preview*/}
-                    <Route path="/users/show/:id" element={<UserDetails />} />
-                                {/* 
+          {/* <Route path="/users/show/:id" element={<UserDetails />} /> */}
+          {/* 
                                 cmps:
                                 -user deatails
                                 -reviews wrote on */}
