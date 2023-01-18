@@ -12,7 +12,7 @@ export function RootCmp() {
 
     return (
         <div>
-            <AppHeader />
+            {/* <AppHeader /> */}
             <main>
                 <Routes>
                     <Route path="/" element={<StayIndex />} />
@@ -30,29 +30,29 @@ export function RootCmp() {
                                 -reviews
                                 -loaction
                                 -resrvation preview */}
-                    <Route path="/book/stay/:id" element={<StayReservation />} />   
+                    {/* <Route path="/book/stay/:id" element={<StayReservation />} />    */}
                                 {/* 
                                 cmps:
                                 -resrvation deatils
                                 -payment options
                                 -resrvation preview*/}
-                    <Route path="/guest/inbox/:id" element={<UserMsgs />} />
+                    {/* <Route path="/guest/inbox/:id" element={<UserMsgs />} /> */}
                                 {/* cmps:
                                     -messages preview
                                     -chet box
                                     -resrvation deatials */}
                                
-                    <Route path="/contact_host/:id" element={<SendMsgsToHost />} />
+                    {/* <Route path="/contact_host/:id" element={<SendMsgsToHost />} /> */}
                                 {/* 
                                 cmps:
                                 -location ask about
                                 -text box
                                 -resrvation preview*/}
                     <Route path="/users/show/:id" element={<UserDetails />} />
-                    <Route path="/hosting" element={<PropertyCollcation />} />
+                    {/* <Route path="/hosting" element={<PropertyCollcation />} /> */}
                 </Routes>
             </main>
-            <AppFooter />
+            {/* <AppFooter /> */}
         </div>
     )
 }

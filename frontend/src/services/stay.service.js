@@ -3,6 +3,7 @@
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import { storageService } from './async-storage.service.js'
 
 
 const STORAGE_KEY = 'stay_db'
@@ -19,7 +20,8 @@ window.cs = stayService
 
 
 async function query(filterBy = { txt: '', price: 0 }) {
-    return httpService.get(STORAGE_KEY, filterBy)
+    return storageService.query(STORAGE_KEY)
+    // return httpService.get(STORAGE_KEY, filterBy)
 }
 
 function getById(stayId) {
@@ -151,7 +153,7 @@ function _createStays(){
             "likedByUsers": ['mini-user'] // for user-wishlist : use $in
             }
         ]
-        utilService.saveToStorage(stays)
+        utilService.saveToStorage(STORAGE_KEY, stays)
     }
 }
 // function getEmptyStay() {
