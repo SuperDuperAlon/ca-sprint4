@@ -60,24 +60,17 @@ export function StayIndex() {
         <div className='index-layout'>
             <AppHeader />
             <main>
-                {/* <ul className="stay-list">
-                    {stays.map(stay =>
+                <ul className="stay-list">
+                    {/* {stays.map(stay =>
                         <li className="stay-preview" key={stay._id}>
-                            <img className="stay-img" src={require(`.assets/img/${stay.imgUrls}.jpg`)} />
+                            <img className="stay-img" src={require(`..assets/img/${stay.imgUrls[0]}.jpg`)} />
                             <h4>{stay.loc.city} , {stay.loc.country}</h4>
                             <p>{stay.summary}</p>
-                            <p>{stay.beds}</p>
-                            <p></p>
-                            <div>
-                                <button onClick={() => { onRemoveStay(car._id) }}>x</button>
-                                <button onClick={() => { onUpdateCar(car) }}>Edit</button>
-                            </div>
-
-                            <button onClick={() => { onAddCarMsg(car) }}>Add car msg</button>
-                            <button className="buy" onClick={() => { onAddToCart(car) }}>Add to cart</button>
+                            <p>{stay.beds} beds</p>
+                            <p>{stay.price} night</p>
                         </li>)
-                    }
-                </ul> */}
+                    } */}
+                </ul>
             </main>
         </div>
     )
