@@ -62,10 +62,9 @@ export function StayIndex() {
             <AppHeader />
             <main>
                 <ul className="stay-list">
-                    hi
                     {stays.map(stay =>
                         <li className="stay-preview" key={stay._id}>
-                            {/* <img className="stay-img" src={require(`..assets/img/${stay.imgUrls[0]}.jpg`)} /> */}
+                            {/* <img className="stay-img" src={require(`/img/${stay.imgUrls[0]}.jpg`)} /> */}
                             <h4>{stay.loc.city} , {stay.loc.country}</h4>
                             <p>{stay.summary}</p>
                             <p>{stay.beds} beds</p>
