@@ -1,0 +1,78 @@
+.details-layout {
+  display: grid;
+  grid-template-columns: 160px 1fr 160px;
+
+
+  > * {
+      grid-column: 2;
+      display: flex;
+      flex-direction: column;
+      font-size: 1rem;
+      text-align: left;
+      color: #222222;
+      &.full {
+          grid-column: 1 /-1;
+      }
+}
+}
+
+.stay-details-midsection{
+  display: grid;
+  grid-template-columns: 58% 42%;
+}
+
+.details-locations-info {
+
+  .secondary-info {
+    display: flex;
+    justify-content: space-between;
+
+    .locations-attr {
+      // color: $pink;
+    }
+    &.actions {
+    }
+  }
+}
+
+.stay-details-host-info {
+
+  > * {
+    border-top: 1px rgba(221, 221, 221, 1) solid;
+  }
+
+  .basic-info {
+    flex-direction: row;
+    justify-content: space-between;
+
+    .host-info {
+      flex-direction: column;
+    }
+  }
+
+  .host {
+    padding-top: 2rem;
+    .host-content {
+      padding-bottom: 2rem;
+    }
+  }
+}
+
+.air-cover {
+}
+
+.description {
+
+}
+
+.bedding {
+  .bedding-desc {
+    flex-direction: row;
+    border: 1px solid #222222;
+    display: inline-block;
+  }
+}
+
+.stay-details-reviews {
+  
+}
