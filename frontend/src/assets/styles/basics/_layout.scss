@@ -2,6 +2,7 @@
 .index-layout {
     display: grid;
     grid-template-columns: 70px 1fr 70px;
+}
 
     > * {
         grid-column: 2;
@@ -12,7 +13,7 @@
     }
 
 
-
+// =======
     // @include for-narrow-layout {
     //     grid-template-columns: 
     //         minmax(20px, 1fr)
@@ -35,24 +36,11 @@
     //     }
     
     // }
-}
-
-.details-layout {
-    display: grid; 
-    grid-template-columns: 160px 1fr 160px;
-
-    > * {
-        grid-column: 2;
-
-        &.full {
-            grid-column: 1 /-1;
-        }
-    }
-}
-
-// .card-grid {
-//     display: grid;
-//     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-//     grid-gap: 20px;
 // }
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
 
