@@ -8,7 +8,7 @@
 }
 
 html {
-    font-family: cereal;
+    font-family: circular;
     line-height: 1.6;
     // color: $clr2;
 }
@@ -21,15 +21,15 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: caveat;
+    font-family: circular;
     margin: 0 0 0.6em;
     line-height: 1;
 }
 
 
-section, main, footer {
-    padding: 5px;
-}
+// section, main, footer {
+//     padding: 5px;
+// }
 
 img {
     width: 100%;
@@ -44,5 +44,8 @@ a:hover {
 
 ul{
     padding: 0
+}
+li{
+    list-style-type: none
 }
 

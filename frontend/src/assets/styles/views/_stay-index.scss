@@ -1,0 +1,40 @@
+.stay-list {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0,1fr)) ;
+    gap : 25px ;
+ 
+    img{
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        border-radius: 0.8rem;
+    }
+    h4, p{
+        margin: 0;
+        line-height: 1.5;
+        letter-spacing: 0.4px;
+    }
+    h4{
+        font-size: 0.9375rem;
+        font-weight: 600;
+    }
+
+    h4 span{
+        font-weight: 400;
+    }
+    p{
+        color: $grey;
+        font-size: 1rem;
+    }
+    // a {
+    //     // color: $clr1;
+    //     padding: 10px;
+    // }    
+    // h3 {
+    //     // background-color: #ddd;
+    //     padding: 10px 5px;
+    //     margin: 5px;
+    // }    
+}
+
+
+

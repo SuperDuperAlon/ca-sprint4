@@ -2,28 +2,29 @@ import { stayService } from "../services/stay.service";
 import { userService } from "../services/user.service.js";
 import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { SET_STAYS } from "./stay.reducer.js";
+import { SET_STAYS, ADD_STAY, REMOVE_STAY, UPDATE_STAY } from "./stay.reducer.js";
 import { SET_SCORE } from "./user.reducer.js";
 
 // Action Creators:
-// export function getActionRemoveCar(stayId) {
-//     return {
-//         type: REMOVE_CAR,
-//         carId: stayId
-//     }
-// }
-// export function getActionAddCar(stay) {
-//     return {
-//         type: ADD_CAR,
-//         stay: stay
-//     }
-// }
-// export function getActionUpdateCar(car) {
-//     return {
-//         type: UPDATE_CAR,
-//         car
-//     }
-// }
+export function getActionRemoveStay(stayId) {
+    return {
+        type: REMOVE_STAY,
+        stayId: stayId
+    }
+}
+
+export function getActionAddStay(stay) {
+    return {
+        type: ADD_STAY,
+        stay: stay
+    }
+}
+export function getActionUpdateStay(stay) {
+    return {
+        type: UPDATE_STAY,
+        stay
+    }
+}
 
 export async function loadStays() {
     try {
@@ -41,40 +42,38 @@ export async function loadStays() {
 
 }
 
-// export async function removeCar(carId) {
-//     try {
-//         await stayService.remove(carId)
-//         store.dispatch(getActionRemoveCar(carId))
-//     } catch (err) {
-//         console.log('Cannot remove car', err)
-//         throw err
-//     }
-// }
+export async function removeStay(stayId) {
+    try {
+        await stayService.remove(stayId)
+        store.dispatch(getActionRemoveStay(stayId))
+    } catch (err) {
+        console.log('Cannot remove stay', err)
+        throw err
+    }
+}
 
-// export async function addCar(car) {
-//     try {
-//         const savedCar = await stayService.save(car)
-//         console.log('Added Car', savedCar)
-//         store.dispatch(getActionAddCar(savedCar))
-//         return savedCar
-//     } catch (err) {
-//         console.log('Cannot add car', err)
-//         throw err
-//     }
-// }
+export async function addStay(stay) {
+    try {
+        const savedStay = await stayService.save(stay)
+        console.log('Added stay', savedStay)
+        store.dispatch(getActionAddStay(savedStay))
+        return savedStay
+    } catch (err) {
+        console.log('Cannot add stay', err)
+        throw err
+    }
+}
 
-// export function updateCar(car) {
-//     return stayService.save(car)
-//         .then(savedCar => {
-//             console.log('Updated Car:', savedCar)
-//             store.dispatch(getActionUpdateCar(savedCar))
-//             return savedCar
-//         })
-//         .catch(err => {
-//             console.log('Cannot save car', err)
-//             throw err
-//         })
-// }
+export async function updateStay(stay) {
+    try{
+        const savedStay = await stayService.save(stay)
+        store.dispatch(getActionUpdateStay(savedStay))
+        return savedStay
+    }catch(err) {
+        console.log('Cannot save stay', err)
+        throw err
+    }
+}
 
 // export function addToCart(car) {
 //     store.dispatch({

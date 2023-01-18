@@ -15,19 +15,6 @@
 .flex {
 
     display: flex;
-
-    > *.full {
-        flex: 1;
-    }
-    &.column {
-        flex-direction: column;
-    }
-    &.justify-center {
-        justify-content: center;
-    }
-    &.align-center {
-        align-items: center;
-    }
 }
 
 // colors
@@ -51,17 +38,21 @@
     color: #222222;
 }
 
-.dark-content {
-    color: #717171
-}
+//     > *.full {
+//         flex: 1;
+//     }
+//     &.column {
+//         flex-direction: column;
+//     }
+//     &.justify-center {
+//         justify-content: center;
+//     }
+//     &.align-center {
+//         align-items: center;
+//     }
+// }
 
-// box 
-.rounded-full{
-    border-radius: 2em;
-
-}
-
-// Media helpers
+// // Media helpers
 
 // .square-ratio {
 //     @include aspect-ratio(1, 1);
