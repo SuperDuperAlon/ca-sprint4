@@ -2,18 +2,21 @@ import { useState } from "react";
 import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
+import { AddGuests } from "./stay-details-add-guests";
 
 export function StayDetailsReservationModal() {
 
     const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
-    const [focusedInput, setFocusedInput] = useState(null);
+    const [endDate, setEndDate] = useState();
+    const [focusedInput, setFocusedInput] = useState();
+
+    console.log(startDate);
 
   return (
     <section className="reservation">
       <div className="reservation-modal">
         <div className="reservation-info">
-          price review reviews
+          $200 *4.7 9 -reviews
 
         </div>
         <div className="App">
@@ -29,6 +32,7 @@ export function StayDetailsReservationModal() {
         focusedInput={focusedInput}
         onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
       />
+      <AddGuests />
     </div>
 
       </div>
