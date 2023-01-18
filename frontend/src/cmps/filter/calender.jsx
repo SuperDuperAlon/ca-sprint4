@@ -1,12 +1,18 @@
-import React from "react";
-import "react-dates/initialize";
+import React, { useEffect, useState } from "react";
+// import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
-import "react-dates/lib/css/_datepicker.css";
+// import "react-dates/lib/css/_datepicker.css";
 
-export function Calender() {
-    const [startDate, setStartDate] = React.useState();
-    const [endDate, setEndDate] = React.useState();
-    const [focusedInput, setFocusedInput] = React.useState();
+export function Calender({onChangeDates}) {
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+    const [focusedInput, setFocusedInput] = useState();
+    
+
+    useEffect(()=>{
+      onChangeDates(startDate,endDate)
+    },[startDate,endDate])
+
     return (
       <div className="App">
         <DateRangePicker
