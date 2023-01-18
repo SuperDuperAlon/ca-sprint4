@@ -5,7 +5,7 @@
 @import "setup/typography";
 
 // // Basics
-// @import "basics/helpers";
+@import "basics/helpers";
 @import "basics/layout";
 @import "basics/base";
 @import "basics/links";
@@ -15,7 +15,7 @@
 // // Views
 // @import "views/about-us";
 // @import "views/home-page";
-// @import "views/car-app";
+@import "views/stay-index";
 // @import "views/review-app";
 // @import "views/user-details";
 
@@ -24,6 +24,7 @@
 // @import "cmps/app-footer";
 // @import "cmps/user-msg";
 // @import "cmps/shopping-cart";
+@import "cmps/stay-list";
 
 
 
