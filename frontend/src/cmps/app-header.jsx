@@ -1,38 +1,24 @@
 import { Link, NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import routes from '../routes'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
+import { useEffect, useState } from 'react'
 
 export function AppHeader() {
-    // const user = useSelector(storeState => storeState.userModule.user)
 
-    // async function onLogin(credentials) {
-    //     try {
-    //         const user = await login(credentials)
-    //         showSuccessMsg(`Welcome: ${user.fullname}`)
-    //     } catch(err) {
-    //         showErrorMsg('Cannot login')
-    //     }
-    // }
-    // async function onSignup(credentials) {
-    //     try {
-    //         const user = await signup(credentials)
-    //         showSuccessMsg(`Welcome new user: ${user.fullname}`)
-    //     } catch(err) {
-    //         showErrorMsg('Cannot signup')
-    //     }
-    // }
-    // async function onLogout() {
-    //     try {
-    //         await logout()
-    //         showSuccessMsg(`Bye now`)
-    //     } catch(err) {
-    //         showErrorMsg('Cannot logout')
-    //     }
-    // }
+    const [isStaySerachBarOpen, setIsStaySerachBarOpen]=useState(false)
 
+    useEffect(() => {
+        
+    }, [isStaySerachBarOpen])
+
+    function onChangeStaySerachBar(option){
+        // setIsStaySerachBarOpen=true
+
+    }
+
+    
     return (
         <header className="app-header">
             <main className='main-header'>
@@ -42,18 +28,20 @@ export function AppHeader() {
                 </div>
 
                 <nav>
-                    <NavLink key={"anywhere"}>
+                    <NavLink key={"anywhere"} onClick={()=>onChangeStaySerachBar('anywhere')}>
                         <p>anywhere</p>
                     </NavLink>
-                    <NavLink key={"anyWeek"}>
+                    <p className="seprertor">|</p>
+                    <NavLink key={"anyWeek"} onClick={()=>onChangeStaySerachBar('anyWeek')}>
                         <p>any week</p>
                     </NavLink>
-                    <NavLink key={"addguests"}>
-                        <p>addguests</p>
+                    <p className="seprertor">|</p>
+                    <NavLink key={"addguests"} onClick={()=>onChangeStaySerachBar('addguests')}>
+                        <p>add guests</p>
                     </NavLink>
 
                     <div className="serachIcon">
-                        <img src="../assets/img/icons/search.png" alt="serach" />
+                        <img src={require("../assets/img/icons/search.png")} alt="serach" />
                     </div>
                 </nav>
 
@@ -70,7 +58,7 @@ export function AppHeader() {
                         <span className="material-symbols-outlined">
                             menu
                         </span>
-                        <span className="material-symbols-outlined">
+                        <span className=" img material-symbols-outlined">
                             person
                         </span>
 

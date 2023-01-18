@@ -1,5 +1,5 @@
 .app-header {
-    
+
     // background-color: $clr4;
     // padding: 10px;
 
@@ -53,15 +53,105 @@
 
 }
 
-.main-header{
+.main-header {
+    .logo{
+        margin-right: 200px;
+    }
+
     display: flex;
     justify-content: space-between;
-    padding-top: 1em ;
-    padding-bottom: 1em;
-
-    > * {
+    align-items: center;
+    >* {
         display: flex;
     }
 
+    nav {
+        border: solid $grey 1px;
+        border-radius: 2em;
+        // padding: 5px;
+
+        >*  {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: $paddingHeader ;
+
+            >* {
+                margin: 0;
+                text-transform: capitalize;
+                
+            } 
+
+        }
+
+        .seprertor{
+            color:$grey ;
+            margin: 0;
+        }
+
+       
+
+
+
+    }
+
+
+}
+
+.serachIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background-color: $pink;
+    border-radius: 50%;
+    width: 2em;
+    margin-right: 5px;
+    margin-left: 10px;
+
+
+    img {
+        margin: 10px 0;
+        max-width: $icon-size;
+        aspect-ratio: 1/1;
+    }
+
+}
+
+.usersOpstion {
+    >* {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin:$paddingImg ;
+    }
+
+    .switchToHost {
+        >* {
+            margin: 0;
+            text-transform: capitalize;
+        }
+
+    }
+
+    .loginMenu {
+        border: solid $grey 1px;
+        border-radius: 2em;
+
+        >* {
+            padding: 5px;
+        }
+
+        .img {
+            width: 30px;
+            aspect-ratio: 1/1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+    }
 
 }
