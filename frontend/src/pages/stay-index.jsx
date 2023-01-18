@@ -62,6 +62,7 @@ export function StayIndex() {
             <AppHeader />
             <main>
                 <ul className="stay-list">
+                    hi
                     {/* {stays.map(stay =>
                         <li className="stay-preview" key={stay._id}>
                             <img className="stay-img" src={require(`..assets/img/${stay.imgUrls[0]}.jpg`)} />

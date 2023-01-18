@@ -34,7 +34,7 @@ export function AppHeader() {
     // }
 
     return (
-        <header className="app-header main-container">
+        <header className="app-header">
             <main className='main-header'>
 
                 <div className="logo">
@@ -67,10 +67,10 @@ export function AppHeader() {
                         </span>
                     </div>
                     <div className="loginMenu">
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             menu
                         </span>
-                        <span class="material-symbols-outlined">
+                        <span className="material-symbols-outlined">
                             person
                         </span>
 
