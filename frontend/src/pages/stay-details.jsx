@@ -5,7 +5,7 @@ import { StayDetailsLocationInfo } from "../cmps/stay-details/stay-details-locat
 
 import { StayDetailsReservationModal } from "../cmps/stay-details/stay-details-reservation-modal";
 import { StayDetailsReviews } from "../cmps/stay-details/stay-details-reviews";
-import {StayDetailsHostDetails} from '../cmps/stay-details/stay-details-host-details'
+import { StayDetailsHostDetails } from "../cmps/stay-details/stay-details-host-details";
 
 import { StayDetailsMap } from "../cmps/stay-details/stay-details-map";
 export function StayDetails() {
@@ -14,8 +14,11 @@ export function StayDetails() {
       <h1 className="flex justify-center">App Header</h1>
       <StayDetailsLocationInfo />
       <StayDetailsGallery />
-      <StayDetailsHostInfo />
-      <StayDetailsReservationModal />
+      <div className="stay-details-midsection">
+        <StayDetailsHostInfo />
+        <StayDetailsReservationModal />
+      </div>
+
       <StayDetailsReviews />
       <StayDetailsMap />
       <StayDetailsHostDetails />

@@ -44,16 +44,3 @@
     grid-gap: 20px;
 }
 
-.details-layout {
-    display: grid;
-    grid-template-columns: 160px 1fr 160px;
-
-
-    > * {
-        grid-column: 2;
-
-        &.full {
-            grid-column: 1 /-1;
-        }
-}
-}
