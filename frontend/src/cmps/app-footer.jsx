@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 
-import { removeFromCart, checkout } from '../store/car.actions'
+// import { removeFromCart, checkout } from '../store/car.actions'
 import { UserMsg } from './user-msg.jsx'
 
 export function AppFooter() {
@@ -14,8 +14,8 @@ export function AppFooter() {
 
     async function onCheckout() {
         try {
-            const score = await checkout(cartTotal)
-            showSuccessMsg(`Charged, your new score: ${score.toLocaleString()}`)
+            // const score = await checkout(cartTotal)
+            // showSuccessMsg(`Charged, your new score: ${score.toLocaleString()}`)
         } catch(err) {
             showErrorMsg('Cannot checkout')
         }
@@ -44,7 +44,7 @@ export function AppFooter() {
                     {
                         cart.map((car, idx) => <li key={idx}>
                             <button onClick={() => {
-                                removeFromCart(car._id)
+                                // removeFromCart(car._id)
                             }}>x</button>
                             {car.vendor}
                         </li>)
