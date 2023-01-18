@@ -7,8 +7,7 @@ import { loadStays } from '../store/stay.actions.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { stayService } from '../services/stay.service.js'
 import { AppHeader } from '../cmps/app-header.jsx'
-import { AdvenceFilter } from '../cmps/filter/advence-filter.jsx'
-
+import { AdvancedFilter } from '../cmps/filter/advenced-filter.jsx'
 
 export function StayIndex() {
 
@@ -61,7 +60,7 @@ export function StayIndex() {
     return (
         <div className='index-layout'>
             <AppHeader />
-            <AdvenceFilter/>
+            <AdvancedFilter/>
             <main>
                 <ul className="stay-list">
                     {stays.map(stay =>

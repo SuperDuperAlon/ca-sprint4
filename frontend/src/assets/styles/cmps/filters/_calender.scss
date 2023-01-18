@@ -1,0 +1,26 @@
+.CalendarDay__selected_span {
+    background: #82e0aa;
+    color: text-black;
+    border: 1px solid lightred;
+  }
+  .CalendarDay__selected {
+    background: rgba(201, 192, 192, 0.91);
+    color: text-black;
+  }
+  .CalendarDay__selected:hover {
+    background: rgb(215, 208, 195);
+    color: text-black;
+  }
+  .CalendarDay__hovered_span:hover,
+  .CalendarDay__hovered_span {
+    background: rgba(252, 252, 252, 0);
+  }
+
+
+// CalendarDay__selected_span is the class for the calendar boxes in between the dates.
+
+// CalendarDay__selected is the class for the selected start date.
+
+// CalendarDay__selected:hover is the pseudoclass for the selected start date when we hover over it.
+
+// CalendarDay__hovered_span sets the color for the end date box.
