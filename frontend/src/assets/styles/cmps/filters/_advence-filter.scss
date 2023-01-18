@@ -1,0 +1,24 @@
+.searchOptionBar{
+    nav{
+        .where{
+        min-width: 150px; 
+        }
+
+        .checkIn{
+            min-width: 100px;
+        }
+        .checkOut{
+            min-width: 100px;
+        }
+        .who{
+            min-width: 100px;
+        }
+    }
+    .setOptions{
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border: 1px black solid;
+
+    }
+}
