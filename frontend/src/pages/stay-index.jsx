@@ -5,6 +5,8 @@ import { loadStays } from '../store/stay.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { stayService } from '../services/stay.service.js'
+import { AppHeader } from '../cmps/app-header.jsx'
+
 
 export function StayIndex() {
 
@@ -55,16 +57,17 @@ export function StayIndex() {
     //     console.log(`TODO Adding msg to car`)
     // }
     return (
-        <div>
+        <div className='index-layout'>
+            <AppHeader />
             <main>
-                <ul className="stay-list">
-                    hi
-                    {/* {stay.map(stay =>
+                {/* <ul className="stay-list">
+                    {stays.map(stay =>
                         <li className="stay-preview" key={stay._id}>
-                            <h4>{stay.vendor}</h4>
-                            <h1>⛐</h1>
-                            <p>Price: <span>${stay.price.toLocaleString()}</span></p>
-                            <p>Owner: <span>{stay.owner && stay.owner.fullname}</span></p>
+                            <img className="stay-img" src={require(`.assets/img/${stay.imgUrls}.jpg`)} />
+                            <h4>{stay.loc.city} , {stay.loc.country}</h4>
+                            <p>{stay.summary}</p>
+                            <p>{stay.beds}</p>
+                            <p></p>
                             <div>
                                 <button onClick={() => { onRemoveStay(car._id) }}>x</button>
                                 <button onClick={() => { onUpdateCar(car) }}>Edit</button>
@@ -73,8 +76,8 @@ export function StayIndex() {
                             <button onClick={() => { onAddCarMsg(car) }}>Add car msg</button>
                             <button className="buy" onClick={() => { onAddToCart(car) }}>Add to cart</button>
                         </li>)
-                    } */}
-                </ul>
+                    }
+                </ul> */}
             </main>
         </div>
     )

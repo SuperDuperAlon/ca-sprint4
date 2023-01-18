@@ -61,10 +61,11 @@ function _createStays(){
             "_id": "s101",
             "name": "Unikt designat ekologiskt naturhus, off-grid",
             "type": "House",
-            "imgUrls": ["../assets/img/s101/0.jpg", "../assets/img/s101/1.jpg","../assets/img/s101/2.jpg","../assets/img/s101/3.jpg"],
+            "imgUrls": ["s101/0", "../assets/img/s101/1.jpg","../assets/img/s101/2.jpg","../assets/img/s101/3.jpg"],
             "price": 327,
             "summary": "Welcome to the future's house, off-grid with its own energy and food production. One of the world's most environmentally friendly and sustainable houses. Here you can enjoy a wax house garden with Mediterranean plants. On a mountain lake with mile-wide views of Lake Vänern, the house is close to the beach, boat harbor and beautiful nature nearby.",
             "capacity": 8,
+            "beds" : 3,
             "amenities": [
                 "TV",
                 "Wifi",

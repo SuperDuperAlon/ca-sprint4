@@ -7,12 +7,13 @@ import { AppFooter } from './cmps/app-footer'
 import { UserDetails } from './pages/user-details'
 import { StayIndex } from './pages/stay-index'
 import { StayDetails } from './pages/stay-details.jsx'
+// import { AppFooter } from './cmps/app-footer'
+// import { UserDetails } from './pages/user-details'
 
 export function RootCmp() {
 
     return (
         <div>
-            {/* <AppHeader /> */}
             <main>
                 <Routes>
                     <Route path="/" element={<StayIndex />} />
@@ -22,7 +23,7 @@ export function RootCmp() {
                             list:
                                 preview
                              */}
-                    <Route path="/room/:id" element={<StayDetails />} />
+                    {/* <Route path="/room/:id" element={<StayDetails />} /> */}
                             {/* 
                                 cmps:
                                 -phtose
@@ -49,6 +50,10 @@ export function RootCmp() {
                                 -text box
                                 -resrvation preview*/}
                     <Route path="/users/show/:id" element={<UserDetails />} />
+                                {/* 
+                                cmps:
+                                -user deatails
+                                -reviews wrote on */}
                     {/* <Route path="/hosting" element={<PropertyCollcation />} /> */}
                 </Routes>
             </main>
