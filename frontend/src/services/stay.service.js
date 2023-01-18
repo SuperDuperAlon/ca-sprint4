@@ -14,7 +14,9 @@ export const stayService = {
     getById,
     save,
     remove,
-    addStayMsg
+    addStayMsg,
+    getEmptyStay
+    
 }
 window.cs = stayService
 
@@ -25,25 +27,25 @@ async function query(filterBy = { txt: '', price: 0 }) {
 }
 
 function getById(stayId) {
-    // return storageService.get(STORAGE_KEY, carId)
-    return httpService.get(`stay/${stayId}`)
+    return storageService.get(STORAGE_KEY, stayId)
+    // return httpService.get(`stay/${stayId}`)
 }
 
 async function remove(stayId) {
-    // await storageService.remove(STORAGE_KEY, carId)
-    return httpService.delete(`stay/${stayId}`)
+    await storageService.remove(STORAGE_KEY, stayId)
+    // return httpService.delete(`stay/${stayId}`)
 }
 async function save(stay) {
     var savedStay
     if (stay._id) {
-        // savedCar = await storageService.put(STORAGE_KEY, car)
-        savedStay = await httpService.put(`stay/${stay._id}`, stay)
+        savedStay = await storageService.put(STORAGE_KEY, stay)
+        // savedStay = await httpService.put(`stay/${stay._id}`, stay)
 
     } else {
         // Later, owner is set by the backend
-        stay.owner = userService.getLoggedinUser()
-        // savedCar = await storageService.post(STORAGE_KEY, car)
-        savedStay = await httpService.post('stay', stay)
+        // stay.owner = userService.getLoggedinUser()
+        savedStay = await storageService.post(STORAGE_KEY, stay)
+        // savedStay = await httpService.post('stay', stay)
     }
     return savedStay
 }
@@ -51,6 +53,36 @@ async function save(stay) {
 async function addStayMsg(stayId, txt) {
     const savedMsg = await httpService.post(`stay/${stayId}/msg`, {txt})
     return savedMsg
+}
+
+function getEmptyStay(){
+    return{
+            _id : '',
+            name: '',
+            type: '',
+            imgUrls: ["s101/0"],
+            price: '',
+            summary: '',
+            capacity: '',
+            beds : '',
+            menities: [
+            ],
+            labels: [
+            ],
+            host: {
+            },
+            loc: {
+                country: '',
+                countryCode: '',
+                city: '',
+                address: '',
+                lat: '',
+                lng: ''
+            },
+            reviews: [
+            ],
+            // "likedByUsers": ['mini-user']
+    }
 }
 
 function _createStays(){
@@ -103,7 +135,17 @@ function _createStays(){
                     "fullname": "user2",
                     "imgUrl": "/img/img2.jpg"
                 }
-                }
+                },
+                {
+                    "id": "madeId",
+                    "txt": "Very nice hostes, wasnt clean",
+                    "rate": 3,
+                    "by": {
+                        "_id": "u102",
+                        "fullname": "user2",
+                        "imgUrl": "/img/img2.jpg"
+                    }
+                    }
             ],
             "likedByUsers": ['mini-user'] // for user-wishlist : use $in
             },
@@ -111,7 +153,7 @@ function _createStays(){
             "_id": "s102",
             "name": "Cabane Drommen - L'Arbre à Cabane",
             "type": "House",
-            "imgUrls": ["../assets/img/s102/0.jpg", "../assets/img/s102/1.jpg","../assets/img/s102/2.jpg","../assets/img/s102/3.jpg"],
+            "imgUrls": ["s102/0", "../assets/img/s102/1.jpg","../assets/img/s102/2.jpg","../assets/img/s102/3.jpg"],
             "price": 51,
             "summary": "Discover the magical world of the Drommen hut, unique in France. With 4 levels : the living room, then the toilet, then the bedroom. Guests can dine on the perched terrace.",
             "capacity": 2,
