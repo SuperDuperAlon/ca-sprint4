@@ -2,8 +2,6 @@
 .index-layout {
     display: grid;
     grid-template-columns: 70px 1fr 70px;
-}
-
     > * {
         grid-column: 2;
     
@@ -11,6 +9,8 @@
             grid-column: 1 /-1;
         }
     }
+}
+
 
     .card-grid {
         display: grid;
