@@ -1,5 +1,7 @@
 export const SET_CHECK_IN_DATE = 'SET_CHECK_IN_DATE'
 export const CHANGE_GUEST_ADULTS = 'CHANGE_GUEST_ADULTS'
+export const SET_FILTER = 'SET_FILTER'
+export const SET_CHECK_OUT_DATE = 'SET_CHECK_OUT_DATE'
 
 const initialState = {
     filter:{
@@ -17,24 +19,28 @@ const initialState = {
 
 export function filterReducer(state = initialState, action) {
     var newState = state
-    var filter
    
     switch (action.type) {
+        // case SET_FILTER:
+        //     newState = { ...state, filter: action.filter }
+        //     break
         case SET_CHECK_IN_DATE:
-            newState = { ...state, filter: action.checkIn }
+            newState = { ...state, filter: {...state.filter, checkIn:action.date} }
             break
+        case SET_CHECK_OUT_DATE:
+            newState = { ...state, filter: {...state.filter, checkOut:action.date} }
+            break
+        
 
     // guest
-        case CHANGE_GUEST_ADULTS:
-        //    console.log('CHANGE_GUEST_ADULTS:', action)
-        //    console.log('...state.filter.guests.adults:', {...state.filter.guests.adults})
-            // filter={...state.filter ,...state.filter:{...state.filter.guests,...state.filter.guests.adults="1"}}
-            // console.log('filter:', filter)
+        // case CHANGE_GUEST_ADULTS:           
+        // filter={...state.filter ,guests:{...state.filter.guests, adults:"1"}}
+        // console.log('filter:', filter)
         //    newState = { ...state,  filter: {...state.filter.guests.adults, ...state.filter.guests.adults+=action.change}}
-           break
+        //    break
 
 
-    default:
-        return state
+    // default:
     }
+    return newState
 }

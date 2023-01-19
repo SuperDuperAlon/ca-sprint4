@@ -4,6 +4,7 @@ import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import { storageService } from './async-storage.service.js'
+import { filterService } from './filterService.js'
 
 
 const STORAGE_KEY = 'stay_db'
@@ -21,8 +22,20 @@ export const stayService = {
 window.cs = stayService
 
 
-async function query(filterBy = { txt: '', price: 0 }) {
-    return storageService.query(STORAGE_KEY)
+async function query(filterBy) {
+    if (!filterBy) return storageService.query(STORAGE_KEY)
+    let data= await storageService.query(STORAGE_KEY)
+    filterBy=filterService.getParamsToObj(filterBy)
+    console.log('data:', filterBy)
+    if (filterBy.where)
+        {
+            const regex = new RegExp(filterBy.where, 'i')
+            data = data.filter(place => regex.test(place.loc.country) || regex.test(place.loc.city)
+            )
+
+        }
+    return data
+
     // return httpService.get(STORAGE_KEY, filterBy)
 }
 

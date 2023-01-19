@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from "react";
-// import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
-// import "react-dates/lib/css/_datepicker.css";
+import { useSelector } from "react-redux";
+import { SET_CHECK_IN_DATE, SET_CHECK_OUT_DATE } from "../../store/filter.reducer";
+import { store } from "../../store/store";
 
-export function Calender({onChangeDates}) {
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
+export function Calender({}) {
     const [focusedInput, setFocusedInput] = useState();
-    
-
-    useEffect(()=>{
-      onChangeDates(startDate,endDate)
-    },[startDate,endDate])
+    const filter=useSelector(storeState => storeState.filterModule.filter)
+    function setStartDate(date) {
+        if  (!!date){
+          store.dispatch({
+                      type: SET_CHECK_IN_DATE,
+                      date})}
+    }  
+    function setEndDate(date) {
+      if  (!!date){
+          store.dispatch({
+                      type: SET_CHECK_OUT_DATE,
+                      date
+                  })}
+    }
 
     return (
       <div className="App">
         <DateRangePicker
-          startDate={startDate}
+          startDate={filter.checkIn}
           startDateId="start-date"
-          endDate={endDate}
+          endDate={filter.checkOut}
           endDateId="end-date"
           onDatesChange={({ startDate, endDate }) => {
             setStartDate(startDate);
@@ -31,5 +39,4 @@ export function Calender({onChangeDates}) {
     );
 }
 
-   
 
