@@ -9,16 +9,14 @@ import { stayService } from '../services/stay.service.js'
 import { AppHeader } from '../cmps/app-header.jsx'
 import { utilService } from '../services/util.service.js'
 import { StayList } from './stay-list.jsx'
-// import { Link, useNavigate } from 'react-router-dom'
 import { OrderPrefernces } from '../cmps/order-prefernces.jsx'
 import { Calendar } from '../cmps/calendar.jsx'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-// import { AdvancedFilter } from '../cmps/filter/advenced-filter.jsx'
 
 export function StayIndex() {
 
     const stays = useSelector(storeState => storeState.stayModule.stays)
-    const filter=useSelector(storeState => storeState.filterModule.filter)
+    // const filter=useSelector(storeState => storeState.filterModule.filter)
     const navigate = useNavigate()
     const { filterBy } = useParams()
 
@@ -68,7 +66,8 @@ export function StayIndex() {
     return (
         <div className='index-layout'>
             <AppHeader />
-            <AdvancedFilter/>
+        <Calendar/>
+        <OrderPrefernces/>
             <main>
                 <Link to={`/stay/edit`}>Add stay</Link>
                 <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay}/>
