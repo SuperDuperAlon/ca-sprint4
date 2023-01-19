@@ -9,9 +9,14 @@ import { stayService } from '../services/stay.service.js'
 import { AppHeader } from '../cmps/app-header.jsx'
 import { utilService } from '../services/util.service.js'
 import { StayList } from './stay-list.jsx'
-import { OrderPrefernces } from '../cmps/order-prefernces.jsx'
+import { OrderPreferences } from '../cmps/order-preferences.jsx'
 import { Calendar } from '../cmps/calendar.jsx'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { WhereTo } from '../cmps/filter/where-to.jsx'
+import { SetSearchParams } from '../cmps/filter/set-search-params.jsx'
+import { SearchBar } from '../cmps/filter/search-bar.jsx'
+import { Test } from '../cmps/filter/test.jsx'
+import { Test2 } from '../cmps/filter/test2.jsx'
 
 export function StayIndex() {
 
@@ -20,16 +25,18 @@ export function StayIndex() {
     const navigate = useNavigate()
     const { filterBy } = useParams()
 
+
+
     useEffect(() => {
         loadStays(filterBy)
-        if (!!filterBy?.where){navigate('/')}
+        if (!!filterBy?.where) { navigate('/') }
     }, [filterBy])
 
     async function onRemoveStay(ev, stayId) {
         ev.stopPropagation()
         try {
             await removeStay(stayId)
-            showSuccessMsg('Stay removed')            
+            showSuccessMsg('Stay removed')
         } catch (err) {
             showErrorMsg('Cannot remove stay')
         }
@@ -49,7 +56,7 @@ export function StayIndex() {
         // }        
     }
 
-    function onOpenStay(ev,stay){
+    function onOpenStay(ev, stay) {
         ev.stopPropagation()
         navigate(`/room/${stay._id}`)
     }
@@ -64,14 +71,16 @@ export function StayIndex() {
     //     console.log(`TODO Adding msg to car`)
     // }
     return (
-        <div className='index-layout'>
+        <div className='index-layout '>
             <AppHeader />
-        <Calendar/>
-        <OrderPrefernces/>
+            <div className='flex justify-center align-center'>
+
+            <SearchBar/>
+            </div>
             <main>
                 <Link to={`/stay/edit`}>Add stay</Link>
-                <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay}/>
+                <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay} />
             </main>
-        </div>
+        </div >
     )
 }

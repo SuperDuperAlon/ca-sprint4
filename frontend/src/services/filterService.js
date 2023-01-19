@@ -13,7 +13,6 @@ function  getDateToFilter(date){
 }
 
 function getParamsToObj(filterBy) {
-    console.log('filterBy getParams:',filterBy )
     let query = filterBy.split('&').map(x => x.split('=').map(y => y.trim()))
         .reduce((a, x) => {
             a[x[0]] = x[1];

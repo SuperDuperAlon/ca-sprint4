@@ -9,13 +9,12 @@ import {
   CHANGE_COUNT,
 } from "../store/order.reducer";
 
-export function OrderPrefernces() {
+export function OrderPreferences() {
   const dispatch = useDispatch();
   const count = useSelector((storeState) => storeState.orderModule.count);
   const adultsCount = useSelector(
     (storeState) => storeState.orderModule.guests.adults
   );
-  console.log(adultsCount);
   const childrenCount = useSelector(
     (storeState) => storeState.orderModule.guests.children
   );

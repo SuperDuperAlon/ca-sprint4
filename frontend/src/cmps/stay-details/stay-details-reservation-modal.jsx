@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
-import { OrderPrefernces } from "../order-prefernces";
+import { OrderPreferences } from "../order-preferences";
 import { reservationService } from "../../services/reservation.service";
 import { Calendar } from "../calendar";
 
@@ -39,7 +39,7 @@ export function StayDetailsReservationModal() {
 
       <div className="App">
         <Calendar />
-        <OrderPrefernces />
+        <OrderPreferences />
       </div>
     </section>
   );

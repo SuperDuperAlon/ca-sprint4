@@ -5,6 +5,7 @@ export const COUNT_PETS = "COUNT_PETS";
 export const CHANGE_COUNT = "CHANGE_COUNT";
 export const SET_CHECK_OUT_DATE = "SET_CHECK_OUT_DATE";
 export const SET_CHECK_IN_DATE = "SET_CHECK_IN_DATE";
+export const SET_WHERE_TO_LOOK = "SET_WHERE_TO_LOOK";
 
 // const initialState = {
 //   adultsCount: 1,
@@ -17,7 +18,7 @@ export const SET_CHECK_IN_DATE = "SET_CHECK_IN_DATE";
 const initialState = {
   checkIn: null,
   checkOut: null,
-  where: null,
+  where: '',
   guests: {
     adults: 1,
     children: 0,
@@ -86,6 +87,13 @@ export function orderReducer(state = initialState, action) {
       break;
     case SET_CHECK_OUT_DATE:
       newState = { ...state, checkOut: action.date };
+      break;
+    
+    // Look by Text
+
+    case SET_WHERE_TO_LOOK:
+      console.log('action:', action)
+      newState = { ...state, where: action.value };
       break;
 
     default:

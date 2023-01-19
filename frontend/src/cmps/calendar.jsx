@@ -1,47 +1,69 @@
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-// import "react-dates/initialize";
-import { DateRangePicker } from "react-dates";
-import { SET_CHECK_IN_DATE, SET_CHECK_OUT_DATE } from "../store/order.reducer";
-import { store } from "../store/store";
-// import "react-dates/lib/css/_datepicker.css";
 
+import TextField from '@mui/material/TextField';
+import { useState } from 'react';
+
+import * as React from 'react';
+import { Dayjs } from 'dayjs';
+import Box from '@mui/material/Box';
+import { LocalizationProvider } from '@mui/x-date-pickers-pro';
+import { AdapterDayjs } from '@mui/x-date-pickers-pro/AdapterDayjs';
+import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
+
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export function Calendar() {
-  const [focusedInput, setFocusedInput] = useState();
-  const checkIn=useSelector(storeState => storeState.orderModule.checkIn)
-    const checkOut=useSelector(storeState => storeState.orderModule.checkOut)
-  function setStartDate(date) {
-      if  (!!date){
-        store.dispatch({
-                    type: SET_CHECK_IN_DATE,
-                    date})}
-  }  
-  function setEndDate(date) {
-    if  (!!date){
-        store.dispatch({
-                    type: SET_CHECK_OUT_DATE,
-                    date
-                })}
-  }
 
+  // const [value, setValue] = useState([null, null]);
+
+  // return (
+  //   <LocalizationProvider
+  //     dateAdapter={AdapterDayjs}
+  //     localeText={{ start: 'Check-in', end: 'Check-out' }}
+  //   >
+  //     <DateRangePicker
+  //       value={value}
+  //       onChange={(newValue) => {
+  //         setValue(newValue);
+  //       }}
+  //       renderInput={(startProps, endProps) => (
+  //         <React.Fragment>
+  //           <TextField {...startProps} />
+  //           <Box sx={{ mx: 2 }}> to </Box>
+  //           <TextField {...endProps} />
+  //         </React.Fragment>
+  //       )}
+  //     />
+  //   </LocalizationProvider>
+  // );
+
+
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
+ 
   return (
-    <div className="App">
-      <DateRangePicker
-        startDate={checkIn}
-        startDateId="start-date"
-        endDate={checkOut}
-        endDateId="end-date"
-        onDatesChange={({ startDate, endDate }) => {
-          setStartDate(startDate);
-          setEndDate(endDate);
-        }}
-        focusedInput={focusedInput}
-        onFocusChange={(focusedInput) => setFocusedInput(focusedInput)}
+    <div>
+      <DatePicker
+        placeholderText="Select Date"
+        selected={startDate}
+        selectsStart
+        startDate={startDate}
+        endDate={endDate}
+        onChange={date => setStartDate(date)}
+      />
+      <DatePicker
+        placeholderText="Select Date"
+        selected={endDate}
+        selectsEnd
+        startDate={startDate}
+        endDate={endDate}
+        minDate={startDate}
+        onChange={date => setEndDate(date)}
       />
     </div>
   );
-}
+ }
 
-   
+
+
 

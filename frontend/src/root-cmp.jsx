@@ -30,7 +30,8 @@ export function RootCmp() {
                             list:
                                 preview
                              */}
-                    <Route path="/room/:id" element={<StayDetails />} />
+                    <Route path="/room/:stayId/:filterBy" element={<StayDetails />} />
+
                             {/* 
                                 cmps:
                                 -phtose
