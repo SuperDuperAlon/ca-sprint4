@@ -25,6 +25,7 @@ export function StayIndex() {
     }, [filterBy])
 
     async function onRemoveStay(ev, stayId) {
+        ev.stopPropagation()
         try {
             await removeStay(stayId)
             showSuccessMsg('Stay removed')            
@@ -34,7 +35,8 @@ export function StayIndex() {
     }
 
 
-    async function onEditStay(stay) {
+    async function onEditStay(ev, stay) {
+        ev.stopPropagation()
         navigate(`/stay/edit/${stay._id}`)
         // const price = +prompt('New price?')
         // const carToSave = { ...car, price }
@@ -46,7 +48,8 @@ export function StayIndex() {
         // }        
     }
 
-    function onOpenStay(stay){
+    function onOpenStay(ev,stay){
+        ev.stopPropagation()
         navigate(`/room/${stay._id}`)
     }
 
