@@ -4,6 +4,7 @@ import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import { storageService } from './async-storage.service.js'
+import { filterService } from './filterService.js'
 
 
 const STORAGE_KEY = 'stay_db'
@@ -21,8 +22,20 @@ export const stayService = {
 window.cs = stayService
 
 
-async function query(filterBy = { txt: '', price: 0 }) {
-    return storageService.query(STORAGE_KEY)
+async function query(filterBy) {
+    if (!filterBy) return storageService.query(STORAGE_KEY)
+    let data= await storageService.query(STORAGE_KEY)
+    filterBy=filterService.getParamsToObj(filterBy)
+    console.log('data:', filterBy)
+    if (filterBy.where)
+        {
+            const regex = new RegExp(filterBy.where, 'i')
+            data = data.filter(place => regex.test(place.loc.country) || regex.test(place.loc.city)
+            )
+
+        }
+    return data
+
     // return httpService.get(STORAGE_KEY, filterBy)
 }
 
@@ -93,7 +106,7 @@ function _createStays(){
             "_id": "s101",
             "name": "Unikt designat ekologiskt naturhus, off-grid",
             "type": "House",
-            "imgUrls": ["s101/0", "../assets/img/s101/1.jpg","../assets/img/s101/2.jpg","../assets/img/s101/3.jpg"],
+            "imgUrls": ["s101/0", "s101/1","s101/2","s101/3"],
             "price": 327,
             "summary": "Welcome to the future's house, off-grid with its own energy and food production. One of the world's most environmentally friendly and sustainable houses. Here you can enjoy a wax house garden with Mediterranean plants. On a mountain lake with mile-wide views of Lake Vänern, the house is close to the beach, boat harbor and beautiful nature nearby.",
             "capacity": 8,
@@ -153,7 +166,7 @@ function _createStays(){
             "_id": "s102",
             "name": "Cabane Drommen - L'Arbre à Cabane",
             "type": "House",
-            "imgUrls": ["s102/0", "../assets/img/s102/1.jpg","../assets/img/s102/2.jpg","../assets/img/s102/3.jpg"],
+            "imgUrls": ["s102/0", "s102/1","s102/2","s102/3"],
             "price": 51,
             "summary": "Discover the magical world of the Drommen hut, unique in France. With 4 levels : the living room, then the toilet, then the bedroom. Guests can dine on the perched terrace.",
             "capacity": 2,

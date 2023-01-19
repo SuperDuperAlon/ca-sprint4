@@ -9,20 +9,26 @@ import { stayService } from '../services/stay.service.js'
 import { AppHeader } from '../cmps/app-header.jsx'
 import { utilService } from '../services/util.service.js'
 import { StayList } from './stay-list.jsx'
-import { Link, useNavigate } from 'react-router-dom'
+// import { Link, useNavigate } from 'react-router-dom'
 import { OrderPrefernces } from '../cmps/order-prefernces.jsx'
 import { Calendar } from '../cmps/calendar.jsx'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+// import { AdvancedFilter } from '../cmps/filter/advenced-filter.jsx'
 
 export function StayIndex() {
 
     const stays = useSelector(storeState => storeState.stayModule.stays)
+    const filter=useSelector(storeState => storeState.filterModule.filter)
     const navigate = useNavigate()
+    const { filterBy } = useParams()
 
     useEffect(() => {
-        loadStays()
-    }, [])
+        loadStays(filterBy)
+        if (!!filterBy?.where){navigate('/')}
+    }, [filterBy])
 
     async function onRemoveStay(ev, stayId) {
+        ev.stopPropagation()
         try {
             await removeStay(stayId)
             showSuccessMsg('Stay removed')            
@@ -32,7 +38,8 @@ export function StayIndex() {
     }
 
 
-    async function onEditStay(stay) {
+    async function onEditStay(ev, stay) {
+        ev.stopPropagation()
         navigate(`/stay/edit/${stay._id}`)
         // const price = +prompt('New price?')
         // const carToSave = { ...car, price }
@@ -44,7 +51,8 @@ export function StayIndex() {
         // }        
     }
 
-    function onOpenStay(stay){
+    function onOpenStay(ev,stay){
+        ev.stopPropagation()
         navigate(`/room/${stay._id}`)
     }
 
@@ -60,8 +68,7 @@ export function StayIndex() {
     return (
         <div className='index-layout'>
             <AppHeader />
-            <OrderPrefernces />
-            <Calendar />
+            <AdvancedFilter/>
             <main>
                 <Link to={`/stay/edit`}>Add stay</Link>
                 <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay}/>
