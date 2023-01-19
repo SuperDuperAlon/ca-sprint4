@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import {
   COUNT_ADULTS,
@@ -7,33 +7,35 @@ import {
   COUNT_INFANTS,
   COUNT_PETS,
   CHANGE_COUNT,
-} from "../../store/reserve.reducer";
+} from "../store/order.reducer";
 
-export function AddGuests() {
+export function OrderPrefernces() {
   const dispatch = useDispatch();
-  const count = useSelector((storeState) => storeState.reserveModule.count);
+  const count = useSelector((storeState) => storeState.orderModule.count);
   const adultsCount = useSelector(
-    (storeState) => storeState.reserveModule.adultsCount
+    (storeState) => storeState.orderModule.guests.adults
   );
+  console.log(adultsCount);
   const childrenCount = useSelector(
-    (storeState) => storeState.reserveModule.childrenCount
+    (storeState) => storeState.orderModule.guests.children
   );
   const infantCount = useSelector(
-    (storeState) => storeState.reserveModule.infantCount
+    (storeState) => storeState.orderModule.guests.infants
   );
   const petsCount = useSelector(
-    (storeState) => storeState.reserveModule.petsCount
+    (storeState) => storeState.orderModule.guests.pets
   );
 
-  //   function changeCount(diff) {
-  //     console.log("Changing count by:", diff);
-  //     dispatch({ type: CHANGE_COUNT, diff });
-  //   }
+    function changeCount(diff) {
+      console.log("Changing count by:", diff);
+      dispatch({ type: CHANGE_COUNT, diff });
+    }
 
   function countAdults(diff) {
     console.log("Changing count by:", diff);
     dispatch({ type: CHANGE_COUNT, diff });
     dispatch({ type: COUNT_ADULTS, diff });
+    console.log(adultsCount);
   }
 
   function countChildren(diff) {
@@ -128,9 +130,6 @@ export function AddGuests() {
           +
         </button>
       </div>
-      <button>
-        <Link to={`/book/stays`}>Reserve</Link>
-      </button>
     </section>
   );
 }

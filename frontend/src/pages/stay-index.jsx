@@ -10,7 +10,8 @@ import { AppHeader } from '../cmps/app-header.jsx'
 import { utilService } from '../services/util.service.js'
 import { StayList } from './stay-list.jsx'
 import { Link, useNavigate } from 'react-router-dom'
-import { AdvancedFilter } from '../cmps/filter/advenced-filter.jsx'
+import { OrderPrefernces } from '../cmps/order-prefernces.jsx'
+import { Calendar } from '../cmps/calendar.jsx'
 
 export function StayIndex() {
 
@@ -59,7 +60,8 @@ export function StayIndex() {
     return (
         <div className='index-layout'>
             <AppHeader />
-            <AdvancedFilter/>
+            <OrderPrefernces />
+            <Calendar />
             <main>
                 <Link to={`/stay/edit`}>Add stay</Link>
                 <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay}/>
