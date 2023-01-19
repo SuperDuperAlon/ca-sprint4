@@ -1,28 +1,30 @@
 .details-layout {
   display: grid;
   grid-template-columns: 160px 1fr 160px;
-
+  
 
   > * {
-      grid-column: 2;
-      display: flex;
-      flex-direction: column;
-      font-size: 1rem;
-      text-align: left;
-      color: #222222;
-      &.full {
-          grid-column: 1 /-1;
-      }
-}
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    text-align: left;
+    color: #222222;
+    &.full {
+      grid-column: 1 /-1;
+    }
+  }
 }
 
-.stay-details-midsection{
+.stay-details-midsection {
   display: grid;
   grid-template-columns: 58% 42%;
 }
 
 .details-locations-info {
-
+  .info-header {
+    padding-top: 1.625rem
+  }
   .secondary-info {
     display: flex;
     justify-content: space-between;
@@ -42,8 +44,8 @@
   }
 
   .basic-info {
-    flex-direction: row;
-    justify-content: space-between;
+    padding: 3rem 0 1.5rem;
+    @include flex-row-sb;
 
     .host-info {
       flex-direction: column;
@@ -51,21 +53,38 @@
   }
 
   .host {
-    padding-top: 2rem;
+    padding: 2rem 0 2rem;
     .host-content {
-      padding-bottom: 2rem;
     }
   }
 }
 
+.stay-details-gallery {
+  padding-top: 1.5rem
+}
+
 .air-cover {
+  padding: 2rem 0 2rem;
 }
 
 .description {
+  padding: 2rem 0 3rem;
+}
 
+.amenities {
+  padding: 3rem 0 3rem;
+}
+
+.calendar {
+  padding: 3rem 0 3rem;
+}
+
+.stay-details-map {
+  padding: 3rem 0 3rem;
 }
 
 .bedding {
+    padding: 3rem 0 3rem;
   .bedding-desc {
     flex-direction: row;
     border: 1px solid #222222;
@@ -74,9 +93,38 @@
 }
 
 .stay-details-reviews {
-  
+  padding: 3rem 0 3rem;
+  .details-review-ratings, .details-review-reviews {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .review-rating, .review-feedback {
+      @include flex-col-sb;
+    }
+    .review-feedback-personal {
+
+    }
+    
+  }
 }
 
 .order-form {
-  
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  height: fit-content;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+
+  .order-info, .order-form-pricing, .order-form-total-price{
+    @include flex-col-sb
+  }
+  .order-form-msg{
+    display: flex;
+    align-items: center;
+  }
+  > * {
+    // flex-direction: column;
+  }
 }

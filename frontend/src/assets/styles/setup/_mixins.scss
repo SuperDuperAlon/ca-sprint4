@@ -25,6 +25,18 @@
     }
 }
 
+@mixin flex-col-sb {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+@mixin flex-row-sb {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
 // /* Media  Mixins */
 // @mixin aspect-ratio($width, $height) {
 //     position: relative;
