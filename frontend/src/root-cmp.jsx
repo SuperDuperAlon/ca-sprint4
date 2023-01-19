@@ -40,7 +40,7 @@ export function RootCmp() {
                                 -loaction
                             -resrvation preview */}
 
-                    {/* <Route path="/book/stay/:id" element={<StayReservation />} />    */}
+                    {/* <Route path="/book/stay/:id" element={<Stayorder />} />    */}
                                 {/* 
                                 cmps:
                                 -resrvation deatils

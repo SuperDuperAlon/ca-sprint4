@@ -25,10 +25,10 @@ export function OrderPreferences() {
     (storeState) => storeState.orderModule.guests.pets
   );
 
-    function changeCount(diff) {
-      console.log("Changing count by:", diff);
-      dispatch({ type: CHANGE_COUNT, diff });
-    }
+  function changeCount(diff) {
+    console.log("Changing count by:", diff);
+    dispatch({ type: CHANGE_COUNT, diff });
+  }
 
   function countAdults(diff) {
     console.log("Changing count by:", diff);

@@ -9,7 +9,8 @@ import { stayService } from '../services/stay.service.js'
 import { AppHeader } from '../cmps/app-header.jsx'
 import { utilService } from '../services/util.service.js'
 import { StayList } from './stay-list.jsx'
-import { OrderPreferences } from '../cmps/order-preferences.jsx'
+import { SecondaryFilter } from './secondary-filter.jsx'
+import { OrderPreferences } from '../cmps/order-prefernces.jsx'
 import { Calendar } from '../cmps/calendar.jsx'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { WhereTo } from '../cmps/filter/where-to.jsx'
@@ -73,13 +74,11 @@ export function StayIndex() {
     return (
         <div className='index-layout '>
             <AppHeader />
-            <div className='flex justify-center align-center'>
-
-            <SearchBar/>
-            </div>
+        <Calendar/>
+        <OrderPrefernces/>
             <main>
                 <Link to={`/stay/edit`}>Add stay</Link>
-                <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay} />
+                <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay}/>
             </main>
         </div >
     )

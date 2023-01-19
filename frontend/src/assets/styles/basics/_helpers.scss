@@ -68,7 +68,6 @@
 // flex helpers
 
 .flex {
-
     display: flex;
 
     >*.full {
@@ -104,3 +103,19 @@
 // .portrait-ratio {
 //     @include aspect-ratio(9, 16);
 // }
+
+.space-between{
+    justify-content: space-between;
+}
+
+.fw600 {
+    font-weight: 600;
+}
+
+.center{
+    align-items: center;
+}
+
+.column{
+    flex-direction: column;
+}

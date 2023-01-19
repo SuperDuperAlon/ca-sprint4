@@ -1,0 +1,43 @@
+.secondary-filter{
+   padding: 1.25rem 0;
+
+    .arrows {
+        font-weight: 700;
+        border: 0.5px solid rgb(0 0 0 / 0.3);
+        border-radius: 50%;
+        padding: 0px 10px;
+        cursor: pointer;
+    }
+    .arrows:hover{
+        padding: 1px 11px;
+    }
+    
+    .label{
+        color: $clr-ligthtext;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.02rem;
+    }
+    .icons-img{
+        opacity: 0.6;
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    .extra-filters-container{
+        font-size: 0.75rem;
+        border: 1px solid #DDDDDD;
+        border-radius: 0.75rem ;
+        padding: 0.5rem 1rem;
+    }
+
+    .icons-container:hover{
+        cursor: pointer;
+        .icons-img{
+            opacity: 1;
+        }
+        .label{
+            color: black;
+        }
+    }
+}

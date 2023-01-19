@@ -70,10 +70,10 @@ function getEmptyOrder(){
           "adults": '',
           "kids": ''
         },
-        "srder": {
+        "order": {
           "_id": "",
           "name": "",
-          "price": '80.00'
+          "price": ''
         },
         "msgs": [],
         "status": "" // pending, approved
@@ -98,7 +98,51 @@ function _createOrders(){
         "adults": 2,
         "kids": 1
       },
-      "srder": {
+      "order": {
+        "_id": "h102",
+        "name": "Milano",
+        "price": 160.00
+      },
+      "msgs": [],
+      "status": "pending" // pending, approved
+    },
+    {
+      "_id": "o1227",
+      "hostId": "u102",
+      "buyer": {
+        "_id": "u101",
+        "fullname": "User 1"
+      },
+      "totalPrice": 160,
+      "startDate": "2025/10/15",
+      "endDate": "2025/10/17",
+      "guests": {
+        "adults": 2,
+        "kids": 1
+      },
+      "order": {
+        "_id": "h102",
+        "name": "House Of Uncle My",
+        "price": 80.00
+      },
+      "msgs": [],
+      "status": "pending" // pending, approved
+    },
+    {
+      "_id": "o1225",
+      "hostId": "u102",
+      "buyer": {
+        "_id": "u101",
+        "fullname": "User 1"
+      },
+      "totalPrice": 160,
+      "startDate": "2025/10/15",
+      "endDate": "2025/10/17",
+      "guests": {
+        "adults": 2,
+        "kids": 1
+      },
+      "order": {
         "_id": "h102",
         "name": "House Of Uncle My",
         "price": 80.00

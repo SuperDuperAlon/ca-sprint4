@@ -1,6 +1,5 @@
 import { useState } from "react"
-
-
+import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 
 export function ImgCarousel({imgs}){
 
@@ -27,7 +26,7 @@ export function ImgCarousel({imgs}){
         {imgIdx !== imgs.length - 1 && <div className="arrows right" onClick={(ev)=>nextImg(ev)}>{">"}</div>}
         </div>
         <div className="dots flex">
-            {imgs.map((img,idx)=> <div key={idx}>•</div>)}
+            {imgs.map((img,idx)=> <div className={idx===imgIdx && "white-dot"}key={idx}>•</div>)}
         </div>
         
     </div>)
