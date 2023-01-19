@@ -1,9 +1,9 @@
-import { stayService } from "../services/stay.service";
-import { userService } from "../services/user.service.js";
+import { stayService } from "../services/stay.service"
+import { userService } from "../services/user.service.js"
 import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { SET_STAYS, ADD_STAY, REMOVE_STAY, UPDATE_STAY } from "./stay.reducer.js";
-import { SET_SCORE } from "./user.reducer.js";
+import { SET_STAYS, ADD_STAY, REMOVE_STAY, UPDATE_STAY } from "./stay.reducer.js"
+import { SET_SCORE } from "./user.reducer.js"
 
 // Action Creators:
 export function getActionRemoveStay(stayId) {
@@ -112,7 +112,7 @@ export async function updateStay(stay) {
 
 //     stayService.remove(carId)
 //         .then(() => {
-//             console.log('Server Reported - Deleted Succesfully');
+//             console.log('Server Reported - Deleted Succesfully')
 //         })
 //         .catch(err => {
 //             showErrorMsg('Cannot remove car')

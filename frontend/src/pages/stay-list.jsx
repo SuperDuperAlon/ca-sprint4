@@ -1,4 +1,4 @@
-import { ImgCarousel } from "../cmps/ImgCarousel";
+import { ImgCarousel } from "../cmps/img-carousel";
 import { utilService } from "../services/util.service";
 
 export function StayList({stays, onRemoveStay, onEditStay, onOpenStay}){

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export function StayDetailsLocationInfo() {
   return (
     <div className="details-locations-info">
-      <div className="info-header fs26">
+      <div className="info-header fs26 fw600">
         Amazing view of fjord & mountains glamping Birdbox{" "}
       </div>
       <div className="secondary-info fs14">

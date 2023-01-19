@@ -30,7 +30,7 @@ export function RootCmp() {
                             list:
                                 preview
                              */}
-                    <Route path="/room/:id" element={<StayDetails />} />
+                    <Route path="/room/:stayId" element={<StayDetails />} />
                             {/* 
                                 cmps:
                                 -phtose
@@ -39,7 +39,7 @@ export function RootCmp() {
                                 -loaction
                             -resrvation preview */}
 
-                    {/* <Route path="/book/stay/:id" element={<StayReservation />} />    */}
+                    {/* <Route path="/book/stay/:id" element={<Stayorder />} />    */}
                                 {/* 
                                 cmps:
                                 -resrvation deatils
