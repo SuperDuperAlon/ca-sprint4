@@ -5,6 +5,7 @@ export const COUNT_PETS = "COUNT_PETS"
 export const CHANGE_COUNT = "CHANGE_COUNT"
 export const SET_CHECK_OUT_DATE = "SET_CHECK_OUT_DATE"
 export const SET_CHECK_IN_DATE = "SET_CHECK_IN_DATE"
+export const SET_WHERE_TO_LOOK = "SET_WHERE_TO_LOOK"
 
 const initialState = 
 {
@@ -74,6 +75,12 @@ export function orderReducer(state = initialState, action) {
     case SET_CHECK_OUT_DATE:
       newState = { ...state, checkOut: action.date };
       break;
+      
+      // Set WHERE
+      case SET_WHERE_TO_LOOK:
+        newState = { ...state, where: action.value };
+        break;
+      
 
     default:
       return state

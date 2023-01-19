@@ -40,7 +40,6 @@ export function SearchBar() {
             <div className="guests">
                 <p>Guests</p>
                 <input type='text' placeholder="Add guests" />
-                {/* <OrderPreferences /> */}
                 <span><i className="lni lni-search-alt"></i></span>
                 <SetSearchParams />
             </div>
