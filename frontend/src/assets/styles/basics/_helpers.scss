@@ -38,6 +38,14 @@
     color: #222222;
 }
 
+.flex{
+    display: flex;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+
 //     > *.full {
 //         flex: 1;
 //     }

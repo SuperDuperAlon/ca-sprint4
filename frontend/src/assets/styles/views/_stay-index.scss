@@ -25,16 +25,47 @@
         color: $grey;
         font-size: 1rem;
     }
-    // a {
-    //     // color: $clr1;
-    //     padding: 10px;
-    // }    
-    // h3 {
-    //     // background-color: #ddd;
-    //     padding: 10px 5px;
-    //     margin: 5px;
-    // }    
+
+    .stay-preview:hover{
+        cursor: pointer;
+    }
+
+    .img-container{
+        position: relative;
+    }
+    
+    .remove-btn{
+        position: relative;
+        top: 30px;
+        right: 5px;
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+    .arrows{
+        position: absolute;
+        top : 50%;
+        transform: translate(0, -50%); 
+        background-color: white;
+        padding: 0 10px;
+        margin: 5px;
+        font-family: circular;
+        border-radius: 50%;
+        
+    }
+    .right{
+        right: 0;
+    }
+
+    .dots{
+        justify-content: center;
+        justify-items: baseline;
+        color: $grey;
+        // position: absolute;  
+    }
+    
 }
+    
+
 
 
 
