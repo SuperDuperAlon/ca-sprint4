@@ -10,7 +10,7 @@ const initialState =
 {
   checkIn: null,
   checkOut: null,
-  where: null,
+  where: '',
   guests: {
     adults: 1,
     children: 0,
@@ -72,8 +72,8 @@ export function orderReducer(state = initialState, action) {
       console.log(newState)
       break
     case SET_CHECK_OUT_DATE:
-      newState = { ...state, checkOut: action.date }
-      break
+      newState = { ...state, checkOut: action.date };
+      break;
 
     default:
       return state

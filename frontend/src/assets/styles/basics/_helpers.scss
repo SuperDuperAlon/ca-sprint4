@@ -1,35 +1,62 @@
 // Font Sizes
-.fs12 { font-size: rem(12px); }
-.fs14 { font-size: rem(14px); }
-.fs16 { font-size: rem(16px); }
-.fs18 { font-size: rem(18px); }
-.fs20 { font-size: rem(20px); }
-.fs22 { font-size: rem(20px); }
-.fs24 { font-size: rem(24px); }
-.fs26 { font-size: rem(24px); }
-.fs28 { font-size: rem(28px); }
-.fs30 { font-size: rem(30px); }
-
-// flex helpers
-
-.flex {
-
-    display: flex;
+.fs12 {
+    font-size: rem(12px);
 }
+
+.fs14 {
+    font-size: rem(14px);
+}
+
+.fs16 {
+    font-size: rem(16px);
+}
+
+.fs18 {
+    font-size: rem(18px);
+}
+
+.fs20 {
+    font-size: rem(20px);
+}
+
+.fs22 {
+    font-size: rem(20px);
+}
+
+.fs24 {
+    font-size: rem(24px);
+}
+
+.fs26 {
+    font-size: rem(24px);
+}
+
+.fs28 {
+    font-size: rem(28px);
+}
+
+.fs30 {
+    font-size: rem(30px);
+}
+
 
 // colors
 .pink {
     color: #ff5a5f;
 }
+
 .turquoise {
     color: #00a699;
 }
+
 .orange {
     color: #fc642d;
 }
+
 .grey {
     color: #767676;
 }
+
 .dark-grey {
     color: #484848;
 }
@@ -38,9 +65,44 @@
     color: #222222;
 }
 
-.flex{
+// flex helpers
+
+.flex {
     display: flex;
+
+    >*.full {
+        flex: 1;
+    }
+
+
+    &.space-between {
+        justify-content: space-between;
+    }
+
+    &.column {
+        flex-direction: column;
+    }
+
+    &.justify-center {
+        justify-content: center;
+    }
+
+    &.align-center {
+        align-items: center;
+    }
 }
+
+// // Media helpers
+
+// .square-ratio {
+//     @include aspect-ratio(1, 1);
+// }
+// .video-ratio {
+//     @include aspect-ratio(16, 9);
+// }
+// .portrait-ratio {
+//     @include aspect-ratio(9, 16);
+// }
 
 .space-between{
     justify-content: space-between;
@@ -57,29 +119,3 @@
 .column{
     flex-direction: column;
 }
-
-//     > *.full {
-//         flex: 1;
-//     }
-//     &.column {
-//         flex-direction: column;
-//     }
-//     &.justify-center {
-//         justify-content: center;
-//     }
-//     &.align-center {
-//         align-items: center;
-//     }
-// }
-
-// // Media helpers
-
-// .square-ratio {
-//     @include aspect-ratio(1, 1);
-// }
-// .video-ratio {
-//     @include aspect-ratio(16, 9);
-// }
-// .portrait-ratio {
-//     @include aspect-ratio(9, 16);
-// }
