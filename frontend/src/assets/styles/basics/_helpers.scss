@@ -46,6 +46,14 @@
     justify-content: space-between;
 }
 
+.center{
+    align-items: center;
+}
+
+.column{
+    flex-direction: column;
+}
+
 //     > *.full {
 //         flex: 1;
 //     }
