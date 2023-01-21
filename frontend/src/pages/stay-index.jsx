@@ -61,6 +61,7 @@ export function StayIndex() {
         navigate(`/room/${stay._id}`)
     }
 
+
     // function onAddToCart(car){
     //     console.log(`Adding ${car.vendor} to Cart`)
     //     addToCart(car)
@@ -76,7 +77,7 @@ export function StayIndex() {
                 <SearchBar />
             <OrderPreferences />
             <main>
-                <SecondaryFilter />
+                <SecondaryFilter filterByParams={filterBy}/>
                 {/* <Link to={`/stay/edit`}>Add stay</Link> */}
                 <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay} />
             </main>

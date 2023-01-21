@@ -34,6 +34,11 @@ async function query(filterBy) {
             )
 
         }
+    if (filterBy.label)
+        {
+            const regex = new RegExp(filterBy.label, 'i')
+            data = data.filter(place => regex.test(place.labels))
+        }
     return data
 
     // return httpService.get(STORAGE_KEY, filterBy)
