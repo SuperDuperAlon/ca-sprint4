@@ -11,7 +11,7 @@ import { FiSearch } from 'react-icons/fi'
 import { BsClock } from 'react-icons/bs'
 import { useNavigate } from "react-router"
 
-export function SearchBar() {
+export function SearchBar({queryToParams}) {
     const [activeNow, setActiveNow] = useState(null)
     const [filter, setFilter] = useState(filterService.getEmptyFilter())
     const navigate = useNavigate()
@@ -49,19 +49,11 @@ export function SearchBar() {
         setFilter({ ...filter, prevGuests })
     }
 
-    function queryToParams(event, labels=null){
+    function onClickSearch(event, labels=null){
         event.preventDefault()
-        
-        const checkOut=filterService.getDateToFilter(filter.checkOut)
-        const checkIn=filterService.getDateToFilter(filter.checkIn)
-    
-        const queryParams = 
-        `where=${filter.where}&checkIn=${checkIn}&checkOut=${checkOut}`
-        // &adults=${guests.adults}&children=${guests.children}`
+        setActiveNow('location')
+        queryToParams(filter)
 
-        console.log('queryParams:', queryParams)
-    
-        navigate(`/${queryParams}`)
     }
 
 
@@ -80,7 +72,7 @@ export function SearchBar() {
                             onChange={handleChange}
                         />
                     </div>
-                    {<button className="btn-rs"></button>}
+                    <button className="btn-rs"></button>
                 </div>
                 <div className="checkDate">
                     <div className="checkIn" onClick={() => setActiveNow('checkIn')} >
@@ -105,7 +97,7 @@ export function SearchBar() {
                         <input type='text' name='guest' id='guest' placeholder="Add guests" />
                     </div>
                     <button className="btn-rs"></button>
-                    <div className={activeNow ? 'active searchIcon' : 'searchIcon'} onClick={queryToParams}>
+                    <div className={activeNow ? 'active searchIcon' : 'searchIcon'} onClick={onClickSearch}>
                         <div className="icon">
                             <FiSearch />
                         </div>
@@ -137,9 +129,9 @@ export function SearchBar() {
                         <h1>Recent searches</h1>
                         <div className="recentSearchList">
                             <div className="lastSearch">
-                                {/* <div className="roundClock">
+                                <div className="roundClock">
                                     <BsClock/>
-                                </div> */}
+                                </div>
                                 <div className="searchDetails">
                                     <p>Italy <span className="how"> Stay</span></p>
                                     <div className="timeOf">

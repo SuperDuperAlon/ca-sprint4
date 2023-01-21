@@ -16,20 +16,18 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { WhereTo } from '../cmps/filter/where-to.jsx'
 import { SetSearchParams } from '../cmps/filter/set-search-params.jsx'
 import { SearchBar } from '../cmps/filter/search-bar.jsx'
+import { filterService } from '../services/filterService.js'
 
 
 export function StayIndex() {
 
     const stays = useSelector(storeState => storeState.stayModule.stays)
-    // const filter=useSelector(storeState => storeState.filterModule.filter)
     const navigate = useNavigate()
     const { filterBy } = useParams()
 
-
-
     useEffect(() => {
         loadStays(filterBy)
-        if (!!filterBy?.where) { navigate('/') }
+        if (!!filterBy?.where==='') { navigate('/') }
     }, [filterBy])
 
     async function onRemoveStay(ev, stayId) {
@@ -61,6 +59,17 @@ export function StayIndex() {
         navigate(`/room/${stay._id}`)
     }
 
+    function queryToParams(filter=filterService.getEmptyFilter() ){
+
+       
+        const checkOut=filterService.getDateToFilter(filter.checkOut)
+        const checkIn=filterService.getDateToFilter(filter.checkIn)
+        const queryParams = 
+        `where=${filter.where}&checkIn=${checkIn}&checkOut=${checkOut}`
+        // &adults=${guests.adults}&children=${guests.children}`    
+        navigate(`/${queryParams}`)
+    }
+
     // function onAddToCart(car){
     //     console.log(`Adding ${car.vendor} to Cart`)
     //     addToCart(car)
@@ -73,8 +82,8 @@ export function StayIndex() {
     return (
         <div className='index-layout '>
             <AppHeader />
-                <SearchBar />
-            <OrderPreferences />
+                <SearchBar queryToParams={queryToParams}/>
+            {/* <OrderPreferences /> */}
             <main>
                 <SecondaryFilter />
                 {/* <Link to={`/stay/edit`}>Add stay</Link> */}
