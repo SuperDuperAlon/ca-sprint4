@@ -1,30 +1,27 @@
-import { useEffect, useRef, useState } from "react";
-import { WhereTo } from "./where-to";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { SetSearchParams } from "./set-search-params";
-import { filterService } from "../../services/filterService";
+import { useEffect, useRef, useState } from "react"
+import { WhereTo } from "./where-to"
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
+import { SetSearchParams } from "./set-search-params"
+import { filterService } from "../../services/filterService"
 import { reginIcons } from '../../assets/import src/reginImg.js'
 
 
 import { FiSearch } from 'react-icons/fi'
 import { BsClock } from 'react-icons/bs'
+import { useNavigate } from "react-router"
 
 export function SearchBar() {
     const [activeNow, setActiveNow] = useState(null)
-
     const [filter, setFilter] = useState(filterService.getEmptyFilter())
-    // const [searchLocation, setSearchLocation] = useState(null);
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
+    const navigate = useNavigate()
 
+
+    // console.log('filter:', filter)
     const onChange = (dates) => {
         const checkIn = dates[0]
         const checkOut = dates[1]
-        setFilter({ ...filter, checkIn })
-        setFilter({ ...filter, checkOut })
-        setStartDate(checkIn)
-        setEndDate(checkOut)
+        setFilter({ ...filter, checkOut, checkIn })
     }
 
     const handleChange = ev => {
@@ -35,21 +32,36 @@ export function SearchBar() {
     function rsOption(option) {
         switch (option) {
             case "location":
-                setFilter(...filter, filter.where='')
+                setFilter({...filter, where:''})
                 break
             case "checkIn":
-                setStartDate(null)
+                setFilter({...filter, checkIn : null})
                 break
             case "checkOut":
-                setEndDate(null)
+                setFilter({...filter, checkOut : null})
                 break
 
         }
     }
 
-    function onCountChange(field, diff){
-      
-        setFilter({...filter, guests:{...filter.guests, ...filter.guests[field]+=diff} })
+    function onCountChange(field, diff) {
+        const prevGuests = { ...filter.guests, ...filter.guests[field] = filter.guests[field] + diff }
+        setFilter({ ...filter, prevGuests })
+    }
+
+    function queryToParams(event, labels=null){
+        event.preventDefault()
+        
+        const checkOut=filterService.getDateToFilter(filter.checkOut)
+        const checkIn=filterService.getDateToFilter(filter.checkIn)
+    
+        const queryParams = 
+        `where=${filter.where}&checkIn=${checkIn}&checkOut=${checkOut}`
+        // &adults=${guests.adults}&children=${guests.children}`
+
+        console.log('queryParams:', queryParams)
+    
+        navigate(`/${queryParams}`)
     }
 
 
@@ -74,29 +86,26 @@ export function SearchBar() {
                     <div className="checkIn" onClick={() => setActiveNow('checkIn')} >
                         <div className="bar-input">
                             <label htmlFor="checkIn">Check in</label>
-                            <input type='text' name="checkIn" id='checkIn' value={filterService.showChosenDate(startDate)} placeholder="Add dates" />
+                            <input type='text' name="checkIn" id='checkIn' value={filterService.showChosenDate(filter.checkIn)} placeholder="Add dates" />
                         </div>
                         <button className="btn-rs" onClick={() => rsOption("checkIn")}></button>
                     </div>
                     <div className="checkOut" onClick={() => setActiveNow('checkOut')}>
                         <div className="bar-input">
                             <label htmlFor="checkOut">Check out</label>
-                            <input type='text' name="checkOut" id='checkOut' value={filterService.showChosenDate(endDate)} placeholder="Add dates" />
+                            <input type='text' name="checkOut" id='checkOut' value={filterService.showChosenDate(filter.checkOut)} placeholder="Add dates" />
                         </div>
                         <button className={"btn-rs"} onClick={() => rsOption("checkOut")}></button>
                     </div>
-                    {/* <div className="dataPicker">
-                    
-                </div> */}
+
                 </div>
                 <div className="guests" onClick={() => setActiveNow('guests')}>
                     <div className="bar-input">
                         <label htmlFor="guest">How</label>
-                        <input type='text' name='guest' id='guest'  placeholder="Add guests" />
+                        <input type='text' name='guest' id='guest' placeholder="Add guests" />
                     </div>
                     <button className="btn-rs"></button>
-                    {/* <SetSearchParams /> */}
-                    <div className={activeNow ? 'active searchIcon' : 'searchIcon'}>
+                    <div className={activeNow ? 'active searchIcon' : 'searchIcon'} onClick={queryToParams}>
                         <div className="icon">
                             <FiSearch />
                         </div>
@@ -111,10 +120,10 @@ export function SearchBar() {
 
                         </div>
                         <DatePicker
-                            selected={startDate}
+                            selected={filter.checkIn}
                             onChange={onChange}
-                            startDate={startDate}
-                            endDate={endDate}
+                            startDate={filter.checkIn}
+                            endDate={filter.checkOut}
                             monthsShown={2}
                             selectsRange
                             open={true}
@@ -189,9 +198,9 @@ export function SearchBar() {
                                     <h5>Ages 13 or above</h5>
                                 </div>
                                 <div className="counter">
-                                    <button className="btu-counter" onClick={()=>onCountChange('adults',-1)}>-</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('adults', -1)}>-</button>
                                     {filter.guests.adults}
-                                    <button className="btu-counter" onClick={()=>onCountChange('adults',1)}>+</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('adults', 1)}>+</button>
                                 </div>
                             </div>
                             <div className="guest">
@@ -200,9 +209,9 @@ export function SearchBar() {
                                     <h5>Ages 2–12</h5>
                                 </div>
                                 <div className="counter">
-                                    <button className="btu-counter" onClick={()=>onCountChange('children',-1)}>-</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('children', -1)}>-</button>
                                     {filter.guests.children}
-                                    <button className="btu-counter" onClick={()=>onCountChange('children',1)}>+</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('children', 1)}>+</button>
                                 </div>
                             </div>
                             <div className="guest">
@@ -211,9 +220,9 @@ export function SearchBar() {
                                     <h5>Under 2</h5>
                                 </div>
                                 <div className="counter">
-                                    <button className="btu-counter" onClick={()=>onCountChange('infants',-1)}>-</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('infants', -1)}>-</button>
                                     {filter.guests.infants}
-                                    <button className="btu-counter" onClick={()=>onCountChange('infants',1)}>+</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('infants', 1)}>+</button>
                                 </div>
                             </div>
                             <div className="guest">
@@ -222,9 +231,9 @@ export function SearchBar() {
                                     <h5>Bringing a service animal?</h5>
                                 </div>
                                 <div className="counter">
-                                    <button className="btu-counter" onClick={()=>onCountChange('pets',-1)}>-</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('pets', -1)}>-</button>
                                     {filter.guests.pets}
-                                    <button className="btu-counter" onClick={()=>onCountChange('pets',1)}>+</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('pets', 1)}>+</button>
                                 </div>
                             </div>
                         </div>
@@ -232,6 +241,7 @@ export function SearchBar() {
 
                 }
             </div>}
+            <SetSearchParams/>
         </div>
     )
 }
