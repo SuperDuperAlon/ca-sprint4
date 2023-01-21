@@ -16,7 +16,8 @@ export const stayService = {
     save,
     remove,
     addStayMsg,
-    getEmptyStay
+    getEmptyStay,
+    setDefaultLabelFilter
     
 }
 window.cs = stayService
@@ -65,6 +66,10 @@ async function save(stay) {
 async function addStayMsg(stayId, txt) {
     const savedMsg = await httpService.post(`stay/${stayId}/msg`, {txt})
     return savedMsg
+}
+
+function setDefaultLabelFilter(){
+    return {label : ''}
 }
 
 function getEmptyStay(){

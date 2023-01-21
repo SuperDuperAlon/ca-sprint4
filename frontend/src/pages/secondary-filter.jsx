@@ -1,12 +1,16 @@
 
+import { useState } from "react";
 import { FiFilter } from "react-icons/fi";
+import { stayService } from "../services/stay.service";
 
 export function SecondaryFilter(){
     const labels = ['Cabins', 'Islands', 'Amazing Pools', 'Ski-in-out', 'Beach', 'Luxe', 'Mansions', 'Amazing Views', 'Boats', 'Tropical', 'Top of the world', 'Countryside', 'OMG', 'Desert']
+    const [labelFilter, setLabelFilter] = useState(null)
     
-    function onFilter(label){
-        
 
+
+    function onFilter(label){
+        setLabelFilter(label)
     }
 
     return <section className="secondary-filter flex space-between center">
