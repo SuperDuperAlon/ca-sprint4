@@ -27,15 +27,14 @@ async function query(filterBy) {
     if (!filterBy) return storageService.query(STORAGE_KEY)
     let data= await storageService.query(STORAGE_KEY)
     filterBy=filterService.getParamsToObj(filterBy)
-    console.log('filterBy:', filterBy)
-    if (filterBy.where)
+    if (filterBy?.where)
         {
             const regex = new RegExp(filterBy.where, 'i')
             data = data.filter(place => regex.test(place.loc.country) || regex.test(place.loc.city)
             )
 
         }
-    if (filterBy.label)
+    if (filterBy?.label)
         {
             const regex = new RegExp(filterBy.label, 'i')
             data = data.filter(place => regex.test(place.labels))

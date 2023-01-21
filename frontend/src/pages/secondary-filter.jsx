@@ -2,30 +2,25 @@
 import { useRef, useState } from "react";
 import { FiFilter } from "react-icons/fi";
 import { useNavigate, useParams } from "react-router";
+import { filterService } from "../services/filterService";
 import { stayService } from "../services/stay.service";
 
-export function SecondaryFilter(){
+export function SecondaryFilter({queryToParams}){
     const labels = ['Cabins', 'Islands', 'Amazing Pools', 'Ski-in-out', 'Beach', 'Luxe', 'Mansions', 'Amazing Views', 'Boats', 'Tropical', 'Top of the world', 'Countryside', 'OMG', 'Desert']
-    const [labelFilter, setLabelFilter] = useState(null)
-    const navigate = useNavigate()
-    const { filterBy } = useParams()
-    const filterPrams = useRef(filterBy)
+    let { filterBy } = useParams()
 
-
+    
     function onFilter(label){
-        setLabelFilter(label)
+        
+        if (filterBy){
+            filterBy= filterService.getParamsToObj(filterBy)
+        } else{
+            filterBy=filterService.getEmptyFilter()
+        }
+        filterBy.label=label
 
-        console.log(filterPrams)
-        let currFilterParams
-        if (filterBy) {
-            currFilterParams = filterPrams.current + `&label=${label}`
-        }
-        else  {
-            currFilterParams = `where=''&checkIn=''&checkOut=''&label=${label}`
-        }
-        // console.log(currFilterParams)
-        // console.log(filterByParams)
-        navigate(`/${currFilterParams}`)
+        queryToParams(filterBy)
+
 
     }
 

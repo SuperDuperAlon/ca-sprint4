@@ -2,6 +2,8 @@
     display: grid;
     grid-template-columns: repeat(6, minmax(0,1fr)) ;
     gap : 25px ;
+    z-index: 5;
+    position: relative;
  
     .stay-img{
         aspect-ratio: 1/1;
@@ -96,6 +98,17 @@
         color: aliceblue;
     }
     
+}
+
+.pageTop{
+    display: grid;
+    position: static; // See link
+    grid-column: 1/-1;
+    grid-template-columns: 70px 1fr 70px;
+    > * {
+      grid-column: 2;
+    }
+    background-color: rgba(0, 255, 255, 0);
 }
 
 
