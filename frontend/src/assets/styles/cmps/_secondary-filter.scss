@@ -7,9 +7,10 @@
         border-radius: 50%;
         padding: 0px 10px;
         cursor: pointer;
-    }
-    .arrows:hover{
-        padding: 1px 11px;
+
+        &:hover {
+            padding: 1px 11px;
+        }
     }
     
     .label{

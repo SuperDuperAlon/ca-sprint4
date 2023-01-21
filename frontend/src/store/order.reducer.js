@@ -5,6 +5,7 @@ export const COUNT_PETS = "COUNT_PETS"
 export const CHANGE_COUNT = "CHANGE_COUNT"
 export const SET_CHECK_OUT_DATE = "SET_CHECK_OUT_DATE"
 export const SET_CHECK_IN_DATE = "SET_CHECK_IN_DATE"
+export const SET_WHERE_TO_LOOK = "SET_WHERE_TO_LOOK"
 
 const initialState = 
 {
