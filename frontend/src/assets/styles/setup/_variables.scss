@@ -10,6 +10,9 @@ $white:#ffff;
 $clr-ligthtext:rgb(113, 113, 113);
 $clr-box-radius: #DDDDDD;
 $clr-search-icon-bgc:#dc0e64;
+$clr-hover-on-dates:black;
+$clr-in-range:rgb(242, 239, 239);
+$clr-border-between-div:#EBEBEB;
 
 
 // Breakpoints (Need to find all breakpoints)
@@ -24,13 +27,34 @@ $pad-12:12px;
 $pad-5:5px;
 $pad-20:20px;
 $pad-15:15px;
+$pad-8:8px;
+
+
+$dataBox:46px;
+
+//search bar hight
+$search-bar-hight:48px;
+$region-pic-hight:125px;
+$region-pic-width:150px;
+
+//
+$reginImg:122px;
 
 
 // font size
 $header-fonts:16px;
+$font-size-search-bar:14px;
+
+
 
 // icon
 $icon-size:20px;
+
+$guest-margin-between:25px;
+
+// font weight
+
+
 
 
 

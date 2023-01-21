@@ -1,65 +1,117 @@
+.search {
+    display: grid;
+    grid-template-columns: 1fr 850px 1fr;
+    justify-items: stretch // align-items: center;
+        // flex-direction: column;
+        // margin: 20px 0;
+        // height: fit-content
+}
+
 .search-bar {
 
-    width: 650px;
+    grid-area: 1/2/2/3;
+    width: fit-content;
+    max-width: 840px;
     background: $clr-box-radius;
     box-shadow: 0 0 5px hsl(0 0% 78%);
-    height: 55px;
+    height: fit-content;
     border-radius: 100vw;
     display: flex;
-    justify-content: center;
+
     font-size: 0.6rem;
 
     div {
-        // border-radius: inherit;
-        // padding: 0.8rem 1.5rem;
         transition: background 250ms ease;
+    }
 
-        &:hover {
-            background: hsl(0 0% 94%);
-        }
+    .bar-input {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .location {
-        width: 34%;
-        p{
+        display: flex;
+        @include padding-br;
+        // padding-right: 10px;
+        padding-left: 2rem;
+
+        &:hover {
+            @include butHoverOn;
+        }
+
+        p {
             margin: 0;
         }
-        div {
-            border-radius: inherit;
-            padding: 0.8rem 1.5rem;
-        }   
+        input {
+            min-width: 250px;
+        
+        }
+
     }
 
-    .check-in{
-        .calender{
+    .btn-rs {
+        border-radius: 50%;
+        
+        &::after{
+            font-weight: 400;
+            padding: 5px;
+            content: "x";
+            font-size: 14px;
+            @include fontWeightBold;
+        }
+    }
+
+    .checkDate {
+        display: flex;
+        height: inherit;
+
+        .checkIn,
+        .checkOut {
+            display: flex;
+            @include padding-br;
+            height: inherit;
+            // padding-left: 10px;
+            // padding-right: 10px;
+
+
+            &:hover {
+                @include butHoverOn;
+            }
+
+            .bar-input {
+                max-width: rem(58px);
+            }
+
+            p {
+                margin: 0;
+            }
+
+            input {
+                min-width: 8px;
+            }
+        }
+
+        .checkOut{
+            padding-left: 1.2rem;
+        }
+    
+
+        .calender {
             position: relative;
         }
     }
 
-    .check-in,
-    .check-out,
-    .guests {
-        width: 22%;
-        p{
-            margin: 0;
-        }
-    }
-
-    .check-in{
-
-    }
-    .react-datepicker-wrapper{
+    label {
+        @include fontWeightBold;
         
-        >*{
-            padding: 0;
-        }
-
     }
 
     input[type="text"] {
         background: none;
         border: none;
         padding: 0.2rem 0 0 0;
+        @include fontWeightBold;
     }
 
     input[type="text"]:focus {
@@ -68,108 +120,330 @@
 
     ::placeholder {
         font-size: 0.75rem;
+        @include fontWeightLight;
     }
 
     .guests {
         position: relative;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        @include padding-br;
+        // padding-right: 10px;
+        width: fit-content;
 
-        span {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            background: #FF385C;
-            color: white;
-            font-size: 0.8rem;
-            padding: 0.7rem;
-            border-radius: 50%;
+        &:hover {
+            @include butHoverOn;
+        }
+
+        .bar-input {
+            max-width: rem(100px);
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .searchIcon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 50px;
+            background-color: $clr-search-icon-bgc;
+            border-radius: 50px;
+            width: 50px;
+            transition: transform 0.8s width 0.3s;
+            height: 48px;
+
+
+            &.active {
+                transform: translateX(-50px);
+                width: 110px;
+                border-radius: 100vw;
+                transition: width 0.7s;
+
+                ::after {
+                    content: "Search";
+                    margin-left: 0.5em;
+                }
+            }
+
+            .icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $white;
+                font-size: 1.7em;
+                border-radius: 50px;
+                transition: width 0.7s;
+
+            }
+
         }
     }
 
-    bar {
-        div {
-            position: relative;
+}
 
-            &::before {
-                position: absolute;
-                content: "";
-                left: 0;
-                top: 50%;
-                transform: translateY(-50%);
-                width: 1px;
-                height: 55%;
-                background: hsl(0 0% 90%);
+.search-modal {
+    display: grid;
+    grid-area: 2/2/3/3;
+    margin-top: 0.5em;
+    border-radius: 32px;
+    border: solid black;
+    box-sizing: 0 0 0 1px ;
+    background-color: $white;
+
+
+    .dayPickerModel {
+        line-height: 1.2rem;
+      
+        @include for-search-bar-open;
+
+        input {
+            display: none;
+        }
+
+
+        .dateOptions{
+            min-width: 300px;
+            padding: 10px;
+            min-height: 40px;
+            margin-bottom: 1.3rem;
+            background-color: red;
+
+        }
+
+        .react-datepicker {
+            border: none;
+        }
+
+        .react-datepicker__header {
+            background-color: $white;
+
+            .react-datepicker__current-month{
+                margin-bottom: 0.5rem
+            }
+            
+        }
+        
+        .react-datepicker__day-name {
+            color: $grey;
+            padding: $pad-5;
+            width: $dataBox;
+            
+
+            
+        }
+
+        .react-datepicker__day--in-range:not(.react-datepicker__day--selected, .react-datepicker__day--range-end, .react-datepicker__day--outside-month) {
+            background-color: $clr-box-radius;
+            color: black;
+        }
+
+        .react-datepicker__day {
+            width: $dataBox;
+            padding: $pad-12;
+            border-radius: 50%;
+            width: $dataBox;
+            font-weight: 600;
+            line-height: 1.5rem;
+            padding: 12px;
+
+            &--selected,
+            &.react-datepicker__day--range-end:not(.react-datepicker__day--outside-month) {
+                background-color: $clr-hover-on-dates;
             }
 
-            &:nth-of-type(1)::before{
-                background:transparent;
-             }
+            &--in-selecting-range:not(.react-datepicker__day--selected, .react-datepicker__day--outside-month) {
+                background-color: $clr-in-range;
+                color: black;
+            }
+
+            &--in-selecting-range::nth-last-child() {
+                background-color: red;
+            }
+
+            &:hover {
+                background-color: $white;
+                color: $text-black;
+                outline: 1px solid black;
+
+            }
+        }
+
+        .react-datepicker__day--outside-month {
+            background-color: $white;
+            cursor: default;
+
+            &:hover {
+                background-color: $white;
+                outline: none;
+                cursor: default;
+
+            }
+
             
-            &:hover::before{
-                background:transparent;
+        }
+
+        .react-datepicker__day--keyboard-selected:not(.react-datepicker__day--range-end) {
+            background-color: $white;
+            color: $text-black;
+        }
+
+    }
+
+
+    .whereModel {
+        @include for-search-bar-open;
+        display: grid;
+        grid-template-columns: 1fr 500px;
+
+        .showRecentSearch {
+            h1 {
+                font-size: $font-size-search-bar;
+            }
+
+            .recentSearchList {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(5, 1fr);
+
+                .lastSearch {
+                    display: flex;
+                    // justify-content: center;
+                    align-items: center;
+
+                    .roundClock {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: $clr-border-between-div;
+                        width: 48px;
+                        height: 48px;
+                        border-radius: 15px;
+                        font-size: 1.2em;
+                        margin-right: 10px;
+                    }
+
+                    .searchDetails {
+                        >* {
+                            margin: 0;
+                            padding: 0;
+                            font-size: $font-size-search-bar;
+                        }
+
+                        .how {
+
+                            &::before {
+                                content: ".";
+                                position: relative;
+                                top: -3px
+                            }
+
+                        }
+                    }
+                }
+            }
+
+
+        }
+
+        .searchByRegion {
+            padding: 0 44px 0 28px;
+            border-left: solid 1px $clr-border-between-div;
+
+            h1 {
+                font-size: $font-size-search-bar;
+                grid-area: 1/1/2/-1;
+            }
+
+            .recentSearchList {
+                display: flex;
+            }
+
+            .regionOptions {
+                display: grid;
+                grid-template-columns: repeat(3, $region-pic-width);
+
+
+                .reginImg {
+                    padding: 10px;
+
+                    img {
+                        width: $reginImg;
+                        border-radius: 15px;
+
+                        &:hover {
+                            outline: 0.5px solid black;
+                        }
+                    }
+                }
+
+                h3 {
+                    @include fontWeightLight;
+                    font-size: $font-size-search-bar;
+                }
+            }
+        }
+
+    }
+
+    .guestsAddingModal {
+        @include for-search-bar-open-small;
+
+        .guestsModalOpen {
+            // background-color: rgb(139, 78, 78);
+            align-self: stretch;
+            padding: 1rem 2rem;
+            grid-area: 1/2/2/3;
+            border-radius: 50px;
+
+            .guest {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: 14px;
+                margin-top: 14px;
+
+                &:not(:last-child) {
+                    border-bottom: $clr-border-between-div solid;
+                }
+
+                &:last-child {
+                    h5 {
+                        @include fontWeightBold;
+                        text-decoration: underline;
+                    }
+                }
+
+                h3 {
+                    font-size: $header-fonts;
+
+
+                }
+
+                h5 {
+                    font-size: $font-size-search-bar;
+                    @include fontWeightLight;
+                    margin: 0;
+
+                }
+
+                .counter{
+                    display: flex;
+                    align-items: center;
+                    >*{
+                        margin: 10px ;
+                    }
+
+                    .btu-counter{
+                        font-size: 1em;
+                        padding: 8px;
+                        border-radius: 50%;
+                    }
+                }
+
             }
         }
     }
 }
-
-
-// .search-bar{
-//     background-color: $white;
-//     border: 1px $grey solid;
-//     width: fit-content;
-//     // border-radius: 30%;
-
-//     .where{
-//         padding-left: $pad-20;
-//         padding-right: $pad-20;
-//         display: flex;
-//         j;ustify-content: center;
-//         align-items: center;
-//         border-inline-end: 0.5px solid rgb(157, 156, 156) ; 
-
-
-
-//         input{
-//             width: 200px;
-//             border-inline-end: 0.5px solid rgb(157, 156, 156) ;
-//         }
-//     }
-
-
-//     .DateRangePickerInput_arrow {
-//         display:none
-//     }
-//     .DateInput{
-
-//     }
-// }
-
-
-// .search-title{
-
-//     .active{
-
-
-//     }
-
-
-//     textarea:focus, input:focus{
-//         outline: none;
-//     }
-
-//     input, label {
-//         display:block;
-//     }
-
-//     input{
-//         border: none;
-//         font-size: rem(14px);
-//     }
-
-//     label{
-//         font-weight: 600;
-
-//     }
-
-
-// }

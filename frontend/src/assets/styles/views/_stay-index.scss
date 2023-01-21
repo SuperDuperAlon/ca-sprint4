@@ -3,11 +3,14 @@
     grid-template-columns: repeat(6, minmax(0,1fr)) ;
     gap : 25px ;
  
-    img{
+    .stay-img{
         aspect-ratio: 1/1;
         object-fit: cover;
         border-radius: 0.8rem;
-        margin-bottom: 0.5rem;
+        // margin-bottom: 0.5rem;
+        height: 100%;
+        position: relative;
+        // margin-bottom: 20px;
         
     }
     h4, p{
@@ -32,13 +35,19 @@
         font-size: 0.7rem;
         align-self: center;
     }
-    .stay-preview:hover{
-        cursor: pointer;
+    .stay-preview{
+
+        &:hover{
+            cursor: pointer;
+        }
     }
 
     .img-container{
-        display: flex;
-        position: relative;
+        // display: flex;
+        // position: relative;
+        // position: absolute;
+        display: block;
+        margin-bottom: 10px;
     }
     
     .remove-btn{
@@ -90,14 +99,14 @@
 }
 
 
-.stay-preview:hover{
+// .stay-preview:hover{
     
-        .arrows, .dots{
-            transition: 0.5s ;
-            opacity: 1; 
-        }
+//         .arrows, .dots{
+//             transition: 0.5s ;
+//             opacity: 1; 
+//         }
         
-}
+// }
 
 
 

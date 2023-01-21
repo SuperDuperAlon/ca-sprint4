@@ -29,7 +29,7 @@ export function SetSearchParams(){
         navigate(`/${queryParams}`)
 
     }
-    return (
-        <button onClick={setSearch}>fly</button>
-    )
+    // return (
+    //     // <button onClick={setSearch}>fly</button>
+    // )
 }
