@@ -2,10 +2,12 @@
 export const filterService={
     getEmptyFilter,
     getDateToFilter,
-    getParamsToObj
+    getParamsToObj,
+    showChosenDate
 }
 
 function  getDateToFilter(date){
+    console.log('date:', date)
     const day=date.getDate()
     const month=date.getMonth()+1
     const year=date.getFullYear()
@@ -26,9 +28,9 @@ function getParamsToObj(filterBy) {
 
 function getEmptyFilter() {
     return {
-        where: '',
-        checkIn: '',
-        checkOut: '',
+        where: null,
+        checkIn: null,
+        checkOut: null,
         guests: {
             adults: 0,
             children: 0,
@@ -38,7 +40,8 @@ function getEmptyFilter() {
     }
 }
    function showChosenDate(date) {
-        const month = date._d.toLocaleString('default', { month: 'short' })
-        const day = date._d.getDay()
+        if (!date) {return ""}
+        const month = date.toLocaleString('default', { month: 'short' })
+        const day = date.getDate()
         return month+' '+day
     }

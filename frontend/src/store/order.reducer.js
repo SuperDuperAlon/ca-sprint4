@@ -75,6 +75,12 @@ export function orderReducer(state = initialState, action) {
     case SET_CHECK_OUT_DATE:
       newState = { ...state, checkOut: action.date };
       break;
+      
+      // Set WHERE
+      case SET_WHERE_TO_LOOK:
+        newState = { ...state, where: action.value };
+        break;
+      
 
     default:
       return state

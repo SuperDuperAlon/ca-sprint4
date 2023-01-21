@@ -25,17 +25,54 @@
     }
 }
 
+@mixin for-search-bar-open {
+    padding: 2em;
+    // min-width: 840px;
+    border-radius: 50px;
+
+}
+
+@mixin for-search-bar-open-small {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+
+
+}
+
 @mixin flex-col-sb {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
+}
 
 @mixin flex-row-sb {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
+}
+
+@mixin padding-br {
+    border-radius: 100vw;
+    padding: 0.5rem 1.4rem;
+    line-height: 1;
+}
+
+@mixin butHoverOn {
+    background: hsl(0 0% 94%);
+
+}
+
+@mixin fontWeightLight {
+    font-weight: 300;
+
+}
+@mixin fontWeightBold {
+    font-weight: 700;
+
+}
+
+
+
 
 // /* Media  Mixins */
 // @mixin aspect-ratio($width, $height) {
@@ -54,13 +91,13 @@
 //       right: 0;
 //       bottom: 0;
 //     }
-  
+
 //     > img {
 //       height: 100%;
 //       object-fit: cover;
 //     }
 //   }
-  
+
 //   // Mixin for removing hover efects on iphone screen
 //   @mixin hover-supported {    
 //     @media not all and (pointer: coarse) {
