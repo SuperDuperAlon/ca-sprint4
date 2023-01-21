@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useSelector } from "react-redux"
-import { Link, useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
@@ -8,8 +8,10 @@ import { OrderPreferences } from "../order-preferences";
 import { orderService } from "../../services/order.service";
 import { Calendar } from "../calendar";
 import { addOrder } from "../../store/order.actions";
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
 
-export function StayDetailsOrderModal() {
+export function StayDetailsOrderModal({ stay }) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [focusedInput, setFocusedInput] = useState();
@@ -19,11 +21,11 @@ export function StayDetailsOrderModal() {
   // let guests = useSelector(storeState => storeState.orderModule.guests)
   // let where = useSelector(storeState => storeState.orderModule.where)
 
-  console.log(startDate);
-  console.log(endDate);
+  // console.log(startDate);
+  // console.log(endDate);
 
   async function onAddOrder() {
-    console.log('test');
+    console.log("test");
     try {
       await addOrder();
     } catch (err) {
@@ -31,46 +33,51 @@ export function StayDetailsOrderModal() {
     }
   }
 
-  return (
-    <section className="order-form">
-      <div className="order-info">
-        <div className="fs22 fw600">$200  <span className="fs14">night</span> </div>
-        <div className="fs14"><span className="fw600">*4.7</span> 9 -reviews</div>
-      </div>
-      <div className="set-dates">
-        <div>
-          <div>checkin</div>
-          <div>date</div>
+  if (!stay) return ;
+  else
+    return (
+      <section className="order-form">
+        <div className="order-info mar-b24">
+          <div className="fs22 fw600">
+            ${stay.price} <span className="fs16">night</span>{" "}
+          </div>
+          <div className="fs14 fw600">
+            *4.7 <button className="link grey71 fs14">9 reviews</button>{" "}
+          </div>
         </div>
-
-        <div>
-          <div>checkout</div>
-          <div>date</div>
+        <div className="set-dates">
+          <div className="order-details-setting mar-b16">
+            <button className="order-form-btn up">
+              <div className="upp-left-14-600">check-in</div>
+              <div className="upp-left-14-600">checkout</div>
+            </button>
+            <button className="order-form-btn down">
+              <div className="upp-left-14-600">guests</div>
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="set-guests">
-        <div>
-          <div>checkin</div>
-          <div>date</div>
+        <button
+          className="reserve-btn mar-b16"
+          onClick={() => {
+            onAddOrder();
+          }}
+        >
+          Reserve
+          {/* <Link to={`/book/stays`}>Reserve</Link> */}
+        </button>
+        <div className="order-form-msg mar-b24">You won't be charged yet</div>
+        <div className="order-form-pricing mar-b24">
+          <div> ₪1,174 x 3 nights </div>
+          <div>₪4,020</div>
         </div>
-      </div>
-      <button className="reserve-btn" onClick={() => {onAddOrder()}}>
-        Reserve
-        {/* <Link to={`/book/stays`}>Reserve</Link> */}
-      </button>
-      <div className="order-form-msg">You won't be charged yet</div>
-      <div className="order-form-pricing">
-        <div> ₪1,174 x 3 nights </div>
-        <div>₪4,020</div>
-      </div>
-      <div className="order-form-total-price">
-        <div>Total</div>
-        <div>₪4,020</div>
-      </div>
-      <div className="App">
-        <Calendar />
-        <OrderPreferences />
-      </div>
-    </section>
-  );
+        <div className="order-form-total-price">
+          <div>Total</div>
+          <div>₪4,020</div>
+        </div>
+        <div className="App">
+          <Calendar />
+          <OrderPreferences />
+        </div>
+      </section>
+    );
 }

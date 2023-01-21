@@ -37,6 +37,13 @@
     justify-content: space-between;
   }
 
+  @mixin upp-left-14-600{
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: left;
+  }
+
 // /* Media  Mixins */
 // @mixin aspect-ratio($width, $height) {
 //     position: relative;

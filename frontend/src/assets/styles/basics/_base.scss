@@ -9,12 +9,12 @@
 
 html {
   font-family: circular;
-  line-height: 1.6;
+  line-height: 1.25rem;
   // color: $clr2;
 }
 
 body {
-  font-size: rem(18px);
+  font-size: rem(16px);
   margin: 0;
   max-width: 100vw;
   // margin: auto;
@@ -26,7 +26,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: circular;
+  font-family: circular, sans-serif;
   margin: 0 0 0.6em;
   line-height: 1;
 }
@@ -40,10 +40,12 @@ img {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: underline;
+  color: inherit;
+  cursor: pointer;
 }
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 ul {
@@ -57,7 +59,28 @@ button {
   cursor: pointer;
   color: black;
   border: none;
-
+  font-family: circular;
+  &.order-form-btn {
+    background-color: white;
+    display: flex;
+    width: 100%;
+    > * {
+      width: 50%;
+    }
+    &.up {
+      border: 1px solid;
+      border-radius: 0.75rem 0.75rem 0 0;
+      > :first-child {
+        border-right: 1px solid black;
+      }
+   
+    }
+    &.down {
+      border: 1px black  solid;
+      border-top: none ;
+      border-radius: 0 0 0.75rem 0.75rem;
+    }
+  }
   &.reserve-btn {
     color: white;
     background: linear-gradient(
@@ -71,5 +94,34 @@ button {
     height: 3rem;
     font-weight: 600;
     border-radius: 0.75rem;
+  }
+  &.link {
+    text-decoration: underline;
+    font-weight: 600;
+    background: none;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+  }
+  &.save-share {
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    align-items: center;
+
+    > * {
+      flex-direction: column;
+      justify-content: space-around;
+    }
+    &:hover {
+      background-color: #f7f7f7;
+    }
+    &:active {
+      background-color: #f7f7f7;
+      transform: scale(0.96);
+    }
   }
 }
