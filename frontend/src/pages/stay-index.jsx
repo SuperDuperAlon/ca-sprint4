@@ -73,11 +73,13 @@ export function StayIndex() {
     return (
         <div className='index-layout '>
             <AppHeader />
-        <SearchBar/>
-        <OrderPreferences/>
+            
+                <SearchBar />
+            <OrderPreferences />
             <main>
+                <SecondaryFilter />
                 <Link to={`/stay/edit`}>Add stay</Link>
-                <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay}/>
+                <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay} />
             </main>
         </div >
     )

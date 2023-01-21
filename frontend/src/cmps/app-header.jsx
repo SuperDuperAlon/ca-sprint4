@@ -43,7 +43,7 @@ export function AppHeader() {
                         <p className="addguest">add guests</p>
                     </NavLink>
 
-                    <div className='serachIcon'>
+                    <div className='searchIcon'>
                         <FiSearch />
                     </div>
                 </nav>
