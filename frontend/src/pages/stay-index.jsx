@@ -59,6 +59,7 @@ export function StayIndex() {
         navigate(`/room/${stay._id}`)
     }
 
+
     function queryToParams(filter=filterService.getEmptyFilter() ){
 
        
@@ -85,7 +86,7 @@ export function StayIndex() {
                 <SearchBar queryToParams={queryToParams}/>
             {/* <OrderPreferences /> */}
             <main>
-                <SecondaryFilter />
+                <SecondaryFilter filterByParams={filterBy}/>
                 {/* <Link to={`/stay/edit`}>Add stay</Link> */}
                 <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay} />
             </main>

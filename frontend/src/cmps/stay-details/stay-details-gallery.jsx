@@ -6,10 +6,10 @@ export function StayDetailsGallery({ stay }) {
       <section className="stay-details-gallery">
         <h1>This is the place of the images - Test</h1>
         {stay.imgUrls.map((gaga) => {
-          <img src={require(`../../assets/img/${gaga}.jpg`)} alt="" />;
+          return <img src={require(`../../assets/img/${gaga}.jpg`)} alt="" />
         })}
       </section>
-    );
+    )
 }
 
 // {/* /* // <img src={`../../assets/img/${img}.jpg`} alt="image" />;

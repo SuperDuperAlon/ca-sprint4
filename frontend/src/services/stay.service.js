@@ -16,7 +16,8 @@ export const stayService = {
     save,
     remove,
     addStayMsg,
-    getEmptyStay
+    getEmptyStay,
+    setDefaultLabelFilter
     
 }
 window.cs = stayService
@@ -33,6 +34,11 @@ async function query(filterBy) {
             data = data.filter(place => regex.test(place.loc.country) || regex.test(place.loc.city)
             )
 
+        }
+    if (filterBy.label)
+        {
+            const regex = new RegExp(filterBy.label, 'i')
+            data = data.filter(place => regex.test(place.labels))
         }
     return data
 
@@ -66,6 +72,10 @@ async function save(stay) {
 async function addStayMsg(stayId, txt) {
     const savedMsg = await httpService.post(`stay/${stayId}/msg`, {txt})
     return savedMsg
+}
+
+function setDefaultLabelFilter(){
+    return {label : ''}
 }
 
 function getEmptyStay(){
