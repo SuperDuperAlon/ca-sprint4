@@ -1,23 +1,21 @@
 .search {
     display: grid;
     grid-template-columns: 1fr 850px 1fr;
-    justify-items: stretch // align-items: center;
+    justify-items: stretch; // align-items: center;
         // flex-direction: column;
         // margin: 20px 0;
-        // height: fit-content
+    
 }
 
 .search-bar {
 
     grid-area: 1/2/2/3;
-    width: fit-content;
-    max-width: 840px;
+    width: 100%;
     background: $clr-box-radius;
     box-shadow: 0 0 5px hsl(0 0% 78%);
     height: fit-content;
     border-radius: 100vw;
     display: flex;
-
     font-size: 0.6rem;
 
     div {
@@ -52,12 +50,15 @@
 
     .btn-rs {
         border-radius: 50%;
+        height: 48px;
         
         &::after{
             font-weight: 400;
             padding: 5px;
             content: "x";
             font-size: 14px;
+            padding-top: 10px;
+            padding-bottom: 10px;
             @include fontWeightBold;
         }
     }
@@ -129,40 +130,42 @@
         justify-content: center;
         align-content: center;
         @include padding-br;
-        // padding-right: 10px;
-        width: fit-content;
-
+        margin-left: 10px;
         &:hover {
             @include butHoverOn;
         }
 
         .bar-input {
-            max-width: rem(100px);
+            max-width: rem(90px);
+            // margin-right: 20px;
         }
+
 
         p {
             margin: 0;
+        }
+
+        .btn-rs{
+            margin-right: 0px;
         }
 
         .searchIcon {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-left: 50px;
             background-color: $clr-search-icon-bgc;
             border-radius: 50px;
-            width: 50px;
-            transition: transform 0.8s width 0.3s;
-            height: 48px;
-
+            padding-left: 16px;
+            padding-right: 16px;
+            transform: translateX(65px);
+            @include fontWeightBold;
+            transition: transform 0.8s padding 0.8s;
 
             &.active {
-                transform: translateX(-50px);
-                width: 110px;
-                border-radius: 100vw;
-                transition: width 0.7s;
-
+                transform: translateX(10px);
+                border-radius: 100vw;                
                 ::after {
+                    @include fontWeightBold;
                     content: "Search";
                     margin-left: 0.5em;
                 }

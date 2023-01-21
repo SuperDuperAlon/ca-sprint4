@@ -7,6 +7,7 @@ export const filterService={
 }
 
 function  getDateToFilter(date){
+    if (!date) return null
     console.log('date:', date)
     const day=date.getDate()
     const month=date.getMonth()+1
