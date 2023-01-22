@@ -78,7 +78,7 @@ export function StayIndex() {
                 <SecondaryFilter queryToParams={queryToParams} />
             </div>
             <main className='main-content'>
-                <div className={openSearchBar? "blackBox":"blackBox close"}
+                <div className={openSearchBar? "black-box":"black-box close"}
                 onClick={onClickOutSideTheBar}>
                 </div>
                 <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay} />

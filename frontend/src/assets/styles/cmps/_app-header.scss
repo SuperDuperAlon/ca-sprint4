@@ -39,7 +39,7 @@ $clr-search-icon-bgc:#dc0e64;
     
     
     .centerGrid{
-
+        min-width: 350px;
         display: flex;
         justify-content: center;
         .whenSearching{
@@ -95,7 +95,7 @@ $clr-search-icon-bgc:#dc0e64;
                     &::first-letter{
                         text-transform: capitalize;
                     }
-                    &.addguest{
+                    &.addGuests{
                         font-weight: 100;
                         color: $clr-ligthtext;
                     }
@@ -104,22 +104,18 @@ $clr-search-icon-bgc:#dc0e64;
                     text-decoration: none;
                 }
             }
-            .seprertor{
-                color:$grey ;
-                margin: 0;
-            }
         }
     }
 
     .searchIcon {
         background-color: $clr-search-icon-bgc;
         border-radius: 50%;
-        padding: 16px;
-        margin: 10px;
+        // padding: 16px;
+        // margin: 10px;
         >* {
             fill:$clr-search-icon-bgc;
             color:$white ;
-            font-size: 20px;
+            font-size: 16px;
             font-weight:bold;
             aspect-ratio: 1/1;
             background:'#ff5a5f';
