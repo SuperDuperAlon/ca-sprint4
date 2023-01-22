@@ -7,8 +7,6 @@ import { FiSearch } from 'react-icons/fi'
 import { BsClock } from 'react-icons/bs'
 import { useParams } from "react-router"
 import { useSelector } from "react-redux"
-import { store } from "../../store/store"
-import { SEARCH_BAR_OPEN } from "../../store/stay.reducer"
 
 export function SearchBar({ queryToParams }) {
     const [activeNow, setActiveNow] = useState(null)
@@ -97,10 +95,10 @@ export function SearchBar({ queryToParams }) {
 
 
     return (
-        <div className={openSearchBar ? "search " : "search close "}>
-            <div ref={searchInBox}
-             > 
-            <div className="fullColumn" >
+        <div className={openSearchBar ? "search" : "search close"}
+        // ref={searchInBox}
+        >
+            <div className="fullColumn"  ref={searchInBox}>
                 <div className="flex align-center search-bar" >
                     <div
                         className={(activeNow === 'location') ? "searchActive location" : "location"}
@@ -111,7 +109,8 @@ export function SearchBar({ queryToParams }) {
                                 type="text"
                                 name="where"
                                 id="where"
-                                value={filter.where}
+                                value={filter?.where || ""}
+                                // value={1}
                                 placeholder="Search destinations"
                                 onChange={handleChange}
                             />
@@ -128,7 +127,8 @@ export function SearchBar({ queryToParams }) {
                                 <label htmlFor="checkIn">Check in</label>
                                 <input type='text' name="checkIn" id='checkIn'
                                     value={filterService.showChosenDate(filter.checkIn)}
-                                    placeholder="Add dates" />
+                                    readOnly={true}
+                                    placeholder="Add dates"/>
                             </div>
                             <button
                                 className={((filter.checkIn) && (activeNow === 'checkIn')) ? "showBtn btn-rs" : "btn-rs"}
@@ -141,6 +141,7 @@ export function SearchBar({ queryToParams }) {
                                 <label htmlFor="checkOut">Check out</label>
                                 <input type='text' name="checkOut" id='checkOut'
                                     value={filterService.showChosenDate(filter.checkOut)}
+                                    readOnly={true}
                                     placeholder="Add dates" />
                             </div>
                             <button
@@ -155,10 +156,13 @@ export function SearchBar({ queryToParams }) {
                                 onClick={() => setActiveNow('guests')}>
                                 <label htmlFor="guests">How</label>
                                 <input type='text' name='guests' id='guests' placeholder="Add guests"
-                                    value={null
-                                        // filter.guests.adults>0? filter?.guests.adults: null  
-
+                                    value={filter?.guests.adults>0 || filter?.guests.children>0?
+                                        `Guests: ${filter.guests.adults+ filter.guests.children}`:
+                                        ''                                        
                                     }
+                                    readOnly={true}
+                                    onChange={null}
+
                                 />
                             </div>
                             <button
@@ -172,7 +176,7 @@ export function SearchBar({ queryToParams }) {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    {/* </div> */}
                 </div>
             </div>
 

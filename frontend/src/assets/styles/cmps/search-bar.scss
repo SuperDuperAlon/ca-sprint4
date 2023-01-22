@@ -10,26 +10,32 @@
         grid-column: 2;
     }
     z-index: 50;
-    padding-top: 60px;
-    // margin-bottom: 20px;
+    padding-top: 85px;
 
     &.close {
         transform: translateY(-70px);
         max-height: 0px;
-        overflow: hidden;   
+        overflow: hidden; 
+        opacity: 0;  
     }
     
     .fullColumn{
         display: grid;
         height: 85px;
-        padding-top: 10px;
-        // background-color: aqua;
+        background-color: $white;
         grid-column: 1/-1;
         grid-template-columns: 1fr 850px 1fr;
         >*{
             grid-column: 2;
         }
 }
+}
+
+.blackBox{
+    background-color: orange;
+    position: fixed;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -232,6 +238,7 @@
 }
 
 .search-modal {
+    margin-top: 16px;
     position: relative;
     z-index: 15;
     background-color: rgba(255, 255, 255, 0);
@@ -241,8 +248,6 @@
     >*{
         background-color: #fff;
     }
-    // background-color: $white;
-
 
     .dayPickerModel {
         line-height: 1.2rem;
