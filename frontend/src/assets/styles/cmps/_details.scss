@@ -1,6 +1,8 @@
 .details-layout {
   display: grid;
   grid-template-columns: 160px 1fr 160px;
+  max-width: 1280px;
+  margin: auto;
 
   > * {
     grid-column: 2;
@@ -94,6 +96,7 @@
 
     .host-info {
       flex-direction: column;
+      display: flex;
     }
   }
 

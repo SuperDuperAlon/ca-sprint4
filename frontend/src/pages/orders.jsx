@@ -31,7 +31,7 @@ export function Orders() {
 
   async function onEditOrder(ev, order) {
     ev.stopPropagation()
-    navigate(`/orders/edit/${order._id}`)
+    navigate(`/orders/${order._id}/edit`)
     // const price = +prompt('New price?')
     // const carToSave = { ...car, price }
     // try {
@@ -61,7 +61,7 @@ export function Orders() {
         );
       })}
 
-      <button>Add New</button>
+      <button><Link to="/orders/edit"> Add New</Link></button>
       {/* <pre>{orders}</pre> */}
     </section>
   );
