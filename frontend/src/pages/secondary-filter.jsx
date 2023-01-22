@@ -16,9 +16,6 @@ export function SecondaryFilter(){
     const navigate = useNavigate()
     const { filterBy } = useParams()
     const filterPrams = useRef(filterBy)
-export function SecondaryFilter({queryToParams}){
-    const labels = ['Cabins', 'Islands', 'Amazing Pools', 'Ski-in-out', 'Beach', 'Luxe', 'Mansions', 'Amazing Views', 'Boats', 'Tropical', 'Top of the world', 'Countryside', 'OMG', 'Desert']
-    let { filterBy } = useParams()
 
 
     // const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -35,7 +32,7 @@ export function SecondaryFilter({queryToParams}){
         }
         filterBy.label=label
 
-        queryToParams(filterBy)
+        filterService.queryToParams(filterBy)
 
 
     }
