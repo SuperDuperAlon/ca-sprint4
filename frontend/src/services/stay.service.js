@@ -361,7 +361,7 @@ function _createStays() {
           {
           "id": "madeId",
           "txt": "A nice, clean house. Great people",
-          "rate": 4,
+          "rate": 5,
           "by": {
               "_id": "u102",
               "fullname": "Dudi Du",
@@ -371,7 +371,64 @@ function _createStays() {
           {
           "id": "madeId",
           "txt": "Poorly cleaned, not many facilities",
-          "rate": 2,
+          "rate": 4,
+          "by": {
+              "_id": "u105",
+              "fullname": "Dumbledore",
+              "imgUrl": "/img/img2.jpg"
+          }
+          }
+      ],
+      "likedByUsers": ['mini-user'] // for user-wishlist : use $in
+      },
+      {
+      "_id": "s106",
+      "name": "EInvisible House Joshua Tree | Modern Masterpiece",
+      "type": "House",
+      "imgUrls": ["s106/0", "s106/1","s106/2","s106/3","s106/4"],
+      "price": 771,
+      "summary": "Welcome to Invisible House. Re-launched in November 2022 as a joint venture with Fieldtrip Hospitality. Imagine a piece of modern art…one of the most spectacular homes in the world on all of Airbnb” - Brian Chesky, CEO of Airbnb",
+      "capacity": 5,
+      "amenities": [
+          "Bay view",
+          "Beach access – Beachfront",
+          "Wifi",
+          "Kitchen"
+      ],
+      "labels": [
+          "Trending",
+          "Amazing views",
+          "Desert",
+          "OMG"
+      ],
+      "host": {
+          "_id": "u105",
+          "fullname": "Philipe",
+          "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small",
+      },
+      "loc": {
+          "country": "Philippines",
+          "countryCode": "PH",
+          "city": "El Nido",
+          "address": "MIMAROPA",
+          "lat":  14.599512,
+          "lng": 121.262634
+      },
+      "reviews": [
+          {
+          "id": "madeId",
+          "txt": "A nice, clean house. Great people",
+          "rate": 5,
+          "by": {
+              "_id": "u102",
+              "fullname": "Dudi Du",
+              "imgUrl": "/img/img2.jpg"
+          }
+          },
+          {
+          "id": "madeId",
+          "txt": "Poorly cleaned, not many facilities",
+          "rate": 4,
           "by": {
               "_id": "u105",
               "fullname": "Dumbledore",

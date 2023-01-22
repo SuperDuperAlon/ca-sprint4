@@ -1,5 +1,5 @@
 .secondary-filter{
-   padding: 1.25rem 0;
+   padding: 1.25rem 0 0 0;
    gap : 2rem;
 
 //    background-color: green;
@@ -66,9 +66,12 @@
         font-family: circular;
         text-transform: none;
     }
-
+    
     .MuiTabs-root{
         max-width: 85vw;
+    }
+    .MuiTabs-root:active{
+        background-color: white;
     }
     .css-1aquho2-MuiTabs-indicator{
         background-color: #ffffff00;
