@@ -7,46 +7,50 @@ import { useEffect, useState } from 'react'
 
 import { GrLanguage } from 'react-icons/gr'
 import { FiSearch } from 'react-icons/fi'
+import { store } from '../store/store'
+import { SEARCH_BAR_OPEN } from '../store/stay.reducer'
 
 export function AppHeader() {
 
-    const [isStaySerachBarOpen, setIsStaySerachBarOpen] = useState(false)
+    const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
 
-    useEffect(() => {
+    console.log('openSearchBar:', openSearchBar)
 
-    }, [isStaySerachBarOpen])
 
-    function onChangeStaySerachBar(option) {
-        // setIsStaySerachBarOpen=true
-
+    function onChangeStaySearchBar(option) {
+        store.dispatch({
+            type: SEARCH_BAR_OPEN,
+            open: option,
+        })
     }
-
 
     return (
         <header className="app-header">
             <main className='main-header'>
-
                 <div className="logo">
                     AnyWhere
                 </div>
-
-                <nav className='rounded-full'>
-                    <NavLink key={"anywhere"} onClick={() => onChangeStaySerachBar('anywhere')}>
-                        <p>anywhere</p>
-                    </NavLink>
-                    <p className="seprertor">|</p>
-                    <NavLink key={"anyWeek"} onClick={() => onChangeStaySerachBar('anyWeek')}>
-                        <p>any week</p>
-                    </NavLink>
-                    <p className="seprertor">|</p>
-                    <NavLink key={"addguests"} onClick={() => onChangeStaySerachBar('addguests')}>
-                        <p className="addguest">add guests</p>
-                    </NavLink>
-
-                    <div className='searchIcon'>
-                        <FiSearch />
+                <div className="centerGrid">
+                    <div className={!openSearchBar ? "whenSearching close" : "whenSearching"}>
+                        <p>stay</p>
                     </div>
-                </nav>
+
+                    <nav className={!openSearchBar ? 'rounded-full navBarHeader' : " rounded-full navBarHeader close"}>
+                        <NavLink key={"anywhere"} onClick={() => onChangeStaySearchBar('location')}>
+                            <p>anywhere</p>
+                        </NavLink>
+                        <NavLink key={"anyWeek"} onClick={() => onChangeStaySearchBar('checkIn')}>
+                            <p>any week</p>
+                        </NavLink>
+                        <NavLink key={"addguests"} onClick={() => onChangeStaySearchBar('guests')}>
+                            <p className="addguest">add guests</p>
+                        </NavLink>
+
+                        <div className='searchIcon'>
+                            <FiSearch />
+                        </div>
+                    </nav>
+                </div>
 
                 <div className="usersOpstion ">
                     <div className="switchToHost">

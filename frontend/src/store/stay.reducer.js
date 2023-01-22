@@ -6,9 +6,11 @@ export const ADD_TO_CART = 'ADD_TO_CART'
 export const CLEAR_CART = 'CLEAR_CART'
 export const UNDO_REMOVE_CAR = 'UNDO_REMOVE_CAR'
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
+export const SEARCH_BAR_OPEN = 'SEARCH_BAR_OPEN'
 
 const initialState = {
     stays: [],
+    searchModalOpen:false,
     // cart: [],
     // lastRemovedCar: null
 }
@@ -16,7 +18,7 @@ const initialState = {
 export function stayReducer(state = initialState, action) {
     var newState = state
     var stays
-    var cart
+    var open
     switch (action.type) {
         case SET_STAYS:
             newState = { ...state, stays: action.stays }
@@ -33,6 +35,15 @@ export function stayReducer(state = initialState, action) {
             stays = state.stays.map(stay => (stay._id === action.stay._id) ? action.stay : stay)
             newState = { ...state, stays }
             break
+
+
+        // search modal 
+        case SEARCH_BAR_OPEN:
+            open={ ...state, searchModalOpen: action.open }
+            console.log('open:', open)
+            newState= open
+            break
+
         // case ADD_TO_CART:
         //     newState = { ...state, cart: [...state.cart, action.car] }
         //     break

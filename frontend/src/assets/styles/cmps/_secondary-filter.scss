@@ -1,5 +1,10 @@
 .secondary-filter{
-    gap: 1.7rem;
+   padding: 1.25rem 0;
+   gap : 2rem;
+
+//    background-color: green;
+   position: sticky;
+   top:0;
     
     .icons-container{
         min-width: fit-content;

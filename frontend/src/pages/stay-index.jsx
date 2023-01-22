@@ -16,20 +16,18 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { WhereTo } from '../cmps/filter/where-to.jsx'
 import { SetSearchParams } from '../cmps/filter/set-search-params.jsx'
 import { SearchBar } from '../cmps/filter/search-bar.jsx'
+import { filterService } from '../services/filterService.js'
 
 
 export function StayIndex() {
 
     const stays = useSelector(storeState => storeState.stayModule.stays)
-    // const filter=useSelector(storeState => storeState.filterModule.filter)
     const navigate = useNavigate()
     const { filterBy } = useParams()
 
-
-
     useEffect(() => {
         loadStays(filterBy)
-        if (!!filterBy?.where) { navigate('/') }
+        if (!!filterBy?.where === '') { navigate('/') }
     }, [filterBy])
 
     async function onRemoveStay(ev, stayId) {
@@ -46,14 +44,7 @@ export function StayIndex() {
     async function onEditStay(ev, stay) {
         ev.stopPropagation()
         navigate(`/stay/edit/${stay._id}`)
-        // const price = +prompt('New price?')
-        // const carToSave = { ...car, price }
-        // try {
-        //     const savedCar = await updateCar(carToSave)
-        //     showSuccessMsg(`Car updated, new price: ${savedCar.price}`)
-        // } catch (err) {
-        //     showErrorMsg('Cannot update car')
-        // }        
+
     }
 
     function onOpenStay(ev, stay) {
@@ -62,22 +53,26 @@ export function StayIndex() {
     }
 
 
-    // function onAddToCart(car){
-    //     console.log(`Adding ${car.vendor} to Cart`)
-    //     addToCart(car)
-    //     showSuccessMsg('Added to Cart')
-    // }
+    function queryToParams(filter) {
+        filter.checkIn=filterService.getDateToFilter(filter.checkIn)
+        filter.checkOut=filterService.getDateToFilter(filter.checkOut)
+        const queryParams =
+            `where=${filter.where}&checkIn=${filter.checkIn}&checkOut=${filter.checkOut}&label=${filter.label}`
+        // &adults=${guests.adults}&children=${guests.children}`    
+        navigate(`/${queryParams}`)
+    }
 
-    // function onAddCarMsg(car) {
-    //     console.log(`TODO Adding msg to car`)
-    // }
+
     return (
         <div className='index-layout '>
-            <AppHeader />
-                <SearchBar />
-            <OrderPreferences />
-            <main>
-                <SecondaryFilter filterByParams={filterBy}/>
+            <div className="pageTop">
+                <AppHeader />
+                <SearchBar queryToParams={queryToParams} />
+                <SecondaryFilter queryToParams={queryToParams} />
+            </div>
+            <main className='content'>
+                {/* <div className="clickOutSideTheBox">
+                </div> */}
                 {/* <Link to={`/stay/edit`}>Add stay</Link> */}
                 <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay} />
             </main>

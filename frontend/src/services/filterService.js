@@ -1,4 +1,3 @@
-
 export const filterService={
     getEmptyFilter,
     getDateToFilter,
@@ -12,13 +11,16 @@ function  getDateToFilter(date){
     const day=date.getDate()
     const month=date.getMonth()+1
     const year=date.getFullYear()
-    return day+'_'+month+'_'+year
+    return year+'-'+month+'-'+day
 }
 
 function getParamsToObj(filterBy) {
     let query = filterBy.split('&').map(x => x.split('=').map(y => y.trim()))
         .reduce((a, x) => {
             a[x[0]] = x[1];
+            if (a[x[0]]==='null'){
+                a[x[0]]=null
+            }
             return a;
         }, {});
     return query
@@ -37,11 +39,14 @@ function getEmptyFilter() {
             children: 0,
             infants: 0,
             pets: 0
-        }
+        },
+        label:null
     }
 }
    function showChosenDate(date) {
-        if (!date) {return ""}
+       if (!date) {return ""}
+       date=new Date(date)  
+        console.log('date:', date)      
         const month = date.toLocaleString('default', { month: 'short' })
         const day = date.getDate()
         return month+' '+day

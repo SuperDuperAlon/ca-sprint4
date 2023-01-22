@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react";
 import { FiFilter } from "react-icons/fi";
 import { useNavigate, useParams } from "react-router";
+import { filterService } from "../services/filterService";
 import { stayService } from "../services/stay.service";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -15,28 +16,27 @@ export function SecondaryFilter(){
     const navigate = useNavigate()
     const { filterBy } = useParams()
     const filterPrams = useRef(filterBy)
+export function SecondaryFilter({queryToParams}){
+    const labels = ['Cabins', 'Islands', 'Amazing Pools', 'Ski-in-out', 'Beach', 'Luxe', 'Mansions', 'Amazing Views', 'Boats', 'Tropical', 'Top of the world', 'Countryside', 'OMG', 'Desert']
+    let { filterBy } = useParams()
 
 
     // const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     //   setValue(newValue);
     // };
 
-
+    
     function onFilter(label){
-        setLabelFilter(label)
-        setClickedLabel (label)
-        console.log(clickedLabel);
-        // console.log(filterPrams)
-        let currFilterParams
-        if (filterBy) {
-            currFilterParams = filterPrams.current + `&label=${label}`
+        
+        if (filterBy){
+            filterBy= filterService.getParamsToObj(filterBy)
+        } else{
+            filterBy=filterService.getEmptyFilter()
         }
-        else  {
-            currFilterParams = `where=''&checkIn=''&checkOut=''&label=${label}`
-        }
-        // console.log(currFilterParams)
-        // console.log(filterByParams)
-        navigate(`/${currFilterParams}`)
+        filterBy.label=label
+
+        queryToParams(filterBy)
+
 
     }
     // flex space-between center
@@ -48,7 +48,7 @@ export function SecondaryFilter(){
                 </div>)}
         { <div className="arrows">{">"}</div>} */}
 
-        <Box sx={ {maxWidth: { xs: 200, sm: '100vw' }, bgcolor: 'white' }}>
+<Box sx={ {maxWidth: { xs: 200, sm: '100vw' }, bgcolor: 'white' }}>
         <Tabs
             // value={value}
             // onChange={handleChange}

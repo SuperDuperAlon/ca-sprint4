@@ -171,6 +171,14 @@
   }
 }
 
+.full{
+    grid-column: 1/-1;
+}
+
+.rounded-full{
+  border-radius: 100vw;
+}
+
 // // Media helpers
 
 // .square-ratio {
