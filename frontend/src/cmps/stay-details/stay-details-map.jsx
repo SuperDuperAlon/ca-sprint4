@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import GoogleMapReact from "google-map-react";
+import { GoogleMap } from "../reusable/google-map";
 
 // const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
@@ -12,21 +13,15 @@ export function StayDetailsMap({ stay }) {
   };
   const zoom = 13;
 
-  {
-    console.log(coordinates);
-  }
-
   if (!stay) return;
-  else return (
-      // Important! Always set the container height explicitly
-      <div style={{ height: "70vh", width: "90%", margin: "auto" }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyAxfggEQ7yAD7Ld4fc_f-haJusL3eGqHzU" }}
-          defaultCenter={coordinates}
-          center={coordinates}
-          defaultZoom={zoom}
-          // onGoogleApiLoaded={({map, maps}) => this.renderMarkers(map, maps)}
-        ></GoogleMapReact>
-      </div>
+  else
+    return (
+      <section className="stay-details-map" >
+        <div className="lh26 fs22 fw600 mar-b24">Where You'll Be</div>
+        <GoogleMap stay={stay}/>
+        <div className="fw600 mar-b16">{stay.loc.address}, {stay.loc.city}, {stay.loc.country}</div>
+        <div className="mar-b16">{stay.summary}</div>
+        <button className="link">Show more</button>
+      </section>
     );
 }

@@ -83,6 +83,10 @@
     margin-bottom: 0.5rem;
   }
 
+  .mar-b12 {
+    margin-bottom: 0.75rem;
+  }
+
   .mar-b16 {
     margin-bottom: 1rem;
   }
@@ -91,11 +95,29 @@
     margin-bottom: 1.5rem;
   }
 
+  .mar-b32 {
+    margin-bottom: 1.5rem;
+  }
+
+  // Top
+  .mar-t8 {
+    margin-top: 0.5rem
+  }
+
+  .mar-t16 {
+    margin-top: 1rem
+  }
+
 // Padding
 // bottom
 
 .pad-b24 {
-    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  // top
+  .pad-t8 {
+    padding-top: 0.5rem;
   }
 
 // colors
@@ -131,6 +153,23 @@
 .avatar-lg {
   width: 55px;
   height: 55px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: blue;
+  /* commented for demo
+  float: left;
+  margin-left: 125px;
+  margin-top: 20px;
+  */
+  
+  /*for demo*/
+  display:inline-block;
+  vertical-align:middle;
+}
+
+.avatar-md {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   overflow: hidden;
   background-color: blue;

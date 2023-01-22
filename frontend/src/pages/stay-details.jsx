@@ -45,8 +45,8 @@ export function StayDetails() {
   //     console.log(err);
   //   }
   // }
-
-  return (
+if (!stay) return console.log('no map');
+  else return (
     <section className="details-layout">
       <AppHeader />
       <StayDetailsLocationInfo stay={stay} />
@@ -55,9 +55,9 @@ export function StayDetails() {
         <StayDetailsHostInfo stay={stay} />
         <StayDetailsOrderModal stay={stay} />
       </div>
-      <BasicModal />
+      {/* <BasicModal /> */}
       <StayDetailsReviews stay={stay} />
-      {/* <StayDetailsMap stay={stay} /> */}
+      <StayDetailsMap stay={stay} />
       <StayDetailsHostDetails stay={stay} />
     </section>
   );

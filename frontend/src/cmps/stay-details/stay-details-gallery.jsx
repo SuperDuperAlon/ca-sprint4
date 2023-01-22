@@ -1,13 +1,15 @@
 export function StayDetailsGallery({ stay }) {
-  // console.log(stay);
-  if (!stay) return
+  console.log(stay);
+  if (!stay) return;
   else
     return (
       <section className="stay-details-gallery">
-        <h1>This is the place of the images - Test</h1>
-        {stay.imgUrls.map((gaga) => {
-          <img src={require(`../../assets/img/${gaga}.jpg`)} alt="" />;
-        })}
+        {/* <img src={require(`../../assets/img/s101/0.jpg`)} alt="" />; */}
+        <section className="gallery">
+          {stay.imgUrls.map((gaga, idx) => {
+           return <img className={`gallery-item-${idx}`} src={require(`../../assets/img/${gaga}.jpg`)} alt=""/>
+          })}
+        </section>
       </section>
     );
 }

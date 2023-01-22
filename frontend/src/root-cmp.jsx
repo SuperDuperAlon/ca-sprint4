@@ -10,6 +10,8 @@ import { StayDetails } from './pages/stay-details.jsx'
 import { StayEdit } from "./pages/stay-edit";
 import { StaySearchResults } from "./cmps/filter/stay-search-results";
 import { AmenitiesModal } from "./cmps/modals/amenities-modal";
+import { Orders } from "./pages/orders";
+import { OrderDetails } from "./cmps/order-details";
 // import { AppFooter } from './cmps/app-footer'
 // import { UserDetails } from './pages/user-details'
 
@@ -19,6 +21,8 @@ export function RootCmp() {
         <div>
             <main>
                 <Routes>
+                    <Route path="/orders" element={<Orders />} />
+                    <Route path="/orders/:orderId" element={<OrderDetails />} />
                     <Route path="/" element={<StayIndex />} >
                         <Route path="/:filterBy" element={<StayIndex />} />
                     </Route>
