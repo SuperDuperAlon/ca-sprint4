@@ -110,7 +110,7 @@ export function SearchBar({ queryToParams }) {
                                 name="where"
                                 id="where"
                                 value={filter?.where || ""}
-                                // value={1}
+                               
                                 placeholder="Search destinations"
                                 onChange={handleChange}
                             />
