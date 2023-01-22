@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { Calender } from "../filter/calender";
 import { filterService } from "../../services/filterService";
+import {MdStar} from "react-icons/md";
 
 export function StayDetailsOrderModal({ stay }) {
   const [startDate, setStartDate] = useState(null);
@@ -61,7 +62,7 @@ export function StayDetailsOrderModal({ stay }) {
             ${stay.price} <span className="fs16">night</span>{" "}
           </div>
           <div className="fs14 fw600">
-            *4.7 ·<button className="sml-review-btn"><Link to={`/review/`}>3 reviews</Link> </button>{" "}
+          <MdStar />4.7 ·<button className="sml-review-btn"><Link to={`/review/`}>3 reviews</Link> </button>{" "}
           </div>
         </div>
         <div className="set-dates">
