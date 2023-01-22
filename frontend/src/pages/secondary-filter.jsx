@@ -9,12 +9,12 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 
-export function SecondaryFilter(){
+export function SecondaryFilter({queryToParams}){
     const labels = ['Cabins', 'Islands', 'Amazing Pools', 'Ski-in-out', 'Beach', 'Luxe', 'Mansions', 'Amazing Views', 'Boats', 'Tropical', 'Top of the world', 'Countryside', 'OMG', 'Desert', 'Play', 'Trending', 'Vineyards', 'Tiny homes', 'Bed & breakfasts']
     const [labelFilter, setLabelFilter] = useState(null)
     const [clickedLabel, setClickedLabel] = useState(null)
     const navigate = useNavigate()
-    const { filterBy } = useParams()
+    let { filterBy } = useParams()
     const filterPrams = useRef(filterBy)
 
 
@@ -24,6 +24,8 @@ export function SecondaryFilter(){
 
     
     function onFilter(label){
+
+        setClickedLabel(label)
         
         if (filterBy){
             filterBy= filterService.getParamsToObj(filterBy)
@@ -32,7 +34,7 @@ export function SecondaryFilter(){
         }
         filterBy.label=label
 
-        filterService.queryToParams(filterBy)
+        queryToParams(filterBy)
 
 
     }
@@ -45,7 +47,7 @@ export function SecondaryFilter(){
                 </div>)}
         { <div className="arrows">{">"}</div>} */}
 
-<Box sx={ {maxWidth: { xs: 200, sm: '100vw' }, bgcolor: 'white' }}>
+<Box sx={ {maxWidth: { sm: '100vw' }, bgcolor: 'white' }}>
         <Tabs
             // value={value}
             // onChange={handleChange}

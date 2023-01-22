@@ -1,28 +1,25 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-// import { loadCars, addCar, updateCar, removeCar, addToCart } from '../store/car.actions.js'
 import { loadStays, removeStay } from '../store/stay.actions.js'
 
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
-import { stayService } from '../services/stay.service.js'
 import { AppHeader } from '../cmps/app-header.jsx'
-import { utilService } from '../services/util.service.js'
 import { StayList } from './stay-list.jsx'
 import { SecondaryFilter } from './secondary-filter.jsx'
-import { OrderPreferences } from '../cmps/order-preferences.jsx'
-import { Calendar } from '../cmps/calendar.jsx'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import { WhereTo } from '../cmps/filter/where-to.jsx'
-import { SetSearchParams } from '../cmps/filter/set-search-params.jsx'
+import { useNavigate, useParams } from 'react-router-dom'
 import { SearchBar } from '../cmps/filter/search-bar.jsx'
 import { filterService } from '../services/filterService.js'
+import { store } from '../store/store.js'
+import { SEARCH_BAR_OPEN } from '../store/stay.reducer.js'
 
 
 export function StayIndex() {
 
     const stays = useSelector(storeState => storeState.stayModule.stays)
+    const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
     const navigate = useNavigate()
+
     const { filterBy } = useParams()
 
     useEffect(() => {
@@ -52,6 +49,16 @@ export function StayIndex() {
         navigate(`/room/${stay._id}`)
     }
 
+    function onClickOutSideTheBar(event){
+        event.preventDefault()
+        if (!openSearchBar) return
+        store.dispatch({
+            type: SEARCH_BAR_OPEN,
+            open: false,
+        })
+        
+    }
+
 
     function queryToParams(filter) {
         filter.checkIn=filterService.getDateToFilter(filter.checkIn)
@@ -70,10 +77,10 @@ export function StayIndex() {
                 <SearchBar queryToParams={queryToParams} />
                 <SecondaryFilter queryToParams={queryToParams} />
             </div>
-            <main className='content'>
-                {/* <div className="clickOutSideTheBox">
-                </div> */}
-                {/* <Link to={`/stay/edit`}>Add stay</Link> */}
+            <main className='main-content'>
+                <div className={openSearchBar? "black-box":"black-box close"}
+                onClick={onClickOutSideTheBar}>
+                </div>
                 <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay} />
             </main>
         </div >

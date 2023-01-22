@@ -42,8 +42,8 @@ export function AppHeader() {
                         <NavLink key={"anyWeek"} onClick={() => onChangeStaySearchBar('checkIn')}>
                             <p>any week</p>
                         </NavLink>
-                        <NavLink key={"addguests"} onClick={() => onChangeStaySearchBar('guests')}>
-                            <p className="addguest">add guests</p>
+                        <NavLink key={"addGuests"} onClick={() => onChangeStaySearchBar('guests')}>
+                            <p className="addGuests">add guests</p>
                         </NavLink>
 
                         <div className='searchIcon'>

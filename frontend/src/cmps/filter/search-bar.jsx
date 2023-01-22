@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState } from "react"
 import DatePicker from "react-datepicker"
-import "react-datepicker/dist/react-datepicker.css"
+// import "react-datepicker/dist/react-datepicker.css"
 import { filterService } from "../../services/filterService"
 
 import { FiSearch } from 'react-icons/fi'
 import { BsClock } from 'react-icons/bs'
 import { useParams } from "react-router"
 import { useSelector } from "react-redux"
-import { store } from "../../store/store"
-import { SEARCH_BAR_OPEN } from "../../store/stay.reducer"
+import { Calender } from "./calender"
 
 export function SearchBar({ queryToParams }) {
     const [activeNow, setActiveNow] = useState(null)
@@ -42,7 +41,7 @@ export function SearchBar({ queryToParams }) {
         , [openSearchBar])
 
 
-    const onChange = (dates) => {
+    const onChangeDate = (dates) => {
         const checkIn = dates[0]
         const checkOut = dates[1]
         setFilter({ ...filter, checkOut, checkIn })
@@ -60,7 +59,7 @@ export function SearchBar({ queryToParams }) {
                 setFilter({ ...filter, where: '' })
                 break
             case "checkIn":
-                setFilter({ ...filter, checkIn: null })
+                setFilter({ ...filter, checkIn: null ,checkOut: null })
                 break
             case "checkOut":
                 setFilter({ ...filter, checkOut: null })
@@ -97,10 +96,8 @@ export function SearchBar({ queryToParams }) {
 
 
     return (
-        <div className={openSearchBar ? "search " : "search close "}>
-            <div ref={searchInBox}
-             > 
-            <div className="fullColumn" >
+        <div className={openSearchBar ? "search" : "search close"}>
+            <div className="fullColumn"  ref={searchInBox}>
                 <div className="flex align-center search-bar" >
                     <div
                         className={(activeNow === 'location') ? "searchActive location" : "location"}
@@ -111,7 +108,8 @@ export function SearchBar({ queryToParams }) {
                                 type="text"
                                 name="where"
                                 id="where"
-                                value={filter.where}
+                                value={filter?.where || ""}
+                               
                                 placeholder="Search destinations"
                                 onChange={handleChange}
                             />
@@ -128,7 +126,8 @@ export function SearchBar({ queryToParams }) {
                                 <label htmlFor="checkIn">Check in</label>
                                 <input type='text' name="checkIn" id='checkIn'
                                     value={filterService.showChosenDate(filter.checkIn)}
-                                    placeholder="Add dates" />
+                                    readOnly={true}
+                                    placeholder="Add dates"/>
                             </div>
                             <button
                                 className={((filter.checkIn) && (activeNow === 'checkIn')) ? "showBtn btn-rs" : "btn-rs"}
@@ -141,6 +140,7 @@ export function SearchBar({ queryToParams }) {
                                 <label htmlFor="checkOut">Check out</label>
                                 <input type='text' name="checkOut" id='checkOut'
                                     value={filterService.showChosenDate(filter.checkOut)}
+                                    readOnly={true}
                                     placeholder="Add dates" />
                             </div>
                             <button
@@ -155,10 +155,13 @@ export function SearchBar({ queryToParams }) {
                                 onClick={() => setActiveNow('guests')}>
                                 <label htmlFor="guests">How</label>
                                 <input type='text' name='guests' id='guests' placeholder="Add guests"
-                                    value={null
-                                        // filter.guests.adults>0? filter?.guests.adults: null  
-
+                                    value={filter?.guests.adults>0 || filter?.guests.children>0?
+                                        `Guests: ${filter.guests.adults+ filter.guests.children}`:
+                                        ''                                        
                                     }
+                                    readOnly={true}
+                                    onChange={null}
+
                                 />
                             </div>
                             <button
@@ -172,7 +175,6 @@ export function SearchBar({ queryToParams }) {
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
 
@@ -182,18 +184,7 @@ export function SearchBar({ queryToParams }) {
                         <div className="dateOptions">
 
                         </div>
-                        <DatePicker
-                            selected={filter.checkIn}
-                            onChange={onChange}
-                            startDate={filter.checkIn}
-                            endDate={filter.checkOut}
-                            monthsShown={2}
-                            selectsRange
-                            open={true}
-                            inline
-                            className="dayPicker"
-                        // inline
-                        />
+                    <Calender filter={filter} onChangeDate={onChangeDate} />
                     </div>)}
                 {(activeNow === 'location' && !filter?.where) && <div className="whereModel">
                     <div className="showRecentSearch">

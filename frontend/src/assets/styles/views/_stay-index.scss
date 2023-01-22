@@ -101,7 +101,7 @@
 
 .pageTop{
     display: grid;
-    position: static; // See link
+    position: static;
     grid-column: 1/-1;
     grid-template-columns: 70px 1fr 70px;
     > * {
