@@ -5,7 +5,6 @@ $orange: #fc642d;
 $dark-grey: rgb(72, 72, 72);
 $grey: rgb(118, 118, 118); 
 $text-black:#222222;
-$clr-box-radius: #DDDDDD;
 $white:#ffff;
 $clr-ligthtext:rgb(113, 113, 113);
 $clr-box-radius: #DDDDDD;
@@ -22,7 +21,7 @@ $desktop-breakpoint: 1048px;
 
 
 // Padding
-$paddingHeader:16px;
+$paddingHeader:12px;
 $pad-12:12px;
 $pad-5:5px;
 $pad-20:20px;
@@ -30,7 +29,8 @@ $pad-15:15px;
 $pad-8:8px;
 
 
-$dataBox:46px;
+$dataBoxWidth:46px;
+$dataBoxPadding:12px;
 
 //search bar hight
 $search-bar-hight:48px;

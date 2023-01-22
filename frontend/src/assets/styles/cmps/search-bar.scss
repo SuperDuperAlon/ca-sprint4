@@ -48,6 +48,10 @@ padding-top: 100px;
     display: flex;
     font-size: 0.6rem;
 
+    // >*{
+    // // cursor: pointer;
+    // }
+
     div {
         transition: background 250ms ease;
     }
@@ -307,7 +311,7 @@ padding-top: 100px;
 
         }
 
-        .searchByRegion {
+        .search-by-region {
             padding: 0 44px 0 28px;
             border-left: solid 1px $clr-border-between-div;
 
@@ -420,8 +424,8 @@ padding-top: 100px;
 
     .dateOptions{
         min-width: 300px;
-        padding: 10px;
-        min-height: 40px;
+        // padding: 8px;
+        // min-height: 30px;
         margin-bottom: 1.3rem;
         // background-color: red;
 
@@ -442,11 +446,7 @@ padding-top: 100px;
     
     .react-datepicker__day-name {
         color: $grey;
-        padding: $pad-5;
-        width: $dataBox;
-        
-
-        
+        width: $dataBoxWidth;    
     }
 
     .react-datepicker__day--in-range:not(.react-datepicker__day--selected, .react-datepicker__day--range-end, .react-datepicker__day--outside-month) {
@@ -455,13 +455,11 @@ padding-top: 100px;
     }
 
     .react-datepicker__day {
-        width: $dataBox;
-        padding: $pad-12;
         border-radius: 50%;
-        width: $dataBox;
+        width: $dataBoxWidth;
         font-weight: 600;
         line-height: 1.5rem;
-        padding: 12px;
+        padding: $dataBoxPadding;
 
         &--selected,
         &.react-datepicker__day--range-end:not(.react-datepicker__day--outside-month) {

@@ -1,20 +1,21 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
-import { login, logout, signup } from '../store/user.actions.js'
-import { LoginSignup } from './login-signup.jsx'
-import { useEffect, useState } from 'react'
 
 import { GrLanguage } from 'react-icons/gr'
 import { FiSearch } from 'react-icons/fi'
+import { AiOutlineMenu } from 'react-icons/ai'
+import { IoPersonCircleSharp } from 'react-icons/io5'
+import { SiAirbnb } from 'react-icons/si'
+
+
 import { store } from '../store/store'
 import { SEARCH_BAR_OPEN } from '../store/stay.reducer'
 
 export function AppHeader() {
+    const navigate = useNavigate()
 
     const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
-
-    console.log('openSearchBar:', openSearchBar)
 
 
     function onChangeStaySearchBar(option) {
@@ -27,10 +28,10 @@ export function AppHeader() {
     return (
         <header className="app-header">
             <main className='main-header'>
-                <div className="logo">
-                    AnyWhere
+                <div className="logo" onClick={()=>navigate('/')}>
+                    <h3>anypl<span className="Alogo"><SiAirbnb/></span>ce</h3>
                 </div>
-                <div className="centerGrid">
+                <div className="centerGrid rounded-full">
                     <div className={!openSearchBar ? "whenSearching close" : "whenSearching"}>
                         <p>stay</p>
                     </div>
@@ -52,23 +53,20 @@ export function AppHeader() {
                     </nav>
                 </div>
 
-                <div className="usersOpstion ">
+                <div className="users-option ">
                     <div className="switchToHost">
                         <p>switch to hosting</p>
                     </div>
-                    <div className="languageOpstion">
-                        <span className="material-symbols-outlined">
-                            <GrLanguage />
-                        </span>
+                    <div className="language-option">
+                        <GrLanguage />
                     </div>
                     <div className="loginMenu rounded-full">
-                        <span className="material-symbols-outlined">
-                            menu
+                        <span className='menu'>
+                            <AiOutlineMenu />
                         </span>
-                        <span className=" img material-symbols-outlined">
-                            person
+                        <span className='person'>
+                            <IoPersonCircleSharp />
                         </span>
-
                     </div>
                 </div>
             </main>
