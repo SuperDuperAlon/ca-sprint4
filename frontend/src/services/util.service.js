@@ -6,7 +6,8 @@ export const utilService = {
     randomPastTime,
     saveToStorage,
     loadFromStorage,
-    getDistanceFromLatLonInKm
+    getDistanceFromLatLonInKm,
+    randomDate
 }
 
 function makeId(length = 6) {
@@ -79,4 +80,10 @@ function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
   
   function deg2rad(deg) {
     return deg * (Math.PI/180)
+  }
+
+  function randomDate(start, end) {
+        const startRandomDate = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
+        const endRandomDate = startRandomDate.getTime()+ 5*(1000 * 60 * 60 * 24)
+    return `${startRandomDate.toLocaleDateString()}-${new Date(endRandomDate).toLocaleDateString()}`
   }

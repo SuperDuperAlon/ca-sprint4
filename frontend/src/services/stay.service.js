@@ -9,26 +9,35 @@ const STORAGE_KEY = "stay_db";
 _createStays();
 
 export const stayService = {
-  query,
-  getById,
-  save,
-  remove,
-  addStayMsg,
-  getEmptyStay,
-};
-window.cs = stayService;
+    query,
+    getById,
+    save,
+    remove,
+    addStayMsg,
+    getEmptyStay,
+    setDefaultLabelFilter
+    
+}
+window.cs = stayService
+
 
 async function query(filterBy) {
-  if (!filterBy) return storageService.query(STORAGE_KEY);
-  let data = await storageService.query(STORAGE_KEY);
-  filterBy = filterService.getParamsToObj(filterBy);
-  if (filterBy.where) {
-    const regex = new RegExp(filterBy.where, "i");
-    data = data.filter(
-      (place) => regex.test(place.loc.country) || regex.test(place.loc.city)
-    );
-  }
-  return data;
+    if (!filterBy) return storageService.query(STORAGE_KEY)
+    let data= await storageService.query(STORAGE_KEY)
+    filterBy=filterService.getParamsToObj(filterBy)
+    if (filterBy?.where)
+        {
+            const regex = new RegExp(filterBy.where, 'i')
+            data = data.filter(place => regex.test(place.loc.country) || regex.test(place.loc.city)
+            )
+
+        }
+    if (filterBy?.label)
+        {
+            const regex = new RegExp(filterBy.label, 'i')
+            data = data.filter(place => regex.test(place.labels))
+        }
+    return data
 
   // return httpService.get(STORAGE_KEY, filterBy)
 }
@@ -59,6 +68,14 @@ async function save(stay) {
 async function addStayMsg(stayId, txt) {
   const savedMsg = await httpService.post(`stay/${stayId}/msg`, { txt });
   return savedMsg;
+}
+
+function setDefaultLabelFilter(){
+    return {label : ''}
+}
+
+function setDefaultLabelFilter(){
+    return {label : ''}
 }
 
 function getEmptyStay() {
@@ -197,13 +214,204 @@ function _createStays() {
               fullname: "user2",
               imgUrl: "/img/img2.jpg",
             },
-          },
-        ],
-        likedByUsers: ["mini-user"], // for user-wishlist : use $in
-      },
-    ];
-    utilService.saveToStorage(STORAGE_KEY, stays);
-  }
+            "loc": {
+                "country": "France",
+                "countryCode": "FR",
+                "city": "Guyonvelle",
+                "address": "Grand Est",
+                "lat": 47.855,
+                "lng": 5.8
+            },
+            "reviews": [
+                {
+                "id": "madeId",
+                "txt": "Very helpful hosts. Cooked traditional...",
+                "rate": 4,
+                "by": {
+                    "_id": "u102",
+                    "fullname": "user2",
+                    "imgUrl": "/img/img2.jpg"
+                }
+                }
+            ],
+            "likedByUsers": ['mini-user'] // for user-wishlist : use $in
+            },
+            {
+            "_id": "s103",
+            "name": "Wonderful villa surrounded by sea on three sides",
+            "type": "House",
+            "imgUrls": ["s103/0", "s103/1","s103/2","s103/3","s103/4"],
+            "price": 1842,
+            "summary": "Located in the Limanagzi region of Kaş, which is very rare in the world, our villa, which is surrounded by the sea, has 4 bedrooms, a private pool, a private chef and a waiter. In our villa, which is not on the road, our private captain boat is available 24 hours a day to bring our guests to and from Kaş. Our guests are included in the prices. Our chef and waiter will prepare and serve you only when you receive your food and drinks",
+            "capacity": 8,
+            "amenities": [
+                "Dedicated workspace",
+                "Pets allowed",
+                "Private pool",
+                "HDTV with Netflix"
+
+            ],
+            "labels": [
+                "Amazing Pools",
+                "Trending",
+                "Beach"
+            ],
+            "host": {
+                "_id": "u104",
+                "fullname": "Mehmet Muhammed",
+                "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small",
+            },
+            "loc": {
+                "country": "Turkey",
+                "countryCode": "TR",
+                "city": "Antalya",
+                "address": "Bayındır",
+                "lat": 38.9637,
+                "lng": 35.2433
+            },
+            "reviews": [
+                {
+                "id": "madeId",
+                "txt": "A nice, clean house. Great people",
+                "rate": 4,
+                "by": {
+                    "_id": "u102",
+                    "fullname": "Dudi Du",
+                    "imgUrl": "/img/img2.jpg"
+                }
+                },
+                {
+                "id": "madeId",
+                "txt": "Poorly cleaned, not many facilities",
+                "rate": 2,
+                "by": {
+                    "_id": "u105",
+                    "fullname": "Dumbledore",
+                    "imgUrl": "/img/img2.jpg"
+                }
+                }
+            ],
+            "likedByUsers": ['mini-user'] // for user-wishlist : use $in
+            },
+            {
+            "_id": "s104",
+            "name": "Exclusive & Private Island Resort: Floral Island",
+            "type": "Resort",
+            "imgUrls": ["s104/0", "s104/1","s104/2","s104/3","s104/4"],
+            "price": 771,
+            "summary": "Located in the Limanagzi region of Kaş, which is very rare in the world, our villa, which is surrounded by the sea, has 4 bedrooms, a private pool, a private chef and a waiter. In our villa, which is not on the road, our private captain boat is available 24 hours a day to bring our guests to and from Kaş. Our guests are included in the prices. Our chef and waiter will prepare and serve you only when you receive your food and drinks",
+            "capacity": 16,
+            "amenities": [
+                "Bay view",
+                "Beach access – Beachfront",
+                "Wifi",
+                "Kitchen"
+
+            ],
+            "labels": [
+                "Amazing Pools",
+                "Amazing views",
+                "Beach",
+                "Beachfront"
+            ],
+            "host": {
+                "_id": "u105",
+                "fullname": "Philipe",
+                "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small",
+            },
+            "loc": {
+                "country": "Philippines",
+                "countryCode": "PH",
+                "city": "El Nido",
+                "address": "MIMAROPA",
+                "lat":  14.599512,
+                "lng": 121.262634
+            },
+            "reviews": [
+                {
+                "id": "madeId",
+                "txt": "A nice, clean house. Great people",
+                "rate": 4,
+                "by": {
+                    "_id": "u102",
+                    "fullname": "Dudi Du",
+                    "imgUrl": "/img/img2.jpg"
+                }
+                },
+                {
+                "id": "madeId",
+                "txt": "Poorly cleaned, not many facilities",
+                "rate": 2,
+                "by": {
+                    "_id": "u105",
+                    "fullname": "Dumbledore",
+                    "imgUrl": "/img/img2.jpg"
+                }
+                }
+            ],
+            "likedByUsers": ['mini-user'] // for user-wishlist : use $in
+            },
+            {
+            "_id": "s105",
+            "name": "EInvisible House Joshua Tree | Modern Masterpiece",
+            "type": "House",
+            "imgUrls": ["s105/0", "s105/1","s105/2","s105/3","s105/4"],
+            "price": 771,
+            "summary": "Welcome to Invisible House. Re-launched in November 2022 as a joint venture with Fieldtrip Hospitality. Imagine a piece of modern art…one of the most spectacular homes in the world on all of Airbnb” - Brian Chesky, CEO of Airbnb",
+            "capacity": 5,
+            "amenities": [
+                "Bay view",
+                "Beach access – Beachfront",
+                "Wifi",
+                "Kitchen"
+
+            ],
+            "labels": [
+                "Trending",
+                "Amazing views",
+                "Desert",
+                "OMG"
+            ],
+            "host": {
+                "_id": "u105",
+                "fullname": "Philipe",
+                "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small",
+            },
+            "loc": {
+                "country": "Philippines",
+                "countryCode": "PH",
+                "city": "El Nido",
+                "address": "MIMAROPA",
+                "lat":  14.599512,
+                "lng": 121.262634
+            },
+            "reviews": [
+                {
+                "id": "madeId",
+                "txt": "A nice, clean house. Great people",
+                "rate": 4,
+                "by": {
+                    "_id": "u102",
+                    "fullname": "Dudi Du",
+                    "imgUrl": "/img/img2.jpg"
+                }
+                },
+                {
+                "id": "madeId",
+                "txt": "Poorly cleaned, not many facilities",
+                "rate": 2,
+                "by": {
+                    "_id": "u105",
+                    "fullname": "Dumbledore",
+                    "imgUrl": "/img/img2.jpg"
+                }
+                }
+            ],
+            "likedByUsers": ['mini-user'] // for user-wishlist : use $in
+            }
+        ]
+        utilService.saveToStorage(STORAGE_KEY, stays)
+    }
 }
 // function getEmptyStay() {
 //     return {

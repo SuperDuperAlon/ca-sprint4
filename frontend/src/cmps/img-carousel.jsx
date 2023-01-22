@@ -30,27 +30,14 @@ export function ImgCarousel({ imgs }) {
         <div className="dots flex">
             {imgs.map((img,idx)=> <div className={idx===imgIdx && "white-dot"}key={idx}>•</div>)}
         </div> */}
-        <Carousel autoPlay={false} navButtonsAlwaysVisible={false} animation="slide" cycleNavigation={false} navButtonsProps={{          // Change the colors and radius of the actual buttons. THIS STYLES BOTH BUTTONS
-        style: {
-            backgroundColor: 'white',
-            borderRadius: '50%',
-            color: 'black',
-            padding: '3px',
-            opacity : 1
-        }
+        <Carousel className="carousel" show={1.5} autoPlay={false} navButtonsAlwaysVisible={false} animation="slide" cycleNavigation={false} navButtonsProps={{ 
+        className : 'nav-btn',
     }} indicatorContainerProps={{
-        style:{
-            // position: 'absolute',
-            // bottom : '10px',
-            // zIndex: 10,
-            // color: 'white'
-            // fill: 'white'
-        }
+        className :'indicators',
     }} indicatorIconButtonProps={{
-        style:{
-            height: '10px'
-        }
-    }}>
+        className : 'indicator',
+    }}
+    activeIndicatorIconButtonProps={{className :'active'}} >
             {imgs.map((img, index) => <img className="stay-img" src={require(`../assets/img/${img}.jpg`)} key={index} />
             )}
 

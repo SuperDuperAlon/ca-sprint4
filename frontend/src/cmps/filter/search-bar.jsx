@@ -1,30 +1,51 @@
-import { useEffect, useRef, useState } from "react";
-import { WhereTo } from "./where-to";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { SetSearchParams } from "./set-search-params";
-import { filterService } from "../../services/filterService";
-import { reginIcons } from '../../assets/import src/reginImg.js'
-
+import React, { useEffect, useRef, useState } from "react"
+import DatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
+import { filterService } from "../../services/filterService"
 
 import { FiSearch } from 'react-icons/fi'
 import { BsClock } from 'react-icons/bs'
+import { useParams } from "react-router"
+import { useSelector } from "react-redux"
+import { store } from "../../store/store"
+import { SEARCH_BAR_OPEN } from "../../store/stay.reducer"
 
-export function SearchBar() {
+export function SearchBar({ queryToParams }) {
     const [activeNow, setActiveNow] = useState(null)
-
     const [filter, setFilter] = useState(filterService.getEmptyFilter())
-    // const [searchLocation, setSearchLocation] = useState(null);
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
+    let { filterBy } = useParams()
+    const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
+    const searchInBox = useRef(null);
+
+
+    useOutsideAlerter(searchInBox)
+    function useOutsideAlerter(ref) {
+        useEffect(() => {
+            function handleClickOutside(event) {
+                if (ref.current && !ref.current.contains(event.target)) {
+                    setActiveNow(false)
+                }
+            }
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                document.removeEventListener("mousedown", handleClickOutside)
+            }
+
+        }, [ref]);
+    }
+
+
+
+    useEffect(() => {
+        setActiveNow(openSearchBar)
+    }
+        , [openSearchBar])
+
 
     const onChange = (dates) => {
         const checkIn = dates[0]
         const checkOut = dates[1]
-        setFilter({ ...filter, checkIn })
-        setFilter({ ...filter, checkOut })
-        setStartDate(checkIn)
-        setEndDate(checkOut)
+        setFilter({ ...filter, checkOut, checkIn })
     }
 
     const handleChange = ev => {
@@ -35,75 +56,126 @@ export function SearchBar() {
     function rsOption(option) {
         switch (option) {
             case "location":
-                setFilter(...filter, filter.where='')
+                console.log('location')
+                setFilter({ ...filter, where: '' })
                 break
             case "checkIn":
-                setStartDate(null)
+                setFilter({ ...filter, checkIn: null })
                 break
             case "checkOut":
-                setEndDate(null)
+                setFilter({ ...filter, checkOut: null })
                 break
+            case 'guests':
+                let emptyGuest = filterService.getEmptyFilter()
+                setFilter({ ...filter, guests: emptyGuest.guests })
+
 
         }
     }
 
-    function onCountChange(field, diff){
-      
-        setFilter({...filter, guests:{...filter.guests, ...filter.guests[field]+=diff} })
+    function onCountChange(field, diff) {
+        const prevGuests = { ...filter.guests, ...filter.guests[field] = filter.guests[field] + diff }
+        setFilter({ ...filter, prevGuests })
+    }
+
+    function onClickSearch(event) {
+        event.preventDefault()
+        setActiveNow(null)
+        if (filterBy) {
+            filterBy = filterService.getParamsToObj(filterBy)
+        } else {
+            filterBy = filterService.getEmptyFilter()
+        }
+
+        filterBy.checkIn = filter.checkIn
+        filterBy.checkOut = filter.checkOut
+        filterBy.where = filter.where
+        filterBy.guests = filter.guests
+        queryToParams(filter)
+
     }
 
 
     return (
-        <div className="search">
-            <div className="flex align-center search-bar">
-                <div className="location" onClick={() => setActiveNow('location')}>
-                    <div className="bar-input" >
-                        <label htmlFor="where">Where</label>
-                        <input
-                            type="text"
-                            name="where"
-                            id="where"
-                            value={filter.where}
-                            placeholder="Search destinations"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    {<button className="btn-rs"></button>}
-                </div>
-                <div className="checkDate">
-                    <div className="checkIn" onClick={() => setActiveNow('checkIn')} >
-                        <div className="bar-input">
-                            <label htmlFor="checkIn">Check in</label>
-                            <input type='text' name="checkIn" id='checkIn' value={filterService.showChosenDate(startDate)} placeholder="Add dates" />
+        <div className={openSearchBar ? "search " : "search close "}>
+            <div ref={searchInBox}
+             > 
+            <div className="fullColumn" >
+                <div className="flex align-center search-bar" >
+                    <div
+                        className={(activeNow === 'location') ? "searchActive location" : "location"}
+                        onClick={() => setActiveNow('location')}>
+                        <div className="bar-input" >
+                            <label htmlFor="where">Where</label>
+                            <input
+                                type="text"
+                                name="where"
+                                id="where"
+                                value={filter.where}
+                                placeholder="Search destinations"
+                                onChange={handleChange}
+                            />
                         </div>
-                        <button className="btn-rs" onClick={() => rsOption("checkIn")}></button>
+                        <button
+                            className={((filter.where) && (activeNow === 'location')) ? "showBtn btn-rs" : "btn-rs"}
+                            onClick={() => rsOption("location")}></button>
                     </div>
-                    <div className="checkOut" onClick={() => setActiveNow('checkOut')}>
-                        <div className="bar-input">
-                            <label htmlFor="checkOut">Check out</label>
-                            <input type='text' name="checkOut" id='checkOut' value={filterService.showChosenDate(endDate)} placeholder="Add dates" />
+                    <div className="checkDate">
+                        <div
+                            className={(activeNow === 'checkIn') ? "searchActive checkIn" : "checkIn"}
+                            onClick={() => setActiveNow('checkIn')} >
+                            <div className="bar-input">
+                                <label htmlFor="checkIn">Check in</label>
+                                <input type='text' name="checkIn" id='checkIn'
+                                    value={filterService.showChosenDate(filter.checkIn)}
+                                    placeholder="Add dates" />
+                            </div>
+                            <button
+                                className={((filter.checkIn) && (activeNow === 'checkIn')) ? "showBtn btn-rs" : "btn-rs"}
+                                onClick={() => rsOption("checkIn")}></button>
                         </div>
-                        <button className={"btn-rs"} onClick={() => rsOption("checkOut")}></button>
-                    </div>
-                    {/* <div className="dataPicker">
-                    
-                </div> */}
-                </div>
-                <div className="guests" onClick={() => setActiveNow('guests')}>
-                    <div className="bar-input">
-                        <label htmlFor="guest">How</label>
-                        <input type='text' name='guest' id='guest'  placeholder="Add guests" />
-                    </div>
-                    <button className="btn-rs"></button>
-                    {/* <SetSearchParams /> */}
-                    <div className={activeNow ? 'active searchIcon' : 'searchIcon'}>
-                        <div className="icon">
-                            <FiSearch />
+                        <div
+                            className={(activeNow === 'checkOut') ? "searchActive checkOut" : "checkOut"}
+                            onClick={() => setActiveNow('checkOut')}>
+                            <div className="bar-input">
+                                <label htmlFor="checkOut">Check out</label>
+                                <input type='text' name="checkOut" id='checkOut'
+                                    value={filterService.showChosenDate(filter.checkOut)}
+                                    placeholder="Add dates" />
+                            </div>
+                            <button
+                                className={((filter.checkOut) && (activeNow === 'checkOut')) ? "showBtn btn-rs" : "btn-rs"}
+                                onClick={() => rsOption("checkOut")}></button>
                         </div>
                     </div>
-                </div>
+                    <div className={(activeNow === 'guests')? "searchActive": null}>
+                        <div className={activeNow ? "active guests" : "guests "}>
+                            <div
+                                className="bar-input"
+                                onClick={() => setActiveNow('guests')}>
+                                <label htmlFor="guests">How</label>
+                                <input type='text' name='guests' id='guests' placeholder="Add guests"
+                                    value={null
+                                        // filter.guests.adults>0? filter?.guests.adults: null  
 
+                                    }
+                                />
+                            </div>
+                            <button
+                                className={((filter?.guests.adults > 0) && (activeNow === 'guests')) ? "showBtn btn-rs" : "btn-rs"}
+                                onClick={() => rsOption("guests")}
+                            ></button>
+
+                            <div className={activeNow ? 'active searchIcon' : 'searchIcon'} onClick={onClickSearch}>
+                                <div className="icon">
+                                    <FiSearch />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+
             {activeNow && < div className="search-modal">
                 {(activeNow === 'checkIn' || activeNow === 'checkOut') &&
                     (<div className="dayPickerModel">
@@ -111,10 +183,10 @@ export function SearchBar() {
 
                         </div>
                         <DatePicker
-                            selected={startDate}
+                            selected={filter.checkIn}
                             onChange={onChange}
-                            startDate={startDate}
-                            endDate={endDate}
+                            startDate={filter.checkIn}
+                            endDate={filter.checkOut}
                             monthsShown={2}
                             selectsRange
                             open={true}
@@ -128,9 +200,9 @@ export function SearchBar() {
                         <h1>Recent searches</h1>
                         <div className="recentSearchList">
                             <div className="lastSearch">
-                                {/* <div className="roundClock">
-                                    <BsClock/>
-                                </div> */}
+                                <div className="roundClock">
+                                    <BsClock />
+                                </div>
                                 <div className="searchDetails">
                                     <p>Italy <span className="how"> Stay</span></p>
                                     <div className="timeOf">
@@ -189,9 +261,9 @@ export function SearchBar() {
                                     <h5>Ages 13 or above</h5>
                                 </div>
                                 <div className="counter">
-                                    <button className="btu-counter" onClick={()=>onCountChange('adults',-1)}>-</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('adults', -1)}>-</button>
                                     {filter.guests.adults}
-                                    <button className="btu-counter" onClick={()=>onCountChange('adults',1)}>+</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('adults', 1)}>+</button>
                                 </div>
                             </div>
                             <div className="guest">
@@ -200,9 +272,9 @@ export function SearchBar() {
                                     <h5>Ages 2–12</h5>
                                 </div>
                                 <div className="counter">
-                                    <button className="btu-counter" onClick={()=>onCountChange('children',-1)}>-</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('children', -1)}>-</button>
                                     {filter.guests.children}
-                                    <button className="btu-counter" onClick={()=>onCountChange('children',1)}>+</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('children', 1)}>+</button>
                                 </div>
                             </div>
                             <div className="guest">
@@ -211,9 +283,9 @@ export function SearchBar() {
                                     <h5>Under 2</h5>
                                 </div>
                                 <div className="counter">
-                                    <button className="btu-counter" onClick={()=>onCountChange('infants',-1)}>-</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('infants', -1)}>-</button>
                                     {filter.guests.infants}
-                                    <button className="btu-counter" onClick={()=>onCountChange('infants',1)}>+</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('infants', 1)}>+</button>
                                 </div>
                             </div>
                             <div className="guest">
@@ -222,9 +294,9 @@ export function SearchBar() {
                                     <h5>Bringing a service animal?</h5>
                                 </div>
                                 <div className="counter">
-                                    <button className="btu-counter" onClick={()=>onCountChange('pets',-1)}>-</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('pets', -1)}>-</button>
                                     {filter.guests.pets}
-                                    <button className="btu-counter" onClick={()=>onCountChange('pets',1)}>+</button>
+                                    <button className="btu-counter" onClick={() => onCountChange('pets', 1)}>+</button>
                                 </div>
                             </div>
                         </div>
@@ -232,6 +304,7 @@ export function SearchBar() {
 
                 }
             </div>}
+            </div>
         </div>
     )
 }

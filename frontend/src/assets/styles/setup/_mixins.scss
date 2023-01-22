@@ -33,8 +33,10 @@
 }
 
 @mixin for-search-bar-open-small {
-    display: grid;
-    grid-template-columns: 1fr 400px;
+    // display: grid;
+    // grid-template-columns: 1fr 400px
+    max-width: 400px;
+
 
 
 }
@@ -53,12 +55,14 @@
 
 @mixin padding-br {
     border-radius: 100vw;
-    padding: 0.5rem 1.4rem;
-    line-height: 1;
+    padding: 0.5rem 1.2rem;
+    // line-height: 1;
+    // height: 48px;
 }
 
 @mixin butHoverOn {
     background: hsl(0 0% 94%);
+    border-radius: 100vw;
 
 }
 
@@ -73,13 +77,6 @@
 
 
 
-
-  @mixin upp-left-14-600{
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-align: left;
-  }
 
 // /* Media  Mixins */
 // @mixin aspect-ratio($width, $height) {

@@ -1,23 +1,45 @@
 .search {
+    position: absolute;
+    width: 100%;
     display: grid;
+    grid-column: 1/-1;
+
+   
     grid-template-columns: 1fr 850px 1fr;
-    justify-items: stretch // align-items: center;
-        // flex-direction: column;
-        // margin: 20px 0;
-        // height: fit-content
+    >*{
+        grid-column: 2;
+    }
+    z-index: 50;
+    padding-top: 60px;
+    // margin-bottom: 20px;
+
+    &.close {
+        transform: translateY(-70px);
+        max-height: 0px;
+        overflow: hidden;   
+    }
+    
+    .fullColumn{
+        display: grid;
+        height: 85px;
+        padding-top: 10px;
+        // background-color: aqua;
+        grid-column: 1/-1;
+        grid-template-columns: 1fr 850px 1fr;
+        >*{
+            grid-column: 2;
+        }
+}
 }
 
-.search-bar {
 
-    grid-area: 1/2/2/3;
-    width: fit-content;
-    max-width: 840px;
+.search-bar {
+    width: 100%;
     background: $clr-box-radius;
     box-shadow: 0 0 5px hsl(0 0% 78%);
     height: fit-content;
     border-radius: 100vw;
     display: flex;
-
     font-size: 0.6rem;
 
     div {
@@ -32,8 +54,9 @@
 
     .location {
         display: flex;
+        justify-content: center;
+        align-items: center;
         @include padding-br;
-        // padding-right: 10px;
         padding-left: 2rem;
 
         &:hover {
@@ -45,36 +68,50 @@
         }
         input {
             min-width: 250px;
-        
+            padding: 0;
         }
 
     }
 
+    .searchActive{
+        @include butHoverOn;
+    }
+
     .btn-rs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-radius: 50%;
+        opacity: 0;
+        background: $clr-box-radius;
+        display: flex;
+        margin-top: 16px;
+        margin-bottom: 16px;
+        margin-left: 10px;
+    
+
+        &.showBtn{
+            opacity: 1
+        }
         
         &::after{
             font-weight: 400;
-            padding: 5px;
+            // width: 14px;
             content: "x";
             font-size: 14px;
             @include fontWeightBold;
+            max-height: inherit;
         }
     }
 
     .checkDate {
         display: flex;
-        height: inherit;
 
         .checkIn,
         .checkOut {
             display: flex;
             @include padding-br;
-            height: inherit;
-            // padding-left: 10px;
-            // padding-right: 10px;
-
-
+           
             &:hover {
                 @include butHoverOn;
             }
@@ -124,50 +161,56 @@
     }
 
     .guests {
-        position: relative;
+        // position: relative;
         display: flex;
         justify-content: center;
         align-content: center;
         @include padding-br;
-        // padding-right: 10px;
-        width: fit-content;
+        padding-right: 75px;
 
         &:hover {
             @include butHoverOn;
         }
 
         .bar-input {
-            max-width: rem(100px);
+            max-width: rem(90px);
         }
 
         p {
             margin: 0;
         }
 
+        &.active{
+            padding-right: 16px;
+        }
+
+        .btn-rs{
+            margin-right: 0px;
+        }
+
         .searchIcon {
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-left: 50px;
             background-color: $clr-search-icon-bgc;
             border-radius: 50px;
-            width: 50px;
-            transition: transform 0.8s width 0.3s;
-            height: 48px;
-
-
+            padding-left: 20px;
+            padding-right: 20px;
+            transform: translateX(60px);
+            @include fontWeightBold;
+            transition: transform 0.8s padding 0.8s;
+            
             &.active {
-                transform: translateX(-50px);
-                width: 110px;
-                border-radius: 100vw;
-                transition: width 0.7s;
-
+                transform: translateX(5px);
+                border-radius: 100vw;                
                 ::after {
+                    @include fontWeightBold;
                     content: "Search";
                     margin-left: 0.5em;
                 }
+                
             }
-
+            
             .icon {
                 display: flex;
                 justify-content: center;
@@ -182,16 +225,23 @@
         }
     }
 
+    transition: transform 0.8s height 0.8s overflow 0.5s;
+
+ 
+
 }
 
 .search-modal {
+    position: relative;
+    z-index: 15;
+    background-color: rgba(255, 255, 255, 0);
     display: grid;
     grid-area: 2/2/3/3;
-    margin-top: 0.5em;
     border-radius: 32px;
-    border: solid black;
-    box-sizing: 0 0 0 1px ;
-    background-color: $white;
+    >*{
+        background-color: #fff;
+    }
+    // background-color: $white;
 
 
     .dayPickerModel {
@@ -209,7 +259,7 @@
             padding: 10px;
             min-height: 40px;
             margin-bottom: 1.3rem;
-            background-color: red;
+            // background-color: red;
 
         }
 
@@ -294,6 +344,7 @@
 
 
     .whereModel {
+        
         @include for-search-bar-open;
         display: grid;
         grid-template-columns: 1fr 500px;
@@ -390,13 +441,16 @@
 
     .guestsAddingModal {
         @include for-search-bar-open-small;
+        justify-self: end;
+        box-shadow: 0 0 0 1px rgb(0 0 0 / 4%), 0 8px 16px rgb(0 0 0 / 15%);
+        border-radius: 50px;
+        background-color: #fff;
 
         .guestsModalOpen {
-            // background-color: rgb(139, 78, 78);
+            
             align-self: stretch;
             padding: 1rem 2rem;
             grid-area: 1/2/2/3;
-            border-radius: 50px;
 
             .guest {
                 display: flex;
@@ -419,14 +473,12 @@
                 h3 {
                     font-size: $header-fonts;
 
-
                 }
 
                 h5 {
                     font-size: $font-size-search-bar;
                     @include fontWeightLight;
                     margin: 0;
-
                 }
 
                 .counter{
@@ -440,6 +492,7 @@
                         font-size: 1em;
                         padding: 8px;
                         border-radius: 50%;
+                        width: 2rem;
                     }
                 }
 

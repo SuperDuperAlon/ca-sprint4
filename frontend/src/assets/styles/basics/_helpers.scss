@@ -210,6 +210,14 @@
   }
 }
 
+.full{
+    grid-column: 1/-1;
+}
+
+.rounded-full{
+  border-radius: 100vw;
+}
+
 // // Media helpers
 
 // .square-ratio {
@@ -238,7 +246,7 @@
   flex-direction: column;
 }
 
-.upp-left-14-600 {
-  @include upp-left-14-600
-}
+// .upp-left-14-600 {
+//   @include upp-left-14-600;
+// }
 

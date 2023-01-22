@@ -11,7 +11,7 @@ export function StayDetailsGallery({ stay }) {
           })}
         </section>
       </section>
-    );
+    )
 }
 
 // {/* /* // <img src={`../../assets/img/${img}.jpg`} alt="image" />;

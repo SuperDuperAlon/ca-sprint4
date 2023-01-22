@@ -2,54 +2,109 @@ $clr-ligthtext:#717171;
 $clr-box-radius: #DDDDDD;
 $clr-search-icon-bgc:#dc0e64;
 
+.app-header{
+    grid-column: 1 /-1;
+    display: grid;
+    grid-template-columns: 70px 1fr 70px;
+
+    > * {
+        grid-column: 2;
+      }
+
+    margin-bottom: 1px;
+    
+}
+
 .main-header {
+    background-color: #fff;
+   
     display: flex;
-    justify-content: space-between;
     align-items: center;
     >* {
         display: flex;
     }
     
     .logo{
-        margin-right: 200px;
+        margin-left: auto;
+        align-items: center;
+        justify-self:flex-start;
     }
+    
+    
+    
+    .centerGrid{
 
-    nav {
-        border: solid $clr-box-radius 1px;
-        box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
-        transition: box-shadow 0.2s ease;
-        >*  {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            >* {
-                margin: 0; 
-            } 
-
-        }
-
-        a{
+        display: flex;
+        justify-content: center;
+        .whenSearching{
+            max-width: 0px;
+            position: relative;
+            bottom: -10%;
+            left: 35%;
             p{
-                padding: $paddingHeader ;
-                font-weight: 600;
-                color: $text-black;
-                &::first-letter{
-                    text-transform: capitalize;
-                }
-                &.addguest{
-                    font-weight: 100;
-                    color: $clr-ligthtext;
-                }
+                @include fontWeightBold;
+                border-bottom: solid;
+                text-transform: capitalize
             }
-            &:hover{
-                text-decoration: none;
+            transition: transform 0.8s  height 0.6s display 0.8s; 
+    
+            
+            &.close{
+                transform: translateY(-44px);
+                max-height: 0px;
+                overflow: hidden; 
+                display: none;           
             }
+    
+           
         }
-        .seprertor{
-            color:$grey ;
-            margin: 0;
+        
+        .navBarHeader  {
+            // display: none;
+            display: flex;
+            border: solid $clr-box-radius 1px;
+            box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+            transition: box-shadow 0.2s ease;
+            >*  {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                >* {
+                    margin: 0; 
+                }
+                
+                
+            }
+            &.close{
+                transform: translateY(-70px);
+                max-height: 0px;
+                overflow: hidden;  
+            }
+    
+            a{
+                p{
+                    padding: $paddingHeader ;
+                    font-weight: 600;
+                    color: $text-black;
+                    &::first-letter{
+                        text-transform: capitalize;
+                    }
+                    &.addguest{
+                        font-weight: 100;
+                        color: $clr-ligthtext;
+                    }
+                }
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+            .seprertor{
+                color:$grey ;
+                margin: 0;
+            }
         }
     }
+
     .searchIcon {
         background-color: $clr-search-icon-bgc;
         border-radius: 50%;
@@ -69,6 +124,10 @@ $clr-search-icon-bgc:#dc0e64;
 
 
 .usersOpstion {
+    margin-left: auto;
+    justify-self:flex-end;
+    justify-self: end;
+    align-items:  center;
     >* {
         display: flex;
         align-items: center;
