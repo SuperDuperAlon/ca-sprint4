@@ -6,7 +6,6 @@ import { DateRangePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
 import { OrderPreferences } from "../order-preferences";
 import { orderService } from "../../services/order.service";
-import { Calendar } from "../calendar";
 import { addOrder } from "../../store/order.actions";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
@@ -79,7 +78,7 @@ export function StayDetailsOrderModal({ stay }) {
               </div>
               
             </button>
-              {isDateClicked && <Calender getFilter={getFilter} toggleDatePicker={toggleDatePicker} />}
+              {/* {isDateClicked && <Calender getFilter={getFilter} toggleDatePicker={toggleDatePicker} />} */}
             <button className="order-form-btn down">
               <div className="upp-left-14-600">guests</div>
             </button>
@@ -103,9 +102,8 @@ export function StayDetailsOrderModal({ stay }) {
           <div>Total</div>
           <div>${stay.price * (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24)}</div>
         </div>
-        <div className="App">
-          {/* <Calendar />
-          <OrderPreferences /> */}
+        <div>
+          {/* <OrderPreferences /> */}
         </div>
       </section>
       </section>

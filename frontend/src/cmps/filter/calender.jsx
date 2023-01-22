@@ -1,26 +1,22 @@
-import { useState } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
-import { filterService } from "../../services/filterService"
-export function Calender ({getFilter, toggleDatePicker}){
+export function Calender ({filterBy, onChangeDate}){
 
-    const [filterBy, setFilterBy] = useState(filterService.getEmptyFilter())
+    // const [filterBy, setFilterBy] = useState(filterService.getEmptyFilter())
 
-    const onChangeDate = (dates) => {
-        const checkIn = dates[0]
-        if(dates[0]){
-            getFilter('checkIn', checkIn)
-        }
-        const checkOut = dates[1]
-        if(dates[1]){
-            getFilter('checkOut', checkOut)
-        }
-        setFilterBy({ ...filterBy, checkOut, checkIn })  
-    }
+    // const onChangeDate = (dates) => {
+    //     const checkIn = dates[0]
+    //     if(dates[0]){
+    //         getFilter('checkIn', checkIn)
+    //     }
+    //     const checkOut = dates[1]
+    //     if(dates[1]){
+    //         getFilter('checkOut', checkOut)
+    //     }
+    //     setFilterBy({ ...filterBy, checkOut, checkIn })  
+    // }className="dayPickerModel">
     console.log(filterBy);
-    return(
-    <div className="dayPickerModel">
-        <DatePicker
+    return(<DatePicker
             selected={filterBy.checkIn}
             onChange={onChangeDate}
             startDate={filterBy.checkIn}
@@ -28,12 +24,10 @@ export function Calender ({getFilter, toggleDatePicker}){
             monthsShown={2}
             selectsRange
             open={true}
-            inline
+            // inline
             className="dayPicker"
         // inline
         />
-    </div>
-
     )
     
 }

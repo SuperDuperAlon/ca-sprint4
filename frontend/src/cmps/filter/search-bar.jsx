@@ -52,6 +52,7 @@ export function SearchBar({ queryToParams }) {
         const value = ev.target.value
         setFilter({ ...filter, [field]: value })
     }
+    
     function rsOption(option) {
         switch (option) {
             case "location":
@@ -184,7 +185,7 @@ export function SearchBar({ queryToParams }) {
                         <div className="dateOptions">
 
                         </div>
-                    <Calender filter={filter} onChangeDate={onChangeDate} />
+                    <Calender filterBy={filter} onChangeDate={onChangeDate} />
                     </div>)}
                 {(activeNow === 'location' && !filter?.where) && <div className="whereModel">
                     <div className="showRecentSearch">
@@ -204,7 +205,7 @@ export function SearchBar({ queryToParams }) {
                         </div>
 
                     </div>
-                    <div className="searchByRegion">
+                    <div className="search-by-region">
                         <h1>Search by region</h1>
                         <div className="regionOptions">
                             <div className="reginImg"
