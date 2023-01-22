@@ -165,6 +165,10 @@
   /*for demo*/
   display:inline-block;
   vertical-align:middle;
+  img{
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .avatar-md {
@@ -182,6 +186,10 @@
   /*for demo*/
   display:inline-block;
   vertical-align:middle;
+  img{
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 // flex helpers
@@ -246,6 +254,9 @@
   flex-direction: column;
 }
 
+.bold{
+  font-weight: 600;
+}
 // .upp-left-14-600 {
 //   @include upp-left-14-600;
 // }

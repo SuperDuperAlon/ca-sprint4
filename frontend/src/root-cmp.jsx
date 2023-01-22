@@ -1,43 +1,44 @@
 import React from "react";
 import { Routes, Route } from "react-router";
 
-
-import { AppHeader } from './cmps/app-header'
-import { AppFooter } from './cmps/app-footer'
-import { UserDetails } from './pages/user-details'
-import { StayIndex } from './pages/stay-index'
-import { StayDetails } from './pages/stay-details.jsx'
+import { AppHeader } from "./cmps/app-header";
+import { AppFooter } from "./cmps/app-footer";
+import { UserDetails } from "./pages/user-details";
+import { StayIndex } from "./pages/stay-index";
+import { StayDetails } from "./pages/stay-details.jsx";
 import { StayEdit } from "./pages/stay-edit";
 import { StaySearchResults } from "./cmps/filter/stay-search-results";
 import { AmenitiesModal } from "./cmps/modals/amenities-modal";
 import { Orders } from "./pages/orders";
 import { OrderDetails } from "./cmps/order-details";
+import { OrderEdit } from "./pages/order-edit";
 // import { AppFooter } from './cmps/app-footer'
 // import { UserDetails } from './pages/user-details'
 
 export function RootCmp() {
+  return (
+    <div>
+      <main>
+        <Routes>
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/orders/:orderId" element={<OrderDetails />} />
+          <Route path="/orders/:orderId/edit" element={<OrderEdit />} />
+          <Route path="/orders/edit" element={<OrderEdit />} />
+          <Route path="/" element={<StayIndex />}>
+            <Route path="/:filterBy" element={<StayIndex />} />
+          </Route>
 
-    return (
-        <div>
-            <main>
-                <Routes>
-                    <Route path="/orders" element={<Orders />} />
-                    <Route path="/orders/:orderId" element={<OrderDetails />} />
-                    <Route path="/" element={<StayIndex />} >
-                        <Route path="/:filterBy" element={<StayIndex />} />
-                    </Route>
-
-                    <Route path="/stay/edit" element={<StayEdit />}/>
-                    <Route path="/stay/edit/:stayId" element={<StayEdit />}/>
-                        {/* cmps
+          <Route path="/stay/edit" element={<StayEdit />} />
+          <Route path="/stay/edit/:stayId" element={<StayEdit />} />
+          {/* cmps
                             filter by where and dates
                             filter by prefrence 
                             list:
                                 preview
                              */}
-                    <Route path="/room/:stayId/" element={<StayDetails />} />
+          <Route path="/room/:stayId/" element={<StayDetails />} />
 
-                            {/* 
+          {/* 
                                 cmps:
                                 -phtose
                                 -amenities
@@ -45,21 +46,21 @@ export function RootCmp() {
                                 -loaction
                             -resrvation preview */}
 
-                    {/* <Route path="/book/stay/:id" element={<Stayorder />} />    */}
-                                {/* 
+          {/* <Route path="/book/stay/:id" element={<Stayorder />} />    */}
+          {/* 
                                 cmps:
                                 -resrvation deatils
                                 -payment options
                                 -resrvation preview*/}
 
-                    {/* <Route path="/guest/inbox/:id" element={<UserMsgs />} /> */}
-                                {/* cmps:
+          {/* <Route path="/guest/inbox/:id" element={<UserMsgs />} /> */}
+          {/* cmps:
                                     -messages preview
                                     -chet box
                                     -resrvation deatials */}
-                               
-                    {/* <Route path="/contact_host/:id" element={<SendMsgsToHost />} /> */}
-                                {/* 
+
+          {/* <Route path="/contact_host/:id" element={<SendMsgsToHost />} /> */}
+          {/* 
                                 cmps:
                                 -location ask about
                                 -text box
@@ -69,11 +70,11 @@ export function RootCmp() {
                                 cmps:
                                 -user deatails
                                 -reviews wrote on */}
-                    {/* <Route path="/hosting" element={<PropertyCollcation />} /> */}
-                    <Route path="/amenities/" element={<AmenitiesModal />} />
-                </Routes>
-            </main>
-            {/* <AppFooter /> */}
-        </div>
-    )
+          {/* <Route path="/hosting" element={<PropertyCollcation />} /> */}
+          <Route path="/amenities/" element={<AmenitiesModal />} />
+        </Routes>
+      </main>
+      {/* <AppFooter /> */}
+    </div>
+  );
 }

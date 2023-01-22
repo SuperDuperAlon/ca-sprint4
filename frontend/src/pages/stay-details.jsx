@@ -36,7 +36,7 @@ export function StayDetails() {
 
   }
 
-  console.log(stay);
+  
 
   // async function onAddOrder() {
   //   try {

@@ -49,7 +49,7 @@ export function SecondaryFilter({queryToParams}){
 
 <Box sx={ {maxWidth: { sm: '100vw' }, bgcolor: 'white' }}>
         <Tabs
-            // value={value}
+            value={0}
             // onChange={handleChange}
             variant="scrollable"
             scrollButtons

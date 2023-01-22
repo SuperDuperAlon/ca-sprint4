@@ -1,6 +1,8 @@
 .details-layout {
   display: grid;
-  grid-template-columns: 160px 1fr 160px;
+  grid-template-columns: 1fr 1120px 1fr;
+  // max-width: 1280px;
+  margin: auto;
 
   > * {
     grid-column: 2;
@@ -92,8 +94,11 @@
     padding: 3rem 0 1.5rem;
     @include flex-row-sb;
 
+
     .host-info {
       flex-direction: column;
+      display: flex;
+      width: 85%;
     }
   }
 
@@ -133,11 +138,12 @@
 }
 
 .calendar {
+  border-top: 1px rgb(221, 221, 221) solid;
   padding: 3rem 0 3rem;
 }
 
 .stay-details-map {
-  border-top: 1px solid rgb(113, 113, 113);
+  border-top: 1px rgb(221, 221, 221) solid;
   padding: 3rem 0 3rem;
 }
 
@@ -154,6 +160,7 @@
 }
 
 .stay-details-reviews {
+  border-top: 1px rgb(221, 221, 221) solid;
   padding: 3rem 0 3rem;
   .details-review-ratings,
   .details-review-reviews {
@@ -203,7 +210,7 @@
   position: -webkit-sticky;
   top: 3rem;
   height: fit-content;
-  width: 80%;
+  width: 322px;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 12px;
   padding: 24px;
@@ -229,12 +236,15 @@
 }
 
 .stay-details-host-details {
+  padding: 3rem 0;
+  border-top: 1px rgb(221, 221, 221) solid;
 .img-desc{
   display: flex;
   flex-direction: row;
   
 }
 .host-details {
+
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   > * {

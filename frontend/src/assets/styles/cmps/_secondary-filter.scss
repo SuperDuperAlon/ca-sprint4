@@ -70,8 +70,11 @@
     .MuiTabs-root{
         max-width: 85vw;
     }
+    .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
+        color: #ffffff;
+    }
     .MuiTabs-root:active{
-        background-color: white;
+        background-color: rgba(255, 255, 255, 0);
     }
     .css-1aquho2-MuiTabs-indicator{
         background-color: #ffffff00;
