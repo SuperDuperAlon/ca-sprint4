@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import { MdOutlineKingBed } from "react-icons/md";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import { Calender } from "../../cmps/filter/calender";
+import {filterService} from "../../services/filterService"
 
 export function StayDetailsHostInfo({ stay }) {
   const [reviewModalOpen, setReviewModalOpen] = useState(false);
   const handleOpenReviewModal = () => setReviewModalOpen(true);
   const handleCloseReviewModal = () => setReviewModalOpen(false);
+  const [filter, setFilter] = useState(filterService.getEmptyFilter())
 
   if (!stay) return;
   else
@@ -77,7 +80,7 @@ export function StayDetailsHostInfo({ stay }) {
           <div className="fw600 fs22 pad-b24">Where you'll sleep </div>
           <div className="bedding-desc-rect">
             <div className="icon mar-b16">
-              <MdOutlineKingBed style={{fontSize:"1.5rem"}} />
+              <MdOutlineKingBed style={{ fontSize: "1.5rem" }} />
             </div>
             <div className="fw600 mar-b8">Bedroom </div>
             <div className="fs14">1 king bed</div>
@@ -86,17 +89,20 @@ export function StayDetailsHostInfo({ stay }) {
         <div className="stay-details-amenities">
           <div className="fs22 fw600 mar-b24">What this place offers </div>
           <div className="amenities-list">
-              {stay.amenities.map(amenities => {
-                return <div>{amenities}</div>
-              })}
+            {stay.amenities.map((amenities) => {
+              return <div>{amenities}</div>;
+            })}
           </div>
           <button className="white-open-btn">
             <Link to={`/amenities/`}>Show all 9 amenities</Link>
           </button>
         </div>
         <div className="calendar">
-          <div className="fw600">3 nights in Forde</div> Mar 14, 2023 - Mar 17,
-          2023 Calendar1
+          <div className="fw600">3 nights in Forde</div>
+          <div className="dayPickerModel">
+          {/* <Calender filter={filter}/> */}
+          </div>
+
         </div>
       </section>
     );
