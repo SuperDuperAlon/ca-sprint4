@@ -185,7 +185,7 @@ export function SearchBar({ queryToParams }) {
                         <div className="dateOptions">
 
                         </div>
-                    <Calender filter={filter} onChangeDate={onChangeDate} />
+                    <Calender filterBy={filter} onChangeDate={onChangeDate} />
                     </div>)}
                 {(activeNow === 'location' && !filter?.where) && <div className="whereModel">
                     <div className="showRecentSearch">
