@@ -11,12 +11,14 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { Calender } from "../filter/calender";
 import { filterService } from "../../services/filterService";
+import { GuestsCounter } from "../filter/guests-counter";
 
 export function StayDetailsOrderModal({ stay }) {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [focusedInput, setFocusedInput] = useState();
   const [isDateClicked, setIsDateClicked] = useState(false)
+  const [isGuestsClicked, setIsGuestsClicked] = useState(false)
   const [filterBy, setFilterBy] = useState(filterService.getEmptyFilter())
 
   // let checkIn = useSelector(storeState => storeState.orderModule.checkIn)
@@ -36,22 +38,26 @@ export function StayDetailsOrderModal({ stay }) {
     }
   }
 
-  function getFilter(option, date) {
-    switch (option) {
-        case "checkIn":
-          setFilterBy({ ...filterBy, checkIn: date })
-            break
-        case "checkOut":
-          setFilterBy({ ...filterBy, checkOut: date })
-          setIsDateClicked(false)
-            break
-    }
+
+  function onChangeDate(dates){
+        const checkIn = dates[0]
+        const checkOut = dates[1]
+        if(dates[1]){
+            toggleDatePicker()
+        }
+        setFilterBy({ ...filterBy, checkOut, checkIn })  
   }
 
   function toggleDatePicker(){
       isDateClicked ? setIsDateClicked(false): setIsDateClicked(true)
   }
 
+  function onCountChange(field, diff) {
+    const prevGuests = { ...filterBy.guests, ...filterBy.guests[field] = filterBy.guests[field] + diff }
+    setFilterBy({ ...filterBy, prevGuests })
+}
+
+  console.log(filterBy);
   if (!stay) return 
   else return (
       <section className="order-form-container">
@@ -77,10 +83,19 @@ export function StayDetailsOrderModal({ stay }) {
               </div>
               
             </button>
-              {/* {isDateClicked && <Calender getFilter={getFilter} toggleDatePicker={toggleDatePicker} />} */}
-            <button className="order-form-btn down">
-              <div className="upp-left-14-600">guests</div>
+            
+              {isDateClicked && <div className="dayPickerModel"> 
+              <Calender filterBy={filterBy} onChangeDate={onChangeDate} />
+              </div>}
+            <button className="order-form-btn down" onClick={()=>setIsGuestsClicked(!isGuestsClicked)}>
+              <div className="flex column">
+                <div className="upp-left-14-600 bold fs12">GUESTS</div>
+                {(filterBy?.guests.adults>0 || filterBy?.guests.children>0) && <div className="upp-left-14-600 bold fs12">{filterBy.guests.adults+ filterBy.guests.children}</div>}                                        
+                                    {/* }
+                {filterBy.guests && <div className="upp-left-14-600 bold fs12">{filterBy.guests}</div>} */}
+              </div>
             </button>
+              {isGuestsClicked && <div className="guests-counter-container"><GuestsCounter filter={filterBy} onCountChange={onCountChange}/></div>}
           </div>
         </div>
         <button
