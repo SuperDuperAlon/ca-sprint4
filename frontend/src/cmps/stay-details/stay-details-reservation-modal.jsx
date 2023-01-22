@@ -36,13 +36,14 @@ export function StayDetailsOrderModal({ stay }) {
   if (!stay) return ;
   else
     return (
+      <section className="order-form-container">
       <section className="order-form">
         <div className="order-info mar-b24">
           <div className="fs22 fw600">
             ${stay.price} <span className="fs16">night</span>{" "}
           </div>
           <div className="fs14 fw600">
-            *4.7 <button className="link grey71 fs14">9 reviews</button>{" "}
+            *4.7 ·<button className="sml-review-btn"><Link to={`/review/`}>3 reviews</Link> </button>{" "}
           </div>
         </div>
         <div className="set-dates">
@@ -67,17 +68,18 @@ export function StayDetailsOrderModal({ stay }) {
         </button>
         <div className="order-form-msg mar-b24">You won't be charged yet</div>
         <div className="order-form-pricing mar-b24">
-          <div> ₪1,174 x 3 nights </div>
-          <div>₪4,020</div>
+          <div>${stay.price} x 3 nights </div>
+          <div>${stay.price * 3}</div>
         </div>
         <div className="order-form-total-price">
           <div>Total</div>
-          <div>₪4,020</div>
+          <div>${stay.price * 3}</div>
         </div>
         <div className="App">
-          <Calendar />
-          <OrderPreferences />
+          {/* <Calendar />
+          <OrderPreferences /> */}
         </div>
+      </section>
       </section>
     );
 }

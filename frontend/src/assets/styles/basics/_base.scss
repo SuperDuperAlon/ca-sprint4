@@ -45,7 +45,7 @@ a {
   cursor: pointer;
 }
 a:hover {
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 ul {
@@ -60,6 +60,31 @@ button {
   color: black;
   border: none;
   font-family: circular;
+  &.sml-review-btn{
+    font-size: 14px;
+    color: #717171;
+    background-color: white;
+  }
+  &.white-open-btn {
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 13px 23px;
+    background-color: white;
+    border: 1px black solid;
+    border-radius: 12px;
+    transition: box-shadow 0.2s ease, transform 0.1s ease;
+    & a {
+      text-decoration: none;
+    }
+
+    &:hover {
+      background-color: #f7f7f7;
+    }
+    &:active {
+      transform: scale(0.96);
+      background-color: #f7f7f7;
+    }
+  }
   &.order-form-btn {
     background-color: white;
     display: flex;
@@ -73,11 +98,10 @@ button {
       > :first-child {
         border-right: 1px solid black;
       }
-   
     }
     &.down {
-      border: 1px black  solid;
-      border-top: none ;
+      border: 1px black solid;
+      border-top: none;
       border-radius: 0 0 0.75rem 0.75rem;
     }
   }
@@ -102,6 +126,7 @@ button {
     font-size: 1rem;
     margin: 0;
     padding: 0;
+    width: fit-content;
   }
   &.save-share {
     background-color: rgba(0, 0, 0, 0);
