@@ -74,10 +74,6 @@ function setDefaultLabelFilter(){
     return {label : ''}
 }
 
-function setDefaultLabelFilter(){
-    return {label : ''}
-}
-
 function getEmptyStay() {
   return {
     _id: "",
