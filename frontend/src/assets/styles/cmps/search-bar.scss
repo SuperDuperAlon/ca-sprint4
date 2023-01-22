@@ -443,10 +443,7 @@ padding-top: 100px;
     .react-datepicker__day-name {
         color: $grey;
         padding: $pad-5;
-        width: $dataBox;
-        
-
-        
+        width: $dataBox;   
     }
 
     .react-datepicker__day--in-range:not(.react-datepicker__day--selected, .react-datepicker__day--range-end, .react-datepicker__day--outside-month) {

@@ -51,6 +51,7 @@
     }
   }
 }
+}
 .clickOutSideTheBox {
   background-color: rgb(158, 114, 32);
   width: 100vw;
@@ -65,6 +66,7 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 20px;
 }
+
 
 // =======
 // @include for-narrow-layout {
