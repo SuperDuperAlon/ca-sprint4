@@ -1,3 +1,5 @@
+import { MdStar } from "react-icons/md";
+
 export function StayDetailsHostDetails({ stay }) {
   if (!stay) return console.log("booboo");
   else
@@ -20,7 +22,10 @@ export function StayDetailsHostDetails({ stay }) {
         </div>
         <div className="host-details">
           <div>
-            <div className="fw600 mar-b24">63 Reviews</div>
+            <div className="fw600 mar-b24">
+              <MdStar />
+              63 Reviews
+            </div>
             <div className="lh24 mar-b24">
               I am a marine biologist, journalist and photographer and worked
               for Greepeace, WWF International and United Nations Environment
