@@ -17,6 +17,7 @@ export function SecondaryFilter(){
     const { filterBy } = useParams()
     const filterPrams = useRef(filterBy)
 
+
     // const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     //   setValue(newValue);
     // };
@@ -32,6 +33,7 @@ export function SecondaryFilter(){
         filterBy.label=label
 
         filterService.queryToParams(filterBy)
+
 
     }
     // flex space-between center

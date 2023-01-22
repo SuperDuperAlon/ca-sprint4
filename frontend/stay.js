@@ -36,7 +36,37 @@ const stays = [
     },
     "reviews": [
       {
-        "id": "madeId",
+        "id": "444",
+        "txt": "Very helpful hosts. Cooked traditional...",
+        "rate": 4,
+        "by": {
+          "_id": "u102",
+          "fullname": "user2",
+          "imgUrl": "/img/img2.jpg"
+        }
+      },
+      {
+        "id": "111",
+        "txt": "Very helpful hosts. Cooked traditional...",
+        "rate": 4,
+        "by": {
+          "_id": "u102",
+          "fullname": "user2",
+          "imgUrl": "/img/img2.jpg"
+        }
+      },
+      {
+        "id": "222",
+        "txt": "Very helpful hosts. Cooked traditional...",
+        "rate": 4,
+        "by": {
+          "_id": "u102",
+          "fullname": "user2",
+          "imgUrl": "/img/img2.jpg"
+        }
+      },
+      {
+        "id": "333",
         "txt": "Very helpful hosts. Cooked traditional...",
         "rate": 4,
         "by": {

@@ -9,6 +9,7 @@ export function AmenitiesModal() {
 
   return (
     <div>
+      <h1>Modal</h1>
       <Modal
         open={open}
         onClose={handleClose}

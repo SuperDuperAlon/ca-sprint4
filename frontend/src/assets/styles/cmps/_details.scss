@@ -1,7 +1,6 @@
 .details-layout {
   display: grid;
   grid-template-columns: 160px 1fr 160px;
-  
 
   > * {
     grid-column: 2;
@@ -14,6 +13,46 @@
       grid-column: 1 /-1;
     }
   }
+}
+
+.stay-details-gallery {
+  > * {
+    display: grid;
+    grid-template-areas:
+      "a a b c"
+      "a a d e";
+    gap: 0.5rem;
+    > * {
+      aspect-ratio: 16/9;
+      object-fit: fill;
+    }
+    > .gallery-item-0 {
+      grid-area: a;
+      border-radius: 12px 0 0 12px;
+      height: 434px;
+    }
+    > .gallery-item-1 {
+      grid-area: b;
+      height: 212px;
+    }
+    > .gallery-item-2 {
+      grid-area: c;
+      border-radius: 0 12px 0 0;
+      height: 212px;
+    }
+    > .gallery-item-3 {
+      grid-area: d;
+      height: 212px;
+    }
+    > .gallery-item-4 {
+      grid-area: e;
+      border-radius: 0 0 12px 0;
+      height: 212px;
+    }
+  }
+
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .stay-details-midsection {
@@ -30,12 +69,11 @@
   .secondary-info {
     display: flex;
     justify-content: space-between;
-    margin-top: 0.25rem;
 
     .locations-attr {
       display: flex;
       flex-direction: row;
-      align-items: baseline;
+      align-items: center;
     }
     .details-locations-info-actions {
       display: flex;
@@ -46,7 +84,6 @@
 }
 
 .stay-details-host-info {
-
   > * {
     border-top: 1px rgba(221, 221, 221, 1) solid;
   }
@@ -69,12 +106,12 @@
 }
 
 .stay-details-gallery {
-  padding-top: 1.5rem
+  padding-top: 1.5rem;
 }
 
 .air-cover {
   padding: 2rem 0 2rem;
-  >*:not(:last-child) {
+  > *:not(:last-child) {
     padding-bottom: 1rem;
   }
 }
@@ -83,8 +120,16 @@
   padding: 2rem 0 3rem;
 }
 
-.amenities {
+.stay-details-amenities {
   padding: 3rem 0 3rem;
+  .amenities-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 1.5rem;
+    > * {
+      padding-bottom: 1rem;
+    }
+  }
 }
 
 .calendar {
@@ -92,11 +137,12 @@
 }
 
 .stay-details-map {
+  border-top: 1px solid rgb(113, 113, 113);
   padding: 3rem 0 3rem;
 }
 
 .bedding {
-    padding: 3rem 0 3rem;
+  padding: 3rem 0 3rem;
   .bedding-desc-rect {
     padding: 1.5rem;
     background: none;
@@ -109,17 +155,45 @@
 
 .stay-details-reviews {
   padding: 3rem 0 3rem;
-  .details-review-ratings, .details-review-reviews {
+  .details-review-ratings,
+  .details-review-reviews {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    .review-rating, .review-feedback {
+    .review-rating {
+      display: flex;
+      flex-direction: row;
+      padding: 0 0.5rem;
+      margin-bottom: 1rem;
+      .review-attr-rate{
+        display: flex;
+        flex-direction: row;
+      }
+      > * {
+        width: 50%;
+        justify-content: flex-start;
+      }
+    }
+    .review-feedback {
       @include flex-col-sb;
+      margin-bottom: 40px;
     }
     .review-feedback-personal {
-
+      display: flex;
+      flex-direction: row;
+      flex-grow: 1;
+      .review-feedback-personal-reviewer {
+        flex-direction: column;
+      }
+      .review-feedback-description {
+      }
     }
-    
   }
+}
+
+.order-form-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 3rem;
 }
 
 .order-form {
@@ -127,7 +201,7 @@
   flex-direction: column;
   position: sticky;
   position: -webkit-sticky;
-  top: 0;
+  top: 3rem;
   height: fit-content;
   width: 80%;
   border: 1px solid rgb(221, 221, 221);
@@ -135,20 +209,38 @@
   padding: 24px;
   box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
 
-
-  .order-info, .order-form-pricing, .order-form-total-price{
-    @include flex-col-sb
+  .order-info,
+  .order-form-pricing,
+  .order-form-total-price {
+    @include flex-row-sb;
   }
 
   .order-form-total-price {
     border-top: 1px solid rgb(113, 113, 113);
     padding-top: 1.5rem;
   }
-  .order-form-msg{
+  .order-form-msg {
     display: flex;
     justify-content: center;
   }
   > * {
     // flex-direction: column;
   }
+}
+
+.stay-details-host-details {
+.img-desc{
+  display: flex;
+  flex-direction: row;
+  
+}
+.host-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  > * {
+    padding: 0 0.5rem;
+    margin-right: 4rem;
+    
+  }
+}
 }
