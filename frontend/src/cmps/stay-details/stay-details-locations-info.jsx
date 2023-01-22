@@ -4,6 +4,7 @@ import { BsDownload } from "react-icons/bs";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { FiShare, FiHeart } from "react-icons/fi";
+import {MdStar} from "react-icons/md";
 
 export function StayDetailsLocationInfo({ stay }) {
   if (!stay) return console.log("lala");
@@ -11,11 +12,11 @@ export function StayDetailsLocationInfo({ stay }) {
     return (
       <div className="details-locations-info">
         <div className="info-header fs26 fw600 lh30">{stay.name}</div>
-        <div className="secondary-info fs14">
+        <div className="secondary-info fs14 flex align-center">
           <div className="locations-attr fs14 fw600">
             <div className="mar-r8">
               <span className="fs16">
-                <AiFillStar />
+                <MdStar />
               </span>{" "}
               4.88 · <Link to={`/reviews/`}>303 Reviews</Link>
             </div>

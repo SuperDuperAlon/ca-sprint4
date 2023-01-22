@@ -100,7 +100,7 @@ export function StayDetailsHostInfo({ stay }) {
         <div className="calendar">
           <div className="fw600">3 nights in Forde</div>
           <div className="dayPickerModel">
-          {/* <Calender filter={filter}/> */}
+          <Calender filter={filter}/>
           </div>
 
         </div>

@@ -1,13 +1,14 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { CustomizedProgressBars } from "../reusable/progress-bar";
+import {MdStar} from "react-icons/md";
 
 export function StayDetailsReviews({ stay }) {
   if (!stay) return console.log("loading");
   else
     return (
       <section className="stay-details-reviews">
-        <div className="fs22 fw600 mar-b32">4.88 · 303 Reviews</div>
+        <div className="fs22 fw600 mar-b32 flex align-center"><MdStar />4.88 · 303 Reviews</div>
         <div className="details-review-ratings mar-b16">
           <div className="review-rating">
             <div className="review-attr-type"> Cleanliness</div>
