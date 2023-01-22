@@ -12,16 +12,16 @@ import { SEARCH_BAR_OPEN } from '../store/stay.reducer'
 
 export function AppHeader() {
 
-    const openSearchBar=useSelector(storeState => storeState.stayModule.searchModalOpen)
+    const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
 
-    console.log('openSearchBar:',openSearchBar )
+    console.log('openSearchBar:', openSearchBar)
 
 
     function onChangeStaySearchBar(option) {
         store.dispatch({
             type: SEARCH_BAR_OPEN,
-            open:option,
-          })
+            open: option,
+        })
     }
 
     return (
@@ -30,28 +30,27 @@ export function AppHeader() {
                 <div className="logo">
                     AnyWhere
                 </div>
-
-                <div className={!openSearchBar? "whenSearching close": "whenSearching"}>
-                    <p>stay</p>
-                </div>
-
-                <nav className={!openSearchBar? 'rounded-full navBarHeader': " rounded-full navBarHeader close"}>
-                    <NavLink key={"anywhere"} onClick={() => onChangeStaySearchBar('location')}>
-                        <p>anywhere</p>
-                    </NavLink>
-                    <p className="seprertor">|</p>
-                    <NavLink key={"anyWeek"} onClick={() => onChangeStaySearchBar('checkIn')}>
-                        <p>any week</p>
-                    </NavLink>
-                    <p className="seprertor">|</p>
-                    <NavLink key={"addguests"} onClick={() => onChangeStaySearchBar('guests')}>
-                        <p className="addguest">add guests</p>
-                    </NavLink>
-
-                    <div className='searchIcon'>
-                        <FiSearch />
+                <div className="centerGrid">
+                    <div className={!openSearchBar ? "whenSearching close" : "whenSearching"}>
+                        <p>stay</p>
                     </div>
-                </nav>
+
+                    <nav className={!openSearchBar ? 'rounded-full navBarHeader' : " rounded-full navBarHeader close"}>
+                        <NavLink key={"anywhere"} onClick={() => onChangeStaySearchBar('location')}>
+                            <p>anywhere</p>
+                        </NavLink>
+                        <NavLink key={"anyWeek"} onClick={() => onChangeStaySearchBar('checkIn')}>
+                            <p>any week</p>
+                        </NavLink>
+                        <NavLink key={"addguests"} onClick={() => onChangeStaySearchBar('guests')}>
+                            <p className="addguest">add guests</p>
+                        </NavLink>
+
+                        <div className='searchIcon'>
+                            <FiSearch />
+                        </div>
+                    </nav>
+                </div>
 
                 <div className="usersOpstion ">
                     <div className="switchToHost">

@@ -1,6 +1,8 @@
 .index-layout {
+  position: absolute;
   display: grid;
   grid-template-columns: 70px 1fr 70px;
+  z-index: 4;
 
   > * {
     grid-column: 2;
@@ -9,13 +11,22 @@
       grid-column: 1 /-1;
     }
   }
-  background-color:red;
+  // background-color:red;
 
   .content{
     margin-top: 200px;
   }
+
 }
 
+.clickOutSideTheBox{
+  background-color: rgb(158, 114, 32);
+  width: 100vw;
+  height: 100vh;
+  z-index: 55;
+  position: absolute;
+  
+}
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

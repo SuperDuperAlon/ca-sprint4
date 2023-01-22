@@ -34,8 +34,8 @@ export function SearchBar({ queryToParams }) {
         }, [ref]);
     }
 
-   
-    
+
+
     useEffect(() => {
         setActiveNow(openSearchBar)
     }
@@ -99,58 +99,59 @@ export function SearchBar({ queryToParams }) {
     return (
         <div className={openSearchBar ? "search " : "search close "}>
             <div ref={searchInBox}
-            >
-                <div className="fullColumn" >
-                    <div className="flex align-center search-bar" >
+             > 
+            <div className="fullColumn" >
+                <div className="flex align-center search-bar" >
+                    <div
+                        className={(activeNow === 'location') ? "searchActive location" : "location"}
+                        onClick={() => setActiveNow('location')}>
+                        <div className="bar-input" >
+                            <label htmlFor="where">Where</label>
+                            <input
+                                type="text"
+                                name="where"
+                                id="where"
+                                value={filter.where}
+                                placeholder="Search destinations"
+                                onChange={handleChange}
+                            />
+                        </div>
+                        <button
+                            className={((filter.where) && (activeNow === 'location')) ? "showBtn btn-rs" : "btn-rs"}
+                            onClick={() => rsOption("location")}></button>
+                    </div>
+                    <div className="checkDate">
                         <div
-                            className={(activeNow === 'location') ? "searchActive location" : "location"}
-                            onClick={() => setActiveNow('location')}>
-                            <div className="bar-input" >
-                                <label htmlFor="where">Where</label>
-                                <input
-                                    type="text"
-                                    name="where"
-                                    id="where"
-                                    value={filter.where}
-                                    placeholder="Search destinations"
-                                    onChange={handleChange}
-                                />
+                            className={(activeNow === 'checkIn') ? "searchActive checkIn" : "checkIn"}
+                            onClick={() => setActiveNow('checkIn')} >
+                            <div className="bar-input">
+                                <label htmlFor="checkIn">Check in</label>
+                                <input type='text' name="checkIn" id='checkIn'
+                                    value={filterService.showChosenDate(filter.checkIn)}
+                                    placeholder="Add dates" />
                             </div>
                             <button
-                                className={((filter.where) && (activeNow === 'location')) ? "showBtn btn-rs" : "btn-rs"}
-                                onClick={() => rsOption("location")}></button>
+                                className={((filter.checkIn) && (activeNow === 'checkIn')) ? "showBtn btn-rs" : "btn-rs"}
+                                onClick={() => rsOption("checkIn")}></button>
                         </div>
-                        <div className="checkDate">
-                            <div
-                                className={(activeNow === 'checkIn') ? "searchActive checkIn" : "checkIn"}
-                                onClick={() => setActiveNow('checkIn')} >
-                                <div className="bar-input">
-                                    <label htmlFor="checkIn">Check in</label>
-                                    <input type='text' name="checkIn" id='checkIn'
-                                        value={filterService.showChosenDate(filter.checkIn)}
-                                        placeholder="Add dates" />
-                                </div>
-                                <button
-                                    className={((filter.checkIn) && (activeNow === 'checkIn')) ? "showBtn btn-rs" : "btn-rs"}
-                                    onClick={() => rsOption("checkIn")}></button>
+                        <div
+                            className={(activeNow === 'checkOut') ? "searchActive checkOut" : "checkOut"}
+                            onClick={() => setActiveNow('checkOut')}>
+                            <div className="bar-input">
+                                <label htmlFor="checkOut">Check out</label>
+                                <input type='text' name="checkOut" id='checkOut'
+                                    value={filterService.showChosenDate(filter.checkOut)}
+                                    placeholder="Add dates" />
                             </div>
-                            <div
-                                className={(activeNow === 'checkOut') ? "searchActive checkOut" : "checkOut"}
-                                onClick={() => setActiveNow('checkOut')}>
-                                <div className="bar-input">
-                                    <label htmlFor="checkOut">Check out</label>
-                                    <input type='text' name="checkOut" id='checkOut'
-                                        value={filterService.showChosenDate(filter.checkOut)}
-                                        placeholder="Add dates" />
-                                </div>
-                                <button
-                                    className={((filter.checkOut) && (activeNow === 'checkOut')) ? "showBtn btn-rs" : "btn-rs"}
-                                    onClick={() => rsOption("checkOut")}></button>
-                            </div>
+                            <button
+                                className={((filter.checkOut) && (activeNow === 'checkOut')) ? "showBtn btn-rs" : "btn-rs"}
+                                onClick={() => rsOption("checkOut")}></button>
                         </div>
+                    </div>
+                    <div className={(activeNow === 'guests')? "searchActive": null}>
                         <div className={activeNow ? "active guests" : "guests "}>
                             <div
-                                className={(activeNow === 'guests') ? "searchActive bar-input" : "bar-input"}
+                                className="bar-input"
                                 onClick={() => setActiveNow('guests')}>
                                 <label htmlFor="guests">How</label>
                                 <input type='text' name='guests' id='guests' placeholder="Add guests"
@@ -171,138 +172,138 @@ export function SearchBar({ queryToParams }) {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
+            </div>
 
-                {activeNow && < div className="search-modal">
-                    {(activeNow === 'checkIn' || activeNow === 'checkOut') &&
-                        (<div className="dayPickerModel">
-                            <div className="dateOptions">
-
-                            </div>
-                            <DatePicker
-                                selected={filter.checkIn}
-                                onChange={onChange}
-                                startDate={filter.checkIn}
-                                endDate={filter.checkOut}
-                                monthsShown={2}
-                                selectsRange
-                                open={true}
-                                inline
-                                className="dayPicker"
-                            // inline
-                            />
-                        </div>)}
-                    {(activeNow === 'location' && !filter?.where) && <div className="whereModel">
-                        <div className="showRecentSearch">
-                            <h1>Recent searches</h1>
-                            <div className="recentSearchList">
-                                <div className="lastSearch">
-                                    <div className="roundClock">
-                                        <BsClock />
-                                    </div>
-                                    <div className="searchDetails">
-                                        <p>Italy <span className="how"> Stay</span></p>
-                                        <div className="timeOf">
-                                            Feb 13-15
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            {activeNow && < div className="search-modal">
+                {(activeNow === 'checkIn' || activeNow === 'checkOut') &&
+                    (<div className="dayPickerModel">
+                        <div className="dateOptions">
 
                         </div>
-                        <div className="searchByRegion">
-                            <h1>Search by region</h1>
-                            <div className="regionOptions">
-                                <div className="reginImg"
-                                // onClick={addSearchLabel("I’m flexible")}
-                                >
-                                    <img alt="I’m flexible" src="https://a0.muscache.com/pictures/f9ec8a23-ed44-420b-83e5-10ff1f071a13.jpg" />
-                                    <h3>I’m flexible</h3>
+                        <DatePicker
+                            selected={filter.checkIn}
+                            onChange={onChange}
+                            startDate={filter.checkIn}
+                            endDate={filter.checkOut}
+                            monthsShown={2}
+                            selectsRange
+                            open={true}
+                            inline
+                            className="dayPicker"
+                        // inline
+                        />
+                    </div>)}
+                {(activeNow === 'location' && !filter?.where) && <div className="whereModel">
+                    <div className="showRecentSearch">
+                        <h1>Recent searches</h1>
+                        <div className="recentSearchList">
+                            <div className="lastSearch">
+                                <div className="roundClock">
+                                    <BsClock />
                                 </div>
-                                <div className="reginImg">
-                                    <img alt="Middle East" src="https://a0.muscache.com/im/pictures/66355b01-4695-4db9-b292-c149c46fb1ca.jpg?im_w=320" />
-                                    <h3>Middle East</h3>
-                                </div>
-                                <div className="reginImg">
-                                    <img alt="Italy" src="https://a0.muscache.com/im/pictures/ea5598d7-2b07-4ed7-84da-d1eabd9f2714.jpg?im_w=320" />
-                                    <h3>Italy</h3>
-                                </div>
-
-                                <div className="reginImg">
-                                    <img alt="United States" src="https://a0.muscache.com/im/pictures/4e762891-75a3-4fe1-b73a-cd7e673ba915.jpg?im_w=320" />
-                                    <h3>United States</h3>
-                                </div>
-                                <div className="reginImg">
-                                    <img alt="France" src="https://a0.muscache.com/im/pictures/f0ece7c0-d9b2-49d5-bb83-64173d29cbe3.jpg?im_w=320" />
-                                    <h3>France</h3>
-                                </div>
-                                <div className="reginImg">
-                                    <img alt="Africa" src="https://a0.muscache.com/im/pictures/06a30699-aead-492e-ad08-33ec0b383399.jpg?im_w=320" />
-                                    <h3>Africa</h3>
-                                </div>
-                            </div>
-                        </div>
-                        {(activeNow === 'location' && !!filter.where) &&
-                            <div className="filterByName">
-
-                            </div>
-                        }
-                    </div>}
-
-                    {activeNow === 'guests' &&
-                        <div className="guestsAddingModal">
-                            <div className="guestsModalOpen">
-                                <div className="guest">
-                                    <div className="guestCategory">
-                                        <h3>Adult</h3>
-                                        <h5>Ages 13 or above</h5>
-                                    </div>
-                                    <div className="counter">
-                                        <button className="btu-counter" onClick={() => onCountChange('adults', -1)}>-</button>
-                                        {filter.guests.adults}
-                                        <button className="btu-counter" onClick={() => onCountChange('adults', 1)}>+</button>
-                                    </div>
-                                </div>
-                                <div className="guest">
-                                    <div className="guestCategory">
-                                        <h3>Children</h3>
-                                        <h5>Ages 2–12</h5>
-                                    </div>
-                                    <div className="counter">
-                                        <button className="btu-counter" onClick={() => onCountChange('children', -1)}>-</button>
-                                        {filter.guests.children}
-                                        <button className="btu-counter" onClick={() => onCountChange('children', 1)}>+</button>
-                                    </div>
-                                </div>
-                                <div className="guest">
-                                    <div className="guestCategory">
-                                        <h3>Infants</h3>
-                                        <h5>Under 2</h5>
-                                    </div>
-                                    <div className="counter">
-                                        <button className="btu-counter" onClick={() => onCountChange('infants', -1)}>-</button>
-                                        {filter.guests.infants}
-                                        <button className="btu-counter" onClick={() => onCountChange('infants', 1)}>+</button>
-                                    </div>
-                                </div>
-                                <div className="guest">
-                                    <div className="guestCategory">
-                                        <h3>Pets</h3>
-                                        <h5>Bringing a service animal?</h5>
-                                    </div>
-                                    <div className="counter">
-                                        <button className="btu-counter" onClick={() => onCountChange('pets', -1)}>-</button>
-                                        {filter.guests.pets}
-                                        <button className="btu-counter" onClick={() => onCountChange('pets', 1)}>+</button>
+                                <div className="searchDetails">
+                                    <p>Italy <span className="how"> Stay</span></p>
+                                    <div className="timeOf">
+                                        Feb 13-15
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                    </div>
+                    <div className="searchByRegion">
+                        <h1>Search by region</h1>
+                        <div className="regionOptions">
+                            <div className="reginImg"
+                            // onClick={addSearchLabel("I’m flexible")}
+                            >
+                                <img alt="I’m flexible" src="https://a0.muscache.com/pictures/f9ec8a23-ed44-420b-83e5-10ff1f071a13.jpg" />
+                                <h3>I’m flexible</h3>
+                            </div>
+                            <div className="reginImg">
+                                <img alt="Middle East" src="https://a0.muscache.com/im/pictures/66355b01-4695-4db9-b292-c149c46fb1ca.jpg?im_w=320" />
+                                <h3>Middle East</h3>
+                            </div>
+                            <div className="reginImg">
+                                <img alt="Italy" src="https://a0.muscache.com/im/pictures/ea5598d7-2b07-4ed7-84da-d1eabd9f2714.jpg?im_w=320" />
+                                <h3>Italy</h3>
+                            </div>
+
+                            <div className="reginImg">
+                                <img alt="United States" src="https://a0.muscache.com/im/pictures/4e762891-75a3-4fe1-b73a-cd7e673ba915.jpg?im_w=320" />
+                                <h3>United States</h3>
+                            </div>
+                            <div className="reginImg">
+                                <img alt="France" src="https://a0.muscache.com/im/pictures/f0ece7c0-d9b2-49d5-bb83-64173d29cbe3.jpg?im_w=320" />
+                                <h3>France</h3>
+                            </div>
+                            <div className="reginImg">
+                                <img alt="Africa" src="https://a0.muscache.com/im/pictures/06a30699-aead-492e-ad08-33ec0b383399.jpg?im_w=320" />
+                                <h3>Africa</h3>
+                            </div>
+                        </div>
+                    </div>
+                    {(activeNow === 'location' && !!filter.where) &&
+                        <div className="filterByName">
+
+                        </div>
                     }
                 </div>}
+
+                {activeNow === 'guests' &&
+                    <div className="guestsAddingModal">
+                        <div className="guestsModalOpen">
+                            <div className="guest">
+                                <div className="guestCategory">
+                                    <h3>Adult</h3>
+                                    <h5>Ages 13 or above</h5>
+                                </div>
+                                <div className="counter">
+                                    <button className="btu-counter" onClick={() => onCountChange('adults', -1)}>-</button>
+                                    {filter.guests.adults}
+                                    <button className="btu-counter" onClick={() => onCountChange('adults', 1)}>+</button>
+                                </div>
+                            </div>
+                            <div className="guest">
+                                <div className="guestCategory">
+                                    <h3>Children</h3>
+                                    <h5>Ages 2–12</h5>
+                                </div>
+                                <div className="counter">
+                                    <button className="btu-counter" onClick={() => onCountChange('children', -1)}>-</button>
+                                    {filter.guests.children}
+                                    <button className="btu-counter" onClick={() => onCountChange('children', 1)}>+</button>
+                                </div>
+                            </div>
+                            <div className="guest">
+                                <div className="guestCategory">
+                                    <h3>Infants</h3>
+                                    <h5>Under 2</h5>
+                                </div>
+                                <div className="counter">
+                                    <button className="btu-counter" onClick={() => onCountChange('infants', -1)}>-</button>
+                                    {filter.guests.infants}
+                                    <button className="btu-counter" onClick={() => onCountChange('infants', 1)}>+</button>
+                                </div>
+                            </div>
+                            <div className="guest">
+                                <div className="guestCategory">
+                                    <h3>Pets</h3>
+                                    <h5>Bringing a service animal?</h5>
+                                </div>
+                                <div className="counter">
+                                    <button className="btu-counter" onClick={() => onCountChange('pets', -1)}>-</button>
+                                    {filter.guests.pets}
+                                    <button className="btu-counter" onClick={() => onCountChange('pets', 1)}>+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>}
             </div>
         </div>
     )

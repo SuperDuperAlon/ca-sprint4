@@ -19,16 +19,16 @@
         overflow: hidden;   
     }
     
-.fullColumn{
-    display: grid;
-    height: 85px;
-    padding-top: 10px;
-    background-color: aqua;
-    grid-column: 1/-1;
-    grid-template-columns: 1fr 850px 1fr;
-    >*{
-        grid-column: 2;
-    }
+    .fullColumn{
+        display: grid;
+        height: 85px;
+        padding-top: 10px;
+        // background-color: aqua;
+        grid-column: 1/-1;
+        grid-template-columns: 1fr 850px 1fr;
+        >*{
+            grid-column: 2;
+        }
 }
 }
 
@@ -74,7 +74,7 @@
     }
 
     .searchActive{
-        @include butHoverOn
+        @include butHoverOn;
     }
 
     .btn-rs {
@@ -87,7 +87,7 @@
         display: flex;
         margin-top: 16px;
         margin-bottom: 16px;
-        margin-left: 12px;
+        margin-left: 10px;
     
 
         &.showBtn{
@@ -259,7 +259,7 @@
             padding: 10px;
             min-height: 40px;
             margin-bottom: 1.3rem;
-            background-color: red;
+            // background-color: red;
 
         }
 

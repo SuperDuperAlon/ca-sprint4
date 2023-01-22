@@ -27,7 +27,7 @@ export function StayIndex() {
 
     useEffect(() => {
         loadStays(filterBy)
-        if (!!filterBy?.where==='') { navigate('/') }
+        if (!!filterBy?.where === '') { navigate('/') }
     }, [filterBy])
 
     async function onRemoveStay(ev, stayId) {
@@ -44,7 +44,7 @@ export function StayIndex() {
     async function onEditStay(ev, stay) {
         ev.stopPropagation()
         navigate(`/stay/edit/${stay._id}`)
-       
+
     }
 
     function onOpenStay(ev, stay) {
@@ -53,26 +53,26 @@ export function StayIndex() {
     }
 
 
-    function queryToParams(filter){
-
-        console.log('filter:', filter)
-
-      
-        const queryParams = 
-        `where=${filter.where}&checkIn=${filter.checkIn}&checkOut=${filter.checkOut}&label=${filter.label}`
+    function queryToParams(filter) {
+        filter.checkIn=filterService.getDateToFilter(filter.checkIn)
+        filter.checkOut=filterService.getDateToFilter(filter.checkOut)
+        const queryParams =
+            `where=${filter.where}&checkIn=${filter.checkIn}&checkOut=${filter.checkOut}&label=${filter.label}`
         // &adults=${guests.adults}&children=${guests.children}`    
         navigate(`/${queryParams}`)
     }
 
-    
+
     return (
         <div className='index-layout '>
             <div className="pageTop">
-            <AppHeader />
-                <SearchBar queryToParams={queryToParams}/>
-                <SecondaryFilter queryToParams={queryToParams}/>
+                <AppHeader />
+                <SearchBar queryToParams={queryToParams} />
+                <SecondaryFilter queryToParams={queryToParams} />
             </div>
             <main className='content'>
+                {/* <div className="clickOutSideTheBox">
+                </div> */}
                 {/* <Link to={`/stay/edit`}>Add stay</Link> */}
                 <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay} />
             </main>

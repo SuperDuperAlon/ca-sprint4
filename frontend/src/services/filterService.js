@@ -1,4 +1,3 @@
-
 export const filterService={
     getEmptyFilter,
     getDateToFilter,
@@ -12,7 +11,7 @@ function  getDateToFilter(date){
     const day=date.getDate()
     const month=date.getMonth()+1
     const year=date.getFullYear()
-    return day+'_'+month+'_'+year
+    return year+'-'+month+'-'+day
 }
 
 function getParamsToObj(filterBy) {
@@ -45,8 +44,9 @@ function getEmptyFilter() {
     }
 }
    function showChosenDate(date) {
-        if (!date) {return ""}
-        
+       if (!date) {return ""}
+       date=new Date(date)  
+        console.log('date:', date)      
         const month = date.toLocaleString('default', { month: 'short' })
         const day = date.getDate()
         return month+' '+day
