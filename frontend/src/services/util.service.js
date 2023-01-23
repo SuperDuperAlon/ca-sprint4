@@ -7,7 +7,9 @@ export const utilService = {
     saveToStorage,
     loadFromStorage,
     getDistanceFromLatLonInKm,
-    randomDate
+    randomDate,
+    getMonthName,
+    getShortDate
 }
 
 function makeId(length = 6) {
@@ -87,3 +89,17 @@ function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
         const endRandomDate = startRandomDate.getTime()+ 5*(1000 * 60 * 60 * 24)
     return `${startRandomDate.toLocaleDateString()}-${new Date(endRandomDate).toLocaleDateString()}`
   }
+
+  function getMonthName(date) {
+    const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+    ]
+    return monthNames[date.getMonth()]
+}
+
+function getShortDate(checkIn, checkOut){
+    const month = getMonthName(new Date(checkIn))
+    const startDay = new Date(checkIn).getDate()
+    const endDay = new Date(checkOut).getDate()
+    return `${month} ${startDay} - ${endDay}`
+}

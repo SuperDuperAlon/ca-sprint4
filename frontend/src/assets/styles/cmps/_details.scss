@@ -210,11 +210,12 @@
   position: -webkit-sticky;
   top: 3rem;
   height: fit-content;
-  width: 322px;
+  width: 370px;
   border: 1px solid rgb(221, 221, 221);
   border-radius: 12px;
   padding: 24px;
   box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+  min-height: 56px;
 
   .order-info,
   .order-form-pricing,
@@ -223,7 +224,7 @@
   }
 
   .order-form-total-price {
-    border-top: 1px solid rgb(113, 113, 113);
+    border-top: 1px solid rgb(221, 221, 221);
     padding-top: 1.5rem;
   }
   .order-form-msg {
@@ -253,4 +254,27 @@
     
   }
 }
+
+
 }
+
+.date-container{
+  padding: 12px 10px;
+  text-align: left;
+  color: black;
+}
+.date-container.guests{
+  width: 100%;
+}
+
+.guests-counter-container{
+  // border: 1px solid #b5adad;
+  padding: 16px;
+  border-radius: 0.25rem;
+  box-shadow: rgb(0 0 0 / 15%) 0px 2px 6px, rgb(0 0 0 / 7%) 0px 0px 0px 1px;
+  position: absolute;
+  background-color: white;
+  width: 320px;
+  // bottom: 0px;
+}
+

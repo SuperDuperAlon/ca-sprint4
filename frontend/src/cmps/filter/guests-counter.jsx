@@ -38,7 +38,7 @@ export function GuestsCounter({filter,onCountChange}){
         <div className="guest">
             <div className="guestCategory">
                 <h3>Pets</h3>
-                <h5>Bringing a service animal?</h5>
+                <h5 className="pet">Bringing a service animal?</h5>
             </div>
             <div className="counter">
                 <button className="btu-counter" onClick={() => onCountChange('pets', -1)}>-</button>
