@@ -49,20 +49,22 @@ export function StayIndex() {
         navigate(`/room/${stay._id}`)
     }
 
-    function onClickOutSideTheBar(event){
+    function onClickOutSideTheBar(event) {
+        console.log('click:')
         event.preventDefault()
+        console.log('openSearchBar:', openSearchBar)
         if (!openSearchBar) return
         store.dispatch({
             type: SEARCH_BAR_OPEN,
             open: false,
         })
-        
+
     }
 
 
     function queryToParams(filter) {
-        filter.checkIn=filterService.getDateToFilter(filter.checkIn)
-        filter.checkOut=filterService.getDateToFilter(filter.checkOut)
+        filter.checkIn = filterService.getDateToFilter(filter.checkIn)
+        filter.checkOut = filterService.getDateToFilter(filter.checkOut)
         const queryParams =
             `where=${filter.where}&checkIn=${filter.checkIn}&checkOut=${filter.checkOut}&label=${filter.label}`
         // &adults=${guests.adults}&children=${guests.children}`    
@@ -71,16 +73,17 @@ export function StayIndex() {
 
 
     return (
-        <div className='index-layout '>
-            <div className="pageTop">
+        <div className='index-layout main-content'>
+            <div className="page-top full main-content">
                 <AppHeader />
                 <SearchBar queryToParams={queryToParams} />
+                <div className='full main-content cover'></div>
                 <SecondaryFilter queryToParams={queryToParams} />
             </div>
-            <main className='main-content'>
-                <div className={openSearchBar? "black-box":"black-box close"}
-                onClick={onClickOutSideTheBar}>
-                </div>
+            <main className='full main-content'>
+                {openSearchBar&& <div className="black-box"
+                    onClick={onClickOutSideTheBar}>
+                </div>}
                 <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay} />
             </main>
         </div >

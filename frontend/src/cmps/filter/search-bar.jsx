@@ -9,6 +9,8 @@ import { useParams } from "react-router"
 import { useSelector } from "react-redux"
 import { Calender } from "./calender"
 import { GuestsCounter } from "./guest-counter"
+import { store } from "../../store/store"
+import { SEARCH_BAR_OPEN } from "../../store/stay.reducer"
 
 export function SearchBar({ queryToParams }) {
     const [activeNow, setActiveNow] = useState(null)
@@ -92,15 +94,20 @@ export function SearchBar({ queryToParams }) {
         filterBy.checkOut = filter.checkOut
         filterBy.where = filter.where
         filterBy.guests = filter.guests
+        
         queryToParams(filter)
+        store.dispatch({
+            type: SEARCH_BAR_OPEN,
+            open: false,
+        })
 
     }
 
 
     return (
-        <div className={openSearchBar ? "search" : "search close"}>
-            <div className="fullColumn" ref={searchInBox}>
-                <div className="flex align-center search-bar" >
+        <div className={openSearchBar ? "search main-content full" : "search close"}>
+            <div className= {openSearchBar ? "fullColumn full":"fullColumn full close" } ref={searchInBox}>
+                <div className="flex align-center search-bar main-content" >
                     <div
                         className={(activeNow === 'location') ? "searchActive location" : "location"}
                         onClick={() => setActiveNow('location')}>

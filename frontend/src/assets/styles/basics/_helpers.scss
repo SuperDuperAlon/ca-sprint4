@@ -66,10 +66,22 @@
 .mar-l8 {
   margin-left: 0.5rem;
 }
+.mar-l12 {
+  margin-left: 0.75rem;
+}
+.mar-l24 {
+  margin-left: 1.5rem;
+}
 
 //right
 .mar-r8 {
   margin-right: 0.5rem;
+}
+.mar-r12 {
+  margin-right: 0.75rem;
+}
+.mar-r24 {
+  margin-right: 1.5rem;
 }
 
 //bottom 
@@ -109,6 +121,10 @@
   }
 
 // Padding
+.pad-all12{
+  padding: 0.75rem;
+
+}
 // bottom
 
 .pad-b24 {
