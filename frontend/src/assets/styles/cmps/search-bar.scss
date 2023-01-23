@@ -502,3 +502,40 @@
         }
     }
 }
+
+.guest{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    h3{
+        font-size: 1rem;
+    }
+    h5{
+        font-size: rem(14px);
+        font-weight: 300;
+
+    }
+    .pet{
+        text-decoration: underline;
+        font-weight: bold;
+    }
+    .counter{
+        display: inline-flex;
+        width: 104px;
+        align-items: center;
+        justify-content:space-between;
+        
+    }
+    button{
+        border-radius: 50%;
+        width: rem(32px);
+        height: rem(32px);
+        background-color: white;
+        border: solid 1px  rgb(176, 176, 176);
+        &:hover{
+            border-color: rgb(34, 34, 34);
+        }
+    }
+}

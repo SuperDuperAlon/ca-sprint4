@@ -27,7 +27,7 @@ h4,
 h5,
 h6 {
   font-family: circular, sans-serif;
-  margin: 0 0 0.6em;
+  // margin: 0 0 0.6em;
   line-height: 1;
 }
 
@@ -65,6 +65,11 @@ button {
     color: #717171;
     background-color: white;
   }
+  &.clean-btn{
+    border: none;
+    background-color: white;
+    padding-left: 0;
+  }
   &.white-open-btn {
     font-weight: 600;
     font-size: 1rem;
@@ -86,8 +91,11 @@ button {
     }
   }
   &.order-form-btn {
+    padding: 0;
     background-color: white;
     display: flex;
+    color:#b5adad;
+    // min-height: 56px;
     width: 100%;
     > * {
       width: 50%;
@@ -96,13 +104,20 @@ button {
       border: 1px solid;
       border-radius: 0.75rem 0.75rem 0 0;
       > :first-child {
-        border-right: 1px solid black;
+        border-right: 1px solid #b5adad;
       }
     }
     &.down {
-      border: 1px black solid;
+      border: 1px #b5adad solid;
       border-top: none;
       border-radius: 0 0 0.75rem 0.75rem;
+      width: 100%;
+      .guests-arrow{
+        width: auto;
+        padding-right: 10px;
+        font-size: rem(28px);
+        color: black
+      }
     }
   }
   &.reserve-btn {
@@ -149,4 +164,12 @@ button {
       transform: scale(0.96);
     }
   }
+}
+
+
+.logo-general{
+  color: #ff385c;
+  font-weight: 900;
+  font-size: 1.2em;
+  padding: 0;
 }
