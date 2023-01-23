@@ -68,6 +68,10 @@
 }
 
 //right
+
+.mar-r4 {
+  margin-right: 0.25rem;
+}
 .mar-r8 {
   margin-right: 0.5rem;
 }
@@ -111,6 +115,10 @@
 // Padding
 // bottom
 
+.pad-b16 {
+  padding-bottom: 1rem;
+}
+
 .pad-b24 {
     padding-bottom: 1.5rem;
   }
@@ -119,6 +127,12 @@
   .pad-t8 {
     padding-top: 0.5rem;
   }
+
+  .pad-t16 {
+    padding-top: 1rem;
+  }
+
+
 
 // colors
 .pink {
@@ -205,6 +219,10 @@
     justify-content: space-between;
   }
 
+  &.space-around {
+    justify-content: space-around;
+  }
+
   &.column {
     flex-direction: column;
   }
@@ -215,6 +233,9 @@
 
   &.align-center {
     align-items: center;
+  }
+  &.justify-bottom {
+    align-items: flex-end;
   }
 }
 
@@ -260,4 +281,8 @@
 // .upp-left-14-600 {
 //   @include upp-left-14-600;
 // }
+
+.clean-list {
+ margin: 0;
+}
 

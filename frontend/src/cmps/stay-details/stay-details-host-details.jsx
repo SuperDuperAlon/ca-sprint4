@@ -49,7 +49,6 @@ export function StayDetailsHostDetails({ stay }) {
               <div>Response rate: 100%</div>
               <div>Response time: within an hour</div>
             </div>
-
             <div>
               <button className="white-open-btn">Contact Host</button>
             </div>

@@ -12,6 +12,7 @@ import { orderService } from "../services/order.service";
 import { stayService } from "../services/stay.service";
 import { BasicModal } from "../cmps/modal";
 import { AppHeader } from "../cmps/app-header";
+import { InnerNavStay } from "../cmps/stay-details/stay-details-inner-nav";
 import React from "react";
 
 export function StayDetails() {
@@ -51,7 +52,9 @@ if (!stay) return console.log('no map');
       <AppHeader />
       <StayDetailsLocationInfo stay={stay} />
       <StayDetailsGallery stay={stay} />
+      <InnerNavStay />
       <div className="stay-details-midsection">
+
         <StayDetailsHostInfo stay={stay} />
         <StayDetailsOrderModal stay={stay} />
       </div>
