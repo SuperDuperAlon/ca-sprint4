@@ -6,6 +6,7 @@ import { AppFooter } from "./cmps/app-footer";
 import { UserDetails } from "./pages/user-details";
 import { StayIndex } from "./pages/stay-index";
 import { StayDetails } from "./pages/stay-details.jsx";
+import { StayOrder } from "./pages/stay-order.jsx";
 import { StayEdit } from "./pages/stay-edit";
 import { StaySearchResults } from "./cmps/filter/stay-search-results";
 import { AmenitiesModal } from "./cmps/modals/amenities-modal";
@@ -36,7 +37,8 @@ export function RootCmp() {
                             list:
                                 preview
                              */}
-          <Route path="/room/:stayId/" element={<StayDetails />} />
+          <Route path="/room/:stayId" element={<StayDetails />} />
+            
 
           {/* 
                                 cmps:
@@ -46,7 +48,9 @@ export function RootCmp() {
                                 -loaction
                             -resrvation preview */}
 
-          {/* <Route path="/book/stay/:id" element={<Stayorder />} />    */}
+            <Route path="/book/stay/:id/" element={<StayOrder/>}>
+                <Route path="/book/stay/:id/:filterBy" element={<StayOrder />} />  
+            </Route> 
           {/* 
                                 cmps:
                                 -resrvation deatils

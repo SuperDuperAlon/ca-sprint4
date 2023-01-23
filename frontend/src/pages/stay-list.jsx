@@ -7,7 +7,7 @@ import { IoIosStar } from "react-icons/io";
 
 export function StayList({stays, onRemoveStay, onEditStay, onOpenStay}){
     return <section >
-        <ul className="stay-list">
+        <ul className="stay-list full">
                     {stays.map(stay =>
                         <li onClick={(ev)=>onOpenStay(ev,stay)} className="stay-preview" key={stay._id}>
                             {/* <button onClick={(ev)=>onRemoveStay(ev,stay._id)} className="remove-btn">X</button> */}

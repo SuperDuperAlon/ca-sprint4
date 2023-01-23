@@ -3,197 +3,320 @@ $clr-box-radius: #DDDDDD;
 $clr-search-icon-bgc: #dc0e64;
 
 .app-header {
-    position: relative;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-    grid-column: 1 /-1;
-    display: grid;
-    grid-template-columns: 70px 1fr 70px;
-
-    >* {
-        grid-column: 2;
-    }
-
-    margin-bottom: 1px;
-
+    margin: 19px 0;
+    padding: 0;
+    grid-column: 1/-1;
+    height: 80px;
 }
 
 .main-header {
-    background-color: #fff;
     display: flex;
     align-items: center;
 
+
     >* {
-        display: flex; 
+        display: flex;
     }
 
     .logo {
-        margin-right: auto;
-        min-width: 100px;
-        width: 20%;
-        align-items: center;
-        justify-self: flex-start;
-        cursor: pointer;
-        >*{
-            color:  $clr-search-icon-bgc;
-            font-weight: 700;
-            font-size: 2em;
-            margin: 0;
-        }
-        .Alogo{
-            position: relative;
-            bottom: -7px;
-        }
+        display: none
     }
 
-
-
-    .centerGrid {
-
-        .whenSearching {
-            max-width: 0px;
-            position: relative;
-            bottom: -10%;
-            left: 35%;
-
-            p {
-                @include fontWeightBold;
-                border-bottom: solid;
-                text-transform: capitalize
-            }
-
-            transition: transform 0.8s height 0.6s display 0.8s;
-
-
-            &.close {
-                transform: translateY(-44px);
-                max-height: 0px;
-                overflow: hidden;
-                display: none;
-            }
-
-
-        }
+    .center-grid {
+        width: 100%;
 
         .navBarHeader {
-            min-width: 350px;
-            height: 45px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            @include flex-center;
+            width: 100%;
+            padding: 12px;
+
+            background-color: $white;
             box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
-            transition: box-shadow 0.2s ease;
+            transition: transform 0.5s ease, box-shadow 0.4s, opacity 0.4s;
 
-            >* {
-                display: flex;
-                justify-content: center;
-                align-items: center;
+            .header-nav {
+                &.long {
+                    a {
+                        text-decoration: none;
+                        color: $text-black;
+                        font-size: 14px;
 
-                >* {
-                    margin: 0;
+                        &::first-letter {
+                            text-transform: capitalize;
+                        }
+                    }
                 }
+
+                &.long {
+                    display: none;
+                }
+
+                &.short {
+                    .bottom {
+                        :first-child {
+                            &::after {
+                                content: ".";
+                                position: relative;
+                                padding-left: 5px;
+                                padding-right: 5px;
+                                top: -3px
+                            }
+                        }
+                    }
+                }
+            }
+
+            .filterBtn {
+                @include flex-center;
+                margin-left: auto;
+                padding: 10px;
+                border: solid 1px $clr-border-between-div;
+                
+                >* {
+                    font-size: 1.5rem;
+                }
+
+                border-radius: 50%;
 
 
             }
 
             &.close {
-                transform: translateY(-70px);
-                max-height: 0px;
+                transform: scaleX(2) translateY(70px);
+                opacity: 0;
                 overflow: hidden;
             }
 
-            a {
-                text-decoration: none;
-                
-                p {
-                    font-weight: 600;
-                    color: $text-black;
-
-                    &::first-letter {
-                        text-transform: capitalize;
-                    }
-
-                    &.addGuests {
-                        font-weight: 100;
-                        color: $clr-ligthtext;
-                    }
-
-                }
-
-                &:hover {
-                    text-decoration: none;
-                }
-
-                &:not(:last-child, :first-child) {
-                    &::before {
-                        content: "|";
-                        color: $clr-border-between-div;
-                        padding: $paddingHeader ;
-
-                    }
-
-                }
-            }
         }
-    }
 
-    .searchIcon {
-        transform: translateX(12px);
-        color: $clr-box-radius;
-        background-color: $clr-search-icon-bgc;
-        border-radius: 50%;
-        padding: 8px;
-        font-weight: 600;
-        stroke-width:3;
-        
+        .searchIcon {
+            @include flex-center;
+            padding: 10px;
+            margin-right: 12px;
+            color: $clr-box-radius;
+            border-radius: 50%;
+
+            >* {
+                stroke-width: 4;
+                font-size: 1.5rem;
+            }
+
+        }
     }
 }
 
 
 .users-option {
-    height: 45px;
-    margin-left: 142px;
-    justify-self: flex-end;
-    align-items: center;
-    
+    display: none;
 
-    >* {
-        @include flex-center;
-        margin: 10px ;
+}
+
+@media (min-width: $mobile-breakpoint) {}
+
+
+
+
+
+// @media (min-width: $mobile-breakpoint) {
+// }
+// @media (min-width: $tablet-breakpoint) {
+// }
+// @media (min-width: $desktop-narrow-breakpoint) {
+// }
+// @media (min-width: $desktop-wide-breakpoint) {
+// }
+
+
+@media (min-width: $tablet-breakpoint) {
+    .main-header {
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-self: flex-start;
+            cursor: pointer;
+
+            >* {
+                @include flex-center;
+                color: $clr-search-icon-bgc;
+                font-weight: 700;
+                font-size: 2em;
+            }
+
+            .a-Logo {
+                position: relative;
+            }
+
+            .text-next-to-logo {
+                display: none
+            }
+
+
+        }
+
+        .center-grid {
+            width: fit-content;
+
+            .navBarHeader {
+                padding: 0;
+                // width: 100%;
+                .header-nav {
+                    @include flex-center;
+
+                    &:first-child {
+                        padding-left: 8px;
+                    }
+
+                    a {
+                        font-weight: 600;
+                        padding: 0 $padding-header-word-nav-bar;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+
+                        &:not(:last-child, :first-child) {
+                            border-left: solid 1px $clr-border-between-div;
+
+
+                        }
+
+                        &:last-of-type {
+                            font-weight: 100;
+                        }
+
+                        &:hover {
+                            text-decoration: none;
+                        }
+
+
+                    }
+
+                    &.long {
+                        display: flex;
+                    }
+
+                    &.short {
+                        display: none;
+                    }
+
+                }
+
+                .filterBtn {
+                    display: none;
+                }
+            }
+
+            .searchIcon {
+                background-color: $clr-search-icon-bgc;
+                padding: 10px;
+                font-size: 12px;
+                margin: 7px 7px 7px 0;
+                >* {
+                    stroke-width: 2;
+                    font-size: 1rem;
+                }
+    
+            }
+        }
+
+        .users-option {
+            align-items: center;
+            justify-self: flex-end;
+            display: flex;
+            margin-left: auto;
+
+            >* {
+                @include flex-center;
+            }
+
+            .header-options-switching-keys {
+
+
+                >* {
+                    @include flex-center;
+                }
+
+                .switchToHost {
+
+                    .switch-to-host {
+                        white-space: normal;
+                        white-space: nowrap;
+
+
+
+                        &::first-letter {
+                            text-transform: capitalize;
+
+                        }
+                    }
+
+
+                }
+
+            }
+
+            .login-menu {
+                box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
+                border: solid 1px $clr-border-between-div;
+                padding: 2px 3px 0px 12px;
+
+                >* {
+                    @include flex-center;
+                }
+
+                .menu {
+                    @include flex-center;
+                    margin-right: 5px;
+                }
+
+                .person {
+                    font-size: 2.5rem;
+                    @include flex-center;
+                    margin: 0;
+                    line-height: 0;
+
+                    >* {
+                        stroke-width: 4;
+                    }
+                }
+
+            }
+
+
+
+
+
+        }
+
+    }
+}
+
+
+@media (min-width: $screen-wide-950) {
+
+    .main-header {
+        .logo {
+            margin-right: auto;
+            flex:1 0 140px;
+        }
+
+        .users-option {
+            flex:1 0 100px;
+            justify-content:flex-end;
+        }
     }
 
-    .switchToHost {
-        >* {
-            margin: 0;
 
-            &::first-letter {
-                text-transform: capitalize;
+}
+
+@media (min-width: $desktop-narrow-breakpoint) {
+    .main-header {
+        .logo {
+            .text-next-to-logo {
+                display: block
             }
         }
 
     }
-
-    .loginMenu {
-        border: solid 1px $clr-border-between-div;
-        padding-left: 10px;
-        padding-right: 5px;
-        >*{
-            @include flex-center;
-        }
-        .menu {
-            font-size: 1em;
-            @include flex-center;
-            margin-right: 10px;
-
-        }
-
-        .person {
-            font-size: 2.3em;
-
-
-        }
-
-    }
-
 }
+
+@media (min-width: $desktop-wide-breakpoint) {}

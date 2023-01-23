@@ -7,7 +7,6 @@ export const filterService={
 
 function  getDateToFilter(date){
     if (!date) return null
-    console.log('date:', date)
     const day=date.getDate()
     const month=date.getMonth()+1
     const year=date.getFullYear()
@@ -35,7 +34,7 @@ function getEmptyFilter() {
         checkIn: null,
         checkOut: null,
         guests: {
-            adults: 0,
+            adults: 1,
             children: 0,
             infants: 0,
             pets: 0
@@ -45,8 +44,7 @@ function getEmptyFilter() {
 }
    function showChosenDate(date) {
        if (!date) {return ""}
-       date=new Date(date)  
-        console.log('date:', date)      
+        date=new Date(date)  
         const month = date.toLocaleString('default', { month: 'short' })
         const day = date.getDate()
         return month+' '+day

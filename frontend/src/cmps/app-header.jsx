@@ -1,6 +1,5 @@
 import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 
 import { GrLanguage } from 'react-icons/gr'
 import { FiSearch } from 'react-icons/fi'
@@ -26,50 +25,79 @@ export function AppHeader() {
     }
 
     return (
-        <header className="app-header">
-            <main className='main-header'>
-                <div className="logo" onClick={()=>navigate('/')}>
-                    <h3>anypl<span className="Alogo"><SiAirbnb/></span>ce</h3>
+        <header className="app-header full main-content ">
+            <main className='main-header main-content'>
+                <div className="logo" onClick={() => navigate('/')}>
+                    <div><span className="a-Logo"><SiAirbnb /></span><span className='text-next-to-logo'>nyplace</span></div>
                 </div>
-                <div className="centerGrid rounded-full">
-                    <div className={!openSearchBar ? "whenSearching close" : "whenSearching"}>
-                        <p>stay</p>
-                    </div>
 
-                    <nav className={!openSearchBar ? 'rounded-full navBarHeader' : " rounded-full navBarHeader close"}>
-                        <NavLink key={"anywhere"} onClick={() => onChangeStaySearchBar('location')}>
-                            <p>anywhere</p>
-                        </NavLink>
-                        <NavLink key={"anyWeek"} onClick={() => onChangeStaySearchBar('checkIn')}>
-                            <p>any week</p>
-                        </NavLink>
-                        <NavLink key={"addGuests"} onClick={() => onChangeStaySearchBar('guests')}>
-                            <p className="addGuests">add guests</p>
-                        </NavLink>
+                <div className="center-grid mar-l24 mar-r24">
+                   {/* <div className={!openSearchBar ? "whenSearching close" : "whenSearching"}>
+                        <p>stay</p>
+                    </div> */}
+
+                    <div className={!openSearchBar ? 'rounded-full navBarHeader ' : " rounded-full navBarHeader close"}>
+                        <nav className='header-nav long'>
+                            <NavLink key={"anywhere"} onClick={() => onChangeStaySearchBar('location')}>
+                                anywhere
+                            </NavLink>
+                            <NavLink key={"anyWeek"} onClick={() => onChangeStaySearchBar('checkIn')}>
+                                any week
+                            </NavLink>
+                            <NavLink key={"addGuests"} onClick={() => onChangeStaySearchBar('guests')}>
+                                add guests
+                            </NavLink>
+                        </nav>
+
 
                         <div className='searchIcon'>
                             <FiSearch />
                         </div>
-                    </nav>
+                        <nav className='header-nav short'>
+                            <div className="top">
+                                <NavLink key={"anywhere"} className="bold" onClick={() => onChangeStaySearchBar('location')}>
+                                    anywhere
+                                </NavLink>
+                            </div>
+                            <div className="bottom">
+                                <NavLink key={"anyWeek"} onClick={() => onChangeStaySearchBar('checkIn')}>
+                                    any week
+                                </NavLink>
+                                <NavLink key={"addGuests"} onClick={() => onChangeStaySearchBar('guests')}>
+                                    add guests
+                                </NavLink>
+                            </div>
+                        </nav>
+                        <div className="filterBtn">
+                            <SiAirbnb />
+                        </div>
+                    </div>
                 </div>
 
-                <div className="users-option ">
-                    <div className="switchToHost">
-                        <p>switch to hosting</p>
+
+                <div className="users-option">
+                    <div className="header-options-switching-keys mar-r8">
+                        <div className="switchToHost">
+                            <div className='fs14 lh18 pad-all12 rounded-full bold switch-to-host'>
+                                switch to hosting</div>
+                        </div>
+                        <div className="language-option fs14 pad-all12">
+                            <GrLanguage />
+                        </div>
                     </div>
-                    <div className="language-option">
-                        <GrLanguage />
-                    </div>
-                    <div className="loginMenu rounded-full">
-                        <span className='menu'>
+
+                    <div className="login-menu rounded-full">
+                        <span className='menu fs-12 lh-20'>
                             <AiOutlineMenu />
                         </span>
-                        <span className='person'>
+                        <span className='person mar-l12 fs12'>
                             <IoPersonCircleSharp />
                         </span>
                     </div>
                 </div>
+
             </main>
+
         </header>
     )
 }

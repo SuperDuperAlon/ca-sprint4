@@ -3,59 +3,63 @@ $pink: #ff5a5f;
 $turquoise: #00a699;
 $orange: #fc642d;
 $dark-grey: rgb(72, 72, 72);
-$grey: rgb(118, 118, 118); 
-$text-black:#222222;
+$grey: rgb(118, 118, 118);
+$text-black: #222222;
 $clr-box-radius: #DDDDDD;
-$white:#ffff;
-$clr-ligthtext:rgb(113, 113, 113);
+$white: #ffff;
+$clr-ligthtext: rgb(113, 113, 113);
 $clr-box-radius: #DDDDDD;
-$clr-search-icon-bgc:#dc0e64;
-$clr-hover-on-dates:black;
-$clr-in-range:rgb(242, 239, 239);
-$clr-border-between-div:#EBEBEB;
+$clr-search-icon-bgc: #dc0e64;
+$clr-hover-on-dates: black;
+$clr-in-range: rgb(242, 239, 239);
+$clr-border-between-div: #EBEBEB;
 
 
 // Breakpoints (Need to find all breakpoints)
 $mobile-breakpoint: 639px;
-$tablet-breakpoint: 1047px;
-$desktop-breakpoint: 1048px;
+$tablet-breakpoint: 750px;
+$screen-wide-950:950px;
+$desktop-narrow-breakpoint: 1120px;
+$desktop-wide-breakpoint: 1400px;
 
 
 // Padding
-$paddingHeader:12px;
-$pad-12:12px;
-$pad-5:5px;
-$pad-20:20px;
-$pad-15:15px;
-$pad-8:8px;
+$pad-12: 12px;
+$pad-5: 5px;
+$pad-20: 20px;
+$pad-15: 15px;
+$pad-8: 8px;
+$pad-8: 8px;
 
 
-$dataBoxWidth:46px;
-$dataBoxPadding:12px;
+
+$dataBoxWidth: 46px;
+$dataBoxPadding: 12px;
 
 //search bar hight
-$search-bar-hight:48px;
-$region-pic-hight:125px;
-$region-pic-width:150px;
+$search-bar-hight: 48px;
+$region-pic-hight: 125px;
+$region-pic-width: 150px;
 
 //
-$reginImg:122px;
+$reginImg: 122px;
 
 
 // font size
-$header-fonts:16px;
-$font-size-search-bar:14px;
+$header-fonts: 16px;
+$font-size-search-bar: 14px;
 
 
 
 // icon
-$icon-size:20px;
+$icon-size: 20px;
 
-$guest-margin-between:25px;
+$guest-margin-between: 25px;
 
 // font weight
 
-
+$header-search-bar-padding-side: 24px;
+$padding-header-word-nav-bar: 16px;
 
 
 

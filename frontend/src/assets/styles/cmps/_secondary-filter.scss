@@ -1,86 +1,95 @@
-.secondary-filter{
-   padding: 1.25rem 0 0 0;
-   gap : 2rem;
-
-//    background-color: green;
-   position: sticky;
-   top:0;
-    
-    .icons-container{
+.secondary-filter {
+    // background-color: pink;
+    padding: 1.25rem 0 0 0;
+    gap: 2rem;
+    // position: relative;
+    bottom: 0px;
+    .icons-container {
         min-width: fit-content;
         padding: 0.8rem 0;
         margin-right: 3.1rem;
     }
-    .label{
+
+    .label {
         color: $clr-ligthtext;
         font-size: 0.75rem;
         font-weight: 600;
         letter-spacing: 0.02rem;
         font-family: circular;
     }
-    .icons-img{
+
+    .icons-img {
         opacity: 0.6;
         height: 1.5rem;
         width: 1.5rem;
         margin-bottom: 0.5rem;
-        
+
     }
 
-    .extra-filters-container{
+    .extra-filters-container {
+        padding: 7px 0px;
+        
         font-size: 0.75rem;
         border: 1px solid #DDDDDD;
-        border-radius: 0.75rem ;
+        border-radius: 0.75rem;
         padding: 0.5rem 1rem;
     }
 
-    .icons-container:hover{
+    .icons-container:hover {
         // border-bottom: 2px rgba(184, 184, 184, 0.458) solid;
         box-shadow: 0px 2px 0px 0px rgba(160, 160, 160, 0.372);
         cursor: pointer;
-        .icons-img{
+
+        .icons-img {
             opacity: 1;
         }
-        .label{
+
+        .label {
             color: black;
         }
     }
 
-    .clicked-label{
+    .clicked-label {
         // padding-bottom: 20px;
         // border-bottom: 2px black solid;
         box-shadow: 0px 2px 0px 0px black;
 
-        .icons-img{
+        .icons-img {
             opacity: 1;
         }
-        .label{
+
+        .label {
             color: black;
         }
 
-    
-        
+
+
     }
-    .MuiTab-root{
+
+    .MuiTab-root {
         flex-direction: row;
         max-width: fit-content;
         font-family: circular;
         text-transform: none;
     }
-    
-    .MuiTabs-root{
+
+    .MuiTabs-root {
         max-width: 85vw;
     }
-    .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
+
+    .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
         color: #ffffff;
     }
-    .MuiTabs-root:active{
+
+    .MuiTabs-root:active {
         background-color: rgba(255, 255, 255, 0);
     }
-    .css-1aquho2-MuiTabs-indicator{
+
+    .css-1aquho2-MuiTabs-indicator {
         background-color: #ffffff00;
     }
 
-    .css-145v6pe-MuiButtonBase-root-MuiTabScrollButton-root{
+    .css-145v6pe-MuiButtonBase-root-MuiTabScrollButton-root {
         border-radius: 50%;
         border: 0.1px rgba(0, 0, 0, 0.329) solid;
         opacity: 1;
@@ -90,10 +99,10 @@
         padding: 0;
 
     }
-    .css-145v6pe-MuiButtonBase-root-MuiTabScrollButton-root:hover{
+
+    .css-145v6pe-MuiButtonBase-root-MuiTabScrollButton-root:hover {
         cursor: pointer;
     }
 
-    
-}
 
+}
