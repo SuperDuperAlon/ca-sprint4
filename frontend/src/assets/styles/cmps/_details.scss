@@ -320,7 +320,6 @@
   }
 }
 
-
 @media (min-width: $large-breakpoint-details) {
   .stay-details-gallery {
 
@@ -344,11 +343,6 @@
     }
   }
 
-  .order-form-container {
-    display: flex;
-    justify-content: flex-end;
-    padding-top: 3rem;
-  }
 
   .order-form {
     width: 330px;
@@ -360,10 +354,28 @@
 }
 
 @media (min-width: $x-large-breakpoint-details) {
-  
+  .stay-details-gallery {
+
+    .gallery-item-0 {
+      height: 522.5px;
+    }
+    .gallery-item-1 {
+      height: 257.25px;
+    }
+    .gallery-item-2 {
+
+      height: 257.25px;
+    }
+    .gallery-item-3 {
+
+      height: 257.25px;
+    }
+    .gallery-item-4 {
+
+      height: 257.25px;
+    }
+  }
 }
-
-
 
 
 .date-container {

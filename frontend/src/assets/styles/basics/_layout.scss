@@ -60,14 +60,14 @@
   @include for-details-md-layout {
     // background-color: rgb(0, 255, 68);
     grid-template-columns:
-    40px minmax(auto, $medium-breakpoint-details) 40px;
+    1fr minmax(auto, $medium-breakpoint-details) 1fr;
 
   }
 
   @include for-details-lg-layout {
     // background-color: orange;
     grid-template-columns:
-    40px minmax(auto, $large-breakpoint-details) 40px
+    1fr minmax(auto, $large-breakpoint-details) 1fr
 
   }
 
@@ -75,7 +75,7 @@
     // background-color: red;
 
     grid-template-columns:
-      80px minmax(auto, $x-large-breakpoint-details) 80px;
+    1fr minmax(auto, $x-large-breakpoint-details) 1fr;
 
     >* {
       grid-column: 2;
