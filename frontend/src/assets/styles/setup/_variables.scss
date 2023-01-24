@@ -14,15 +14,6 @@ $clr-hover-on-dates: black;
 $clr-in-range: rgb(242, 239, 239);
 $clr-border-between-div: #EBEBEB;
 
-
-// Breakpoints (Need to find all breakpoints)
-$mobile-breakpoint: 639px;
-$tablet-breakpoint: 750px;
-$screen-wide-950:950px;
-$desktop-narrow-breakpoint: 1120px;
-$desktop-wide-breakpoint: 1400px;
-
-
 // Padding
 $pad-12: 12px;
 $pad-5: 5px;
@@ -31,10 +22,24 @@ $pad-15: 15px;
 $pad-8: 8px;
 $pad-8: 8px;
 
+// Breakpoints (Need to find all breakpoints)
+$small-breakpoint: 639px;
+$medium-breakpoint: 750px;
+$large-breakpoint: 1120px;
+$x-large-breakpoint: 1400px;
+$screen-wide-950:950px;
+
+$padded-s: $small-breakpoint + 2 * $pad-20;
+$padded-m: $medium-breakpoint + 2 * $pad-20;
+$padded-l: $large-breakpoint + 2 * $pad-20;
+$padded-xl: $x-large-breakpoint + 2 * $pad-20;
 
 
-$dataBoxWidth: 46px;
-$dataBoxPadding: 12px;
+
+$dataBoxWidth: 3.8em;
+$dataBoxPadding: 1em;
+// $dataBoxWidth: 46px;
+// $dataBoxPadding: 12px;
 
 //search bar hight
 $search-bar-hight: 48px;

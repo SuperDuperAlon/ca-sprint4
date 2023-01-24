@@ -178,7 +178,7 @@ export function SearchBar({ queryToParams }) {
                                 onClick={() => rsOption("guests")}
                             ></button>
 
-                            <div className={activeNow ? 'active searchIcon' : 'searchIcon'} onClick={onClickSearch}>
+                            <div className={activeNow ? 'active search-icon' : 'search-icon'} onClick={onClickSearch}>
                                 <div className="icon">
                                     <FiSearch />
                                 </div>
@@ -189,7 +189,7 @@ export function SearchBar({ queryToParams }) {
 
                 {activeNow && < div className="search-modal">
                     {(activeNow === 'checkIn' || activeNow === 'checkOut') &&
-                        (<div className="day-picker-model">
+                        (<div className="day-picker-model fs-8">
                             <div className="dateOptions">
 
                             </div>
