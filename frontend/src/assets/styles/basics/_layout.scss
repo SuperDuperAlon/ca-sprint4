@@ -12,6 +12,7 @@
     }
   }
 
+  // Main Page
 
   @include for-mobile-layout {
     // background-color: yellow;
@@ -40,6 +41,52 @@
 
     grid-template-columns:
       80px minmax(auto, $x-large-breakpoint) 80px;
+
+    >* {
+      grid-column: 2;
+    }
+  }
+
+  // Details
+
+  @include for-details-sm-layout {
+    // background-color: yellow;
+
+    grid-template-columns:
+      minmax($pad-20, 1fr) minmax(auto, $small-breakpoint-details) minmax($pad-20, 1fr);
+
+  }
+
+  @include for-details-md-layout {
+    // background-color: rgb(0, 255, 68);
+    grid-template-columns:
+    40px minmax(auto, $medium-breakpoint-details) 40px;
+
+  }
+
+  @include for-details-lg-layout {
+    // background-color: orange;
+    grid-template-columns:
+    40px minmax(auto, $large-breakpoint-details) 40px
+
+  }
+
+  @include for-details-xl-layout {
+    // background-color: red;
+
+    grid-template-columns:
+      80px minmax(auto, $x-large-breakpoint-details) 80px;
+
+    >* {
+      grid-column: 2;
+    }
+  }
+
+  @include for-details-xxl-layout {
+    // background-color: red;
+
+    grid-template-columns:
+      1fr minmax(auto, $xx-large-breakpoint-details) 1fr;
 
     >* {
       grid-column: 2;
