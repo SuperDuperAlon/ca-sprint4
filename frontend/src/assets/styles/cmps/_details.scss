@@ -1,7 +1,7 @@
 .details-layout {
   display: grid;
   grid-template-columns: 1fr 1120px 1fr;
-  max-width: 1280px;
+  // max-width: 1120px;
   margin: auto;
 
   > * {
@@ -288,7 +288,7 @@
   // max-width: 1280px;
 
   .stay-inner-container {
-    // grid-column: 1/ -1;
+    grid-column: 1/ -1;
     display: grid;
     grid-template-columns: 1fr 1120px 1fr;
     margin: 0 auto;
