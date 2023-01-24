@@ -21,6 +21,7 @@ $pad-20: 20px;
 $pad-15: 15px;
 $pad-8: 8px;
 $pad-40: 40px;
+$pad-80: 80px;
 
 // Breakpoints
 $small-breakpoint: 639px;
@@ -40,16 +41,14 @@ $padded-xl: $x-large-breakpoint + 2 * $pad-20;
 
 // Breakpoints - Details Page
 $small-breakpoint-details: 425px;
-$medium-breakpoint-details: 744px;
-$large-breakpoint-details: 950px;
-$x-large-breakpoint-details: 1024px;
-$xx-large-breakpoint-details: 1440px;
+$medium-breakpoint-details: 688px;
+$large-breakpoint-details: 944px;
+$x-large-breakpoint-details: 1280px;
 
 $padded-s-details: $small-breakpoint-details;
-$padded-m-details: $medium-breakpoint-details + 2 * $pad-20;
+$padded-m-details: $medium-breakpoint-details + 2 * $pad-40;
 $padded-l-details: $large-breakpoint-details + 2 * $pad-40;
-$padded-xl-details: $x-large-breakpoint-details + 2 * $pad-40;
-$padded-xxl-details: $xx-large-breakpoint-details + 2 * $pad-20;
+$padded-xl-details: $x-large-breakpoint-details + 2 * $pad-80;
 
 
 $dataBoxWidth: 3.8em;

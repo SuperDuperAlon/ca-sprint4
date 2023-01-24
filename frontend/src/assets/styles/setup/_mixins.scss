@@ -48,11 +48,11 @@
         @content;
     }
 }
-@mixin for-details-xxl-layout {
-    @media (min-width: $padded-xxl-details) {
-        @content;
-    }
-}
+// @mixin for-details-xxl-layout {
+//     @media (min-width: $padded-xxl-details) {
+//         @content;
+//     }
+// }
 
 @mixin for-search-bar-open {
     padding: 2em;
