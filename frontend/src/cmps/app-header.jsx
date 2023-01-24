@@ -50,7 +50,7 @@ export function AppHeader() {
                         </nav>
 
 
-                        <div className='searchIcon'>
+                        <div className='search-icon'>
                             <FiSearch />
                         </div>
                         <nav className='header-nav short'>

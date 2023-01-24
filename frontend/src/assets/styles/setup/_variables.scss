@@ -14,27 +14,47 @@ $clr-hover-on-dates: black;
 $clr-in-range: rgb(242, 239, 239);
 $clr-border-between-div: #EBEBEB;
 
-
-// Breakpoints (Need to find all breakpoints)
-$mobile-breakpoint: 639px;
-$tablet-breakpoint: 750px;
-$screen-wide-950:950px;
-$desktop-narrow-breakpoint: 1120px;
-$desktop-wide-breakpoint: 1400px;
-
-
 // Padding
 $pad-12: 12px;
 $pad-5: 5px;
 $pad-20: 20px;
 $pad-15: 15px;
 $pad-8: 8px;
-$pad-8: 8px;
+$pad-40: 40px;
+$pad-80: 80px;
+
+// Breakpoints
+$small-breakpoint: 639px;
+$medium-breakpoint: 750px;
+$large-breakpoint: 1120px;
+$x-large-breakpoint: 1400px;
+$screen-wide-950:950px;
 
 
 
-$dataBoxWidth: 46px;
-$dataBoxPadding: 12px;
+$padded-s: $small-breakpoint + 2 * $pad-20;
+$padded-m: $medium-breakpoint + 2 * $pad-20;
+$padded-l: $large-breakpoint + 2 * $pad-20;
+$padded-xl: $x-large-breakpoint + 2 * $pad-20;
+
+
+
+// Breakpoints - Details Page
+$small-breakpoint-details: 425px;
+$medium-breakpoint-details: 688px;
+$large-breakpoint-details: 944px;
+$x-large-breakpoint-details: 1280px;
+
+$padded-s-details: $small-breakpoint-details;
+$padded-m-details: $medium-breakpoint-details + 2 * $pad-40;
+$padded-l-details: $large-breakpoint-details + 2 * $pad-40;
+$padded-xl-details: $x-large-breakpoint-details + 2 * $pad-80;
+
+
+$dataBoxWidth: 3.8em;
+$dataBoxPadding: 1em;
+// $dataBoxWidth: 46px;
+// $dataBoxPadding: 12px;
 
 //search bar hight
 $search-bar-hight: 48px;

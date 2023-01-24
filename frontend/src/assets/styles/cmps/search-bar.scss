@@ -1,5 +1,4 @@
 
-
 .search {
     background-color: #fff;
     position: relative;
@@ -13,12 +12,13 @@
         height: 120px;
         background-color: $white;
         translate: transform 5s, height 1s;
-        
+
         >* {
             grid-column: 2;
         }
-        &.close{
-            transform: scaleY(0) ;
+
+        &.close {
+            transform: scaleY(0);
             max-height: 0;
         }
 
@@ -29,9 +29,9 @@
     position: fixed;
     width: 100%;
     height: 100%;
-    z-index: 25;
-    background-color: rgba(140, 132, 132, 0.547);
-  }
+    z-index: 15;
+    background-color: rgba(140, 132, 132, 0.23);
+}
 
 
 .search-bar {
@@ -178,38 +178,38 @@
             margin: 0;
         }
 
-        &.active {
-            padding-right: 16px;
-        }
-
         .btn-rs {
             margin-right: 0px;
         }
 
-        .searchIcon {
+        &.active {
+            padding-right: 16px;
+        }
+
+        .search-icon {
             display: flex;
             justify-content: center;
             align-items: center;
+            padding-left: 20px;
             background-color: $clr-search-icon-bgc;
             border-radius: 50px;
-            padding-left: 20px;
             padding-right: 20px;
             transform: translateX(60px);
             @include fontWeightBold;
-            transition:  transform 0.4s, padding 0.8s;
-
+            
             &.active {
-                transform: translateX(5px);
                 border-radius: 100vw;
+                transform: translateX(5px);
                 
                 ::after {
-                    transition: width 2s linear;
                     @include fontWeightBold;
                     content: "Search";
                     margin-left: 0.5em;
                 }
 
             }
+
+        
 
             .icon {
                 display: flex;
@@ -224,9 +224,6 @@
 
         }
     }
-
-    // transition: transform 0.8s height 0.8s overflow 0.5s;
-
 
 
 }
@@ -244,10 +241,10 @@
     }
 
     .day-picker-model {
-        line-height: 1.2rem;
-        margin: 0 auto;
-
+        line-height: 1.2em;
+        // margin: 0 auto;
         @include for-search-bar-open;
+
 
 
         input {
@@ -256,11 +253,10 @@
 
 
         .dateOptions {
-            min-width: 300px;
+            // min-width: 300px;
             // padding: 8px;
             min-height: 30px;
-            margin-bottom: 1.3rem;
-            // background-color: red;
+            margin-bottom: 1.3em;
 
         }
 
@@ -272,11 +268,11 @@
             background-color: $white;
 
             .react-datepicker__current-month {
-                margin-bottom: 0.5rem
+                margin-bottom: 0.5em
             }
 
         }
-
+        
         .react-datepicker__day-name {
             color: $grey;
             width: $dataBoxWidth;
@@ -291,7 +287,7 @@
             border-radius: 50%;
             width: $dataBoxWidth;
             font-weight: 600;
-            line-height: 1.5rem;
+            line-height: 1.5em;
             padding: $dataBoxPadding;
 
             &--selected,
@@ -503,38 +499,43 @@
     }
 }
 
-.guest{
+.guest {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.5rem;
 
-    h3{
+    h3 {
         font-size: 1rem;
     }
-    h5{
+
+    h5 {
         font-size: rem(14px);
         font-weight: 300;
 
     }
-    .pet{
+
+    .pet {
         text-decoration: underline;
         font-weight: bold;
     }
-    .counter{
+
+    .counter {
         display: inline-flex;
         width: 104px;
         align-items: center;
-        justify-content:space-between;
-        
+        justify-content: space-between;
+
     }
-    button{
+
+    button {
         border-radius: 50%;
         width: rem(32px);
         height: rem(32px);
         background-color: white;
-        border: solid 1px  rgb(176, 176, 176);
-        &:hover{
+        border: solid 1px rgb(176, 176, 176);
+
+        &:hover {
             border-color: rgb(34, 34, 34);
         }
     }

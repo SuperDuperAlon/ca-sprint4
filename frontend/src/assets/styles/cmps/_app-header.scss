@@ -2,16 +2,35 @@ $clr-ligthtext: #717171;
 $clr-box-radius: #DDDDDD;
 $clr-search-icon-bgc: #dc0e64;
 
+.page-top {
+    position: sticky;
+    top: 0;
+
+    .white-space{
+        position: relative;
+        max-height:0px;
+        .space{
+            height: 80px;
+            background-color: red;
+            transform: scaleX(0);
+        }
+    }
+
+}
+
 .app-header {
-    margin: 19px 0;
+    position: relative;
     padding: 0;
     grid-column: 1/-1;
     height: 80px;
+    border-bottom: 1px #dddddd solid ;    
 }
 
 .main-header {
     display: flex;
     align-items: center;
+    align-self: center;
+
 
 
     >* {
@@ -89,7 +108,7 @@ $clr-search-icon-bgc: #dc0e64;
 
         }
 
-        .searchIcon {
+        .search-icon {
             @include flex-center;
             padding: 10px;
             margin-right: 12px;
@@ -111,23 +130,23 @@ $clr-search-icon-bgc: #dc0e64;
 
 }
 
-@media (min-width: $mobile-breakpoint) {}
+@media (min-width: $small-breakpoint) {}
 
 
 
 
 
-// @media (min-width: $mobile-breakpoint) {
+// @media (min-width: $small-breakpoint) {
 // }
-// @media (min-width: $tablet-breakpoint) {
+// @media (min-width: $medium-breakpoint) {
 // }
-// @media (min-width: $desktop-narrow-breakpoint) {
+// @media (min-width: $large-breakpoint) {
 // }
-// @media (min-width: $desktop-wide-breakpoint) {
+// @media (min-width: $x-large-breakpoint) {
 // }
 
 
-@media (min-width: $tablet-breakpoint) {
+@media (min-width: $medium-breakpoint) {
     .main-header {
         .logo {
             display: flex;
@@ -205,7 +224,7 @@ $clr-search-icon-bgc: #dc0e64;
                 }
             }
 
-            .searchIcon {
+            .search-icon {
                 background-color: $clr-search-icon-bgc;
                 padding: 10px;
                 font-size: 12px;
@@ -308,7 +327,7 @@ $clr-search-icon-bgc: #dc0e64;
 
 }
 
-@media (min-width: $desktop-narrow-breakpoint) {
+@media (min-width: $large-breakpoint) {
     .main-header {
         .logo {
             .text-next-to-logo {
@@ -319,4 +338,4 @@ $clr-search-icon-bgc: #dc0e64;
     }
 }
 
-@media (min-width: $desktop-wide-breakpoint) {}
+@media (min-width: $x-large-breakpoint) {}
