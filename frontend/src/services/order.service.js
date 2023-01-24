@@ -68,15 +68,17 @@ function getEmptyOrder() {
     endDate: "",
     guests: {
       adults: "",
-      kids: "",
+      children: "",
+      infants:"",
+      pets: "",
     },
-    order: {
+    stay: {
       _id: "",
       name: "",
       price: "",
     },
     msgs: [],
-    status: "", // pending, approved
+    status: "pending", // pending, approved
   };
 }
 
@@ -98,7 +100,7 @@ function _createOrders() {
           adults: 2,
           kids: 1,
         },
-        order: {
+        stay: {
           _id: "h102",
           name: "Milano",
           price: 160.0,
@@ -120,7 +122,7 @@ function _createOrders() {
           adults: 2,
           kids: 1,
         },
-        order: {
+        stay: {
           _id: "h102",
           name: "House Of Uncle My",
           price: 80.0,
@@ -142,7 +144,7 @@ function _createOrders() {
           adults: 2,
           kids: 1,
         },
-        order: {
+        stay: {
           _id: "h102",
           name: "House Of Uncle My",
           price: 80.0,
