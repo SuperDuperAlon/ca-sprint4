@@ -78,6 +78,9 @@ export function StayIndex() {
                 <AppHeader />
                 <SearchBar queryToParams={queryToParams} />
                 <div className='full main-content cover'></div>
+                <div className="main-content full white-space ">
+                    <div className="space full"></div>
+                </div>
                 <SecondaryFilter queryToParams={queryToParams} />
             </div>
             <main className='full main-content'>

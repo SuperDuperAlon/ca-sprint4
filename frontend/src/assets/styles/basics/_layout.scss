@@ -1,17 +1,7 @@
-.index-layout {
-  height: 100vh;
-  width: 100vw;
-  grid-template-rows: max-content;
-}
 
 .main-content {
   display: grid;
-  grid-column: 1 /-1;
-  // background-color: rgb(212, 0, 255);
-
-  grid-template-columns: 0px $mobile-breakpoint 0px;
-
-
+  grid-template-columns: 0px $small-breakpoint 0px;
 
 
   >* {
@@ -27,35 +17,29 @@
     // background-color: yellow;
 
     grid-template-columns:
-      40px minmax(auto, $tablet-breakpoint) 40px;
+      minmax($pad-20, 1fr) minmax(auto, $small-breakpoint) minmax($pad-20, 1fr);
 
   }
 
   @include for-tablet-layout {
     // background-color: rgb(0, 255, 68);
     grid-template-columns:
-      40px minmax(auto, $desktop-narrow-breakpoint) 40px;
+      minmax($pad-20, 1fr) minmax(auto, $medium-breakpoint) minmax($pad-20, 1fr);
 
-    >* {
-      grid-column: 2;
-    }
   }
 
   @include for-normal-layout {
     // background-color: orange;
     grid-template-columns:
-      40px minmax(auto, $desktop-wide-breakpoint) 40px;
+      minmax($pad-20, 1fr) minmax(auto, $large-breakpoint) minmax($pad-20, 1fr);
 
-    >* {
-      grid-column: 2;
-    }
   }
 
   @include for-wide-layout {
     // background-color: red;
 
     grid-template-columns:
-      80px minmax(auto, 1fr) 80px;
+      80px minmax(auto, $x-large-breakpoint) 80px;
 
     >* {
       grid-column: 2;
@@ -88,14 +72,14 @@
 // @include for-narrow-layout {
 //     grid-template-columns:
 //         minmax(20px, 1fr)
-//         minmax(auto, $mobile-breakpoint)
+//         minmax(auto, $small-breakpoint)
 //         minmax(20px, 1fr);
 // }
 // @include for-tablet-layout {
 //     grid-template-columns:
-//         minmax(40px, 1fr)
-//         minmax(auto, $tablet-breakpoint)
-//         minmax(40px, 1fr);
+//         minmax(minmax($pad-20, 1fr), 1fr)
+//         minmax(auto, $medium-breakpoint)
+//         minmax(minmax($pad-20, 1fr), 1fr);
 // }
 // @include for-wide-layout {
 //     grid-template-columns:
