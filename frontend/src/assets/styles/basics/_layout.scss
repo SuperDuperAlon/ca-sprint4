@@ -19,21 +19,21 @@
     // background-color: yellow;
 
     grid-template-columns:
-      minmax($pad-20, 1fr) minmax(auto, $small-breakpoint) minmax($pad-20, 1fr);
+      minmax($pad-40, 1fr) minmax(auto, $small-breakpoint) minmax($pad-40, 1fr);
 
   }
 
   @include for-tablet-layout {
     // background-color: rgb(0, 255, 68);
     grid-template-columns:
-      minmax($pad-20, 1fr) minmax(auto, $medium-breakpoint) minmax($pad-20, 1fr);
+      minmax($pad-40, 1fr) minmax(auto, $medium-breakpoint) minmax($pad-40, 1fr);
 
   }
 
   @include for-normal-layout {
     // background-color: orange;
     grid-template-columns:
-      minmax($pad-20, 1fr) minmax(auto, $large-breakpoint) minmax($pad-20, 1fr);
+      minmax($pad-40, 1fr) minmax(auto, $large-breakpoint) minmax($pad-40, 1fr);
 
   }
 
