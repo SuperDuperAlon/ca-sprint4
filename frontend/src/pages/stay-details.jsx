@@ -48,7 +48,7 @@ export function StayDetails() {
   // }
 if (!stay) return console.log('no map');
   else return (
-    <section className="details-layout">
+    <section className="details-layout main-content full">
       <AppHeader />
       <StayDetailsLocationInfo stay={stay} />
       <StayDetailsGallery stay={stay} />

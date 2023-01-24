@@ -1,4 +1,3 @@
-
 .main-content {
   display: grid;
   
@@ -14,26 +13,27 @@
     }
   }
 
+  // Main Page
 
   @include for-mobile-layout {
     // background-color: yellow;
 
     grid-template-columns:
-      minmax($pad-40, 1fr) minmax(auto, $small-breakpoint) minmax($pad-40, 1fr);
+      minmax($pad-20, 1fr) minmax(auto, $small-breakpoint) minmax($pad-20, 1fr);
 
   }
 
   @include for-tablet-layout {
     // background-color: rgb(0, 255, 68);
     grid-template-columns:
-      minmax($pad-40, 1fr) minmax(auto, $medium-breakpoint) minmax($pad-40, 1fr);
+      minmax($pad-20, 1fr) minmax(auto, $medium-breakpoint) minmax($pad-20, 1fr);
 
   }
 
   @include for-normal-layout {
     // background-color: orange;
     grid-template-columns:
-      minmax($pad-40, 1fr) minmax(auto, $large-breakpoint) minmax($pad-40, 1fr);
+      minmax($pad-20, 1fr) minmax(auto, $large-breakpoint) minmax($pad-20, 1fr);
 
   }
 
@@ -41,19 +41,23 @@
     // background-color: red;
 
     grid-template-columns:
-    minmax($pad-40,1fr) minmax($x-large-breakpoint, 1fr) minmax($pad-40,1fr);
+      80px minmax(auto, $x-large-breakpoint) 80px;
 
-    >* {
+    > * {
       grid-column: 2;
     }
   }
 
+  // @include for-details-xxl-layout {
+  //   // background-color: red;
 
+  //   grid-template-columns: 1fr minmax(auto, $xx-large-breakpoint-details) 1fr;
+
+  //   > * {
+  //     grid-column: 2;
+  //   }
+  // }
 }
-
-
-
-
 
 .clickOutSideTheBox {
   // background-color: rgb(158, 114, 32);
@@ -68,7 +72,6 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 20px;
 }
-
 
 // .container-layout-setting{
 // @include for-narrow-layout {

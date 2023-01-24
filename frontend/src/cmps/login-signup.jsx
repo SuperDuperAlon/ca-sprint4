@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
 import { ImgUploader } from '../cmps/img-uploader'
 
-export function LoginSignup(props) {
+export function LoginSignup({onOrderStay}) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
     const [isSignup, setIsSignup] = useState(false)
     const [users, setUsers] = useState([])
@@ -10,10 +10,15 @@ export function LoginSignup(props) {
     useEffect(() => {
         loadUsers()
     }, [])
-
+    
     async function loadUsers() {
-        const users = await userService.getUsers()
-        setUsers(users)
+        try{
+            const users = await userService.getUsers()
+            setUsers(users)
+        }
+        catch (err){
+            console.log(err)
+        }
     }
 
     function clearState() {
@@ -27,18 +32,37 @@ export function LoginSignup(props) {
         setCredentials({ ...credentials, [field]: value })
     }
 
-    function onLogin(ev = null) {
-        if (ev) ev.preventDefault()
+    async function onLogin(ev) {
+        ev.preventDefault()
         if (!credentials.username) return
-        props.onLogin(credentials)
-        clearState()
+        try{
+            const loggedInUser = await userService.login(credentials)
+            // console.log('hi',loggedInUser)
+            if(loggedInUser){
+                onOrderStay(loggedInUser)
+                clearState()
+            }
+        }
+        catch (err){
+            console.log(err)
+        }
     }
 
-    function onSignup(ev = null) {
+    async function onSignUp(ev = null) {
         if (ev) ev.preventDefault()
         if (!credentials.username || !credentials.password || !credentials.fullname) return
-        props.onSignup(credentials)
-        clearState()
+        try{
+            const loggedInUser = await userService.signup(credentials)
+            console.log('hi',loggedInUser)
+            if(loggedInUser){
+                onOrderStay(loggedInUser)
+                clearState()
+            } 
+        }
+        catch (err){
+            console.log(err)
+        }
+        
     }
 
     function toggleSignup() {
@@ -51,56 +75,52 @@ export function LoginSignup(props) {
 
     return (
         <div className="login-page">
-            <p>
-                <button className="btn-link" onClick={toggleSignup}>{!isSignup ? 'Signup' : 'Login'}</button>
-            </p>
-            {!isSignup && <form className="login-form" onSubmit={onLogin}>
-                <select
-                    name="username"
-                    value={credentials.username}
-                    onChange={handleChange}
-                >
-                    <option value="">Select User</option>
-                    {users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
-                </select>
-                {/* <input
+                 <div className="fs22 bold pad-b24">Log in or sign up to book</div>
+                 <div className='flex center pad-b24'>
+                        <div className='mar-r4'>{isSignup ? 'Already have an account?' : 'Not a member yet?'}</div>
+                        <button onClick={toggleSignup} className='bold under-line clean-btn fs16'>{isSignup ? 'Log in' : 'Sign up'}</button>
+                    </div>
+                {!isSignup && <form onSubmit={(ev) => onLogin(ev)}>
+                    <input className="login-input up"
                         type="text"
                         name="username"
-                        value={username}
-                        placeholder="Username"
+                        id="username"
+                        value={credentials.username}
+                        placeholder="User name"
                         onChange={handleChange}
-                        required
-                        autoFocus
                     />
-                    <input
+                    <input className="login-input down"
                         type="password"
                         name="password"
-                        value={password}
+                        id="password"
+                        value={credentials.password}
                         placeholder="Password"
                         onChange={handleChange}
-                        required
-                    /> */}
-                <button>Login!</button>
-            </form>}
-            <div className="signup-section">
-                {isSignup && <form className="signup-form" onSubmit={onSignup}>
-                    <input
+                    />
+                    
+                    <button className="reserve-btn full-width fs16">
+                        Continue
+                    </button>
+                   
+                </form>}
+                {isSignup && <form className="signup-form" onSubmit={onSignUp}>
+                     <input className= "login-input regular"
                         type="text"
                         name="fullname"
                         value={credentials.fullname}
-                        placeholder="Fullname"
+                        placeholder="Full name"
                         onChange={handleChange}
                         required
                     />
-                    <input
+                    <input className= "login-input regular"
                         type="text"
                         name="username"
                         value={credentials.username}
-                        placeholder="Username"
+                        placeholder="User name"
                         onChange={handleChange}
                         required
                     />
-                    <input
+                    <input className= "login-input regular"
                         type="password"
                         name="password"
                         value={credentials.password}
@@ -109,9 +129,12 @@ export function LoginSignup(props) {
                         required
                     />
                     <ImgUploader onUploaded={onUploaded} />
-                    <button >Signup!</button>
+                    <button className="reserve-btn full-width fs16">Agree and continue</button>
                 </form>}
-            </div>
-        </div>
+                </div>
+
     )
 }
+
+
+

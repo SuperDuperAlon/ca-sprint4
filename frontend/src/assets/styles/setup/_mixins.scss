@@ -1,6 +1,8 @@
 // /* Breakpoint mixins */
 
 
+// Main
+
 @mixin for-mobile-layout {
     @media (min-width: $padded-s) {
         @content;
@@ -23,6 +25,34 @@
     }
 }
 
+// Details
+
+@mixin for-details-sm-layout {
+    @media (min-width: $padded-s-details) {
+        @content;
+    }
+}
+@mixin for-details-md-layout {
+    @media (min-width: $padded-m-details) {
+        @content;
+    }
+}
+
+@mixin for-details-lg-layout {
+    @media (min-width: $padded-l-details) {
+        @content;
+    }
+}
+@mixin for-details-xl-layout {
+    @media (min-width: $padded-xl-details) {
+        @content;
+    }
+}
+// @mixin for-details-xxl-layout {
+//     @media (min-width: $padded-xxl-details) {
+//         @content;
+//     }
+// }
 
 @mixin for-search-bar-open {
     padding: 2em;

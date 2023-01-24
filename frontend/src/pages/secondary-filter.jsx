@@ -42,12 +42,6 @@ export function SecondaryFilter({queryToParams}){
     }
     // flex space-between center
     return <section className="secondary-filter flex ">
-        {/* {<div className="arrows">{"<"}</div>}
-                {labels.map((label,index)=> <div onClick={()=>onFilter(label)} key={index} className={label === clickedLabel ? "icons-container flex column center clicked-label" :"icons-container flex column center" }>
-                    <div className="icons-img"><img src={require(`../assets/img/filter-icons/${label}.jpg`)}/></div>
-                    <div className="label">{label}</div>
-                </div>)}
-        { <div className="arrows">{">"}</div>} */}
 
 {/* <Box sx={ {maxWidth: { sm: '90%' }, bgcolor: 'white' , borderBottom: 1, borderColor: 'divider' }}> */}
 <Box sx={ {  width:'' , bgcolor: 'white' , borderBottom: 1, borderColor: 'divider' }}>

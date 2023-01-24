@@ -4,19 +4,24 @@ import { MdOutlineKingBed } from "react-icons/md";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { Calender } from "../../cmps/filter/calender";
-import {filterService} from "../../services/filterService"
+import { filterService } from "../../services/filterService";
 
 export function StayDetailsHostInfo({ stay }) {
   const [reviewModalOpen, setReviewModalOpen] = useState(false);
   const handleOpenReviewModal = () => setReviewModalOpen(true);
   const handleCloseReviewModal = () => setReviewModalOpen(false);
-  const [filter, setFilter] = useState(filterService.getEmptyFilter())
+  const [filterBy, setFilterBy] = useState(filterService.getEmptyFilter())
 
-  function onChangeDate (dates) {
+
+  function onChangeDate(dates){
     const checkIn = dates[0]
     const checkOut = dates[1]
-    setFilter({ ...filter, checkOut, checkIn })
+    // if(dates[1]){
+    //     toggleDatePicker()
+    // }
+    setFilterBy({ ...filterBy, checkOut, checkIn })  
 }
+
 
 
   if (!stay) return;
