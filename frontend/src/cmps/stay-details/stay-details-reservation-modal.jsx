@@ -135,9 +135,8 @@ export function StayDetailsOrderModal({ stay }) {
           <div>$12</div>
         </div>
         <div className="order-form-total-price">
-          <div className="bold">Total</div>
-          <div className="bold">${stay.price * (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24)+12}</div>
-          {/* <div>Service fee</div> */}
+          <div>Total</div>
+          <div>${stay.price * (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24)}</div>
         </div>
         <div>
           {/* <OrderPreferences /> */}
