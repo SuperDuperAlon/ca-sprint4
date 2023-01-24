@@ -1,8 +1,10 @@
 
 .main-content {
   display: grid;
-  grid-template-columns: 0px $small-breakpoint 0px;
+  
 
+
+  grid-template-columns: 5px minmax(360px, $small-breakpoint) 5px;
 
   >* {
     grid-column: 2;
@@ -17,21 +19,21 @@
     // background-color: yellow;
 
     grid-template-columns:
-      minmax($pad-20, 1fr) minmax(auto, $small-breakpoint) minmax($pad-20, 1fr);
+      minmax($pad-40, 1fr) minmax(auto, $small-breakpoint) minmax($pad-40, 1fr);
 
   }
 
   @include for-tablet-layout {
     // background-color: rgb(0, 255, 68);
     grid-template-columns:
-      minmax($pad-20, 1fr) minmax(auto, $medium-breakpoint) minmax($pad-20, 1fr);
+      minmax($pad-40, 1fr) minmax(auto, $medium-breakpoint) minmax($pad-40, 1fr);
 
   }
 
   @include for-normal-layout {
     // background-color: orange;
     grid-template-columns:
-      minmax($pad-20, 1fr) minmax(auto, $large-breakpoint) minmax($pad-20, 1fr);
+      minmax($pad-40, 1fr) minmax(auto, $large-breakpoint) minmax($pad-40, 1fr);
 
   }
 
@@ -39,7 +41,7 @@
     // background-color: red;
 
     grid-template-columns:
-      80px minmax(auto, $x-large-breakpoint) 80px;
+    minmax($pad-40,1fr) minmax($x-large-breakpoint, 1fr) minmax($pad-40,1fr);
 
     >* {
       grid-column: 2;

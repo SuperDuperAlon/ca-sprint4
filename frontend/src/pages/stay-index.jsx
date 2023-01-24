@@ -74,21 +74,26 @@ export function StayIndex() {
 
     return (
         <div className='index-layout main-content'>
-            <div className="page-top full main-content">
-                <AppHeader />
-                <SearchBar queryToParams={queryToParams} />
-                <div className='full main-content cover'></div>
-                <div className="main-content full white-space ">
-                    <div className="space full"></div>
-                </div>
-                <SecondaryFilter queryToParams={queryToParams} />
-            </div>
-            <main className='full main-content'>
-                {openSearchBar&& <div className="black-box"
-                    onClick={onClickOutSideTheBar}>
-                </div>}
-                <StayList stays={stays} onRemoveStay={onRemoveStay} onEditStay={onEditStay} onOpenStay={onOpenStay} />
-            </main>
+            {/* <div className="page-top full main-content"> */}
+            <AppHeader queryToParams={queryToParams} />
+            {/* <SearchBar queryToParams={queryToParams} />
+                <SecondaryFilter queryToParams={queryToParams} /> */}
+            {/* </div> */}
+            {/* <main className='full main-content'> */}
+
+            <StayList stays={stays} onRemoveStay={onRemoveStay}
+                onEditStay={onEditStay} onOpenStay={onOpenStay}
+                onClickOutSideTheBar={onClickOutSideTheBar}
+                openSearchBar={openSearchBar}
+            />
+
+           {openSearchBar && <div className="black-screen full"
+                onClick={onClickOutSideTheBar}
+            >
+            </div>}
+            {/* {openSearchBar &&  */}
+
+            {/* </main> */}
         </div >
     )
 }

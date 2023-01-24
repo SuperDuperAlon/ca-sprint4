@@ -12,6 +12,13 @@ export function StayDetailsHostInfo({ stay }) {
   const handleCloseReviewModal = () => setReviewModalOpen(false);
   const [filter, setFilter] = useState(filterService.getEmptyFilter())
 
+  function onChangeDate (dates) {
+    const checkIn = dates[0]
+    const checkOut = dates[1]
+    setFilter({ ...filter, checkOut, checkIn })
+}
+
+
   if (!stay) return;
   else
     return (
@@ -97,11 +104,12 @@ export function StayDetailsHostInfo({ stay }) {
             <Link to={`/amenities/`}>Show all 9 amenities</Link>
           </button>
         </div>
+      
         <div className="calendar">
           <div className="fw600">3 nights in Forde</div>
-          {/* <div className="dayPickerModel">
-          <Calender filter={filter}/>
-          </div> */}
+          <div className="day-picker-model">
+          <Calender filterBy={filter} onChangeDate={onChangeDate}/>
+          </div>
 
         </div>
       </section>

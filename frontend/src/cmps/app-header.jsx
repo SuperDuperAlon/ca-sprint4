@@ -10,8 +10,10 @@ import { SiAirbnb } from 'react-icons/si'
 
 import { store } from '../store/store'
 import { SEARCH_BAR_OPEN } from '../store/stay.reducer'
+import { SearchBar } from './filter/search-bar'
+import { SecondaryFilter } from '../pages/secondary-filter'
 
-export function AppHeader() {
+export function AppHeader({ queryToParams }) {
     const navigate = useNavigate()
 
     const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
@@ -26,17 +28,13 @@ export function AppHeader() {
 
     return (
         <header className="app-header full main-content ">
-            <main className='main-header main-content'>
+            <main className='main-header'>
+                
                 <div className="logo" onClick={() => navigate('/')}>
                     <div><span className="a-Logo"><SiAirbnb /></span><span className='text-next-to-logo'>nyplace</span></div>
                 </div>
-
-                <div className="center-grid mar-l24 mar-r24">
-                   {/* <div className={!openSearchBar ? "whenSearching close" : "whenSearching"}>
-                        <p>stay</p>
-                    </div> */}
-
-                    <div className={!openSearchBar ? 'rounded-full navBarHeader ' : " rounded-full navBarHeader close"}>
+                <div className="center-grid">
+                    <div className={!openSearchBar ? 'rounded-full navBarHeader' : " rounded-full navBarHeader close"}>
                         <nav className='header-nav long'>
                             <NavLink key={"anywhere"} onClick={() => onChangeStaySearchBar('location')}>
                                 anywhere
@@ -73,8 +71,6 @@ export function AppHeader() {
                         </div>
                     </div>
                 </div>
-
-
                 <div className="users-option">
                     <div className="header-options-switching-keys mar-r8">
                         <div className="switchToHost">
@@ -95,8 +91,13 @@ export function AppHeader() {
                         </span>
                     </div>
                 </div>
-
             </main>
+            <div className='cover-filter'>
+                <div className={openSearchBar? "open": ''}></div>
+            </div>
+            
+            <SearchBar queryToParams={queryToParams} />
+            <SecondaryFilter queryToParams={queryToParams} />
 
         </header>
     )

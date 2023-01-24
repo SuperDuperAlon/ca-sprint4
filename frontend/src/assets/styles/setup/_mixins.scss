@@ -90,6 +90,115 @@
 
 }
 
+@mixin for-calendar {
+
+
+        input {
+            display: none;
+        }
+
+
+        .dateOptions {
+            // min-width: 300px;
+            // padding: 8px;
+            min-height: 30px;
+            margin-bottom: 1.3em;
+
+        }
+
+        .react-datepicker {
+            border: none;
+            display: flex;
+            flex-direction: row;
+            width: fit-content;
+        }
+
+        .react-datepicker__header {
+            background-color: $white;
+
+            .react-datepicker__current-month {
+                margin-bottom: 0.5em
+            }
+
+        }
+        
+        .react-datepicker__day-name {
+            color: $grey;
+            width: $dataBoxWidth;
+        }
+
+        .react-datepicker__day--in-range:not(.react-datepicker__day--selected, .react-datepicker__day--range-end, .react-datepicker__day--outside-month) {
+            background-color: $clr-box-radius;
+            color: black;
+        }
+
+        .react-datepicker__day {
+            border-radius: 50%;
+            width: $dataBoxWidth;
+            font-weight: 600;
+            line-height: 1.5em;
+            padding: $dataBoxPadding;
+
+            &--selected,
+            &.react-datepicker__day--range-end:not(.react-datepicker__day--outside-month) {
+                background-color: rgb(0, 0, 0);
+                color: $white;
+            }
+
+            &--in-selecting-range:not(.react-datepicker__day--selected, .react-datepicker__day--outside-month) {
+                background-color: $clr-in-range;
+                color: black;
+            }
+
+
+            &:hover {
+                background-color: $white;
+                color: $text-black;
+                outline: 1px solid black;
+
+            }
+
+            .react-datepicker__day--range-start,
+            .react-datepicker__day--range-end {
+                background-color: $clr-hover-on-dates;
+            }
+
+
+        }
+
+        .react-datepicker__month-container{
+            background-color: $white;
+        }
+
+        .react-datepicker__day--outside-month {
+            background-color: $white;
+            cursor: default;
+
+            &:hover {
+                background-color: $white;
+                outline: none;
+                cursor: default;
+
+            }
+
+
+        }
+
+        .react-datepicker__day--keyboard-selected:not(.react-datepicker__day--range-end) {
+            background-color: $white;
+            color: $text-black;
+        }
+
+    // }
+
+}
+
+// @mixin for-search-bar-open-small {
+//     // display: grid;
+//     // grid-template-columns: 1fr 400px
+//     max-width: 400px;
+// }
+
 
 
 

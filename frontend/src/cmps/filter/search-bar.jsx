@@ -18,8 +18,6 @@ export function SearchBar({ queryToParams }) {
     let { filterBy } = useParams()
     const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
     const searchInBox = useRef(null);
-
-
     useOutsideAlerter(searchInBox)
     function useOutsideAlerter(ref) {
         useEffect(() => {
@@ -36,15 +34,11 @@ export function SearchBar({ queryToParams }) {
         }, [ref]);
     }
 
-
-
     useEffect(() => {
         setActiveNow(openSearchBar)
-    }
-        , [openSearchBar])
+    },[openSearchBar])
 
-
-    const onChangeDate = (dates) => {
+    function onChangeDate (dates) {
         const checkIn = dates[0]
         const checkOut = dates[1]
         setFilter({ ...filter, checkOut, checkIn })
@@ -56,7 +50,7 @@ export function SearchBar({ queryToParams }) {
         setFilter({ ...filter, [field]: value })
     }
 
-    function rsOption(option) {
+    function resetOption(option) {
         switch (option) {
             case "location":
                 console.log('location')
@@ -94,7 +88,7 @@ export function SearchBar({ queryToParams }) {
         filterBy.checkOut = filter.checkOut
         filterBy.where = filter.where
         filterBy.guests = filter.guests
-        
+
         queryToParams(filter)
         store.dispatch({
             type: SEARCH_BAR_OPEN,
@@ -105,9 +99,11 @@ export function SearchBar({ queryToParams }) {
 
 
     return (
-        <div className={openSearchBar ? "search main-content full" : "search close"}>
-            <div className= {openSearchBar ? "fullColumn full":"fullColumn full close" } ref={searchInBox}>
-                <div className="flex align-center search-bar main-content" >
+        <div className={openSearchBar ? "search" : "search close"}>
+            <div className={openSearchBar ? "fullColumn" : "fullColumn close"} ref={searchInBox}>
+
+                <div className=" full main-content search-bar" >
+                    <div className="test2"></div>
                     <div
                         className={(activeNow === 'location') ? "searchActive location" : "location"}
                         onClick={() => setActiveNow('location')}>
@@ -125,7 +121,7 @@ export function SearchBar({ queryToParams }) {
                         </div>
                         <button
                             className={((filter.where) && (activeNow === 'location')) ? "showBtn btn-rs" : "btn-rs"}
-                            onClick={() => rsOption("location")}></button>
+                            onClick={() => resetOption("location")}></button>
                     </div>
                     <div className="checkDate">
                         <div
@@ -140,7 +136,7 @@ export function SearchBar({ queryToParams }) {
                             </div>
                             <button
                                 className={((filter.checkIn) && (activeNow === 'checkIn')) ? "showBtn btn-rs" : "btn-rs"}
-                                onClick={() => rsOption("checkIn")}></button>
+                                onClick={() => resetOption("checkIn")}></button>
                         </div>
                         <div
                             className={(activeNow === 'checkOut') ? "searchActive checkOut" : "checkOut"}
@@ -154,7 +150,7 @@ export function SearchBar({ queryToParams }) {
                             </div>
                             <button
                                 className={((filter.checkOut) && (activeNow === 'checkOut')) ? "showBtn btn-rs" : "btn-rs"}
-                                onClick={() => rsOption("checkOut")}></button>
+                                onClick={() => resetOption("checkOut")}></button>
                         </div>
                     </div>
                     <div className={(activeNow === 'guests') ? "searchActive" : null}>
@@ -175,7 +171,7 @@ export function SearchBar({ queryToParams }) {
                             </div>
                             <button
                                 className={((filter?.guests.adults > 0) && (activeNow === 'guests')) ? "showBtn btn-rs" : "btn-rs"}
-                                onClick={() => rsOption("guests")}
+                                onClick={() => resetOption("guests")}
                             ></button>
 
                             <div className={activeNow ? 'active search-icon' : 'search-icon'} onClick={onClickSearch}>
@@ -185,6 +181,9 @@ export function SearchBar({ queryToParams }) {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="test">
+                    <div className="blank"></div>
                 </div>
 
                 {activeNow && < div className="search-modal">
@@ -254,13 +253,11 @@ export function SearchBar({ queryToParams }) {
 
                     {activeNow === 'guests' &&
                         <div className="guestsAddingModal">
-                          
-                            <GuestsCounter filter={filter} onCountChange={onCountChange}/>
+                            <GuestsCounter filter={filter} onCountChange={onCountChange} />
                         </div>
-
                     }
                 </div>}
             </div>
-        </div>
+        </div >
     )
 }

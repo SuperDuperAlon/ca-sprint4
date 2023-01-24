@@ -1,9 +1,12 @@
 .secondary-filter {
-    // background-color: pink;
+    align-items: center;
+
+    position: sticky;
+    top: 60px;
+
+    justify-content: space-between;
     padding: 1.25rem 0 0 0;
     gap: 2rem;
-    position: relative;
-    bottom: 0px;
     .icons-container {
         min-width: fit-content;
         padding: 0.8rem 0;
@@ -27,16 +30,10 @@
     }
 
     .extra-filters-container {
-        padding: 7px 0px;
-        
-        font-size: 0.75rem;
-        border: 1px solid #DDDDDD;
-        border-radius: 0.75rem;
-        padding: 0.5rem 1rem;
+       display: none;
     }
 
     .icons-container:hover {
-        // border-bottom: 2px rgba(184, 184, 184, 0.458) solid;
         box-shadow: 0px 2px 0px 0px rgba(160, 160, 160, 0.372);
         cursor: pointer;
 
@@ -61,8 +58,10 @@
         .label {
             color: black;
         }
+    }
 
-
+    .MuiBox-root {
+        flex: 1 0 auto;
 
     }
 
@@ -73,8 +72,8 @@
         text-transform: none;
     }
 
-    .MuiTabs-root {
-        max-width: 85vw;
+    .MuiTabScrollButton-root{
+        display: none;
     }
 
     .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
@@ -98,11 +97,52 @@
         align-self: center;
         padding: 0;
 
+        &.Mui-disabled{
+            display: none;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+
     }
 
-    .css-145v6pe-MuiButtonBase-root-MuiTabScrollButton-root:hover {
-        cursor: pointer;
+    .css-jnbkl4 {
+        border-color: #dddddd00;
+
     }
+}
+
+// @media (min-width: $small-breakpoint) {
+// }
+// @media (min-width: $large-breakpoint) {
+// }
+// @media (min-width: $x-large-breakpoint) {
+// }
+
+
+@media (min-width: $medium-breakpoint) {
+    .secondary-filter {
+        .extra-filters-container {
+            @include flex-center;
+            padding: 7px 0px;
+            font-size: 0.9rem;
+            border: 1px solid #DDDDDD;
+            border-radius: 0.75rem;
+            padding: 0.7rem 1rem;
+            background-color: $white;
+
+            :first-child {
+                margin-right: 5px;
+            }
+        }
+
+        .MuiTabScrollButton-root{
+            display: flex;
+        }
+
+    }
+
 
 
 }

@@ -15,19 +15,20 @@ $clr-in-range: rgb(242, 239, 239);
 $clr-border-between-div: #EBEBEB;
 
 // Padding
-$pad-12: 12px;
+$pad-8: 8px;
 $pad-5: 5px;
-$pad-20: 20px;
 $pad-15: 15px;
-$pad-8: 8px;
-$pad-8: 8px;
+$pad-12: 12px;
+$pad-20: 20px;
+$pad-40:40px;
+$pad-80:80px;
 
 // Breakpoints (Need to find all breakpoints)
 $small-breakpoint: 639px;
 $medium-breakpoint: 750px;
-$large-breakpoint: 1120px;
-$x-large-breakpoint: 1400px;
 $screen-wide-950:950px;
+$large-breakpoint: 1000px;
+$x-large-breakpoint: 1200px;
 
 $padded-s: $small-breakpoint + 2 * $pad-20;
 $padded-m: $medium-breakpoint + 2 * $pad-20;

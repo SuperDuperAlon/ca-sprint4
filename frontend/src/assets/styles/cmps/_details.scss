@@ -4,13 +4,14 @@
   max-width: 1280px;
   margin: auto;
 
-  > * {
+  >* {
     grid-column: 2;
     display: flex;
     flex-direction: column;
     font-size: 1rem;
     text-align: left;
     color: #222222;
+
     &.full {
       grid-column: 1 /-1;
     }
@@ -18,35 +19,41 @@
 }
 
 .stay-details-gallery {
-  > * {
+  >* {
     display: grid;
     grid-template-areas:
       "a a b c"
       "a a d e";
     gap: 0.5rem;
-    > * {
+
+    >* {
       aspect-ratio: 16/9;
       object-fit: fill;
     }
-    > .gallery-item-0 {
+
+    >.gallery-item-0 {
       grid-area: a;
       border-radius: 12px 0 0 12px;
       height: 434px;
     }
-    > .gallery-item-1 {
+
+    >.gallery-item-1 {
       grid-area: b;
       height: 212px;
     }
-    > .gallery-item-2 {
+
+    >.gallery-item-2 {
       grid-area: c;
       border-radius: 0 12px 0 0;
       height: 212px;
     }
-    > .gallery-item-3 {
+
+    >.gallery-item-3 {
       grid-area: d;
       height: 212px;
     }
-    > .gallery-item-4 {
+
+    >.gallery-item-4 {
       grid-area: e;
       border-radius: 0 0 12px 0;
       height: 212px;
@@ -68,6 +75,7 @@
     padding-top: 1.625rem;
     margin-bottom: 0.25rem;
   }
+
   .secondary-info {
     display: flex;
     justify-content: space-between;
@@ -77,6 +85,7 @@
       flex-direction: row;
       align-items: center;
     }
+
     .details-locations-info-actions {
       display: flex;
       padding: 0.5rem;
@@ -88,7 +97,7 @@
 }
 
 .stay-details-host-info {
-  > * {
+  >* {
     border-top: 1px rgba(221, 221, 221, 1) solid;
   }
 
@@ -105,6 +114,7 @@
 
   .host {
     padding: 2rem 0 2rem;
+
     .host-content:not(:last-child) {
       margin-bottom: 1.5rem;
     }
@@ -117,7 +127,8 @@
 
 .air-cover {
   padding: 2rem 0 2rem;
-  > *:not(:last-child) {
+
+  >*:not(:last-child) {
     padding-bottom: 1rem;
   }
 }
@@ -128,12 +139,14 @@
 
 .stay-details-amenities {
   padding: 3rem 0 3rem;
+
   .amenities-list {
     display: flex;
     flex-direction: row;
     width: 40%;
     margin-bottom: 1.5rem;
-    > * {
+
+    >* {
       display: flex;
       // flex-direction: column;
       padding-bottom: 1rem;
@@ -155,6 +168,7 @@
 
 .bedding {
   padding: 3rem 0 3rem;
+
   .bedding-desc-rect {
     padding: 1.5rem;
     background: none;
@@ -172,40 +186,48 @@
   .details-review-reviews {
     display: flex;
     flex-direction: row;
-    > * {
+
+    >* {
       width: 50%;
     }
   }
+
   .details-review-ratings {
     display: grid;
     grid-template-columns: 1fr 1fr;
+
     .review-rating {
       display: flex;
       flex-direction: row;
       padding: 0 0.5rem;
       margin-bottom: 1rem;
+
       .review-attr-rate {
         display: flex;
         flex-direction: row;
       }
-      > * {
+
+      >* {
         width: 50%;
         justify-content: flex-start;
       }
     }
+
     .review-feedback {
       @include flex-col-sb;
       margin-bottom: 40px;
     }
+
     .review-feedback-personal {
       display: flex;
       flex-direction: row;
       flex-grow: 1;
+
       .review-feedback-personal-reviewer {
         flex-direction: column;
       }
-      .review-feedback-description {
-      }
+
+      .review-feedback-description {}
     }
   }
 }
@@ -214,7 +236,53 @@
   display: flex;
   justify-content: flex-end;
   padding-top: 3rem;
+
+
+  .day-picker-model {
+
+    position: relative;
+    left: -400px;
+
+    .react-datepicker{
+      box-shadow: 0 0 0 0;
+    }
+
+    @include for-calendar;
+
+    .react-datepicker__day-name {
+      width: 35px;
+    }
+    .react-datepicker__day {
+      width: 35px;
+      padding: 10px;
+    }
+  }
+
 }
+
+// for alon
+.calendar{
+  .day-picker-model{
+
+    position: relative;
+
+    .react-datepicker{
+      box-shadow: 0 0 0 0;
+    }
+
+    @include for-calendar;
+
+    .react-datepicker__day-name {
+      width: 35px;
+    }
+    .react-datepicker__day {
+      width: 35px;
+      padding: 10px;
+    }
+  }
+}
+
+
 
 .order-form {
   display: flex;
@@ -241,11 +309,13 @@
     border-top: 1px rgba(221, 221, 221, 1) solid;
     padding-top: 1.5rem;
   }
+
   .order-form-msg {
     display: flex;
     justify-content: center;
   }
-  > * {
+
+  >* {
     // flex-direction: column;
   }
 }
@@ -253,14 +323,17 @@
 .stay-details-host-details {
   padding: 3rem 0;
   border-top: 1px rgb(221, 221, 221) solid;
+
   .img-desc {
     display: flex;
     flex-direction: row;
   }
+
   .host-details {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    > * {
+
+    >* {
       padding: 0 0.5rem;
       margin-right: 4rem;
     }
@@ -282,9 +355,10 @@
   // flex-direction: row;
   // justify-content: space-between;
 
-  > * {
+  >* {
     grid-column: 2;
   }
+
   // max-width: 1280px;
 
   .stay-inner-container {
@@ -306,7 +380,7 @@
       align-items: center;
       flex: 1;
 
-      > * {
+      >* {
         font-size: 14px;
         font-weight: 600;
       }
@@ -365,16 +439,17 @@
 
 // }
 
-.date-container{
+.date-container {
   padding: 12px 10px;
   text-align: left;
   color: black;
 }
-.date-container.guests{
+
+.date-container.guests {
   width: 100%;
 }
 
-.guests-counter-container{
+.guests-counter-container {
   // border: 1px solid #b5adad;
   padding: 16px;
   border-radius: 0.25rem;
@@ -384,4 +459,3 @@
   width: 320px;
   // bottom: 0px;
 }
-

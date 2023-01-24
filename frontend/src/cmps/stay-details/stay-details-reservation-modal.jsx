@@ -99,7 +99,7 @@ export function StayDetailsOrderModal({ stay }) {
               
             </button>
             
-              {isDateClicked && <div className="dayPickerModel"> 
+              {isDateClicked && <div className="day-picker-model"> 
               <Calender filterBy={filterBy} onChangeDate={onChangeDate} />
               </div>}
             <button className="order-form-btn down flex space-between center" onClick={()=>setIsGuestsClicked(!isGuestsClicked)}>

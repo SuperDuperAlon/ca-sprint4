@@ -1,13 +1,15 @@
 
 // import { ScrollingCarousel } from "@trendyol-js/react-carousel";
 import React, { useRef, useState } from "react";
-import { FiFilter } from "react-icons/fi";
 import { useNavigate, useParams } from "react-router";
 import { filterService } from "../services/filterService";
 import { stayService } from "../services/stay.service";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
+
+import { FiFilter } from "react-icons/fi";
+import { CgOptions } from "react-icons/cg";
 
 export function SecondaryFilter({queryToParams}){
     const labels = ['Cabins', 'Islands', 'Amazing Pools', 'Ski-in-out', 'Beach', 'Luxe', 'Mansions', 'Amazing Views', 'Boats', 'Tropical', 'Top of the world', 'Countryside', 'OMG', 'Desert', 'Play', 'Trending', 'Vineyards', 'Tiny homes', 'Bed & breakfasts']
@@ -47,7 +49,8 @@ export function SecondaryFilter({queryToParams}){
                 </div>)}
         { <div className="arrows">{">"}</div>} */}
 
-<Box sx={ {maxWidth: { sm: '100vw' }, bgcolor: 'white' }}>
+{/* <Box sx={ {maxWidth: { sm: '90%' }, bgcolor: 'white' , borderBottom: 1, borderColor: 'divider' }}> */}
+<Box sx={ {  width:'' , bgcolor: 'white' , borderBottom: 1, borderColor: 'divider' }}>
         <Tabs
             value={0}
             // onChange={handleChange}
@@ -63,7 +66,7 @@ export function SecondaryFilter({queryToParams}){
         </Tabs>
         </Box>
 
-        <button className="extra-filters-container flex-center"><FiFilter/>Filters</button>
+        <button className="extra-filters-container fs116 flex-center"><CgOptions/>Filters</button>
         
     </section>
 }

@@ -5,32 +5,39 @@
     max-height: 0;
     z-index: 30;
 
+
+    .close{
+        transform: scaleY(0)
+    }
+
     .fullColumn {
         @include flex-center;
         display: grid;
-        max-height: 120px;
-        height: 120px;
-        background-color: $white;
-        translate: transform 5s, height 1s;
-
+    
         >* {
             grid-column: 2;
         }
 
-        &.close {
-            transform: scaleY(0);
-            max-height: 0;
+        .test{
+            position: relative;
+            top: 0;
+            max-height: 0px;
+            .blank{
+                position: relative;
+                background-color: black;
+            }
         }
 
     }
+
+   
 }
 
-.black-box {
+.black-screen {
     position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: 15;
-    background-color: rgba(140, 132, 132, 0.23);
+    inset: 0;
+    background-color: rgba(99, 93, 93, 0.557);
+        z-index: 14;
 }
 
 
@@ -42,7 +49,7 @@
     border-radius: 100vw;
     display: flex;
     font-size: 0.6rem;
-    margin-top: 30px;
+    margin-top: 0.75rem;
     margin-bottom: 20px;
 
 
@@ -50,7 +57,6 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        // background-color: ;
     }
 
     .location {
@@ -98,7 +104,6 @@
 
         &::after {
             font-weight: 400;
-            // width: 14px;
             content: "x";
             font-size: 14px;
             @include fontWeightBold;
@@ -231,7 +236,6 @@
 .search-modal {
     position: relative;
     z-index: 15;
-    background-color: rgba(255, 255, 255, 0);
     display: grid;
     grid-area: 2/2/3/3;
     border-radius: 32px;
@@ -245,98 +249,7 @@
         // margin: 0 auto;
         @include for-search-bar-open;
 
-
-
-        input {
-            display: none;
-        }
-
-
-        .dateOptions {
-            // min-width: 300px;
-            // padding: 8px;
-            min-height: 30px;
-            margin-bottom: 1.3em;
-
-        }
-
-        .react-datepicker {
-            border: none;
-        }
-
-        .react-datepicker__header {
-            background-color: $white;
-
-            .react-datepicker__current-month {
-                margin-bottom: 0.5em
-            }
-
-        }
-        
-        .react-datepicker__day-name {
-            color: $grey;
-            width: $dataBoxWidth;
-        }
-
-        .react-datepicker__day--in-range:not(.react-datepicker__day--selected, .react-datepicker__day--range-end, .react-datepicker__day--outside-month) {
-            background-color: $clr-box-radius;
-            color: black;
-        }
-
-        .react-datepicker__day {
-            border-radius: 50%;
-            width: $dataBoxWidth;
-            font-weight: 600;
-            line-height: 1.5em;
-            padding: $dataBoxPadding;
-
-            &--selected,
-            &.react-datepicker__day--range-end:not(.react-datepicker__day--outside-month) {
-                background-color: rgb(0, 0, 0);
-                color: $white;
-            }
-
-            &--in-selecting-range:not(.react-datepicker__day--selected, .react-datepicker__day--outside-month) {
-                background-color: $clr-in-range;
-                color: black;
-            }
-
-
-            &:hover {
-                background-color: $white;
-                color: $text-black;
-                outline: 1px solid black;
-
-            }
-
-            .react-datepicker__day--range-start,
-            .react-datepicker__day--range-end {
-                background-color: $clr-hover-on-dates;
-                color: rebeccapurple;
-            }
-
-
-        }
-
-        .react-datepicker__day--outside-month {
-            background-color: $white;
-            cursor: default;
-
-            &:hover {
-                background-color: $white;
-                outline: none;
-                cursor: default;
-
-            }
-
-
-        }
-
-        .react-datepicker__day--keyboard-selected:not(.react-datepicker__day--range-end) {
-            background-color: $white;
-            color: $text-black;
-        }
-
+        @include for-calendar
     }
 
 
@@ -540,3 +453,4 @@
         }
     }
 }
+
