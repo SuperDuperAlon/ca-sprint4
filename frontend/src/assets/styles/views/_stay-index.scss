@@ -17,7 +17,7 @@
     }
     h4, p{
         margin: 0;
-        line-height: 1.5;
+        line-height: 1.2;
         letter-spacing: 0.4px;
     }
     h4{
@@ -70,6 +70,12 @@
             color: black;
             padding: '3px';
             opacity : 0;  
+            height: 30px;
+            width: 30px;
+            &:hover{
+                background-color: white;
+                opacity: 1;
+            }
         }
 
         

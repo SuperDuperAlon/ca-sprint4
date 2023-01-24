@@ -159,6 +159,9 @@
   .pad-t32{
     padding-top: 32px;
   }
+  .pad-t24{
+    padding-top: 24px;
+  }
 
   //right
   .pad-r32{
@@ -329,4 +332,8 @@
 
 .full-width{
   width: 100%;
+}
+
+.border-bottom{
+  border-bottom: 1px solid rgb(221, 221, 221);
 }
