@@ -9,7 +9,8 @@ export const utilService = {
     getDistanceFromLatLonInKm,
     randomDate,
     getMonthName,
-    getShortDate
+    getShortDate,
+    toActualPrice
 }
 
 function makeId(length = 6) {
@@ -102,3 +103,7 @@ function getShortDate(checkIn, checkOut){
     const endDay = new Date(checkOut).getDate()
     return `${month} ${startDay} - ${endDay}`
 }
+
+function toActualPrice(x){
+    return x.toLocaleString('us-EN');
+  }

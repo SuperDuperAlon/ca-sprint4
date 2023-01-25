@@ -1,14 +1,17 @@
-import Box from "@mui/material/Box"
-import Typography from "@mui/material/Typography"
-import { CustomizedProgressBars } from "../reusable/progress-bar"
-import {MdStar} from "react-icons/md"
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import { CustomizedProgressBars } from "../reusable/progress-bar";
+import { MdStar } from "react-icons/md";
 
 export function StayDetailsReviews({ stay }) {
-  if (!stay) return console.log("loading")
+  if (!stay) return console.log("loading");
   else
     return (
       <section className="stay-details-reviews">
-        <div className="fs22 fw600 mar-b32 flex align-center"><MdStar />4.88 · 303 Reviews</div>
+        <div className="fs22 fw600 mar-b32 flex align-center">
+          <MdStar />
+          4.88 · 303 Reviews
+        </div>
         <div className="details-review-ratings mar-b16">
           <div className="review-rating">
             <div className="review-attr-type"> Cleanliness</div>
@@ -52,14 +55,21 @@ export function StayDetailsReviews({ stay }) {
                     <div className="review-date grey-71 fs14">October 2022</div>
                   </div>
                 </div>
-                <div className="review-description">{review.txt}</div>
+                <div className="review-description">
+                  {" "}
+                  In this example the <code>-webkit-line-clamp</code> property
+                  is set to
+                  <code>3</code>, which means the text is clamped after three
+                  lines. An ellipsis will be shown at the point where the text
+                  is clamped.
+                </div>
                 <div className="mar-t8">
                   <button className="link ">Show More</button>
                 </div>
               </div>
-            )
+            );
           })}
         </div>
       </section>
-    )
+    );
 }
