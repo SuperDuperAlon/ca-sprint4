@@ -29,8 +29,10 @@ export function ImgCarousel({ imgs }) {
         className : 'indicator',
     }}
     activeIndicatorIconButtonProps={{className :'active'}} >
-            {imgs.map((img, index) => <img className="stay-img" src={require(`../assets/img/${img}.jpg`)} key={index} />
+            {imgs.map((img, index) => <img className="stay-img" src={img} key={index} />
             )}
         </Carousel>
     </div>)
 }
+
+// `../assets/img/${img}.jpg`

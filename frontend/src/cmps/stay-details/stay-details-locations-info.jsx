@@ -18,12 +18,12 @@ export function StayDetailsLocationInfo({ stay }) {
               <span className="fs16">
                 <MdStar />
               </span>{" "}
-              4.88 · <Link to={`/reviews/`}>303 Reviews</Link>
+              {stay.reviewsRate} · <Link to={`/reviews/`}>{stay.reviews.length} Reviews</Link>
             </div>
             ·
             <div className="mar-l8">
               <Link to={`/location/`}>
-                {stay.loc.city}, {stay.loc.address}, {stay.loc.country}
+                 {stay.loc.address}
               </Link>
             </div>
           </div>

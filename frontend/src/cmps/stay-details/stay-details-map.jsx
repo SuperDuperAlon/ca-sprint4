@@ -9,7 +9,7 @@ export function StayDetailsMap({ stay }) {
 
   var coordinates = {
     lat: stay.loc.lat,
-    lng: stay.loc.lng,
+    lng: stay.loc.lan,
   }
   const zoom = 13
 

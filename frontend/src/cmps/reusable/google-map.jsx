@@ -11,7 +11,7 @@ export function GoogleMap({stay}) {
   const defaultProps = {
     center: {
       lat: stay.loc.lat,
-      lng: stay.loc.lng
+      lng: stay.loc.lan
     },
     zoom: 11,
     icon: <RiMapPin2Fill style={style}/>
