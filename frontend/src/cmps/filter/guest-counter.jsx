@@ -1,6 +1,6 @@
 export function GuestsCounter({filter,onCountChange}){
 
-    // guestsModalOpen
+
     return(
         <div className="guests-modal-open">
         <div className="guest">

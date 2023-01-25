@@ -295,7 +295,7 @@
       background-color: white;
       width: 320px;
       border-bottom: 0;
-      .guestsModalOpen{
+      .guests-modal-open{
         padding: 0;
         .guest{
     
@@ -447,7 +447,7 @@
   }
 
   .order-form {
-    width: 330px;
+    width: 370px;
 
     .order-info {
       @include flex-row-sb;

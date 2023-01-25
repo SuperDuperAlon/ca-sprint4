@@ -12,7 +12,7 @@ import { FiFilter } from "react-icons/fi";
 import { CgOptions } from "react-icons/cg";
 
 export function SecondaryFilter({queryToParams}){
-    const labels = ['Cabins', 'Islands', 'Amazing Pools', 'Ski-in-out', 'Beach', 'Luxe', 'Mansions', 'Amazing Views', 'Boats', 'Tropical', 'Top of the world', 'Countryside', 'OMG', 'Desert', 'Play', 'Trending', 'Vineyards', 'Tiny homes', 'Bed & breakfasts']
+    const labels = ['Cabins', 'Islands', 'Amazing Pools', 'Ski-in-out', 'Beach', 'Luxe', 'Mansions', 'Amazing Views', 'Boats', 'Tropical', 'Top of the world', 'Countryside', 'OMG', 'Desert', 'Play', 'Trending', 'Vineyards', 'Tiny homes', 'Bed & breakfasts', 'Private rooms','Castles', 'Beachfront', 'Design', 'Iconic cities', 'National parks', 'Off-the-grid']
     const [labelFilter, setLabelFilter] = useState(null)
     const [clickedLabel, setClickedLabel] = useState(null)
     const navigate = useNavigate()

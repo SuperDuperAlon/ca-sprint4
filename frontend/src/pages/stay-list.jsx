@@ -13,11 +13,13 @@ export function StayList({ stays, onRemoveStay, onEditStay, onClickOutSideTheBar
                             <ImgCarousel imgs={stay.imgUrls}/> 
                             {/* <img className="stay-img" src={require(`../assets/img/${stay.imgUrls[0]}.jpg`)} /> */}
                             <div className='flex space-between'>
-                                <h4>{stay.loc.city}, {stay.loc.country}</h4>
+                                <h4>{stay.type} in {stay.loc.city}</h4>
                                 <h4>{!!stay.reviews.length && <span className="flex center"><AiFillStar/> {stay.reviews.reduce((acc, review) => review.rate + acc, 0) / stay.reviews.length}</span>}</h4>
                             </div>
-                            <p>{utilService.getDistanceFromLatLonInKm(31.771959, 35.217018, stay.loc.lat, stay.loc.lng)} kilometers away</p>
-                            <p>{utilService.randomDate(new Date(), new Date(2024, 0, 1))}</p>
+                            <p>{stay.name}</p>
+                            <p>{stay.beds} beds</p>
+                            {/* <p>{utilService.getDistanceFromLatLonInKm(31.771959, 35.217018, stay.loc.lat, stay.loc.lng)} kilometers away</p>
+                            <p>{utilService.randomDate(new Date(), new Date(2024, 0, 1))}</p> */}
                             <h4 className="pad-t8">${stay.price} <span>night</span></h4>
                             {/* <button onClick={(ev)=>onEditStay(ev,stay)}>Edit</button> */}
 
