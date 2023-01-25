@@ -37,7 +37,53 @@
   @include for-wide-layout {
 
     grid-template-columns:
-    minmax($pad-40,1fr) minmax($x-large-breakpoint, 1700px) minmax($pad-40,1fr);
+    // minmax($pad-40,1fr) minmax($x-large-breakpoint, 1700px) minmax($pad-40,1fr);
+      40px minmax($x-large-breakpoint, auto) 40px;
+
+    > * {
+      grid-column: 2;
+    }
+  }
+
+
+  // Details
+
+  @include for-details-sm-layout {
+    // background-color: yellow;
+
+    grid-template-columns: minmax($pad-20) minmax(
+        auto,
+        $small-breakpoint-details
+      ) minmax($pad-20);
+  }
+
+  @include for-details-md-layout {
+    // background-color: rgb(0, 255, 68);
+    grid-template-columns: minmax(40px, 1fr) minmax(
+        auto,
+        $medium-breakpoint-details
+      ) minmax(40px, 1fr);
+  }
+
+  @include for-details-lg-layout {
+    // background-color: orange;
+    grid-template-columns: minmax(40px, 1fr) minmax(
+        auto,
+        $large-breakpoint-details
+      ) minmax(40px, 1fr);
+  }
+
+  @include for-details-xl-layout {
+    // background-color: red;
+
+    grid-template-columns: minmax(80px, 1fr) minmax(
+        auto,
+        $x-large-breakpoint-details
+      ) minmax(80px, 1fr);
+
+    > * {
+      grid-column: 2;
+    }
   }
 
 

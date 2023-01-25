@@ -10,18 +10,13 @@ export function StayDetailsHostInfo({ stay }) {
   const [reviewModalOpen, setReviewModalOpen] = useState(false);
   const handleOpenReviewModal = () => setReviewModalOpen(true);
   const handleCloseReviewModal = () => setReviewModalOpen(false);
-  const [filterBy, setFilterBy] = useState(filterService.getEmptyFilter())
+  const [filter, setFilter] = useState(filterService.getEmptyFilter())
 
-
-  function onChangeDate(dates){
+  function onChangeDate (dates) {
     const checkIn = dates[0]
     const checkOut = dates[1]
-    // if(dates[1]){
-    //     toggleDatePicker()
-    // }
-    setFilterBy({ ...filterBy, checkOut, checkIn })  
+    setFilter({ ...filter, checkOut, checkIn })
 }
-
 
 
   if (!stay) return;
@@ -112,8 +107,8 @@ export function StayDetailsHostInfo({ stay }) {
       
         <div className="calendar">
           <div className="fw600">3 nights in Forde</div>
-          <div className="day-picker-model">
-          <Calender filterBy={filterBy} onChangeDate={onChangeDate}/>
+          <div className="day-picker-model inner">
+          <Calender filterBy={filter} onChangeDate={onChangeDate}/>
           </div>
 
         </div>
