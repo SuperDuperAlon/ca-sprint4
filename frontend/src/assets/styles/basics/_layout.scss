@@ -1,7 +1,7 @@
 .index-layout {
   display: grid;
   
-  grid-template-columns: 5px minmax(360px, $small-breakpoint) 5px;
+  grid-template-columns: 24px minmax(360px, $small-breakpoint) 24px;
 
   >* {
     grid-column: 2;

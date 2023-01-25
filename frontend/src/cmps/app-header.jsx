@@ -50,15 +50,15 @@ export function AppHeader({ queryToParams, stay}) {
                         <nav className='header-nav short'>
                             <div className="top">
                                 <NavLink key={"anywhere"} className="bold" onClick={() => onChangeStaySearchBar('location')}>
-                                    anywhere
+                                    Anywhere
                                 </NavLink>
                             </div>
                             <div className="bottom">
                                 <NavLink key={"anyWeek"} onClick={() => onChangeStaySearchBar('checkIn')}>
-                                    any week
+                                    Any week
                                 </NavLink>
                                 <NavLink key={"addGuests"} onClick={() => onChangeStaySearchBar('guests')}>
-                                    add guests
+                                    Add guests
                                 </NavLink>
                             </div>
                         </nav>

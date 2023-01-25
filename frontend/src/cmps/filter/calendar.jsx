@@ -3,7 +3,6 @@ import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 export function CalendarMain ({filterBy, onChangeDate}){
 
-    console.log('filterBy:',filterBy )
     const [width, setWidth] = useState(window.innerWidth)
 
     let numOfCalendar
@@ -29,6 +28,7 @@ export function CalendarMain ({filterBy, onChangeDate}){
             monthsShown={numOfCalendar}
             selectsRange
             open={true}
+            minDate={new Date()}
             inline
             className="dayPicker"
         />

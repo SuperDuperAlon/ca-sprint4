@@ -7,6 +7,7 @@ import { CalendarMain } from "./calendar"
 import { GuestsCounter } from "./guest-counter"
 import { store } from "../../store/store"
 import { SEARCH_BAR_OPEN } from "../../store/stay.reducer"
+
 import { FiSearch } from 'react-icons/fi'
 import { BsClock } from 'react-icons/bs'
 import { MdClear } from 'react-icons/md'
@@ -146,8 +147,10 @@ export function SearchBar({ queryToParams }) {
                                 onClick={() => resetOption("checkOut")}><MdClear /></button>
                         </div>
                     </div>
-                    <div className={(onActiveNow === 'guests') ? "search-active" : null}>
-                        <div className={onActiveNow ? "active guests" : "guests "}>
+                    <div className={(onActiveNow === 'guests') ? "search-active search-option" : "search-option"}>
+                        <div className={onActiveNow ? "active guests" : "guests "}
+                        onClick={() => setActiveNow('guests')}
+                        >
                             <div
                                 className="bar-input"
                                 onClick={() => setActiveNow('guests')}>
@@ -164,7 +167,7 @@ export function SearchBar({ queryToParams }) {
                                 onClick={() => resetOption("guests")}
                             ><MdClear/></button>
                             <div className={onActiveNow ? 'active search-icon' : 'search-icon'} onClick={onClickSearch}>
-                                <div className="icon">
+                                <div className={onActiveNow ? "icon active": "icon"}>
                                     <FiSearch />
                                 </div>
                             </div>

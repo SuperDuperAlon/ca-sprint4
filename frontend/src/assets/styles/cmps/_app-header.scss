@@ -2,10 +2,6 @@ $clr-ligthtext: #717171;
 $clr-box-radius: #DDDDDD;
 $clr-search-icon-bgc: #dc0e64;
 
-.page-top {
-   
-}
-
 .app-header {
     position: sticky;
     top: 0;
@@ -42,6 +38,7 @@ $clr-search-icon-bgc: #dc0e64;
 
     .center-grid {
         width: 100%;
+        margin-top: 16px;
 
         .navBarHeader {
             @include flex-center;
@@ -69,6 +66,8 @@ $clr-search-icon-bgc: #dc0e64;
                     display: none;
                 }
 
+               
+
                 &.short {
                     .bottom {
                         :first-child {
@@ -81,7 +80,14 @@ $clr-search-icon-bgc: #dc0e64;
                             }
                         }
                     }
+                    >*{
+                        a{
+                            text-decoration: none;
+                        }
+
+                    }
                 }
+
             }
 
             .filter-btn {
@@ -170,6 +176,7 @@ $clr-search-icon-bgc: #dc0e64;
 
         .center-grid {
             width: fit-content;
+            margin-top: 0;
 
             .navBarHeader {
                 padding: 0;

@@ -44,9 +44,10 @@ export function StayIndex() {
 
     }
 
-    function onOpenStay(ev, stay) {
+    function onOpenStay(ev, stay ,filter) {
         ev.stopPropagation()
-        navigate(`/room/${stay._id}`)
+        const params=queryToParams(filter)
+        navigate(`/room/${stay._id}/${params}`)
     }
 
     function onClickOutSideTheBar(event) {
@@ -61,14 +62,17 @@ export function StayIndex() {
 
     }
 
-
+    function onToSearch (filter){
+        const params=queryToParams(filter)
+        navigate(`/${params}`)
+    }
     function queryToParams(filter) {
         filter.checkIn = filterService.getDateToFilter(filter.checkIn)
         filter.checkOut = filterService.getDateToFilter(filter.checkOut)
         const queryParams =
             `where=${filter.where}&checkIn=${filter.checkIn}&checkOut=${filter.checkOut}&label=${filter.label}`
         // &adults=${guests.adults}&children=${guests.children}`    
-        navigate(`/${queryParams}`)
+        return queryParams
     }
 
 
