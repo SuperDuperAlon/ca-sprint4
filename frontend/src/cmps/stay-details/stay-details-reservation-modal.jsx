@@ -113,7 +113,7 @@ export function StayDetailsOrderModal({ stay }) {
               </div>
                 {isGuestsClicked ? <BiChevronUp className="guests-arrow"/> : <BiChevronDown className="guests-arrow"/>}
             </button>
-              {isGuestsClicked && <div className="guests-counter-container"><GuestsCounter filter={filterBy} onCountChange={onCountChange}/></div>}
+              {isGuestsClicked && <div className="guests-counter-container details-guest"><GuestsCounter filter={filterBy} onCountChange={onCountChange}/></div>}
           </div>
         </div>
         <button

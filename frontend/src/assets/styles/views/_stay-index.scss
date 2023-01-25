@@ -1,6 +1,6 @@
 .stay-list {
     display: grid;
-    grid-template-columns: repeat(6, minmax(0,1fr)) ;
+    grid-template-columns:  repeat(auto-fit, minmax(270px, 1fr)) ;
     gap : 25px ;
     z-index: 5;
     position: relative;
@@ -9,10 +9,8 @@
         aspect-ratio: 1/1;
         object-fit: cover;
         border-radius: 0.8rem;
-        // margin-bottom: 0.5rem;
         height: 100%;
         position: relative;
-        // margin-bottom: 20px;
         
     }
     h4, p{
