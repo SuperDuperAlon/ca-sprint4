@@ -26,7 +26,7 @@ export function InnerNavStay() {
 
   return (
     <div className="stay-header-inner-nav">
-      <div className="stay-inner-container main-content">
+      <div className="stay-inner-container index-layout">
         <ul className="stay-inner-nav clean-list">
           <li>
             <a href="#">Photos</a>

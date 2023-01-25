@@ -1,8 +1,6 @@
-.main-content {
+.index-layout {
   display: grid;
   
-
-
   grid-template-columns: 5px minmax(360px, $small-breakpoint) 5px;
 
   >* {
@@ -30,7 +28,7 @@
 
   @include for-normal-layout {
     grid-template-columns:
-      minmax($pad-20) minmax(auto, $large-breakpoint) ($pad-20);
+      minmax($pad-20, 1fr) minmax(auto, $large-breakpoint) minmax($pad-20, 1fr);
 
   }
 
@@ -38,17 +36,19 @@
 
     grid-template-columns:
     // minmax($pad-40,1fr) minmax($x-large-breakpoint, 1700px) minmax($pad-40,1fr);
-      40px minmax($x-large-breakpoint, auto) 40px;
+      80px minmax($x-large-breakpoint, auto) 80px;
 
     > * {
       grid-column: 2;
     }
   }
+}
 
 
-  // Details
+.details-layout{
+   // Details
 
-  @include for-details-sm-layout {
+   @include for-details-sm-layout {
     // background-color: yellow;
 
     grid-template-columns: minmax($pad-20) minmax(
@@ -86,16 +86,6 @@
     }
   }
 
-
-  // @include for-details-xxl-layout {
-  //   // background-color: red;
-
-  //   grid-template-columns: 1fr minmax(auto, $xx-large-breakpoint-details) 1fr;
-
-  //   > * {
-  //     grid-column: 2;
-  //   }
-  // }
 }
 
 .clickOutSideTheBox {

@@ -73,9 +73,9 @@ export function StayIndex() {
 
 
     return (
-        <div className='index-layout main-content'>
-            <div className='app-header main-content full'>
-                <AppHeader queryToParams={queryToParams} />
+        <div className='index-layout'>
+            <div className='app-header index-layout full'>
+                <AppHeader queryToParams={queryToParams} stay={false} />
             </div>
             <StayList stays={stays} onRemoveStay={onRemoveStay}
                 onEditStay={onEditStay} onOpenStay={onOpenStay}

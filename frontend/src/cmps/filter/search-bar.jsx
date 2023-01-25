@@ -103,7 +103,7 @@ export function SearchBar({ queryToParams }) {
         <div className={openSearchBar ? "search" : "search close"}>
             <div className={openSearchBar ? "search-row" : "search-row close"} ref={searchInBox}>
 
-                <div className={`full main-content search-bar ${onActiveNow ? "bar-active" : ""}`} >
+                <div className={`full main-conten search-bar ${onActiveNow ? "bar-active" : ""}`} >
                         <div className={(onActiveNow === 'location') ? "search-active location" : "location"}
                             onClick={() => setActiveNow('location')}>
                             <div className="bar-input" >

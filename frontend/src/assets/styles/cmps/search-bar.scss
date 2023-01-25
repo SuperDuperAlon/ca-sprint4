@@ -47,7 +47,6 @@
 
 
 .search-bar {    
-    // max-width: 860px;
     background-color: $white;
     border: solid 0.5px $clr-border-between-div;
     max-height: 58px;
@@ -79,7 +78,6 @@
         justify-content: center;
         align-items: center;
         @include padding-br;
-        // padding-left: 1.5rem;
         flex:1 0 200px;
 
         &:hover {
@@ -121,6 +119,7 @@
     }
 
     .check-date {
+        margin-left: 5px;
         display: flex;
         .checkIn,
         .checkOut {
@@ -217,9 +216,6 @@
                 }
 
             }
-
-        
-
             .icon {
                 display: flex;
                 justify-content: center;
@@ -231,6 +227,11 @@
 
             }
 
+            
+            
+        }
+        &:hover {
+            @include butHoverOn;
         }
     }
 
@@ -358,12 +359,12 @@
 
     .guestsAddingModal {
         @include for-search-bar-open-small;
-        justify-self: end;
+        justify-content: flex-end;
         box-shadow: 0 0 0 1px rgb(0 0 0 / 4%), 0 8px 16px rgb(0 0 0 / 15%);
         border-radius: 50px;
         background-color: #fff;
 
-        .guestsModalOpen {
+        .guests-modal-open {
 
             align-self: stretch;
             padding: 1rem 2rem;

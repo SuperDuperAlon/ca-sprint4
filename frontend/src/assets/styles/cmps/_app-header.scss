@@ -14,6 +14,7 @@ $clr-search-icon-bgc: #dc0e64;
     border-bottom: 1px #dddddd;
     z-index: 20;
     background-color: $white;
+    grid-column: 1/-1;
     .cover-filter{
         max-height: 0;
         position: relative;

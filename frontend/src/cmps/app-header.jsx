@@ -13,7 +13,7 @@ import { SEARCH_BAR_OPEN } from '../store/stay.reducer'
 import { SearchBar } from './filter/search-bar'
 import { SecondaryFilter } from '../pages/secondary-filter'
 
-export function AppHeader({ queryToParams }) {
+export function AppHeader({ queryToParams ,stay}) {
     const navigate = useNavigate()
 
     const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
@@ -27,9 +27,8 @@ export function AppHeader({ queryToParams }) {
     }
 
     return (<>
-        {/* <header className="app-header main-content full"> */}
+        {/* <header className="app-header index-layout full"> */}
             <main className='main-header'>
-                
                 <div className="logo" onClick={() => navigate('/')}>
                     <div><span className="a-Logo"><SiAirbnb /></span><span className='text-next-to-logo'>nyplace</span></div>
                 </div>
@@ -96,7 +95,7 @@ export function AppHeader({ queryToParams }) {
             </div>
             
             <SearchBar queryToParams={queryToParams} />
-            <SecondaryFilter queryToParams={queryToParams} />
+            {!stay && <SecondaryFilter queryToParams={queryToParams} />}
 
         {/* </header> */}
         </>
