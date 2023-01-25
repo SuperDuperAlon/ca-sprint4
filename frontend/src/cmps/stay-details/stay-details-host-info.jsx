@@ -28,7 +28,7 @@ export function StayDetailsHostInfo({ stay }) {
             <div className="fs22 fw600 mar-b8">
               {stay.name} hosted by {stay.host.fullname}
             </div>
-            <div> 2 guests · 1 bedroom · 1 bed · Half-bath</div>
+            <div> {`2 guests · ${stay.bedrooms > 1 ? stay.bedrooms + ' bedrooms' : stay.bedrooms + ' bedroom'} · ${stay.beds > 1 ? stay.beds + ' beds' : stay.beds+' bed'} · ${stay.bathrooms > 1 ? stay.bathrooms + ' bathrooms' : stay.bathrooms + ' bathroom'}`}</div>
           </div>
           <div className="avatar-lg">
             <img
@@ -96,22 +96,24 @@ export function StayDetailsHostInfo({ stay }) {
         <div className="stay-details-amenities">
           <div className="fs22 fw600 mar-b24">What this place offers </div>
           <div className="amenities-list">
-            {stay.amenities.map((amenities) => {
-              return <div>{amenities}</div>
+            {stay.amenities.map((amenities, idx) => {
+              if(idx < 6) return <div>{amenities}</div>
             })}
           </div>
           <button className="white-open-btn">
-            <Link to={`/amenities/`}>Show all 9 amenities</Link>
+            <Link to={`/amenities/`}>Show all {stay.amenities.length} amenities</Link>
           </button>
         </div>
       
         <div className="calendar">
-          <div className="fw600">3 nights in Forde</div>
+          <div className="fw600 fs22">3 nights in Forde</div>
           <div className="day-picker-modal inner">
-          <CalendarMain filterBy={filter} onChangeDate={onChangeDate}/>
+          <CalendarMain filterBy={filter} onChangeDate={onChangeDate} />
           </div>
 
         </div>
       </section>
     )
 }
+
+// require("../../assets/img/other/DOGE.jpg")
