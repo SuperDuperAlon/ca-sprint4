@@ -181,7 +181,7 @@ export function SearchBar({ queryToParams }) {
                             <div className="date-options">
 
                             </div>
-                            <CalendarMain filterBy={filter} onChangeDate={onChangeDate} />
+                            <CalendarMain filterBy={filter} onChangeDate={onChangeDate} num={850} type={'search-bar'}/>
                         </div>)}
                     {(onActiveNow === 'location' && !filter?.where) && <div className="where-model">
                         <div className="show-recent-search">
@@ -239,7 +239,7 @@ export function SearchBar({ queryToParams }) {
                     </div>}
                     {onActiveNow === 'guests' &&
                         <div className="guests-adding-modal">
-                            <GuestsCounter filter={filter} onCountChange={onCountChange} />
+                            <GuestsCounter filter={filter} onCountChange={onCountChange}  />
                         </div>
                     }
                 </div>}

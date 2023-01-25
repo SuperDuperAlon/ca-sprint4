@@ -135,16 +135,76 @@
 
       .react-datepicker {
         box-shadow: 0 0 0 0;
+        width: 100%;
+        > :last-child {
+          display: none;
+        }
+      }
+
+      .react-datepicker__header {
+        border: none;
+          // > :first-child {
+          //   padding-left: 13px;
+          // }
+          // > :last-child {
+          //   padding-right: 13px;
+          // }
       }
 
       @include for-calendar;
+
+      .react-datepicker__month-container {
+        width: 100%;
+        // > :first-child {
+        //   padding-right: 13px;
+        // }
+        // > :last-child {
+        //   padding-left: 13px;
+        // }
+      }
+
+      .react-datepicker__day-names {
+        > :first-child {
+          > :first-child {
+            padding-left: 13px;
+          }
+        }
+
+        > :last-child {
+          > :last-child {
+            padding-right: 13px;
+          }
+        }
+      }
+
+      .react-datepicker__navigation {
+        width: 10%;
+        top: 9.5%;
+      }
+
+      .react-datepicker__current-month {
+        font-size: 1rem;
+        padding-top: 1.5rem;
+        padding-left: 0;
+      }
+
+      .react-datepicker__week {
+        height: fit-content;
+      }
+      .react-datepicker:last-child {
+        display: hidden;
+      }
 
       .react-datepicker__day-name {
         width: 35px;
       }
       .react-datepicker__day {
-        width: 35px;
+        width: 42px;
+        height: 42px;
         padding: 10px;
+        display: table-cell;
+        font-size: 14px;
+        margin: 0 1px;
       }
     }
   }
@@ -171,9 +231,8 @@
     padding: 3rem 0 3rem;
 
     .details-review-reviews {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
       > * {
         @include flex-col-sb;
         margin-bottom: 40px;
@@ -282,11 +341,11 @@
     .date-container.guests {
       width: 100%;
     }
-    
+
     .guests-counter-container {
       // border: 1px solid #b5adad;
       // bottom: 0px;
-      
+
       @include for-guest-counter;
       padding: 16px;
       border-radius: 0.25rem;
@@ -297,56 +356,50 @@
       border-bottom: 0;
       .guests-modal-open{
         padding: 0;
-        .guest{
-    
-            display: flex;
-            justify-content: space-between;
+        .guest {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1.5rem;
+
+          h3 {
+            font-size: 1rem;
+          }
+
+          h5 {
+            font-size: rem(14px);
+            font-weight: 300;
+          }
+
+          .pet {
+            text-decoration: underline;
+            font-weight: bold;
+          }
+
+          .counter {
+            display: inline-flex;
+            width: 104px;
             align-items: center;
-            margin-bottom: 1.5rem;
-        
-            h3 {
-                font-size: 1rem;
+            justify-content: space-between;
+
+            .btn-counter {
+              border-radius: 50%;
+              width: rem(32px);
+              height: rem(32px);
+              background-color: white;
+              border: solid 1px rgb(176, 176, 176);
+              padding: 0;
+              margin: 0;
+
+              &:hover {
+                border-color: rgb(34, 34, 34);
+              }
             }
-        
-            h5 {
-                font-size: rem(14px);
-                font-weight: 300;
-        
-            }
-        
-            .pet {
-                text-decoration: underline;
-                font-weight: bold;
-            }
-        
-            .counter {
-                display: inline-flex;
-                width: 104px;
-                align-items: center;
-                justify-content: space-between;
-        
-                .btn-counter {
-                    border-radius: 50%;
-                    width: rem(32px);
-                    height: rem(32px);
-                    background-color: white;
-                    border: solid 1px rgb(176, 176, 176);
-                    padding: 0;
-                    margin: 0;
-            
-                    &:hover {
-                        border-color: rgb(34, 34, 34);
-                    }
-            }
-        
-      
-                
-            
+          }
+          &:not(:last-child) {
+            border-bottom: none;
+          }
         }
-        &:not(:last-child){
-          border-bottom: none;
-        }
-      }
       }
     }
   }
@@ -473,9 +526,27 @@
       height: 257.25px;
     }
   }
+
+  .calendar {
+    .day-picker-modal {
+      .react-datepicker > :last-child {
+        display: block;
+      }
+    }
+  }
+
+  .stay-details-amenities {
+    .amenities-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .stay-details-reviews {
+    .details-review-reviews {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 }
-
-
 
 // @media (min-width: $xx-large-breakpoint-details) {
 

@@ -10,7 +10,9 @@ export const utilService = {
     randomDate,
     getMonthName,
     getShortDate,
-    getRandomFloatInclusive
+    getRandomFloatInclusive,
+    toActualPrice,
+    updateDimensions
 }
 
 function makeId(length = 6) {
@@ -109,3 +111,11 @@ function getShortDate(checkIn, checkOut){
     const endDay = new Date(checkOut).getDate()
     return `${month} ${startDay} - ${endDay}`
 }
+
+function toActualPrice(x){
+    return x.toLocaleString('us-EN');
+  }
+
+  function updateDimensions() {
+   return window.innerWidth
+  }
