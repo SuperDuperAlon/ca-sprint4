@@ -48,8 +48,8 @@ export function StayDetails() {
   // }
 if (!stay) return console.log('no map');
   else return (
-    <section className="details-layout main-details full">
-      <AppHeader />
+    <section className="details-layout index-layout full">
+      <AppHeader  stay={stay}/>
       <StayDetailsLocationInfo stay={stay} />
       <StayDetailsGallery stay={stay} />
       <InnerNavStay />

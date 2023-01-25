@@ -39,7 +39,7 @@ $x-large-breakpoint: 1200px;
 $padded-s: $small-breakpoint + 2 * $pad-20;
 $padded-m: $medium-breakpoint + 2 * $pad-20;
 $padded-l: $large-breakpoint + 2 * $pad-20;
-$padded-xl: $x-large-breakpoint + 2 * $pad-20;
+$padded-xl: $x-large-breakpoint + 2 * $pad-40;
 
 
 
@@ -55,8 +55,8 @@ $padded-l-details: $large-breakpoint-details + 2 * $pad-40;
 $padded-xl-details: $x-large-breakpoint-details + 2 * $pad-80;
 
 
-$dataBoxWidth: 3.8em;
-$dataBoxPadding: 1em;
+$dataBoxWidth: 43px;
+$dataBoxPadding: 12px;
 // $dataBoxWidth: 46px;
 // $dataBoxPadding: 12px;
 

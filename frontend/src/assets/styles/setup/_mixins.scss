@@ -55,9 +55,9 @@
 // }
 
 @mixin for-search-bar-open {
-    padding: 2em;
+    padding: 1.6rem;
     // min-width: 840px;
-    border-radius: 3em;
+    border-radius: 2em;
 
 }
 
@@ -86,16 +86,14 @@
 }
 
 @mixin padding-br {
-    border-radius: 100vw;
-    padding: 0.5rem 1.2rem;
-    // line-height: 1;
-    // height: 48px;
+    padding: 0.5rem 1.1rem;
+
 }
 
 @mixin butHoverOn {
-    background: hsl(0 0% 94%);
+    background:   #e0ddddf6;
     border-radius: 100vw;
-
+    transform: scale(1.02);
 }
 
 @mixin fontWeightLight {

@@ -3,8 +3,6 @@ import DatePicker from "react-datepicker"
 // import "react-datepicker/dist/react-datepicker.css"
 import { filterService } from "../../services/filterService"
 
-import { FiSearch } from 'react-icons/fi'
-import { BsClock } from 'react-icons/bs'
 import { useParams } from "react-router"
 import { useSelector } from "react-redux"
 import { Calender } from "./calender"
@@ -12,8 +10,12 @@ import { GuestsCounter } from "./guest-counter"
 import { store } from "../../store/store"
 import { SEARCH_BAR_OPEN } from "../../store/stay.reducer"
 
+import { FiSearch } from 'react-icons/fi'
+import { BsClock } from 'react-icons/bs'
+import { MdClear } from 'react-icons/md'
+
 export function SearchBar({ queryToParams }) {
-    const [activeNow, setActiveNow] = useState(null)
+    const [onActiveNow, setActiveNow] = useState(null)
     const [filter, setFilter] = useState(filterService.getEmptyFilter())
     let { filterBy } = useParams()
     const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
@@ -36,9 +38,9 @@ export function SearchBar({ queryToParams }) {
 
     useEffect(() => {
         setActiveNow(openSearchBar)
-    },[openSearchBar])
+    }, [openSearchBar])
 
-    function onChangeDate (dates) {
+    function onChangeDate(dates) {
         const checkIn = dates[0]
         const checkOut = dates[1]
         setFilter({ ...filter, checkOut, checkIn })
@@ -97,35 +99,33 @@ export function SearchBar({ queryToParams }) {
 
     }
 
-
     return (
         <div className={openSearchBar ? "search" : "search close"}>
-            <div className={openSearchBar ? "fullColumn" : "fullColumn close"} ref={searchInBox}>
+            <div className={openSearchBar ? "search-row" : "search-row close"} ref={searchInBox}>
 
-                <div className=" full main-content search-bar" >
-                    <div className="test2"></div>
-                    <div
-                        className={(activeNow === 'location') ? "searchActive location" : "location"}
-                        onClick={() => setActiveNow('location')}>
-                        <div className="bar-input" >
-                            <label htmlFor="where">Where</label>
-                            <input
-                                type="text"
-                                name="where"
-                                id="where"
-                                value={filter?.where || ""}
+                <div className={`full main-conten search-bar ${onActiveNow ? "bar-active" : ""}`} >
+                        <div className={(onActiveNow === 'location') ? "search-active location" : "location"}
+                            onClick={() => setActiveNow('location')}>
+                            <div className="bar-input" >
+                                <label htmlFor="where">Where</label>
+                                <input
+                                    type="text"
+                                    name="where"
+                                    id="where"
+                                    value={filter?.where || ""}
 
-                                placeholder="Search destinations"
-                                onChange={handleChange}
-                            />
+                                    placeholder="Search destinations"
+                                    onChange={handleChange}
+                                />
+                            </div>
+                            <button
+                                className={((filter.where) && (onActiveNow === 'location')) ? "show-btn btn-rs" : "btn-rs"}
+                                onClick={() => resetOption("location")}><MdClear/></button>
                         </div>
-                        <button
-                            className={((filter.where) && (activeNow === 'location')) ? "showBtn btn-rs" : "btn-rs"}
-                            onClick={() => resetOption("location")}></button>
-                    </div>
-                    <div className="checkDate">
+                 
+                    <div className="check-date">
                         <div
-                            className={(activeNow === 'checkIn') ? "searchActive checkIn" : "checkIn"}
+                            className={(onActiveNow === 'checkIn') ? "search-active checkIn" : "checkIn"}
                             onClick={() => setActiveNow('checkIn')} >
                             <div className="bar-input">
                                 <label htmlFor="checkIn">Check in</label>
@@ -135,11 +135,11 @@ export function SearchBar({ queryToParams }) {
                                     placeholder="Add dates" />
                             </div>
                             <button
-                                className={((filter.checkIn) && (activeNow === 'checkIn')) ? "showBtn btn-rs" : "btn-rs"}
-                                onClick={() => resetOption("checkIn")}></button>
+                                className={((filter.checkIn) && (onActiveNow === 'checkIn')) ? "show-btn btn-rs" : "btn-rs"}
+                                onClick={() => resetOption("checkIn")}><MdClear/></button>
                         </div>
                         <div
-                            className={(activeNow === 'checkOut') ? "searchActive checkOut" : "checkOut"}
+                            className={(onActiveNow === 'checkOut') ? "search-active checkOut" : "checkOut"}
                             onClick={() => setActiveNow('checkOut')}>
                             <div className="bar-input">
                                 <label htmlFor="checkOut">Check out</label>
@@ -149,16 +149,16 @@ export function SearchBar({ queryToParams }) {
                                     placeholder="Add dates" />
                             </div>
                             <button
-                                className={((filter.checkOut) && (activeNow === 'checkOut')) ? "showBtn btn-rs" : "btn-rs"}
-                                onClick={() => resetOption("checkOut")}></button>
+                                className={((filter.checkOut) && (onActiveNow === 'checkOut')) ? "show-btn btn-rs" : "btn-rs"}
+                                onClick={() => resetOption("checkOut")}><MdClear/></button>
                         </div>
                     </div>
-                    <div className={(activeNow === 'guests') ? "searchActive" : null}>
-                        <div className={activeNow ? "active guests" : "guests "}>
+                    <div className={(onActiveNow === 'guests') ? "search-active" : null}>
+                        <div className={onActiveNow ? "active guests" : "guests "}>
                             <div
                                 className="bar-input"
                                 onClick={() => setActiveNow('guests')}>
-                                <label htmlFor="guests">How</label>
+                                <label htmlFor="guests">Who</label>
                                 <input type='text' name='guests' id='guests' placeholder="Add guests"
                                     value={filter?.guests.adults > 0 || filter?.guests.children > 0 ?
                                         `Guests: ${filter.guests.adults + filter.guests.children}` :
@@ -170,11 +170,11 @@ export function SearchBar({ queryToParams }) {
                                 />
                             </div>
                             <button
-                                className={((filter?.guests.adults > 0) && (activeNow === 'guests')) ? "showBtn btn-rs" : "btn-rs"}
+                                className={((filter?.guests.adults > 0) && (onActiveNow === 'guests')) ? "show-btn btn-rs" : "btn-rs"}
                                 onClick={() => resetOption("guests")}
-                            ></button>
+                            ><MdClear/></button>
 
-                            <div className={activeNow ? 'active search-icon' : 'search-icon'} onClick={onClickSearch}>
+                            <div className={onActiveNow ? 'active search-icon' : 'search-icon'} onClick={onClickSearch}>
                                 <div className="icon">
                                     <FiSearch />
                                 </div>
@@ -186,24 +186,24 @@ export function SearchBar({ queryToParams }) {
                     <div className="blank"></div>
                 </div>
 
-                {activeNow && < div className="search-modal">
-                    {(activeNow === 'checkIn' || activeNow === 'checkOut') &&
+                {onActiveNow && < div className="search-modal">
+                    {(onActiveNow === 'checkIn' || onActiveNow === 'checkOut') &&
                         (<div className="day-picker-model fs-8">
                             <div className="dateOptions">
 
                             </div>
                             <Calender filterBy={filter} onChangeDate={onChangeDate} />
                         </div>)}
-                    {(activeNow === 'location' && !filter?.where) && <div className="whereModel">
-                        <div className="showRecentSearch">
+                    {(onActiveNow === 'location' && !filter?.where) && <div className="where-model">
+                        <div className="show-recent-search">
                             <h1>Recent searches</h1>
-                            <div className="recentSearchList">
+                            <div className="recent-search-list ">
                                 <div className="lastSearch">
                                     <div className="roundClock">
                                         <BsClock />
                                     </div>
                                     <div className="searchDetails">
-                                        <p>Italy <span className="how"> Stay</span></p>
+                                        <p>Italy <span className="last-searches"> Stay</span></p>
                                         <div className="timeOf">
                                             Feb 13-15
                                         </div>
@@ -214,9 +214,8 @@ export function SearchBar({ queryToParams }) {
                         </div>
                         <div className="search-by-region">
                             <h1>Search by region</h1>
-                            <div className="regionOptions">
+                            <div className="region-options">
                                 <div className="reginImg"
-                                // onClick={addSearchLabel("I’m flexible")}
                                 >
                                     <img alt="I’m flexible" src="https://a0.muscache.com/pictures/f9ec8a23-ed44-420b-83e5-10ff1f071a13.jpg" />
                                     <h3>I’m flexible</h3>
@@ -244,14 +243,14 @@ export function SearchBar({ queryToParams }) {
                                 </div>
                             </div>
                         </div>
-                        {(activeNow === 'location' && !!filter.where) &&
+                        {(onActiveNow === 'location' && !!filter.where) &&
                             <div className="filterByName">
 
                             </div>
                         }
                     </div>}
 
-                    {activeNow === 'guests' &&
+                    {onActiveNow === 'guests' &&
                         <div className="guestsAddingModal">
                             <GuestsCounter filter={filter} onCountChange={onCountChange} />
                         </div>

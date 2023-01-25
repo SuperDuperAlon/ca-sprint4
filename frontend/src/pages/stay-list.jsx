@@ -5,10 +5,8 @@ import { AiFillStar } from 'react-icons/ai'
 
 
 export function StayList({ stays, onRemoveStay, onEditStay, onClickOutSideTheBar, openSearchBar, onOpenStay }) {
-    return <section main-content full >
-      
-
-        <ul className="stay-list full">
+    return <section className="">
+        <ul className="stay-list">
                     {stays.map(stay =>
                         <li onClick={(ev)=>onOpenStay(ev,stay)} className="stay-preview" key={stay._id}>
                             {/* <button onClick={(ev)=>onRemoveStay(ev,stay._id)} className="remove-btn">X</button> */}
