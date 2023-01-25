@@ -1,25 +1,18 @@
 import { useState } from "react"
-
-// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { Calender } from "./calender";
-import { filterService } from "../../services/filterService";
-
-import { onSelectedFilter } from "../../store/filter.action";
+import { CalendarMain } from "./calendar"
+import { filterService } from "../../services/filterService"
+import { onSelectedFilter } from "../../store/filter.action"
 import { Link, useNavigate, useParams } from "react-router-dom"
-import { store } from "../../store/store";
-import { useSelector } from "react-redux";
-import { SET_CHECK_IN_DATE } from "../../store/filter.reducer";
-
-
+import { store } from "../../store/store"
+import { useSelector } from "react-redux"
+import { SET_CHECK_IN_DATE } from "../../store/filter.reducer"
 
 export function AdvancedFilter() {
-
     const [onActive, setOnActive] = useState(false)
     const orderPreference=useSelector(storeState => storeState.filterModule.filter)
     const [travelOption, setTravelOption]= useState(filterService.getEmptyFilter)
     const navigate = useNavigate()
 
-   
     function onClickingOption(option) {
         setOnActive(option)
     }
@@ -39,18 +32,13 @@ export function AdvancedFilter() {
         const checkIn=filterService.getDateToFilter(filter.checkIn)
         const queryParams = 
         `where=${filter.where}&checkIn=${checkIn}&checkOut=${checkOut}&adults=${filter.guests.adults}&children=${filter.guests.children}`
-    
         navigate(`/${queryParams}`)
-        
-        
     }
 
     return (
         <section className="flex justify-center advanced-filter">
             <main className="search-option-bar">
                 <form className="flex" onSubmit={onFilterSubmit}>
-                    {/* <div className="where" onClick={() => onClickingOption("where")}> */}
-                        
                     <label htmlFor="whereTo">where </label>
                         <input 
                         id='whereTo'
@@ -61,26 +49,14 @@ export function AdvancedFilter() {
                         onChange={handleChange}
                         onClick={() => onClickingOption("where")}
                         />
-                       
-                    {/* </div> */}
-                    {/* <div className="checkIn" onClick={() => onClickingOption("checkIn")} > */}
-                    <Calender 
-                    // onChangeDates={onChangeDates}
-                    />
-                        {/* checkIn  */}
-                        {/* {checkIn && showChosenDate(checkIn)} */}
-                    {/* </div> */}
-                    {/* <div className="checkOut" onClick={() => onClickingOption("checkOut")}>
-                        checkOut 
-                        { travelOption?._d && showChosenDate(checkOut)}
-                    </div> */}
+            
+                    <CalendarMain />
+
                     <div className="who" onClick={() => onClickingOption("who")}>
                         who
                     </div>
                     <button>fly</button>
                 </form>
-                {/* <whereToGo onChangeLocation={onChangeLocation}/> */}
-                {/* <GuestOption />  */}
             </main>
         </section>
     )

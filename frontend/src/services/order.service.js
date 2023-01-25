@@ -1,11 +1,11 @@
 // import { storageService } from './async-storage.service.js'
-import { httpService } from "./http.service.js";
-import { utilService } from "./util.service.js";
-import { userService } from "./user.service.js";
-import { storageService } from "./async-storage.service.js";
+import { httpService } from "./http.service.js"
+import { utilService } from "./util.service.js"
+import { userService } from "./user.service.js"
+import { storageService } from "./async-storage.service.js"
 
-const STORAGE_KEY = "order_db";
-_createOrders();
+const STORAGE_KEY = "order_db"
+_createOrders()
 
 export const orderService = {
   query,
@@ -14,40 +14,40 @@ export const orderService = {
   remove,
   // addOrderMsg,
   getEmptyOrder,
-};
-window.cs = orderService;
+}
+window.cs = orderService
 
 async function query(filterBy) {
   try {
-    return storageService.query(STORAGE_KEY);
+    return storageService.query(STORAGE_KEY)
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
 
   // return httpService.get(STORAGE_KEY, filterBy)
 }
 
 function getById(orderId) {
-  return storageService.get(STORAGE_KEY, orderId);
+  return storageService.get(STORAGE_KEY, orderId)
   // return httpService.get(`order/${orderId}`)
 }
 
 async function remove(orderId) {
-  await storageService.remove(STORAGE_KEY, orderId);
+  await storageService.remove(STORAGE_KEY, orderId)
   // return httpService.delete(`order/${orderId}`)
 }
 async function save(order) {
-  var savedOrder;
+  var savedOrder
   if (order._id) {
-    savedOrder = await storageService.put(STORAGE_KEY, order);
+    savedOrder = await storageService.put(STORAGE_KEY, order)
     // savedOrder = await httpService.put(`order/${order._id}`, order)
   } else {
     // Later, owner is set by the backend
     // order.owner = userService.getLoggedinUser()
-    savedOrder = await storageService.post(STORAGE_KEY, order);
+    savedOrder = await storageService.post(STORAGE_KEY, order)
     // savedOrder = await httpService.post('order', order)
   }
-  return savedOrder;
+  return savedOrder
 }
 
 // async function addOrderMsg(orderId, txt) {
@@ -79,11 +79,11 @@ function getEmptyOrder() {
     },
     msgs: [],
     status: "pending", // pending, approved
-  };
+  }
 }
 
 function _createOrders() {
-  let orders = utilService.loadFromStorage(STORAGE_KEY);
+  let orders = utilService.loadFromStorage(STORAGE_KEY)
   if (!orders || !orders.length) {
     orders = [
       {
@@ -152,7 +152,7 @@ function _createOrders() {
         msgs: [],
         status: "pending", // pending, approved
       },
-    ];
-    utilService.saveToStorage(STORAGE_KEY, orders);
+    ]
+    utilService.saveToStorage(STORAGE_KEY, orders)
   }
 }

@@ -26,7 +26,7 @@ export function getActionUpdateOrder(order) {
 export async function loadOrders(filter=null) {
   try {
       const orders = await orderService.query(filter)
-      console.log(orders);
+      console.log(orders)
       store.dispatch({
           type: SET_ORDERS,
           orders: orders

@@ -13,11 +13,10 @@ import { SEARCH_BAR_OPEN } from '../store/stay.reducer'
 import { SearchBar } from './filter/search-bar'
 import { SecondaryFilter } from '../pages/secondary-filter'
 
-export function AppHeader({ queryToParams ,stay}) {
+export function AppHeader({ queryToParams, stay}) {
     const navigate = useNavigate()
 
     const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
-
 
     function onChangeStaySearchBar(option) {
         store.dispatch({
@@ -27,7 +26,6 @@ export function AppHeader({ queryToParams ,stay}) {
     }
 
     return (<>
-        {/* <header className="app-header index-layout full"> */}
             <main className='main-header'>
                 <div className="logo" onClick={() => navigate('/')}>
                     <div><span className="a-Logo"><SiAirbnb /></span><span className='text-next-to-logo'>nyplace</span></div>
@@ -64,14 +62,14 @@ export function AppHeader({ queryToParams ,stay}) {
                                 </NavLink>
                             </div>
                         </nav>
-                        <div className="filterBtn">
+                        <div className="filter-btn">
                             <SiAirbnb />
                         </div>
                     </div>
                 </div>
                 <div className="users-option">
                     <div className="header-options-switching-keys mar-r8">
-                        <div className="switchToHost">
+                        <div className="switch-to-host">
                             <div className='fs14 lh18 pad-all12 rounded-full bold switch-to-host'>
                                 switch to hosting</div>
                         </div>
@@ -97,7 +95,6 @@ export function AppHeader({ queryToParams ,stay}) {
             <SearchBar queryToParams={queryToParams} />
             {!stay && <SecondaryFilter queryToParams={queryToParams} />}
 
-        {/* </header> */}
         </>
     )
 }

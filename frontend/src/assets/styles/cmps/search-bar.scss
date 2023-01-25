@@ -248,7 +248,7 @@
         background-color: #fff;
     }
 
-    .day-picker-model {
+    .day-picker-modal {
         line-height: 1.2em;
         // margin: 0 auto;
 
@@ -364,11 +364,14 @@
 
     .guests-adding-modal {
         @include for-search-bar-open-small;
-        justify-self: flex-end;
-        box-shadow: 0 0 0 1px rgb(0 0 0 / 4%), 0 8px 16px rgb(0 0 0 / 15%);
-        border-radius: 50px;
-        background-color: #fff;
 
+        @include for-guest-counter;
+        // justify-self: end;
+        // box-shadow: 0 0 0 1px rgb(0 0 0 / 4%), 0 8px 16px rgb(0 0 0 / 15%);
+        // border-radius: 50px;
+        // background-color: #fff;
+
+        // .guestsModalOpen {
 
         .guests-modal-open {
 
@@ -376,95 +379,93 @@
             padding: 1rem 2rem;
             grid-area: 1/2/2/3;
 
-            .guest {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding-bottom: 14px;
-                margin-top: 14px;
+        //         &:not(:last-child) {
+        //             border-bottom: $clr-border-between-div solid;
+        //         }
 
-                &:not(:last-child) {
-                    border-bottom: $clr-border-between-div solid;
-                }
+        //         &:last-child {
+        //             h5 {
+        //                 @include fontWeightBold;
+        //                 text-decoration: underline;
+        //             }
+        //         }
 
-                &:last-child {
-                    h5 {
-                        @include fontWeightBold;
-                        text-decoration: underline;
-                    }
-                }
+        //         h3 {
+        //             font-size: $header-fonts;
 
-                h3 {
-                    font-size: $header-fonts;
+        //         }
 
-                }
+        //         h5 {
+        //             font-size: $font-size-search-bar;
+        //             @include fontWeightLight;
+        //             margin: 0;
+        //         }
 
-                h5 {
-                    font-size: $font-size-search-bar;
-                    @include fontWeightLight;
-                    margin: 0;
-                }
+        //         .counter {
+        //             display: flex;
+        //             align-items: center;
 
-                .counter {
-                    display: flex;
-                    align-items: center;
+        //             >* {
+        //                 margin: 10px;
+        //             }
 
-                    >* {
-                        margin: 10px;
-                    }
+        //             .btn-counter {
+        //                 font-size: 1em;
+        //                 padding: 8px;
+        //                 border-radius: 50%;
+        //                 width: 2rem;
+        //             }
+        //         }
+                
 
-                    .btu-counter {
-                        font-size: 1em;
-                        padding: 8px;
-                        border-radius: 50%;
-                        width: 2rem;
-                    }
-                }
-
-            }
-        }
+        //     }
+        // }
     }
 }
-
-.guest {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5rem;
-
-    h3 {
-        font-size: 1rem;
-    }
-
-    h5 {
-        font-size: rem(14px);
-        font-weight: 300;
-
-    }
-
-    .pet {
-        text-decoration: underline;
-        font-weight: bold;
-    }
-
-    .counter {
-        display: inline-flex;
-        width: 104px;
-        align-items: center;
-        justify-content: space-between;
-
-    }
-
-    button {
-        border-radius: 50%;
-        width: rem(32px);
-        height: rem(32px);
-        background-color: white;
-        border: solid 1px rgb(176, 176, 176);
-
-        &:hover {
-            border-color: rgb(34, 34, 34);
-        }
-    }
 }
+
+
+// .guest{
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     margin-bottom: 1.5rem;
+
+//     h3 {
+//         font-size: 1rem;
+//     }
+
+//     h5 {
+//         font-size: rem(14px);
+//         font-weight: 300;
+
+//     }
+
+//     .pet {
+//         text-decoration: underline;
+//         font-weight: bold;
+//     }
+
+//     .counter {
+//         display: inline-flex;
+//         width: 104px;
+//         align-items: center;
+//         justify-content: space-between;
+
+//     }
+
+//     button {
+//         border-radius: 50%;
+//         width: rem(32px);
+//         height: rem(32px);
+//         background-color: white;
+//         border: solid 1px rgb(176, 176, 176);
+
+//         &:hover {
+//             border-color: rgb(34, 34, 34);
+//         }
+//     }
+// }
+
+
 

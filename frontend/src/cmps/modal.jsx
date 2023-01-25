@@ -1,12 +1,12 @@
 import {useState} from 'react'
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import Modal from '@mui/material/Modal'
 
 export function BasicModal() {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [open, setOpen] = useState(false)
+  const handleOpen = () => setOpen(true)
+  const handleClose = () => setOpen(false)
 
   return (
     <div>
@@ -27,5 +27,5 @@ export function BasicModal() {
         </Box>
       </Modal>
     </div>
-  );
+  )
 }
