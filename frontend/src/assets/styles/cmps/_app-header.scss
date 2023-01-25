@@ -84,7 +84,7 @@ $clr-search-icon-bgc: #dc0e64;
                 }
             }
 
-            .filterBtn {
+            .filter-btn {
                 @include flex-center;
                 margin-left: auto;
                 padding: 10px;
@@ -215,7 +215,7 @@ $clr-search-icon-bgc: #dc0e64;
 
                 }
 
-                .filterBtn {
+                .filter-btn {
                     display: none;
                 }
             }
@@ -251,7 +251,7 @@ $clr-search-icon-bgc: #dc0e64;
                     @include flex-center;
                 }
 
-                .switchToHost {
+                .switch-to-host {
 
                     .switch-to-host {
                         white-space: normal;

@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import GoogleMapReact from "google-map-react";
-import { GoogleMap } from "../reusable/google-map";
+import React, { useState } from "react"
+import GoogleMapReact from "google-map-react"
+import { GoogleMap } from "../reusable/google-map"
 
-// const AnyReactComponent = ({ text }) => <div>{text}</div>;
+// const AnyReactComponent = ({ text }) => <div>{text}</div>
 
 export function StayDetailsMap({ stay }) {
-  console.log(stay);
+  console.log(stay)
 
   var coordinates = {
     lat: stay.loc.lat,
     lng: stay.loc.lng,
-  };
-  const zoom = 13;
+  }
+  const zoom = 13
 
-  if (!stay) return;
+  if (!stay) return
   else
     return (
       <section className="stay-details-map" >
@@ -23,5 +23,5 @@ export function StayDetailsMap({ stay }) {
         <div className="mar-b16">{stay.summary}</div>
         <button className="link">Show more</button>
       </section>
-    );
+    )
 }

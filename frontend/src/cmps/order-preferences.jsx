@@ -1,58 +1,52 @@
-import React from "react";
+import React from "react"
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"
 import {
   COUNT_ADULTS,
   COUNT_CHILDREN,
   COUNT_INFANTS,
   COUNT_PETS,
   CHANGE_COUNT,
-} from "../store/order.reducer";
+} from "../store/order.reducer"
 
 export function OrderPreferences() {
-  const dispatch = useDispatch();
-  const count = useSelector((storeState) => storeState.orderModule.count);
+  const dispatch = useDispatch()
+  const count = useSelector((storeState) => storeState.orderModule.count)
   const adultsCount = useSelector(
     (storeState) => storeState.orderModule.guests.adults
-  );
+  )
   const childrenCount = useSelector(
     (storeState) => storeState.orderModule.guests.children
-  );
+  )
   const infantCount = useSelector(
     (storeState) => storeState.orderModule.guests.infants
-  );
+  )
   const petsCount = useSelector(
     (storeState) => storeState.orderModule.guests.pets
-  );
+  )
 
   function changeCount(diff) {
-    console.log("Changing count by:", diff);
-    dispatch({ type: CHANGE_COUNT, diff });
+    dispatch({ type: CHANGE_COUNT, diff })
   }
 
   function countAdults(diff) {
-    console.log("Changing count by:", diff);
-    dispatch({ type: CHANGE_COUNT, diff });
-    dispatch({ type: COUNT_ADULTS, diff });
-    console.log(adultsCount);
+    dispatch({ type: CHANGE_COUNT, diff })
+    dispatch({ type: COUNT_ADULTS, diff })
   }
 
   function countChildren(diff) {
-    console.log("Changing count by:", diff);
-    dispatch({ type: CHANGE_COUNT, diff });
-    dispatch({ type: COUNT_CHILDREN, diff });
+    dispatch({ type: CHANGE_COUNT, diff })
+    dispatch({ type: COUNT_CHILDREN, diff })
   }
 
   function countInfants(diff) {
-    console.log("Changing count by:", diff);
-    dispatch({ type: CHANGE_COUNT, diff });
-    dispatch({ type: COUNT_INFANTS, diff });
+    dispatch({ type: CHANGE_COUNT, diff })
+    dispatch({ type: COUNT_INFANTS, diff })
   }
 
   function countPets(diff) {
-    console.log("Changing count by:", diff);
-    dispatch({ type: CHANGE_COUNT, diff });
-    dispatch({ type: COUNT_PETS, diff });
+    dispatch({ type: CHANGE_COUNT, diff })
+    dispatch({ type: COUNT_PETS, diff })
   }
   return (
     <section>
@@ -61,7 +55,7 @@ export function OrderPreferences() {
         Adults
         <button
           onClick={() => {
-            countAdults(-1);
+            countAdults(-1)
           }}
         >
           -1
@@ -69,7 +63,7 @@ export function OrderPreferences() {
         {adultsCount}
         <button
           onClick={() => {
-            countAdults(1);
+            countAdults(1)
           }}
         >
           +
@@ -79,7 +73,7 @@ export function OrderPreferences() {
         Children
         <button
           onClick={() => {
-            countChildren(-1);
+            countChildren(-1)
           }}
         >
           -1
@@ -87,7 +81,7 @@ export function OrderPreferences() {
         {childrenCount}
         <button
           onClick={() => {
-            countChildren(1);
+            countChildren(1)
           }}
         >
           +
@@ -97,7 +91,7 @@ export function OrderPreferences() {
         Infants
         <button
           onClick={() => {
-            countInfants(-1);
+            countInfants(-1)
           }}
         >
           -1
@@ -105,7 +99,7 @@ export function OrderPreferences() {
         {infantCount}
         <button
           onClick={() => {
-            countInfants(1);
+            countInfants(1)
           }}
         >
           +
@@ -115,7 +109,7 @@ export function OrderPreferences() {
         Pets
         <button
           onClick={() => {
-            countPets(-1);
+            countPets(-1)
           }}
         >
           -
@@ -123,12 +117,12 @@ export function OrderPreferences() {
         {petsCount}
         <button
           onClick={() => {
-            countPets(1);
+            countPets(1)
           }}
         >
           +
         </button>
       </div>
     </section>
-  );
+  )
 }

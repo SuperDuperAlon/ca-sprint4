@@ -1,61 +1,61 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import { orderService } from "../services/order.service";
-import { addOrder, updateOrder } from "../store/order.actions";
+import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
+import { Link, useNavigate, useParams } from "react-router-dom"
+import { orderService } from "../services/order.service"
+import { addOrder, updateOrder } from "../store/order.actions"
 
 export function OrderEdit() {
-  const [orderToEdit, setOrderToEdit] = useState(orderService.getEmptyOrder());
-  const navigate = useNavigate();
-  const { orderId } = useParams();
+  const [orderToEdit, setOrderToEdit] = useState(orderService.getEmptyOrder())
+  const navigate = useNavigate()
+  const { orderId } = useParams()
 
   useEffect(() => {
-    if (!orderId) return;
-    loadOrder();
-  }, []);
+    if (!orderId) return
+    loadOrder()
+  }, [])
 
   function loadOrder() {
     orderService
       .getById(orderId)
       .then((order) => setOrderToEdit(order))
       .catch((err) => {
-        console.log("Had issues in toy details", err);
-        navigate("/");
-      });
+        console.log("Had issues in toy details", err)
+        navigate("/")
+      })
   }
 
   async function onSaveOrder(ev) {
-    ev.preventDefault();
+    ev.preventDefault()
     // console.log(orderToEdit)
     try {
       if (orderToEdit._id) {
-        const savedOrder = await updateOrder(orderToEdit);
+        const savedOrder = await updateOrder(orderToEdit)
       } else {
-        const savedOrder = await addOrder(orderToEdit);
-        console.log("order saved", savedOrder);
+        const savedOrder = await addOrder(orderToEdit)
+        console.log("order saved", savedOrder)
       }
       // showSuccessMsg('Car saved!')
-      navigate("/");
+      navigate("/")
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   }
 
   function handleDateChange({ target }) {
-    let { value, type, name: field } = target;
-    console.log(field);
-    console.log(value);
-    value = type === "number" ? +value : value;
-    setOrderToEdit((prevOrder) => ({ ...prevOrder, [field]: value }));
+    let { value, type, name: field } = target
+    console.log(field)
+    console.log(value)
+    value = type === "number" ? +value : value
+    setOrderToEdit((prevOrder) => ({ ...prevOrder, [field]: value }))
   }
 
   function handleGuestsChange({ target }) {
-    let { value, type, name: field } = target;
-    console.log(field);
-    console.log(value);
-    value = type === "number" ? +value : value;
-    // setOrderToEdit((prevOrder) => ({ ...prevOrder, [field]: value }));
-        setOrderToEdit((prevOrder) => ({ ...prevOrder, guests: {...prevOrder.guests, [field]: value}}));
+    let { value, type, name: field } = target
+    console.log(field)
+    console.log(value)
+    value = type === "number" ? +value : value
+    // setOrderToEdit((prevOrder) => ({ ...prevOrder, [field]: value }))
+        setOrderToEdit((prevOrder) => ({ ...prevOrder, guests: {...prevOrder.guests, [field]: value}}))
   }
   // if (
   //   field === "country" ||
@@ -66,10 +66,10 @@ export function OrderEdit() {
   //   setOrderToEdit((prevOrder) => ({
   //     ...prevOrder,
   //     loc: { ...prevOrder.loc, [field]: value },
-  //   }));
+  //   }))
   // } else
 
-  console.log(orderToEdit);
+  console.log(orderToEdit)
 
   return (
     <section>
@@ -139,5 +139,5 @@ export function OrderEdit() {
         </div>
       </form>
     </section>
-  );
+  )
 }

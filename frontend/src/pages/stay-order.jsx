@@ -24,8 +24,8 @@ export function StayOrder() {
 
     }, [])
 
-    // console.log(stay);
-    console.log(orderToEdit);
+    // console.log(stay)
+    console.log(orderToEdit)
 
 
 
@@ -56,7 +56,7 @@ export function StayOrder() {
         //     msgs: [],
         //     status: "pending"
         // }
-        // console.log(order);
+        // console.log(order)
 
         orderToEdit.hostId = stay.host._id
         orderToEdit.totalPrice = getFullPrice()
@@ -76,15 +76,15 @@ export function StayOrder() {
 
         try {
             if (orderToEdit._id) {
-                const savedOrder = await updateOrder(orderToEdit);
+                const savedOrder = await updateOrder(orderToEdit)
             } else {
-                const savedOrder = await addOrder(orderToEdit);
-                console.log("order saved", savedOrder);
+                const savedOrder = await addOrder(orderToEdit)
+                console.log("order saved", savedOrder)
             }
             // showSuccessMsg('Car saved!')
-            // navigate("/");
+            // navigate("/")
         } catch (err) {
-            console.log(err);
+            console.log(err)
         }
     }
 
@@ -105,7 +105,7 @@ export function StayOrder() {
             const stay = await stayService.getById(id)
             setStay(stay)
         } catch (err) {
-            console.log(err);
+            console.log(err)
         }
     }
 
@@ -129,7 +129,7 @@ export function StayOrder() {
     return <section className="stay-order">
         <header className="header">
             <div className="logo-general" onClick={() => navigate('/')}>
-                <h3>anypl<span className="Alogo"><SiAirbnb /></span>ce</h3>
+                <h3>anypl<span className="airbnb-icon"><SiAirbnb /></span>ce</h3>
             </div>
         </header>
         <div className="confirm fs32 bold">

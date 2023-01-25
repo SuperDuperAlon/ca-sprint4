@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
-import { AiFillStar } from "react-icons/ai";
-import { BsDownload } from "react-icons/bs";
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import { FiShare, FiHeart } from "react-icons/fi";
-import {MdStar} from "react-icons/md";
+import { Link } from "react-router-dom"
+import { AiFillStar } from "react-icons/ai"
+import { BsDownload } from "react-icons/bs"
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import { FiShare, FiHeart } from "react-icons/fi"
+import {MdStar} from "react-icons/md"
 
 export function StayDetailsLocationInfo({ stay }) {
-  if (!stay) return console.log("lala");
+  if (!stay) return console.log("lala")
   else
     return (
       <div className="details-locations-info">
@@ -37,5 +37,5 @@ export function StayDetailsLocationInfo({ stay }) {
           </div>
         </div>
       </div>
-    );
+    )
 }

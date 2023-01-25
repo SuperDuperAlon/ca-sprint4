@@ -1,15 +1,15 @@
 
-// import { ScrollingCarousel } from "@trendyol-js/react-carousel";
-import React, { useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router";
-import { filterService } from "../services/filterService";
-import { stayService } from "../services/stay.service";
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
+// import { ScrollingCarousel } from "@trendyol-js/react-carousel"
+import React, { useRef, useState } from "react"
+import { useNavigate, useParams } from "react-router"
+import { filterService } from "../services/filterService"
+import { stayService } from "../services/stay.service"
+import Tabs from '@mui/material/Tabs'
+import Tab from '@mui/material/Tab'
+import Box from '@mui/material/Box'
 
-import { FiFilter } from "react-icons/fi";
-import { CgOptions } from "react-icons/cg";
+import { FiFilter } from "react-icons/fi"
+import { CgOptions } from "react-icons/cg"
 
 export function SecondaryFilter({queryToParams}){
     const labels = ['Cabins', 'Islands', 'Amazing Pools', 'Ski-in-out', 'Beach', 'Luxe', 'Mansions', 'Amazing Views', 'Boats', 'Tropical', 'Top of the world', 'Countryside', 'OMG', 'Desert', 'Play', 'Trending', 'Vineyards', 'Tiny homes', 'Bed & breakfasts', 'Private rooms','Castles', 'Beachfront', 'Design', 'Iconic cities', 'National parks', 'Off-the-grid']
@@ -21,8 +21,8 @@ export function SecondaryFilter({queryToParams}){
 
 
     // const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    //   setValue(newValue);
-    // };
+    //   setValue(newValue)
+    // }
 
     
     function onFilter(label){

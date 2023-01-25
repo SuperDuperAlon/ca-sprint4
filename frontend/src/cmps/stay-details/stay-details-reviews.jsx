@@ -1,10 +1,10 @@
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import { CustomizedProgressBars } from "../reusable/progress-bar";
-import {MdStar} from "react-icons/md";
+import Box from "@mui/material/Box"
+import Typography from "@mui/material/Typography"
+import { CustomizedProgressBars } from "../reusable/progress-bar"
+import {MdStar} from "react-icons/md"
 
 export function StayDetailsReviews({ stay }) {
-  if (!stay) return console.log("loading");
+  if (!stay) return console.log("loading")
   else
     return (
       <section className="stay-details-reviews">
@@ -57,9 +57,9 @@ export function StayDetailsReviews({ stay }) {
                   <button className="link ">Show More</button>
                 </div>
               </div>
-            );
+            )
           })}
         </div>
       </section>
-    );
+    )
 }

@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
-export function Calender ({filterBy, onChangeDate}){
+export function CalendarMain ({filterBy, onChangeDate}){
 
     console.log('filterBy:',filterBy )
-    const [width, setWidth] = useState(window.innerWidth);
+    const [width, setWidth] = useState(window.innerWidth)
 
     let numOfCalendar
     const updateDimensions = () => {
-        setWidth(window.innerWidth);
+        setWidth(window.innerWidth)
     }
     useEffect(() => {
-        window.addEventListener("resize", updateDimensions);
-        return () => window.removeEventListener("resize", updateDimensions);
-    }, []);
+        window.addEventListener("resize", updateDimensions)
+        return () => window.removeEventListener("resize", updateDimensions)
+    }, [])
 
     if (width>850){
         numOfCalendar=2

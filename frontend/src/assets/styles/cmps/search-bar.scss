@@ -17,11 +17,9 @@
         display: grid;
         grid-template-columns: minmax(20px, 1fr) 1fr minmax(20px, 1fr);
 
-
-
         >* {
             grid-column: 2;
-            @include flex-center;
+            // @include flex-center;
         }
 
         .test{
@@ -155,6 +153,7 @@
         border: none;
         padding: 0.2rem 0 0 0;
         @include fontWeightBold;
+       
     }
 
     input[type="text"]:focus {
@@ -249,7 +248,7 @@
         background-color: #fff;
     }
 
-    .day-picker-model {
+    .day-picker-modal {
         line-height: 1.2em;
         // margin: 0 auto;
 
@@ -260,12 +259,32 @@
         @include for-calendar
     }
 
+    .icon-cover-gray{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $clr-border-between-div;
+        width: 48px;
+        height: 48px;
+        border-radius: 15px;
+        font-size: 1.2em;
+        margin-right: 10px;
+    }
+
+    .quick-results-by-text-modal{
+
+        display: grid;
+        grid-template-columns:  1fr 1fr
+
+
+    }
+
 
     .where-model {
 
         @include for-search-bar-open;
         display: grid;
-        grid-template-columns:  1fr 1fr ;
+        grid-template-columns:  250px 1fr ;
 
         .show-recent-search {
             h1 {
@@ -277,24 +296,10 @@
                 grid-template-columns: 1fr;
                 grid-template-rows: repeat(5, 1fr);
 
-                .lastSearch {
+                .last-search {
                     display: flex;
-                    // justify-content: center;
                     align-items: center;
-
-                    .roundClock {
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        background-color: $clr-border-between-div;
-                        width: 48px;
-                        height: 48px;
-                        border-radius: 15px;
-                        font-size: 1.2em;
-                        margin-right: 10px;
-                    }
-
-                    .searchDetails {
+                    .search-details {
                         >* {
                             margin: 0;
                             padding: 0;
@@ -357,7 +362,7 @@
 
     }
 
-    .guestsAddingModal {
+    .guests-adding-modal {
         @include for-search-bar-open-small;
 
         @include for-guest-counter;
@@ -369,57 +374,53 @@
 
         .guests-modal-open {
 
-            .guest {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding-bottom: 14px;
-                margin-top: 14px;
+            padding: 1rem 2rem;
+            grid-area: 1/2/2/3;
 
-                &:not(:last-child) {
-                    border-bottom: $clr-border-between-div solid;
-                }
+                // &:not(:last-child) {
+                //     border-bottom: $clr-border-between-div solid;
+                // }
 
-                &:last-child {
-                    h5 {
-                        @include fontWeightBold;
-                        text-decoration: underline;
-                    }
-                }
+                // &:last-child {
+                //     h5 {
+                //         @include fontWeightBold;
+                //         text-decoration: underline;
+                //     }
+                // }
 
-                h3 {
-                    font-size: $header-fonts;
+                // h3 {
+                //     font-size: $header-fonts;
 
-                }
+                // }
 
-                h5 {
-                    font-size: $font-size-search-bar;
-                    @include fontWeightLight;
-                    margin: 0;
-                }
+                // h5 {
+                //     font-size: $font-size-search-bar;
+                //     @include fontWeightLight;
+                //     margin: 0;
+                // }
 
-                .counter {
-                    display: flex;
-                    align-items: center;
+                // .counter {
+                //     display: flex;
+                //     align-items: center;
 
-                    >* {
-                        margin: 10px;
-                    }
+                //     >* {
+                //         margin: 10px;
+                //     }
 
-                    .btu-counter {
-                        font-size: 1em;
-                        padding: 8px;
-                        border-radius: 50%;
-                        width: 2rem;
-                    }
-                }
+        //             .btn-counter {
+        //                 font-size: 1em;
+        //                 padding: 8px;
+        //                 border-radius: 50%;
+        //                 width: 2rem;
+        //             }
+        //         }
                 
 
             }
         }
     }
 }
-
+}
 
 
 // .guest{

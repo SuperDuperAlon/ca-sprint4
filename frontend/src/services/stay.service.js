@@ -1,13 +1,13 @@
 // import { storageService } from './async-storage.service.js'
-import { httpService } from "./http.service.js";
-import { utilService } from "./util.service.js";
-import { userService } from "./user.service.js";
-import { storageService } from "./async-storage.service.js";
-import { filterService } from "./filterService.js";
+import { httpService } from "./http.service.js"
+import { utilService } from "./util.service.js"
+import { userService } from "./user.service.js"
+import { storageService } from "./async-storage.service.js"
+import { filterService } from "./filterService.js"
 
 
-const STORAGE_KEY = "stay_db";
-_createStays();
+const STORAGE_KEY = "stay_db"
+_createStays()
 
 export const stayService = {
     query,
@@ -44,31 +44,31 @@ async function query(filterBy) {
 }
 
 function getById(stayId) {
-  return storageService.get(STORAGE_KEY, stayId);
+  return storageService.get(STORAGE_KEY, stayId)
   // return httpService.get(`stay/${stayId}`)
 }
 
 async function remove(stayId) {
-  await storageService.remove(STORAGE_KEY, stayId);
+  await storageService.remove(STORAGE_KEY, stayId)
   // return httpService.delete(`stay/${stayId}`)
 }
 async function save(stay) {
-  var savedStay;
+  var savedStay
   if (stay._id) {
-    savedStay = await storageService.put(STORAGE_KEY, stay);
+    savedStay = await storageService.put(STORAGE_KEY, stay)
     // savedStay = await httpService.put(`stay/${stay._id}`, stay)
   } else {
     // Later, owner is set by the backend
     // stay.owner = userService.getLoggedinUser()
-    savedStay = await storageService.post(STORAGE_KEY, stay);
+    savedStay = await storageService.post(STORAGE_KEY, stay)
     // savedStay = await httpService.post('stay', stay)
   }
-  return savedStay;
+  return savedStay
 }
 
 async function addStayMsg(stayId, txt) {
-  const savedMsg = await httpService.post(`stay/${stayId}/msg`, { txt });
-  return savedMsg;
+  const savedMsg = await httpService.post(`stay/${stayId}/msg`, { txt })
+  return savedMsg
 }
 
 function setDefaultLabelFilter(){
@@ -98,11 +98,11 @@ function getEmptyStay() {
     },
     reviews: [],
     // "likedByUsers": ['mini-user']
-  };
+  }
 }
 
 function _createStays() {
-  let stays = utilService.loadFromStorage(STORAGE_KEY);
+  let stays = utilService.loadFromStorage(STORAGE_KEY)
   if (!stays || !stays.length) {
 
     stays = [
