@@ -26,8 +26,8 @@ export function AppHeader({ queryToParams }) {
         })
     }
 
-    return (
-        <header className="app-header full main-content ">
+    return (<>
+        {/* <header className="app-header main-content full"> */}
             <main className='main-header'>
                 
                 <div className="logo" onClick={() => navigate('/')}>
@@ -46,7 +46,6 @@ export function AppHeader({ queryToParams }) {
                                 add guests
                             </NavLink>
                         </nav>
-
 
                         <div className='search-icon'>
                             <FiSearch />
@@ -99,6 +98,7 @@ export function AppHeader({ queryToParams }) {
             <SearchBar queryToParams={queryToParams} />
             <SecondaryFilter queryToParams={queryToParams} />
 
-        </header>
+        {/* </header> */}
+        </>
     )
 }

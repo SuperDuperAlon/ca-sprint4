@@ -3,22 +3,17 @@ $clr-box-radius: #DDDDDD;
 $clr-search-icon-bgc: #dc0e64;
 
 .page-top {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-
+   
 }
 
 .app-header {
-    position: relative;
+    position: sticky;
+    top: 0;
     padding: 0;
-    grid-column: 1/-1;
     grid-template-rows: 80px;
     border-bottom: 1px #dddddd;
     z-index: 20;
     background-color: $white;
-
-    
     .cover-filter{
         max-height: 0;
         position: relative;
@@ -33,6 +28,7 @@ $clr-search-icon-bgc: #dc0e64;
 }
 
 .main-header {
+    height: 80px;
     display: flex;
     align-items: center;
     >* {
@@ -97,9 +93,6 @@ $clr-search-icon-bgc: #dc0e64;
                 >* {
                     font-size: 1.5rem;
                 }
-
-
-
             }
 
             &.close {

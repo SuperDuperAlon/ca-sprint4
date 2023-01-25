@@ -4,18 +4,24 @@
     position: relative;
     max-height: 0;
     z-index: 30;
+    
+    
 
 
     .close{
         transform: scaleY(0)
     }
 
-    .fullColumn {
-        @include flex-center;
+    .search-row {
+        
         display: grid;
-    
+        grid-template-columns: minmax(20px, 1fr) 1fr minmax(20px, 1fr);
+
+
+
         >* {
             grid-column: 2;
+            @include flex-center;
         }
 
         .test{
@@ -30,27 +36,36 @@
 
     }
 
-   
 }
 
 .black-screen {
     position: fixed;
     inset: 0;
-    background-color: rgba(99, 93, 93, 0.557);
+    background-color:#45414196;
         z-index: 14;
 }
 
 
-.search-bar {
-    width: 100%;
-    background: $clr-box-radius;
-    box-shadow: 0 0 5px hsl(0 0% 78%);
-    height: fit-content;
+.search-bar {    
+    // max-width: 860px;
+    background-color: $white;
+    border: solid 0.5px $clr-border-between-div;
+    max-height: 58px;
     border-radius: 100vw;
     display: flex;
     font-size: 0.6rem;
     margin-top: 0.75rem;
     margin-bottom: 20px;
+    margin-right: 5px;
+
+    &.bar-active{
+        background-color: #ebebeb;
+        transform: scaleX(1.02);
+    }
+
+    .option-cover{
+        border-radius: 100vw;
+    }
 
 
     .bar-input {
@@ -64,7 +79,8 @@
         justify-content: center;
         align-items: center;
         @include padding-br;
-        padding-left: 2rem;
+        // padding-left: 1.5rem;
+        flex:1 0 200px;
 
         &:hover {
             @include butHoverOn;
@@ -75,14 +91,14 @@
         }
 
         input {
-            min-width: 250px;
             padding: 0;
         }
 
     }
-
-    .searchActive {
+    .search-active {
+        border-radius: 100vw;
         @include butHoverOn;
+        background-color: $white;
     }
 
     .btn-rs {
@@ -90,35 +106,28 @@
         justify-content: center;
         align-items: center;
         border-radius: 50%;
-        opacity: 0;
-        background: $clr-box-radius;
+        opacity:0;
+        background-color:  #ebebeb;
         display: flex;
-        margin-top: 16px;
-        margin-bottom: 16px;
-        margin-left: 10px;
+        max-height: 24px;
+        margin-top:7px;
 
 
-        &.showBtn {
-            opacity: 1
-        }
-
-        &::after {
+        &.show-btn {
+            opacity: 1;
             font-weight: 400;
-            content: "x";
-            font-size: 14px;
-            @include fontWeightBold;
-            max-height: inherit;
         }
+
     }
 
-    .checkDate {
+    .check-date {
         display: flex;
-
         .checkIn,
         .checkOut {
+            flex:1 0 65px;
             display: flex;
-            @include padding-br;
-
+            margin-right: 5px;
+            @include padding-br;  
             &:hover {
                 @include butHoverOn;
             }
@@ -129,15 +138,10 @@
 
             p {
                 margin: 0;
+                padding: 0;
+
             }
 
-            input {
-                min-width: 8px;
-            }
-        }
-
-        .checkOut {
-            padding-left: 1.2rem;
         }
 
     }
@@ -164,19 +168,18 @@
     }
 
     .guests {
-        // position: relative;
         display: flex;
+        justify-content: flex-end;
+        
+        @include padding-br;
         justify-content: center;
         align-content: center;
-        @include padding-br;
-        padding-right: 75px;
+        padding-right: 65px;
+        border-radius: 100vw;
 
-        &:hover {
-            @include butHoverOn;
-        }
 
         .bar-input {
-            max-width: rem(90px);
+            max-width: rem(80px);
         }
 
         p {
@@ -192,19 +195,20 @@
         }
 
         .search-icon {
+            flex-wrap: nowrap;
             display: flex;
-            justify-content: center;
             align-items: center;
-            padding-left: 20px;
+            padding-left: 16px;
             background-color: $clr-search-icon-bgc;
             border-radius: 50px;
-            padding-right: 20px;
-            transform: translateX(60px);
+            padding-right: 16px;
+            transform: translateX(55px);
             @include fontWeightBold;
-            
             &.active {
                 border-radius: 100vw;
                 transform: translateX(5px);
+                translate: transform 0.6s;
+                
                 
                 ::after {
                     @include fontWeightBold;
@@ -221,7 +225,7 @@
                 justify-content: center;
                 align-items: center;
                 color: $white;
-                font-size: 1.7em;
+                font-size: 1.6em;
                 border-radius: 50px;
                 transition: width 0.7s;
 
@@ -247,24 +251,27 @@
     .day-picker-model {
         line-height: 1.2em;
         // margin: 0 auto;
-        @include for-search-bar-open;
 
+        @include for-search-bar-open;
+        >*{
+            @include flex-center
+        }
         @include for-calendar
     }
 
 
-    .whereModel {
+    .where-model {
 
         @include for-search-bar-open;
         display: grid;
-        grid-template-columns: 1fr 500px;
+        grid-template-columns:  1fr 1fr ;
 
-        .showRecentSearch {
+        .show-recent-search {
             h1 {
                 font-size: $font-size-search-bar;
             }
 
-            .recentSearchList {
+            .recent-search-list  {
                 display: grid;
                 grid-template-columns: 1fr;
                 grid-template-rows: repeat(5, 1fr);
@@ -293,7 +300,7 @@
                             font-size: $font-size-search-bar;
                         }
 
-                        .how {
+                        .last-se {
 
                             &::before {
                                 content: ".";
@@ -310,7 +317,7 @@
         }
 
         .search-by-region {
-            padding: 0 44px 0 28px;
+            padding-left: 28px;
             border-left: solid 1px $clr-border-between-div;
 
             h1 {
@@ -318,11 +325,11 @@
                 grid-area: 1/1/2/-1;
             }
 
-            .recentSearchList {
+            .recent-search-list  {
                 display: flex;
             }
 
-            .regionOptions {
+            .region-options {
                 display: grid;
                 grid-template-columns: repeat(3, $region-pic-width);
 

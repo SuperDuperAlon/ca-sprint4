@@ -21,7 +21,7 @@ export function Calender ({filterBy, onChangeDate}){
         numOfCalendar=1
     }
 
-    return<DatePicker
+    return(<DatePicker
             selected={filterBy.checkIn}
             onChange={onChangeDate}
             startDate={filterBy.checkIn}
@@ -32,6 +32,7 @@ export function Calender ({filterBy, onChangeDate}){
             inline
             className="dayPicker"
         />
+    )
     
     
 }
