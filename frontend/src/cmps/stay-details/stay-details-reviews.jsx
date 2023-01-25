@@ -16,24 +16,45 @@ export function StayDetailsReviews({ stay }) {
           <div className="review-rating">
             <div className="review-attr-type"> Cleanliness</div>
             <div className="review-attr-rate fw600 fs12">
-              {" "}
-              <CustomizedProgressBars />
+              
+              <CustomizedProgressBars bar={4.8} />
               <div className="mar-l8">4.8</div>
             </div>
           </div>
           <div className="review-rating">
-            <div className="review-attr-type"> Cleanliness</div>
+            <div className="review-attr-type"> Accuracy</div>
             <div className="review-attr-rate fw600 fs12">
-              {" "}
-              <CustomizedProgressBars />
+              
+              <CustomizedProgressBars bar={4.7} />
+              <div className="mar-l8">4.7</div>
+            </div>
+          </div>
+          <div className="review-rating">
+            <div className="review-attr-type"> Communication</div>
+            <div className="review-attr-rate fw600 fs12">
+              <CustomizedProgressBars bar={4.6} />
+              <div className="mar-l8">4.6</div>
+            </div>
+          </div>
+          <div className="review-rating">
+            <div className="review-attr-type"> Location</div>
+            <div className="review-attr-rate fw600 fs12">
+              <CustomizedProgressBars bar={4.9} />
+              <div className="mar-l8">4.9</div>
+            </div>
+          </div>
+          <div className="review-rating">
+            <div className="review-attr-type"> Check-in</div>
+            <div className="review-attr-rate fw600 fs12">
+              <CustomizedProgressBars bar={4.8} />
               <div className="mar-l8">4.8</div>
             </div>
           </div>
           <div className="review-rating">
-            <div className="review-attr-type"> Cleanliness</div>
+            <div className="review-attr-type"> Value</div>
             <div className="review-attr-rate fw600 fs12">
-              <CustomizedProgressBars />
-              <div className="mar-l8">4.8</div>
+              <CustomizedProgressBars bar={5} />
+              <div className="mar-l8">5</div>
             </div>
           </div>
         </div>
@@ -56,7 +77,7 @@ export function StayDetailsReviews({ stay }) {
                   </div>
                 </div>
                 <div className="review-description">
-                  {" "}
+                  
                   In this example the <code>-webkit-line-clamp</code> property
                   is set to
                   <code>3</code>, which means the text is clamped after three

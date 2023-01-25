@@ -106,7 +106,7 @@ export function StayDetailsHostInfo({ stay }) {
         </div>
       
         <div className="calendar">
-          <div className="fw600">3 nights in Forde</div>
+          <div className="fw600 fs22">3 nights in Forde</div>
           <div className="day-picker-modal inner">
           <CalendarMain filterBy={filter} onChangeDate={onChangeDate} />
           </div>

@@ -10,7 +10,8 @@ export const utilService = {
     randomDate,
     getMonthName,
     getShortDate,
-    toActualPrice
+    toActualPrice,
+    updateDimensions
 }
 
 function makeId(length = 6) {
@@ -106,4 +107,8 @@ function getShortDate(checkIn, checkOut){
 
 function toActualPrice(x){
     return x.toLocaleString('us-EN');
+  }
+
+  function updateDimensions() {
+   return window.innerWidth
   }
