@@ -1,15 +1,15 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { MdOutlineKingBed } from "react-icons/md";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import { Calender } from "../../cmps/filter/calender";
-import { filterService } from "../../services/filterService";
+import { useState } from "react"
+import { Link } from "react-router-dom"
+import { MdOutlineKingBed } from "react-icons/md"
+import Box from "@mui/material/Box"
+import Typography from "@mui/material/Typography"
+import { CalendarMain } from "../filter/calendar"
+import { filterService } from "../../services/filterService"
 
 export function StayDetailsHostInfo({ stay }) {
-  const [reviewModalOpen, setReviewModalOpen] = useState(false);
-  const handleOpenReviewModal = () => setReviewModalOpen(true);
-  const handleCloseReviewModal = () => setReviewModalOpen(false);
+  const [reviewModalOpen, setReviewModalOpen] = useState(false)
+  const handleOpenReviewModal = () => setReviewModalOpen(true)
+  const handleCloseReviewModal = () => setReviewModalOpen(false)
   const [filter, setFilter] = useState(filterService.getEmptyFilter())
 
   function onChangeDate (dates) {
@@ -19,7 +19,7 @@ export function StayDetailsHostInfo({ stay }) {
 }
 
 
-  if (!stay) return;
+  if (!stay) return
   else
     return (
       <section className="stay-details-host-info">
@@ -97,7 +97,7 @@ export function StayDetailsHostInfo({ stay }) {
           <div className="fs22 fw600 mar-b24">What this place offers </div>
           <div className="amenities-list">
             {stay.amenities.map((amenities) => {
-              return <div>{amenities}</div>;
+              return <div>{amenities}</div>
             })}
           </div>
           <button className="white-open-btn">
@@ -107,11 +107,11 @@ export function StayDetailsHostInfo({ stay }) {
       
         <div className="calendar">
           <div className="fw600">3 nights in Forde</div>
-          <div className="day-picker-model inner">
-          <Calender filterBy={filter} onChangeDate={onChangeDate}/>
+          <div className="day-picker-modal inner">
+          <CalendarMain filterBy={filter} onChangeDate={onChangeDate}/>
           </div>
 
         </div>
       </section>
-    );
+    )
 }

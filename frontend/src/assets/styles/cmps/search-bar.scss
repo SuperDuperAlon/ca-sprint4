@@ -249,7 +249,7 @@
         background-color: #fff;
     }
 
-    .day-picker-model {
+    .day-picker-modal {
         line-height: 1.2em;
         // margin: 0 auto;
 
@@ -357,7 +357,7 @@
 
     }
 
-    .guestsAddingModal {
+    .guests-adding-modal {
         @include for-search-bar-open-small;
 
         @include for-guest-counter;
@@ -407,7 +407,7 @@
         //                 margin: 10px;
         //             }
 
-        //             .btu-counter {
+        //             .btn-counter {
         //                 font-size: 1em;
         //                 padding: 8px;
         //                 border-radius: 50%;
@@ -419,6 +419,7 @@
         //     }
         // }
     }
+}
 }
 
 

@@ -30,7 +30,7 @@ export function AppFooter() {
                 <h5>
                     <span>{cart.length}</span> Products in your Cart
                     <button className="btn-link" onClick={(ev) => {
-                        ev.preventDefault();
+                        ev.preventDefault()
                         setIsCartShown(!isCartShown)
                     }}>
                         ({(isCartShown) ? 'hide' : 'show'})

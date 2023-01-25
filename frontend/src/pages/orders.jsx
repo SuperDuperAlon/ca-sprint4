@@ -1,54 +1,46 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
 
-import { loadOrders, removeOrder } from "../store/order.actions.js";
-import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js";
+import { loadOrders, removeOrder } from "../store/order.actions.js"
+import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 
 export function Orders() {
-  const orders = useSelector((storeState) => storeState.orderModule.orders);
+  const orders = useSelector((storeState) => storeState.orderModule.orders)
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
-    loadOrders(null);
-  }, []);
+    loadOrders(null)
+  }, [])
 
   async function onRemoveOrder(ev, orderId) {
-    ev.stopPropagation();
+    ev.stopPropagation()
     try {
-      await removeOrder(orderId);
-      showSuccessMsg("Order removed");
+      await removeOrder(orderId)
+      showSuccessMsg("Order removed")
     } catch (err) {
-      showErrorMsg("Cannot remove order");
+      showErrorMsg("Cannot remove order")
     }
   }
 
   function onOpenOrder(ev, order) {
-    ev.stopPropagation();
-    navigate(`/orders/${order._id}`);
+    ev.stopPropagation()
+    navigate(`/orders/${order._id}`)
   }
 
   async function onEditOrder(ev, order) {
     ev.stopPropagation()
     navigate(`/orders/${order._id}/edit`)
-    // const price = +prompt('New price?')
-    // const carToSave = { ...car, price }
-    // try {
-    //     const savedCar = await updateCar(carToSave)
-    //     showSuccessMsg(`Car updated, new price: ${savedCar.price}`)
-    // } catch (err) {
-    //     showErrorMsg('Cannot update car')
-    // }        
 }
 
-  console.log(orders);
+  console.log(orders)
 
   return (
     <section>
       <h1>Orders</h1>
       {orders.map((order) => {
-        console.log(order._id);
+        console.log(order._id)
         return (
           <div key="order.buyer._id">
             {order.buyer.fullname}
@@ -58,11 +50,10 @@ export function Orders() {
             <button onClick={(ev) => onOpenOrder(ev, order)}>Open</button>
             <button onClick={(ev) => onEditOrder(ev, order)}>Edit</button>
           </div>
-        );
+        )
       })}
 
       <button><Link to="/orders/edit"> Add New</Link></button>
-      {/* <pre>{orders}</pre> */}
     </section>
-  );
+  )
 }

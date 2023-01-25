@@ -37,7 +37,6 @@ export function LoginSignup({onOrderStay}) {
         if (!credentials.username) return
         try{
             const loggedInUser = await userService.login(credentials)
-            // console.log('hi',loggedInUser)
             if(loggedInUser){
                 onOrderStay(loggedInUser)
                 clearState()
@@ -53,16 +52,13 @@ export function LoginSignup({onOrderStay}) {
         if (!credentials.username || !credentials.password || !credentials.fullname) return
         try{
             const loggedInUser = await userService.signup(credentials)
-            console.log('hi',loggedInUser)
             if(loggedInUser){
                 onOrderStay(loggedInUser)
                 clearState()
             } 
-        }
-        catch (err){
+        } catch (err){
             console.log(err)
         }
-        
     }
 
     function toggleSignup() {

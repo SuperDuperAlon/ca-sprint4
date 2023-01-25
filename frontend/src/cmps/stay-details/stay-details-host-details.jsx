@@ -1,7 +1,7 @@
-import { MdStar } from "react-icons/md";
+import { MdStar } from "react-icons/md"
 
 export function StayDetailsHostDetails({ stay }) {
-  if (!stay) return console.log("booboo");
+  if (!stay) return console.log("booboo")
   else
     return (
       <section className="stay-details-host-details mar-b24 ">
@@ -55,5 +55,5 @@ export function StayDetailsHostDetails({ stay }) {
           </div>
         </div>
       </section>
-    );
+    )
 }

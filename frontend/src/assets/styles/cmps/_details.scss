@@ -130,7 +130,7 @@
     border-top: 1px rgb(221, 221, 221) solid;
     padding: 3rem 0 3rem;
 
-    .day-picker-model {
+    .day-picker-modal {
       position: relative;
 
       .react-datepicker {
@@ -217,7 +217,7 @@
     display: flex;
     justify-content: flex-end;
     padding-top: 3rem;
-    .day-picker-model {
+    .day-picker-modal {
       position: relative;
       left: -400px;
 
@@ -325,7 +325,7 @@
                 align-items: center;
                 justify-content: space-between;
         
-                .btu-counter {
+                .btn-counter {
                     border-radius: 50%;
                     width: rem(32px);
                     height: rem(32px);

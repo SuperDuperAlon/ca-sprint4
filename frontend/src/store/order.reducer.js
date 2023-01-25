@@ -35,7 +35,7 @@ export function orderReducer(state = initialState, action) {
     // Orders CRUDL
     case SET_ORDERS:
       newState = { ...state, orders: action.orders }
-      console.log(newState);
+      console.log(newState)
       break
   case REMOVE_ORDER:
       // const lastRemovedStay = state.orders.find(order => order._id === action.orderId)
@@ -99,13 +99,13 @@ export function orderReducer(state = initialState, action) {
       console.log(newState)
       break
     case SET_CHECK_OUT_DATE:
-      newState = { ...state, checkOut: action.date };
-      break;
+      newState = { ...state, checkOut: action.date }
+      break
       
       // Set WHERE
       case SET_WHERE_TO_LOOK:
-        newState = { ...state, where: action.value };
-        break;
+        newState = { ...state, where: action.value }
+        break
       
 
     default:

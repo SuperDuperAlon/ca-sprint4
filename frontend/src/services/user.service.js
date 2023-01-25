@@ -62,7 +62,7 @@ async function login(userCred) {
         }
     
     } catch(err){
-        console.log(err);
+        console.log(err)
     }
 }
 async function signup(userCred) {
@@ -99,7 +99,7 @@ function getLoggedinUser() {
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 function _createUsers(){
-    let users = utilService.loadFromStorage(STORAGE_KEY);
+    let users = utilService.loadFromStorage(STORAGE_KEY)
       if (!users || !users.length) {
         users = [
             {
@@ -118,10 +118,10 @@ function _createUsers(){
                 // "isOwner" : true // OPTIONAL
               }
         ]
-        utilService.saveToStorage(STORAGE_KEY, users);
+        utilService.saveToStorage(STORAGE_KEY, users)
       }
 }
-// ;(async ()=>{
+// (async ()=>{
 //     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
 //     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
 //     await userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 10000})
