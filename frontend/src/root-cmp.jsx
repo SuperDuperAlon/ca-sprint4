@@ -22,7 +22,7 @@ export function RootCmp() {
       <main>
         <Routes>
           <Route path="/orders" element={<Orders />} />
-          <Route path="/orders/:orderId/:filterBy" element={<OrderDetails />} />
+          <Route path="/orders/:orderId" element={<OrderDetails />} />
           <Route path="/orders/:orderId/edit" element={<OrderEdit />} />
           <Route path="/orders/edit" element={<OrderEdit />} />
           <Route path="/" element={<StayIndex />}>
@@ -37,7 +37,7 @@ export function RootCmp() {
                             list:
                                 preview
                              */}
-          <Route path="/room/:stayId" element={<StayDetails />} />
+          <Route path="/room/:stayId/:filterBy" element={<StayDetails />} />
             
 
           {/* 

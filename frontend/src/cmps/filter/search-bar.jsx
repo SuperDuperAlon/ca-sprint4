@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react"
 import DatePicker from "react-datepicker"
 import { filterService } from "../../services/filterService"
 import { useParams } from "react-router"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { CalendarMain } from "./calendar"
 import { GuestsCounter } from "./guest-counter"
 import { store } from "../../store/store"
@@ -12,14 +12,17 @@ import { FiSearch } from 'react-icons/fi'
 import { BsClock } from 'react-icons/bs'
 import { MdClear } from 'react-icons/md'
 import { IoLocationOutline } from 'react-icons/io5'
+import { SET_FILTER } from "../../store/filter.reducer"
 
-export function SearchBar({ queryToParams }) {
+export function SearchBar({ onToSearch }) {
     const [onActiveNow, setActiveNow] = useState(null)
     const [filter, setFilter] = useState(filterService.getEmptyFilter())
     let { filterBy } = useParams()
     const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
     const searchInBox = useRef(null)
+
     useOutsideAlerter(searchInBox)
+
     function useOutsideAlerter(ref) {
         useEffect(() => {
             function handleClickOutside(event) {
@@ -33,7 +36,14 @@ export function SearchBar({ queryToParams }) {
             }
         }, [ref])
     }
+
     useEffect(() => {
+        if (!filter.where || !filter.checkIn){
+            store.dispatch({
+                type: SET_FILTER,
+                filter
+            })
+        }
         setActiveNow(openSearchBar)
     }, [openSearchBar])
 
@@ -43,7 +53,7 @@ export function SearchBar({ queryToParams }) {
         setFilter({ ...filter, checkOut, checkIn })
     }
 
-    const handleChange = ev => {
+    function handleChange (ev) {
         const field = ev.target.name
         const value = ev.target.value
         setFilter({ ...filter, [field]: value })
@@ -85,12 +95,14 @@ export function SearchBar({ queryToParams }) {
         filterBy.where = filter.where
         filterBy.guests = filter.guests
 
-        queryToParams(filter)
+        onToSearch(filter)
         store.dispatch({
             type: SEARCH_BAR_OPEN,
             open: false,
         })
     }
+
+    
 
     return (
         <div className={openSearchBar ? "search" : "search close"}>

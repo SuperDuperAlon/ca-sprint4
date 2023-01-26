@@ -21,15 +21,15 @@ export function filterReducer(state = initialState, action) {
     var newState = state
    
     switch (action.type) {
-        // case SET_FILTER:
-        //     newState = { ...state, filter: action.filter }
+        case SET_FILTER:
+            newState = { ...state, filter: action.filter }
+            break
+        // case SET_CHECK_IN_DATE:
+        //     newState = { ...state, filter: {...state.filter, checkIn:action.date} }
         //     break
-        case SET_CHECK_IN_DATE:
-            newState = { ...state, filter: {...state.filter, checkIn:action.date} }
-            break
-        case SET_CHECK_OUT_DATE:
-            newState = { ...state, filter: {...state.filter, checkOut:action.date} }
-            break
+        // case SET_CHECK_OUT_DATE:
+        //     newState = { ...state, filter: {...state.filter, checkOut:action.date} }
+        //     break
         
 
     // guest

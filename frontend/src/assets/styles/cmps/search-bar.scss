@@ -42,10 +42,12 @@
 
 .search-bar {
     @include flex-center;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 4%), 0 8px 16px rgb(0 0 0 / 15%);
     flex-direction: row;
     justify-content: space-between;
     background-color: $white;
     border: solid 0.5px $clr-border-between-div;
+    
     min-height: 55px;
     border-radius: 100vw;
     font-size: 0.6rem;
@@ -370,12 +372,7 @@
         min-width: fit-content;
 
         @include for-guest-counter;
-        // justify-self: end;
-        // box-shadow: 0 0 0 1px rgb(0 0 0 / 4%), 0 8px 16px rgb(0 0 0 / 15%);
-        // border-radius: 50px;
-        // background-color: #fff;
-
-
+    
         .guests-modal-open {
 
             padding: 1rem 2rem;

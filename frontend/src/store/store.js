@@ -4,7 +4,7 @@ import { stayReducer } from './stay.reducer.js'
 import { userReducer } from './user.reducer.js'
 import { reviewReducer } from './review.reducer'
 import { systemReducer } from './system.reducer'
-// import { filterReducer } from './filter.reducer'
+import { filterReducer } from './filter.reducer'
 import { orderReducer } from './order.reducer'
 
 const rootReducer = combineReducers({
@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
     userModule: userReducer,
     systemModule: systemReducer,
     reviewModule: reviewReducer,
-    // filterModule: filterReducer,
+    filterModule: filterReducer,
     orderModule: orderReducer
 })
 

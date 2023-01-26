@@ -12,12 +12,15 @@ import { SearchBar } from '../cmps/filter/search-bar.jsx'
 import { filterService } from '../services/filterService.js'
 import { store } from '../store/store.js'
 import { SEARCH_BAR_OPEN } from '../store/stay.reducer.js'
+import { useState } from 'react'
 
 
 export function StayIndex() {
 
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
+    const userPreference = useSelector(storeState => storeState.filterModule.filter)
+    // const [saveQueryOfSession, setSaveQueryOfSession]=useState(filterService.getEmptyFilter())
     const navigate = useNavigate()
 
     const { filterBy } = useParams()
@@ -37,29 +40,25 @@ export function StayIndex() {
         }
     }
 
-
     async function onEditStay(ev, stay) {
         ev.stopPropagation()
         navigate(`/stay/edit/${stay._id}`)
 
     }
 
-    function onOpenStay(ev, stay ,filter) {
+    function onOpenStay(ev, stay) {
         ev.stopPropagation()
-        const params=queryToParams(filter)
+        const params=queryToParams(userPreference)
         navigate(`/room/${stay._id}/${params}`)
     }
 
     function onClickOutSideTheBar(event) {
-        console.log('click:')
         event.preventDefault()
-        console.log('openSearchBar:', openSearchBar)
         if (!openSearchBar) return
         store.dispatch({
             type: SEARCH_BAR_OPEN,
             open: false,
         })
-
     }
 
     function onToSearch (filter){
@@ -76,10 +75,13 @@ export function StayIndex() {
     }
 
 
+
     return (
         <div className='index-layout'>
             <div className='app-header index-layout full'>
-                <AppHeader queryToParams={queryToParams} stay={false} />
+                <AppHeader queryToParams={onToSearch} 
+                // onLookOutParams={onLookOutParams}
+                stay={false}  />
             </div>
             <StayList stays={stays} onRemoveStay={onRemoveStay}
                 onEditStay={onEditStay} onOpenStay={onOpenStay}

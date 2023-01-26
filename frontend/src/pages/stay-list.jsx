@@ -1,7 +1,7 @@
-import { ImgCarousel } from "../cmps/img-carousel";
-import { utilService } from "../services/util.service";
-import { IoIosStar } from "react-icons/io";
-import { AiFillStar } from "react-icons/ai";
+import { ImgCarousel } from "../cmps/img-carousel"
+import { utilService } from "../services/util.service"
+import { IoIosStar } from "react-icons/io"
+import { AiFillStar } from "react-icons/ai"
 
 export function StayList({
   stays,
@@ -59,5 +59,5 @@ export function StayList({
         ))}
       </ul>
     </section>
-  );
+  )
 }
