@@ -24,8 +24,8 @@ window.cs = stayService
 
 
 async function query(filterBy) {
-    if (!filterBy) return storageService.query(STORAGE_KEY)
     let data= await storageService.query(STORAGE_KEY)
+    if (!filterBy) return data.slice(0,30) 
     filterBy=filterService.getParamsToObj(filterBy)
     if (filterBy?.where)
         {
@@ -39,7 +39,7 @@ async function query(filterBy) {
             const regex = new RegExp(filterBy.label, 'i')
             data = data.filter(place => regex.test(place.labels))
         }
-    return data
+    return data.slice(0,30)
 
   // return httpService.get(STORAGE_KEY, filterBy)
 }

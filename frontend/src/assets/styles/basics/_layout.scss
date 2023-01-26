@@ -47,7 +47,15 @@
 
 .details-layout{
    // Details
-
+   display: grid;
+   
+   > * {
+    grid-column: 2;
+  }
+  
+   &.full {
+    grid-column: 1 /-1;
+  }
 
   @include for-details-sm-layout {
     // background-color: yellow;
@@ -82,9 +90,7 @@
         $x-large-breakpoint-details
       ) minmax(80px, 1fr);
   
-    > * {
-      grid-column: 2;
-    }
+    
   }
 
     // grid-template-columns:
@@ -178,13 +184,13 @@
 // }
 // }
 
-.details-layout{
-  display: grid;
-  > * {
-    grid-column: 2
-  }
+// .details-layout{
+//   display: grid;
+//   > * {
+//     grid-column: 2
+//   }
 
-}
+// }
 
   // @include for-mobile-layout {
   //   // background-color: yellow;
