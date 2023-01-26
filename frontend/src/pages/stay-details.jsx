@@ -32,22 +32,21 @@ export function StayDetails() {
 
   const updateDimensions = () => {
     setWidth(window.innerWidth);
-    isMobileReady();
   };
   useEffect(() => {
     window.addEventListener("resize", updateDimensions);
-    window.addEventListener("resize", isMobileReady);
+    window.addEventListener("resize", isMobileReady(window.innerWidth));
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
   function isMobileReady(width) {
-
+    console.log(width);
     if (width > 768) {
-      console.log("we entered desktop");
       setIsMobile(false);
-    } else {
-      console.log("we entered mobile");
+      loadStay();
+    } else if (width < 768) {
       setIsMobile(true);
+      loadStay();
     }
   }
 
@@ -108,12 +107,12 @@ export function StayDetails() {
 
         {isMobile && (
           <>
-            <StayDetailsCarousel imgs={stay.imgUrls}/>
+            <StayDetailsCarousel imgs={stay.imgUrls} />
             <StayDetailsLocationInfo stay={stay} isMobile={isMobile} />
             <StayDetailsHostInfo stay={stay} isMobile={isMobile} />
             <StayDetailsReviews stay={stay} isMobile={isMobile} />
             <StayDetailsHostDetails stay={stay} isMobile={isMobile} />
-            <StayDetailsMobileFooter stay={stay}/>
+            <StayDetailsMobileFooter stay={stay} />
           </>
         )}
 
