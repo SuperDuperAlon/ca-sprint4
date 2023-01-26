@@ -40,7 +40,6 @@ export function stayReducer(state = initialState, action) {
         // search modal 
         case SEARCH_BAR_OPEN:
             open={ ...state, searchModalOpen: action.open }
-            console.log('open:', open)
             newState= open
             break
 

@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 export function CalendarMain({ filterBy, onChangeDate, num, type }) {
-  console.log(type);
-  console.log("filterBy:", filterBy);
-  console.log(num);
+
   const [width, setWidth] = useState(window.innerWidth);
 
   var numOfCalendar;

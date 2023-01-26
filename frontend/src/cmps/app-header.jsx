@@ -7,16 +7,16 @@ import { AiOutlineMenu } from 'react-icons/ai'
 import { IoPersonCircleSharp } from 'react-icons/io5'
 import { SiAirbnb } from 'react-icons/si'
 
-
 import { store } from '../store/store'
 import { SEARCH_BAR_OPEN } from '../store/stay.reducer'
 import { SearchBar } from './filter/search-bar'
 import { SecondaryFilter } from '../pages/secondary-filter'
+import { useState } from 'react'
+import { filterService } from '../services/filterService'
 
-export function AppHeader({ queryToParams, stay}) {
-    const navigate = useNavigate()
-
+export function AppHeader({ onToSearch, stay}) {
     const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
+    const navigate = useNavigate()
 
     function onChangeStaySearchBar(option) {
         store.dispatch({
@@ -92,8 +92,8 @@ export function AppHeader({ queryToParams, stay}) {
                 <div className={openSearchBar? "open": ''}></div>
             </div>
             
-            <SearchBar queryToParams={queryToParams} />
-            {!stay && <SecondaryFilter queryToParams={queryToParams} />}
+            <SearchBar onToSearch={onToSearch} />
+            {!stay && <SecondaryFilter onToSearch={onToSearch} />}
 
         </>
     )

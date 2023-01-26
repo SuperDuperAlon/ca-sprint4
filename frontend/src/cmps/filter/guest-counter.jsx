@@ -1,5 +1,5 @@
 // 
-import { AiOutlinePlusCircle } from 'react-icons/ai'
+import { AiOutlinePlus } from 'react-icons/ai'
 
 
 export function GuestsCounter({filter,onCountChange}){
@@ -15,7 +15,7 @@ export function GuestsCounter({filter,onCountChange}){
             <div className="counter">
                 <button className="btn-counter" disabled={!filter.guests.adults} onClick={() => onCountChange('adults', -1)}>-</button>
                 {filter.guests.adults}
-                <button className="btn-counter" onClick={() => onCountChange('adults', 1)}><AiOutlinePlusCircle/></button>
+                <button className="btn-counter" onClick={() => onCountChange('adults', 1)}><AiOutlinePlus/></button>
             </div>
         </div>
         <div className="guest">
