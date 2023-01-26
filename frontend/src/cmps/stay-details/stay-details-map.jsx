@@ -9,7 +9,7 @@ export function StayDetailsMap({ stay, isMobile }) {
 
   var coordinates = {
     lat: stay.loc.lat,
-    lng: stay.loc.lng,
+    lan: stay.loc.lan,
   };
   const zoom = 16;
 

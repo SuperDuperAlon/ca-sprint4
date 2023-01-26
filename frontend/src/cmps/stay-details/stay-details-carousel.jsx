@@ -24,7 +24,7 @@ console.log(imgs);
     return (<div className="details-img-container">
         <Carousel className="details-carousel" show={1.5} autoPlay={false} navButtonsAlwaysVisible={false} animation="slide" cycleNavigation={true} 
     activeIndicatorIconButtonProps={{className :'active'}} >
-            {imgs.map((img, index) => <img className="details-stay-img" src={require(`../../assets/img/${img}.jpg`)} key={index} />
+            {imgs.map((img, index) => <img className="details-stay-img" src={img} key={index} />
             )}
         </Carousel>
     </div>)

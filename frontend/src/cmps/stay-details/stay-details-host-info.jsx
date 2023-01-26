@@ -31,7 +31,20 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div className="fs22 fw600 mar-b8">
                   {stay.name} hosted by {stay.host.fullname}
                 </div>
-                <div> {`2 guests · ${stay.bedrooms > 1 ? stay.bedrooms + ' bedrooms' : stay.bedrooms + ' bedroom'} · ${stay.beds > 1 ? stay.beds + ' beds' : stay.beds+' bed'} · ${stay.bathrooms > 1 ? stay.bathrooms + ' bathrooms' : stay.bathrooms + ' bathroom'}`}</div>
+                <div>
+                  {" "}
+                  {`2 guests · ${
+                    stay.bedrooms > 1
+                      ? stay.bedrooms + " bedrooms"
+                      : stay.bedrooms + " bedroom"
+                  } · ${
+                    stay.beds > 1 ? stay.beds + " beds" : stay.beds + " bed"
+                  } · ${
+                    stay.bathrooms > 1
+                      ? stay.bathrooms + " bathrooms"
+                      : stay.bathrooms + " bathroom"
+                  }`}
+                </div>
               </div>
               <div className="avatar-lg">
                 <img
@@ -124,7 +137,20 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div className="fs22 fw600 mar-b8">
                   {stay.name} hosted by {stay.host.fullname}
                 </div>
-                <div> 2 guests · 1 bedroom · 1 bed · Half-bath</div>
+                <div>
+                  {" "}
+                  {`2 guests · ${
+                    stay.bedrooms > 1
+                      ? stay.bedrooms + " bedrooms"
+                      : stay.bedrooms + " bedroom"
+                  } · ${
+                    stay.beds > 1 ? stay.beds + " beds" : stay.beds + " bed"
+                  } · ${
+                    stay.bathrooms > 1
+                      ? stay.bathrooms + " bathrooms"
+                      : stay.bathrooms + " bathroom"
+                  }`}
+                </div>
               </div>
               <div className="avatar-lg">
                 <img
@@ -197,15 +223,17 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
               <div className="fs22 fw600 mar-b24">What this place offers </div>
               <div className="amenities-list">
                 {stay.amenities.map((amenities, idx) => {
-                  if(idx < 6) return <div>{amenities}</div>;
+                  if (idx < 6) return <div>{amenities}</div>;
                 })}
               </div>
               <button className="white-open-btn">
-                <Link to={`/amenities/`}>Show all {stay.amenities.length} amenities</Link>
+                <Link to={`/amenities/`}>
+                  Show all {stay.amenities.length} amenities
+                </Link>
               </button>
             </div>
             <div>
-              <StayDetailsMap stay={stay} isMobile={isMobile}/>
+              <StayDetailsMap stay={stay} isMobile={isMobile} />
             </div>
 
             <div className="calendar">

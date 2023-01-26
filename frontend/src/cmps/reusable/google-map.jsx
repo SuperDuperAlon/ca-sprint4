@@ -10,7 +10,7 @@ export function GoogleMap({ stay, isMobile }) {
   const defaultProps = {
     center: {
       lat: stay.loc.lat,
-      lng: stay.loc.lng,
+      lng: stay.loc.lan,
     },
     zoom: 11,
     icon: <RiMapPin2Fill style={style} />,
@@ -38,7 +38,7 @@ export function GoogleMap({ stay, isMobile }) {
             >
               <AnyReactComponent
                 lat={defaultProps.center.lat}
-                lng={defaultProps.center.lng}
+                lng={defaultProps.center.lan}
                 text={defaultProps.icon}
               />
             </GoogleMapReact>
