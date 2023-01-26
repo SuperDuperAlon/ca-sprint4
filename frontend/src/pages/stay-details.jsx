@@ -25,7 +25,7 @@ export function StayDetails() {
   const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
   const { stayId } = useParams();
   const [stay, setStay] = useState(null);
-  const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
 // console.log(width);
@@ -65,6 +65,14 @@ export function StayDetails() {
     }
   }
 
+  function onClickOutSideTheBar(event) {
+    event.preventDefault()
+    if (!openSearchBar) return
+    store.dispatch({
+        type: SEARCH_BAR_OPEN,
+        open: false,
+    })
+}
   // async function onAddOrder() {
   //   try {
   //     console.log("this is a test frm details");
