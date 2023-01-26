@@ -107,6 +107,7 @@ function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
 
 function getShortDate(checkIn, checkOut){
     const month = getMonthName(new Date(checkIn))
+    console.log(month);
     const startDay = new Date(checkIn).getDate()
     const endDay = new Date(checkOut).getDate()
     return `${month} ${startDay} - ${endDay}`

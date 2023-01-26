@@ -16,16 +16,19 @@ import { AppHeader } from "../cmps/app-header";
 import { InnerNavStay } from "../cmps/stay-details/stay-details-inner-nav";
 import React from "react";
 import { StayDetailsMobileFooter } from "../cmps/stay-details/stay-details-mobile-footer";
+import { useSelector } from "react-redux";
+import { SEARCH_BAR_OPEN } from "../store/stay.reducer";
+import { store } from "../store/store";
 
 export function StayDetails() {
   // const [orderToEdit, setOrderToEdit] = useState(orderService.getEmptyOrder())
+  const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
   const { stayId } = useParams();
   const [stay, setStay] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
-  console.log(isMobile);
-  console.log(width);
+// console.log(width);
 
   const updateDimensions = () => {
     setWidth(window.innerWidth);
@@ -74,8 +77,10 @@ export function StayDetails() {
       <section className="details-layout full">
         {!isMobile && (
           <>
-            <AppHeader stay={stay} />
-            <StayDetailsLocationInfo stay={stay} isMobile={isMobile} />
+            <div className=" app-header details-layout full">
+              <AppHeader stay={stay} />
+            </div>
+            <StayDetailsLocationInfo stay={stay} />
             <StayDetailsGallery stay={stay} />
             <InnerNavStay />
             <div className="stay-details-midsection">
@@ -83,9 +88,12 @@ export function StayDetails() {
               <StayDetailsOrderModal stay={stay} />
             </div>
             {/* <BasicModal /> */}
-            <StayDetailsReviews stay={stay} isMobile={isMobile} />
-            <StayDetailsMap stay={stay} isMobile={isMobile} />
-            <StayDetailsHostDetails stay={stay} isMobile={isMobile} />
+            <StayDetailsReviews stay={stay} />
+            <StayDetailsMap stay={stay} />
+            <StayDetailsHostDetails stay={stay} />
+            {openSearchBar && <div className="black-screen full"
+              onClick={onClickOutSideTheBar}
+            ></div>}
           </>
         )}
 

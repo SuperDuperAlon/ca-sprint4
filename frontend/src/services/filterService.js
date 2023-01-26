@@ -16,12 +16,20 @@ function  getDateToFilter(date){
 function getParamsToObj(filterBy) {
     let query = filterBy.split('&').map(x => x.split('=').map(y => y.trim()))
         .reduce((a, x) => {
+            
             a[x[0]] = x[1]
             if (a[x[0]]==='null'){
                 a[x[0]]=null
+            } if ( x[0] === 'adults' || x[0] === 'infants' || x[0] === 'children' || x[0] === 'pets' ){
+                a[x[0]] = +a[x[0]]
+            }
+            else if ((x[0] === 'checkIn' || x[0] === 'checkOut') && a[x[0]]!==null){
+                a[x[0]] = new Date(a[x[0]])
+                
             }
             return a
         }, {})
+        console.log(query);
     return query
 }
 

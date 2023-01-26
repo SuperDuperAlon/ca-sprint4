@@ -8,6 +8,7 @@ import { AiFillStar } from 'react-icons/ai'
 import { orderService } from "../services/order.service"
 import { addOrder, updateOrder } from "../store/order.actions"
 import { LoginSignup } from "../cmps/login-signup"
+import { useRef } from "react"
 
 export function StayOrder() {
 
@@ -17,7 +18,14 @@ export function StayOrder() {
     const [indexChecked, setIndexChecked] = useState(0)
     const [orderToEdit, setOrderToEdit] = useState(orderService.getEmptyOrder())
     const [isLoggedInUser, setIsLoggedInUser] = useState(false)
+    const [isConfirm, setIsConfirm]  = useState(false)
     const navigate = useNavigate()
+    const confirmInterval = useRef(null)
+
+    useEffect(() => {
+        // Clear the interval when the component unmounts
+        return () => clearTimeout(confirmInterval.current);
+      }, [])
 
     useEffect(() => {
         loadStay()
@@ -25,7 +33,8 @@ export function StayOrder() {
     }, [])
 
     // console.log(stay)
-    console.log(orderToEdit)
+    console.log(orderDetails)
+
 
 
 
@@ -119,10 +128,8 @@ export function StayOrder() {
         return countDays > 1 ? strCalc + ' nights' : strCalc + ' night'
     }
 
-    function getReviewsAvg() {
-        let sum = 0
-        stay.reviews.map(review => sum += review.rate)
-        return sum / stay.reviews.length
+    function confirmOrder(){
+        confirmInterval.current = setTimeout( () => setIsConfirm(true) ,2000)    
     }
 
     if (!stay) return <div>loading...</div>
@@ -132,16 +139,24 @@ export function StayOrder() {
                 <h3><span className="airbnb-icon"><SiAirbnb /></span>anyplce</h3>
             </div>
         </header>
-        <div className="confirm fs32 bold">
+        {!isConfirm &&<div className="confirm fs32 bold">
             <button className="clean-btn fs32 pad-r32">{'<'}</button>
             Confirm and pay
-        </div>
+        </div>}
+        {isConfirm && <div className="confirm fs32 bold">
+            <button className="clean-btn fs32 pad-r32">{'<'}</button>
+            <img src="https://icons.veryicon.com/png/o/miscellaneous/8atour/success-35.png" />
+            Reservation success!
+        </div>}
         <div className="main-order">
 
             <div className="order-details-container">
-                <div className="changed-content">
-                    <div className="bold mar-b8">This is a rare find.</div>
-                    <div>Mega's place is usually booked.</div>
+                <div className="changed-content flex space-between">
+                    <div>
+                        <div className="bold mar-b8">This is a rare find.</div>
+                        <div>Mega's place is usually booked.</div>
+                    </div>
+                    <section className="icon-svg"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><g stroke="none"><path d="m32.62 6 9.526 11.114-18.146 23.921-18.147-23.921 9.526-11.114z" fill-opacity=".2"></path><path d="m34.4599349 2 12.8243129 14.9616983-23.2842478 30.6928721-23.28424779-30.6928721 12.82431289-14.9616983zm-17.9171827 16h-12.52799999l18.25899999 24.069zm27.441 0h-12.528l-5.73 24.069zm-14.583 0h-10.802l5.4012478 22.684zm-15.92-12.86-9.30799999 10.86h11.89399999zm19.253-1.141h-17.468l2.857 12.001h11.754zm1.784 1.141-2.586 10.86h11.894z"></path></g></svg></section>
                 </div>
                 <div>
                     <div className="fs22 bold pad-b24">Your trip</div>
@@ -151,12 +166,13 @@ export function StayOrder() {
                         </div>
                         <div className="bold under-line">Edit</div>
                     </div>
-                    <div className="guests-container flex space-between pad-b24 ">
+                    <div className={isLoggedInUser ? "guests-container flex space-between pad-b50 border-bottom" : "guests-container flex space-between pad-b24"}>
                         <div><span className="bold">Guests</span>
                             <div className="mar-t8">{getGuests()}</div>
                         </div>
                         <div className="bold under-line">Edit</div>
                     </div>
+                    {isLoggedInUser && <button onClick={confirmOrder} className="reserve-btn full-width fs16 confirm-btn">Confirm</button>}
                     {!isLoggedInUser && <div className="payment-container mar-b24">
                         <div className="pad-t32 pad-b24 fs22 bold">Choose how to pay</div>
                         <label htmlFor="0">

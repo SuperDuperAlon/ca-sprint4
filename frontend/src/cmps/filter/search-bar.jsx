@@ -95,7 +95,9 @@ export function SearchBar({ onToSearch }) {
         filterBy.where = filter.where
         filterBy.guests = filter.guests
 
-        onToSearch(filter)
+        console.log('filterBy:',filterBy )
+
+        onToSearch(filterBy)
         store.dispatch({
             type: SEARCH_BAR_OPEN,
             open: false,
@@ -103,7 +105,6 @@ export function SearchBar({ onToSearch }) {
     }
 
     
-
     return (
         <div className={openSearchBar ? "search" : "search close"}>
             <div className={openSearchBar ? "search-row" : "search-row close"} ref={searchInBox}>
@@ -119,7 +120,6 @@ export function SearchBar({ onToSearch }) {
                                     id="where"
                                     value={filter?.where || ""}
                                     autoComplete="off"
-
                                     placeholder="Search destinations"
                                     onChange={handleChange}
                                 />
