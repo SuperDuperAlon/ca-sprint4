@@ -76,7 +76,7 @@ export function LoginSignup({onOrderStay}) {
                         <div className='mar-r4'>{isSignup ? 'Already have an account?' : 'Not a member yet?'}</div>
                         <button onClick={toggleSignup} className='bold under-line clean-btn fs16'>{isSignup ? 'Log in' : 'Sign up'}</button>
                     </div>
-                {!isSignup && <form onSubmit={(ev) => onLogin(ev)}>
+                {!isSignup && <form  autoComplete="off" onSubmit={(ev) => onLogin(ev)}>
                     <input className="login-input up"
                         type="text"
                         name="username"
@@ -99,7 +99,7 @@ export function LoginSignup({onOrderStay}) {
                     </button>
                    
                 </form>}
-                {isSignup && <form className="signup-form" onSubmit={onSignUp}>
+                {isSignup && <form  autoComplete="off" className="signup-form" onSubmit={onSignUp}>
                      <input className= "login-input regular"
                         type="text"
                         name="fullname"

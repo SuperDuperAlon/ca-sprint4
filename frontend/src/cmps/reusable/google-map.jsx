@@ -38,7 +38,7 @@ export function GoogleMap({ stay, isMobile }) {
             >
               <AnyReactComponent
                 lat={defaultProps.center.lat}
-                lng={defaultProps.center.lan}
+                lng={defaultProps.center.lng}
                 text={defaultProps.icon}
               />
             </GoogleMapReact>
