@@ -24,13 +24,14 @@ window.cs = stayService
 
 
 async function query(filterBy) {
-    let data= await storageService.query(STORAGE_KEY)
-    if (!filterBy) return data.slice(0,30) 
-    filterBy=filterService.getParamsToObj(filterBy)
+  let data= await storageService.query(STORAGE_KEY)
+  if (!filterBy) return data.slice(0,30)
+  filterBy=filterService.getParamsToObj(filterBy)
     if (filterBy?.where)
         {
             const regex = new RegExp(filterBy.where, 'i')
-            data = data.filter(place => regex.test(place.loc.country) || regex.test(place.loc.city)
+            data = data.filter(place => regex.test(place.loc.country) || regex.test(place.loc.city) 
+            || regex.test(place.loc.address)
             )
 
         }
@@ -38,6 +39,10 @@ async function query(filterBy) {
         {
             const regex = new RegExp(filterBy.label, 'i')
             data = data.filter(place => regex.test(place.labels))
+        }
+    if (filterBy?.guests)
+        {
+            data = data.filter(place => place.capacity>=filterBy.guests)
         }
     return data.slice(0,30)
 

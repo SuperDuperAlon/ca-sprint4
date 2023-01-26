@@ -4,35 +4,74 @@ import { RiMapPin2Fill } from "react-icons/ri";
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-export function GoogleMap({stay}) {
+export function GoogleMap({ stay, isMobile }) {
+  var style = { color: "#ff5a5f", fontSize: "3rem" };
 
-  var style = { color: "#ff5a5f", fontSize: "3rem" }
-  
   const defaultProps = {
     center: {
       lat: stay.loc.lat,
-      lng: stay.loc.lan
+      lng: stay.loc.lan,
     },
     zoom: 11,
-    icon: <RiMapPin2Fill style={style}/>
+    icon: <RiMapPin2Fill style={style} />,
   };
-
-
 
   return (
     // Important! Always set the container height explicitly
-    <div style={{ height: "480px", width: "100%", margin: "auto", marginBottom:"1.5rem" }}>
- <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyAxfggEQ7yAD7Ld4fc_f-haJusL3eGqHzU" }}
-        defaultCenter={defaultProps.center}
-        defaultZoom={defaultProps.zoom}
-      >
-        <AnyReactComponent
-          lat={defaultProps.center.lat}
-          lng={defaultProps.center.lng}
-          text={defaultProps.icon}
-        />
-      </GoogleMapReact>
-    </div>
+    <section>
+      {!isMobile && (
+        <>
+          <div
+            style={{
+              height: "480px",
+              width: "100%",
+              margin: "auto",
+              marginBottom: "1.5rem",
+            }}
+          >
+            <GoogleMapReact
+              bootstrapURLKeys={{
+                key: "AIzaSyAxfggEQ7yAD7Ld4fc_f-haJusL3eGqHzU",
+              }}
+              defaultCenter={defaultProps.center}
+              defaultZoom={defaultProps.zoom}
+            >
+              <AnyReactComponent
+                lat={defaultProps.center.lat}
+                lng={defaultProps.center.lan}
+                text={defaultProps.icon}
+              />
+            </GoogleMapReact>
+          </div>
+        </>
+      )}
+
+      {isMobile && (
+        <>
+          <div
+            style={{
+              height: "218px",
+              width: "100%",
+              margin: "auto",
+              marginBottom: "1.5rem",
+            }}
+          >
+            <GoogleMapReact
+              bootstrapURLKeys={{
+                key: "AIzaSyAxfggEQ7yAD7Ld4fc_f-haJusL3eGqHzU",
+              }}
+              defaultCenter={defaultProps.center}
+              defaultZoom={defaultProps.zoom}
+            >
+              <AnyReactComponent
+                lat={defaultProps.center.lat}
+                lng={defaultProps.center.lng}
+                text={defaultProps.icon}
+              />
+            </GoogleMapReact>
+          </div>
+        </>
+      )}
+    </section>
   );
 }
