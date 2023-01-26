@@ -118,6 +118,7 @@
 
     .css-jnbkl4 {
         border-color: #dddddd00;
+        background-color: transparent;
 
     }
 }
@@ -135,6 +136,7 @@
         .extra-filters-container {
             @include flex-center;
             padding: 7px 0px;
+            margin-left: -15px;
             font-size: 0.9rem;
             border: 1px solid #DDDDDD;
             border-radius: 0.75rem;

@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 
 import { loadStays, removeStay } from '../store/stay.actions.js'
@@ -20,15 +20,14 @@ export function StayIndex() {
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
     const userPreference = useSelector(storeState => storeState.filterModule.filter)
-    // const [saveQueryOfSession, setSaveQueryOfSession]=useState(filterService.getEmptyFilter())
     const navigate = useNavigate()
-
     const { filterBy } = useParams()
 
     useEffect(() => {
         loadStays(filterBy)
         if (!!filterBy?.where === '') { navigate('/') }
     }, [filterBy])
+
 
     async function onRemoveStay(ev, stayId) {
         ev.stopPropagation()
@@ -48,7 +47,7 @@ export function StayIndex() {
 
     function onOpenStay(ev, stay) {
         ev.stopPropagation()
-        const params=queryToParams(userPreference)
+        const params = queryToParams(userPreference)
         navigate(`/room/${stay._id}/${params}`)
     }
 
@@ -61,32 +60,38 @@ export function StayIndex() {
         })
     }
 
-    function onToSearch (filter){
-        const params=queryToParams(filter)
+    function onToSearch(filter) {
+        const params = queryToParams(filter)
         navigate(`/${params}`)
     }
     function queryToParams(filter) {
+        filter.guests = Object.values(filter.guests).reduce((a, b) => a + b, 0)
         filter.checkIn = filterService.getDateToFilter(filter.checkIn)
         filter.checkOut = filterService.getDateToFilter(filter.checkOut)
         const queryParams =
-            `where=${filter.where}&checkIn=${filter.checkIn}&checkOut=${filter.checkOut}&label=${filter.label}`
-        // &adults=${guests.adults}&children=${guests.children}`    
+            `where=${filter.where}&checkIn=${filter.checkIn}&checkOut=${filter.checkOut}&label=${filter.label}&=guest${filter.guests}`
+            // &adults=${guests.adults}&children=${guests.children}`    
         return queryParams
     }
 
-
+    function handleScroll(e) {
+        const bottom = e.target.scrollHeight - e.target.scrollTop === e.target.clientHeight;
+    }
 
     return (
-        <div className='index-layout'>
+        <div className='index-layout'
+            onScroll={handleScroll}
+        >
             <div className='app-header index-layout full'>
-                <AppHeader queryToParams={onToSearch} 
-                // onLookOutParams={onLookOutParams}
-                stay={false}  />
+                <AppHeader onToSearch={onToSearch}
+                    // onLookOutParams={onLookOutParams}
+                    stay={false} />
             </div>
             <StayList stays={stays} onRemoveStay={onRemoveStay}
                 onEditStay={onEditStay} onOpenStay={onOpenStay}
                 onClickOutSideTheBar={onClickOutSideTheBar}
                 openSearchBar={openSearchBar}
+            // listInnerRef={listInnerRef}
             />
             {openSearchBar && <div className="black-screen full"
                 onClick={onClickOutSideTheBar}

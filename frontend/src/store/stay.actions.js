@@ -33,6 +33,7 @@ export async function loadStays(filter=null) {
             type: SET_STAYS,
             stays: stays
         })
+        // return stays.slice(currentPage*pageSize,currentPage*pageSize+1)
 
     } catch (err) {
         console.log('Cannot load stays', err)

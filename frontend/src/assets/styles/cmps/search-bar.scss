@@ -10,7 +10,7 @@
 
     .search-row {
         display: grid;
-        grid-template-columns: 1fr minmax(650px, 750px) 1fr;
+        grid-template-columns: 1fr minmax(650px, 850px) 1fr;
 
         >* {
             grid-column: 2;
@@ -44,10 +44,8 @@
     @include flex-center;
     box-shadow: 0 0 0 1px rgb(0 0 0 / 4%), 0 8px 16px rgb(0 0 0 / 15%);
     flex-direction: row;
-    justify-content: space-between;
     background-color: $white;
     border: solid 0.5px $clr-border-between-div;
-    
     min-height: 55px;
     border-radius: 100vw;
     font-size: 0.6rem;
@@ -72,9 +70,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        // flex: 1 0 34%;
-        width: 34%;
-        padding: 12px 12px 12px 18px;
+        flex: 1 0 37%;
+        padding: 12px 12px 12px 30px;
 
 
 
@@ -109,28 +106,33 @@
         min-height: 24px;
         border-radius: 50%;
         background-color: #ebebeb;
+        cursor: default;
+       
 
         &.show-btn {
             opacity: 1;
             font-weight: 400;
+            cursor: pointer;
         }
 
     }
 
     .check-date {
-       margin-left: 10px;
+       margin-left: 5px;
         @include flex-center;
         display: flex;
-        width: 33%;
+        flex: 1 0 26%;
+        cursor: pointer;
 
         .checkIn,
         .checkOut {
+           
             display: flex;
-            margin-right: 5px;
             @include padding-br;
 
             &:hover {
                 @include butHoverOn;
+                cursor: pointer;
             }
 
             input {
@@ -172,12 +174,12 @@
 
     .search-option {
         margin-right: 5px;
-        width: 37%;
-        // flex: 1 0 37%;
+        flex: 1 0 28%;
         transform: translateX(5px);
 
         &:hover {
             @include butHoverOn;
+            cursor: pointer;
         }
     }
 
@@ -190,7 +192,6 @@
         justify-content: flex-start;
 
         &.active {
-
             padding: 6px 0px 6px 8px;
         }
 
@@ -239,6 +240,7 @@
 
     hover {
         @include butHoverOn;
+        cursor: pointer;
     }
 
 
@@ -247,6 +249,7 @@
 .search-modal {
     z-index: 15;
     border-radius: 32px;
+    margin-top: 16px;
 
     >* {
         background-color: #fff;
@@ -287,7 +290,7 @@
 
         @include for-search-bar-open;
         display: grid;
-        grid-template-columns: minmax(100px, 250px) 1fr;
+        grid-template-columns: 39% 1fr;
 
         .show-recent-search {
             h1 {
@@ -399,7 +402,6 @@
 
     .checkIn,
     .checkOut {
-        margin-right: 5px;
         @include padding-br;
       
     }

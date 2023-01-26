@@ -48,15 +48,9 @@
         @content;
     }
 }
-// @mixin for-details-xxl-layout {
-//     @media (min-width: $padded-xxl-details) {
-//         @content;
-//     }
-// }
 
 @mixin for-search-bar-open {
     padding: 1.6rem;
-    // min-width: 840px;
     border-radius: 2em;
 
 }
@@ -241,7 +235,7 @@
                 margin-top: 14px;
 
                 &:not(:last-child) {
-                    border-bottom: $clr-border-between-div solid;
+                    border-bottom: $clr-border-between-div solid 0.5px;
                 }
 
                 &:last-child {

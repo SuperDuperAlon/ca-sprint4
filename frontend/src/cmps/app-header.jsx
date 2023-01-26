@@ -14,7 +14,7 @@ import { SecondaryFilter } from '../pages/secondary-filter'
 import { useState } from 'react'
 import { filterService } from '../services/filterService'
 
-export function AppHeader({ onToSearch, stay}) {
+export function AppHeader({onToSearch, stay}) {
     const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
     const navigate = useNavigate()
 
@@ -31,7 +31,7 @@ export function AppHeader({ onToSearch, stay}) {
                     <div><span className="a-Logo"><SiAirbnb /></span><span className='text-next-to-logo'>nyplace</span></div>
                 </div>
                 <div className="center-grid">
-                    <div className={!openSearchBar ? 'rounded-full navBarHeader' : " rounded-full navBarHeader close"}>
+                    <div className={!openSearchBar ? 'rounded-full nav-bar-header' : " rounded-full nav-bar-header close"}>
                         <nav className='header-nav long'>
                             <NavLink key={"anywhere"} onClick={() => onChangeStaySearchBar('location')}>
                                 anywhere
@@ -43,6 +43,10 @@ export function AppHeader({ onToSearch, stay}) {
                                 add guests
                             </NavLink>
                         </nav>
+                        <div className="title-to-details-page" onClick={() => onChangeStaySearchBar('location')}>
+                            Start your search
+                        </div>
+
 
                         <div className='search-icon'>
                             <FiSearch />
@@ -67,7 +71,7 @@ export function AppHeader({ onToSearch, stay}) {
                         </div>
                     </div>
                 </div>
-                <div className="users-option">
+                <div className="users-option fs-14">
                     <div className="header-options-switching-keys mar-r8">
                         <div className="switch-to-host">
                             <div className='fs14 lh18 pad-all12 rounded-full bold switch-to-host'>
@@ -79,7 +83,7 @@ export function AppHeader({ onToSearch, stay}) {
                     </div>
 
                     <div className="login-menu rounded-full">
-                        <span className='menu fs-12 lh-20'>
+                        <span className='menu fs-14 lh-20'>
                             <AiOutlineMenu />
                         </span>
                         <span className='person mar-l12 fs12'>
@@ -88,10 +92,10 @@ export function AppHeader({ onToSearch, stay}) {
                     </div>
                 </div>
             </main>
-            <div className='cover-filter'>
+            <div className='cover-filter full'>
                 <div className={openSearchBar? "open": ''}></div>
             </div>
-            
+           { !openSearchBar && <div className="line full"></div>}
             <SearchBar onToSearch={onToSearch} />
             {!stay && <SecondaryFilter onToSearch={onToSearch} />}
 
