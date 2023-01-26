@@ -73,12 +73,21 @@
             opacity : 0;  
             height: 30px;
             width: 30px;
-            &:hover{
-                background-color: white;
-                opacity: 1;
-            }
+            // &:hover{
+            //     background-color: white;
+            //     opacity: 1;
+            // }
         }
 
+
+        .css-ktslay-MuiButtonBase-root-MuiIconButton-root:hover{
+            opacity : 1 !important;
+            border-color: rgba(0,0,0,0.08);
+            box-shadow: 0 0 0 1px transparent,0 0 0 4px transparent,0 6px 16px rgba(0,0,0,0.12);
+            transform: scale(1.04);
+        }
+        
+            
         
         .css-aq8pb7-MuiSvgIcon-root{
             font-size: 0.6rem;
@@ -103,6 +112,10 @@
                 opacity: 1;
             }
         }
+
+        // .css-ktslay-MuiButtonBase-root-MuiIconButton-root:hover{
+        //     opacity : 1
+        // }
     }
     
 }

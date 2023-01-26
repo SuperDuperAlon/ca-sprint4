@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useSelector } from "react-redux"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import "react-dates/initialize"
 import { DateRangePicker } from "react-dates"
 import "react-dates/lib/css/_datepicker.css"
@@ -21,15 +21,17 @@ export function StayDetailsOrderModal({ stay }) {
   const [focusedInput, setFocusedInput] = useState()
   const [isDateClicked, setIsDateClicked] = useState(false)
   const [isGuestsClicked, setIsGuestsClicked] = useState(false)
-  const [filterBy, setFilterBy] = useState(filterService.getEmptyFilter())
+  const { stayId , filter } = useParams()
+  const [filterBy, setFilterBy] = useState(filterService.getParamsToObj(filter))
   const navigate = useNavigate()
+
+  console.log(filterBy)
 
   async function onReserve() {
 
-    console.log(filterBy)
 
     const queryParams = 
-        `checkIn=${filterBy.checkIn}&checkOut=${filterBy.checkOut}&adults=${filterBy.guests.adults}&children=${filterBy.guests.children}&infants=${filterBy.guests.infants}&pets=${filterBy.guests.pets}`
+        `checkIn=${filterBy.checkIn}&checkOut=${filterBy.checkOut}&adults=${filterBy.adults}&children=${filterBy.children}&infants=${filterBy.infants}&pets=${filterBy.pets}`
 
     navigate(`/book/stay/${stay._id}/${queryParams}`)
   }
@@ -40,6 +42,7 @@ export function StayDetailsOrderModal({ stay }) {
   }
 
   function onChangeDate(dates){
+        console.log(dates);
         const checkIn = dates[0]
         const checkOut = dates[1]
         if(dates[1]){
@@ -51,9 +54,10 @@ export function StayDetailsOrderModal({ stay }) {
   function toggleDatePicker(){
       isDateClicked ? setIsDateClicked(false): setIsDateClicked(true)
   }
-
+  // guests, ...filterBy.guests[field] = filterBy.guests[field]
   function onCountChange(field, diff) {
-    const prevGuests = { ...filterBy.guests, ...filterBy.guests[field] = filterBy.guests[field] + diff }
+    console.log(+filterBy[field]);
+    const prevGuests = { ...filterBy, [field] : +filterBy[field] + diff }
     setFilterBy({ ...filterBy, prevGuests })
 }
 
@@ -75,11 +79,11 @@ export function StayDetailsOrderModal({ stay }) {
             <button className="order-form-btn up" onClick={toggleDatePicker}>
               <div className="date-container flex column">
                 <div className="upp-left-14-600 bold fs9">CHECK-IN</div>
-                  <div className="upp-left-14-600 mar-r8">{filterBy.checkIn ? new Date(filterBy.checkIn).toLocaleDateString(): <span className="grey-71">Add date</span>}</div>
+                  <div className="upp-left-14-600 mar-r8">{filterBy?.checkIn ? new Date(filterBy.checkIn).toLocaleDateString(): <span className="grey-71">Add date</span>}</div>
               </div>
               <div className="date-container flex column">
                 <div className="upp-left-14-600 bold fs9">CHECKOUT</div>
-                  <div className="upp-left-14-600">{filterBy.checkOut ? new Date(filterBy.checkOut).toLocaleDateString(): <span className="grey-71">Add date</span>}</div>
+                  <div className="upp-left-14-600">{filterBy?.checkOut ? new Date(filterBy.checkOut).toLocaleDateString(): <span className="grey-71">Add date</span>}</div>
               </div>
               
             </button>
@@ -91,12 +95,12 @@ export function StayDetailsOrderModal({ stay }) {
               <div className="date-container flex column guests">
                 <div className="upp-left-14-600 bold fs9">GUESTS</div>
                   <div className="upp-left-14-600 fs14 ">
-                    {(filterBy?.guests.adults>1 || filterBy?.guests.children>0)? filterBy.guests.adults+ filterBy.guests.children + ' guests' : '1 guest'} 
+                    {(filterBy?.adults>1 || filterBy?.children>0)? +filterBy.adults+ +filterBy.children + ' guests' : '1 guest'} 
                     </div>                                       
               </div>
                 {isGuestsClicked ? <BiChevronUp className="guests-arrow"/> : <BiChevronDown className="guests-arrow"/>}
             </button>
-              {isGuestsClicked && <div className="guests-counter-container details-guest"><GuestsCounter filter={filterBy} onCountChange={onCountChange}/></div>}
+              {isGuestsClicked && <div className="guests-counter-container details-guest"><GuestsCounter filter={filterBy} onCountChange={onCountChange} parentCmp={'details'}/></div>}
           </div>
         </div>
         <button
@@ -109,8 +113,8 @@ export function StayDetailsOrderModal({ stay }) {
         </button>
         <div className="order-form-msg mar-b24">You won't be charged yet</div>
         <div className="order-form-pricing mar-b24">
-          <div className="under-line">${stay.price} x {calculateDays()} </div>
-          <div>${stay.price * (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24) }</div>
+          <div className="under-line">${filterBy.checkOut && `${stay.price} X ${calculateDays()}`} </div>
+          <div>${filterBy.checkOut && stay.price * (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24) }</div>
         </div>
         <div className="order-form-pricing mar-b24">
           <div className="under-line">Service fee</div>
@@ -118,7 +122,7 @@ export function StayDetailsOrderModal({ stay }) {
         </div>
         <div className="order-form-total-price">
           <div>Total</div>
-          <div>${stay.price * (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24)}</div>
+          <div>${filterBy.checkOut && stay.price * (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24)}</div>
         </div>
         <div>
         </div>

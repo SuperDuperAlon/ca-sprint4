@@ -62,4 +62,5 @@ export function SecondaryFilter({onToSearch}){
         <button className="extra-filters-container fs116 flex-center"><CgOptions/>Filters</button>
         
     </section>
+
 }

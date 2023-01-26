@@ -8,13 +8,14 @@ import { StayDetailsOrderModal } from "../cmps/stay-details/stay-details-reserva
 import { StayDetailsReviews } from "../cmps/stay-details/stay-details-reviews";
 import { StayDetailsHostDetails } from "../cmps/stay-details/stay-details-host-details";
 import { StayDetailsMap } from "../cmps/stay-details/stay-details-map";
+import { StayDetailsCarousel } from "../cmps/stay-details/stay-details-carousel";
 import { orderService } from "../services/order.service";
 import { stayService } from "../services/stay.service";
-import { updateDimensions } from "../services/util.service";
-import { BasicModal } from "../cmps/modal";
+// import { BasicModal } from "../cmps/modal";
 import { AppHeader } from "../cmps/app-header";
 import { InnerNavStay } from "../cmps/stay-details/stay-details-inner-nav";
 import React from "react";
+import { StayDetailsMobileFooter } from "../cmps/stay-details/stay-details-mobile-footer";
 import { useSelector } from "react-redux";
 import { SEARCH_BAR_OPEN } from "../store/stay.reducer";
 import { store } from "../store/store";
@@ -24,30 +25,31 @@ export function StayDetails() {
   const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
   const { stayId } = useParams();
   const [stay, setStay] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
   const [width, setWidth] = useState(window.innerWidth);
 
-
-  // console.log(width);
+// console.log(width);
 
   const updateDimensions = () => {
     setWidth(window.innerWidth);
+    isMobileReady();
   };
   useEffect(() => {
     window.addEventListener("resize", updateDimensions);
-    isMobileReady()
+    window.addEventListener("resize", isMobileReady);
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  function isMobileReady() {
+  function isMobileReady(width) {
+
     if (width > 768) {
+      console.log("we entered desktop");
       setIsMobile(false);
     } else {
+      console.log("we entered mobile");
       setIsMobile(true);
     }
   }
-
- 
 
   useEffect(() => {
     loadStay();
@@ -63,24 +65,13 @@ export function StayDetails() {
     }
   }
 
-  async function onAddOrder() {
-    try {
-      console.log('this is a test frm details')
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
-
-  function onClickOutSideTheBar(event) {
-    event.preventDefault()
-    if (!openSearchBar) return
-    store.dispatch({
-      type: SEARCH_BAR_OPEN,
-      open: false,
-    })
-  }
-
+  // async function onAddOrder() {
+  //   try {
+  //     console.log("this is a test frm details");
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // }
   if (!stay) return console.log("no map");
   else
     return (
@@ -94,7 +85,7 @@ export function StayDetails() {
             <StayDetailsGallery stay={stay} />
             <InnerNavStay />
             <div className="stay-details-midsection">
-              <StayDetailsHostInfo stay={stay} />
+              <StayDetailsHostInfo stay={stay} isMobile={isMobile} />
               <StayDetailsOrderModal stay={stay} />
             </div>
             {/* <BasicModal /> */}
@@ -109,11 +100,12 @@ export function StayDetails() {
 
         {isMobile && (
           <>
-            <StayDetailsGallery stay={stay} />
-            <StayDetailsHostInfo stay={stay} />
-            <StayDetailsReviews stay={stay} />
-            <StayDetailsMap stay={stay} />
-            <StayDetailsHostDetails stay={stay} />
+            <StayDetailsCarousel imgs={stay.imgUrls}/>
+            <StayDetailsLocationInfo stay={stay} isMobile={isMobile} />
+            <StayDetailsHostInfo stay={stay} isMobile={isMobile} />
+            <StayDetailsReviews stay={stay} isMobile={isMobile} />
+            <StayDetailsHostDetails stay={stay} isMobile={isMobile} />
+            <StayDetailsMobileFooter stay={stay}/>
           </>
         )}
 

@@ -254,7 +254,7 @@ export function SearchBar({ onToSearch }) {
                     </div>}
                     {onActiveNow === 'guests' &&
                         <div className="guests-adding-modal">
-                            <GuestsCounter filter={filter} onCountChange={onCountChange}  />
+                            <GuestsCounter filter={filter} onCountChange={onCountChange} parentCmp={'searchBar'} />
                         </div>
                     }
                 </div>}
