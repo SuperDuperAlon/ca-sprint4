@@ -78,9 +78,10 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
             </div>
 
             <div className="air-cover">
-              <div className="air-cover-logo pink fw600">
-                AIR<span className="dark-header">COVER</span>
-              </div>
+              <img
+                className="air-cover-logo"
+                src="https://a0.muscache.com/pictures/aircover/aircover-logo/original/56683a2f-f11b-43f6-8af7-a1b3861b2c85.svg"
+              />
               <div className="fs16 dark-content">
                 Every booking includes free protection from Host cancellations,
                 listing inaccuracies, and other issues like trouble checking in.
@@ -113,12 +114,84 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
             <div className="stay-details-amenities">
               <div className="fs22 fw600 mar-b24">What this place offers </div>
               <div className="amenities-list">
-                {stay.amenities.map((amenities) => {
-                  return <div>{amenities}</div>;
-                })}
+                <div>
+                  <img
+                    className="amenities-icons"
+                    src="../../assets/img/icons/TV.svg"
+                    alt=""
+                  />
+                  <div>TV</div>
+                </div>
+                <div>
+                  <img
+                    className="amenities-icons"
+                    src="../../assets/img/icons/Gym.svg"
+                    alt=""
+                  />
+                  <div>Gym</div>
+                </div>
+                <div>
+                  <img
+                    className="amenities-icons"
+                    src="../../assets/img/icons/Doorman.svg"
+                    alt=""
+                  />
+                  <div>Doorman</div>
+                </div>
+                <div>
+                  <img
+                    className="amenities-icons"
+                    src="../../assets/img/icons/Hangers.svg"
+                    alt=""
+                  />
+                  <div>Hangers</div>
+                </div>
+                <div>
+                  <img
+                    className="amenities-icons"
+                    src="../../assets/img/icons/Wifi.svg"
+                    alt=""
+                  />
+                  <div>Wifi</div>
+                </div>
+                <div>
+                  <img
+                    className="amenities-icons"
+                    src="../../assets/img/icons/mountain-view.svg"
+                    alt=""
+                  />
+                  <div>Mountain View</div>
+                </div>
+                <div>
+                  <img
+                    className="amenities-icons"
+                    src="../../assets/img/icons/Safe.svg"
+                    alt=""
+                  />
+                  <div>Safe</div>
+                </div>
+                <div>
+                  <img
+                    className="amenities-icons"
+                    src="../../assets/img/icons/private-entrance.svg"
+                    alt=""
+                  />
+                  <div>Private Entrance</div>
+                </div>
+
+                {/* {stay.amenities.map((amenities, idx) => {
+                  if (idx < 10) return (
+                    <div>
+                    <img src={require(`../../assets/img/icons/${amenities}.svg`)} alt="" />
+                    <div>{amenities}</div>
+                  </div>
+                  )
+                })} */}
               </div>
               <button className="white-open-btn">
-                <Link to={`/amenities/`}>Show all 9 amenities</Link>
+                <Link to={`/amenities/`}>
+                  Show all {stay.amenities.length} amenities
+                </Link>
               </button>
             </div>
 
@@ -135,7 +208,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
             <div className="basic-info">
               <div className="host-info">
                 <div className="fs22 fw600 mar-b8">
-                  {stay.name} hosted by {stay.host.fullname}
+                  {stay.roomType} hosted by {stay.host.fullname}
                 </div>
                 <div>
                   {" "}
@@ -184,9 +257,10 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
             </div>
 
             <div className="air-cover">
-              <div className="air-cover-logo pink fw600">
-                AIR<span className="dark-header">COVER</span>
-              </div>
+              <img
+                className="air-cover-logo"
+                src="https://a0.muscache.com/pictures/aircover/aircover-logo/original/56683a2f-f11b-43f6-8af7-a1b3861b2c85.svg"
+              />
               <div className="fs14 dark-content">
                 Every booking includes free protection from Host cancellations,
                 listing inaccuracies, and other issues like trouble checking in.
@@ -222,9 +296,68 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
             <div className="stay-details-amenities">
               <div className="fs22 fw600 mar-b24">What this place offers </div>
               <div className="amenities-list">
-                {stay.amenities.map((amenities, idx) => {
-                  if (idx < 6) return <div>{amenities}</div>;
-                })}
+                {/* {stay.amenities.map((amenities, idx) => {
+                  if (idx < 2)
+                    return (
+                      <div>
+                        {console.log(amenities)}
+                        <img
+                          className="amenities-icons"
+                          src={require(`../../assets/img/icons/${amenities}.svg`)}
+                          alt="amenities"
+                        />
+                        <div>{amenities}</div>
+                      </div>
+                    );
+                })} */}
+                <div>
+                  <img
+                    className="amenities-icons"
+                    src="../../assets/img/icons/TV.svg"
+                    alt=""
+                  />
+                  <div>TV</div>
+                </div>
+                <div>
+                  <img
+                    className="amenities-icons"
+                    src="../../assets/img/icons/Gym.svg"
+                    alt=""
+                  />
+                  <div>Gym</div>
+                </div>
+                <div>
+                  <img
+                    className="amenities-icons"
+                    src="../../assets/img/icons/Doorman.svg"
+                    alt=""
+                  />
+                  <div>Doorman</div>
+                </div>
+                <div>
+                  <img
+                    className="amenities-icons"
+                    src="../../assets/img/icons/Hangers.svg"
+                    alt=""
+                  />
+                  <div>Hangers</div>
+                </div>
+                <div>
+                  <img
+                    className="amenities-icons"
+                    src="../../assets/img/icons/Wifi.svg"
+                    alt=""
+                  />
+                  <div>Wifi</div>
+                </div>
+                <div>
+                  <img
+                    className="amenities-icons"
+                    src="../../assets/img/icons/mountain-view.svg"
+                    alt=""
+                  />
+                  <div>Mountain View</div>
+                </div>
               </div>
               <button className="white-open-btn">
                 <Link to={`/amenities/`}>

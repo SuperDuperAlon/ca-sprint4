@@ -19,7 +19,7 @@ export function StayDetailsLocationInfo({ stay, isMobile }) {
                 <div className="mar-r8">
                   <span className="fs16">
                     <MdStar />
-                  </span>{" "}
+                  </span>
                   4.88 · <Link to={`/reviews/`}>303 Reviews</Link>
                 </div>
                 ·
@@ -52,15 +52,15 @@ export function StayDetailsLocationInfo({ stay, isMobile }) {
             <div className="info-header fs26 fw600 lh30">{stay.name}</div>
             <div className="secondary-info fs14 flex align-center">
               <div className="locations-attr fs14 fw600">
-                <div className="mar-r8">
+                <div className="mar-r4">
                   <span className="fs14">
                     <MdStar />
                   </span>{" "}
-                  {stay.reviewsRate} ·{" "}
+                  {stay.reviewsRate} ·
                   <Link to={`/reviews/`}>{stay.reviews.length} Reviews</Link>
                 </div>
                 ·
-                <div className="mar-l8">
+                <div className="mar-l4">
                   <Link to={`/location/`}>{stay.loc.address}</Link>
                 </div>
               </div>
