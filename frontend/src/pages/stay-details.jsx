@@ -25,7 +25,7 @@ export function StayDetails() {
   const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
   const { stayId } = useParams();
   const [stay, setStay] = useState(null);
-  const [isMobile, setIsMobile] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
 
 // console.log(width);
@@ -65,20 +65,22 @@ export function StayDetails() {
     }
   }
 
-  // async function onAddOrder() {
-  //   try {
-  //     console.log("this is a test frm details");
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // }
+  function onClickOutSideTheBar(event) {
+    event.preventDefault()
+    if (!openSearchBar) return
+    store.dispatch({
+        type: SEARCH_BAR_OPEN,
+        open: false,
+    })
+}
+
   if (!stay) return console.log("no map");
   else
     return (
       <section className="details-layout full">
         {!isMobile && (
           <>
-            <div className=" app-header details-layout full">
+            <div className="app-header details-layout full">
               <AppHeader stay={stay} />
             </div>
             <StayDetailsLocationInfo stay={stay} />
