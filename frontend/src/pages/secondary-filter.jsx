@@ -11,8 +11,8 @@ import Box from '@mui/material/Box'
 import { FiFilter } from "react-icons/fi"
 import { CgOptions } from "react-icons/cg"
 
-export function SecondaryFilter({queryToParams}){
-    const labels = ['Cabins', 'Islands', 'Amazing Pools', 'Ski-in-out', 'Beach', 'Luxe', 'Mansions', 'Amazing Views', 'Boats', 'Tropical', 'Top of the world', 'Countryside', 'OMG', 'Desert', 'Play', 'Trending', 'Vineyards', 'Tiny homes', 'Bed & breakfasts']
+export function SecondaryFilter({onToSearch}){
+    const labels = ['Cabins', 'Islands', 'Amazing Pools', 'Ski-in-out', 'Beach', 'Luxe', 'Mansions', 'Amazing Views', 'Boats', 'Tropical', 'Top of the world', 'Countryside', 'OMG', 'Desert', 'Play', 'Trending', 'Vineyards', 'Tiny homes', 'Bed & breakfasts', 'Private rooms','Castles', 'Beachfront', 'Design', 'Iconic cities', 'National parks', 'Off-the-grid']
     const [labelFilter, setLabelFilter] = useState(null)
     const [clickedLabel, setClickedLabel] = useState(null)
     const navigate = useNavigate()
@@ -36,14 +36,13 @@ export function SecondaryFilter({queryToParams}){
         }
         filterBy.label=label
 
-        queryToParams(filterBy)
+        onToSearch(filterBy)
 
 
     }
     // flex space-between center
     return <section className="secondary-filter flex ">
 
-{/* <Box sx={ {maxWidth: { sm: '90%' }, bgcolor: 'white' , borderBottom: 1, borderColor: 'divider' }}> */}
 <Box sx={ {  width:'' , bgcolor: 'white' , borderBottom: 1, borderColor: 'divider' }}>
         <Tabs
             value={0}

@@ -57,10 +57,28 @@ export function StayDetailsLocationInfo({ stay, isMobile }) {
                     <MdStar />
                   </span>{" "}
                   4.88 · <Link to={`/reviews/`}>303 Reviews</Link>
-                </div>·<div className="mar-l8">
+                </div>
+                ·
+                <div className="mar-l8">
                   <Link to={`/location/`}>
                     {stay.loc.city}, {stay.loc.address}, {stay.loc.country}
                   </Link>
+                </div>
+              </div>
+            </div>
+            <div className="info-header fs26 fw600 lh30">{stay.name}</div>
+            <div className="secondary-info fs14 flex align-center">
+              <div className="locations-attr fs14 fw600">
+                <div className="mar-r8">
+                  <span className="fs16">
+                    <MdStar />
+                  </span>{" "}
+                  {stay.reviewsRate} ·{" "}
+                  <Link to={`/reviews/`}>{stay.reviews.length} Reviews</Link>
+                </div>
+                ·
+                <div className="mar-l8">
+                  <Link to={`/location/`}>{stay.loc.address}</Link>
                 </div>
               </div>
             </div>

@@ -129,7 +129,7 @@ export function StayOrder() {
     return <section className="stay-order">
         <header className="header">
             <div className="logo-general" onClick={() => navigate('/')}>
-                <h3>anypl<span className="airbnb-icon"><SiAirbnb /></span>ce</h3>
+                <h3><span className="airbnb-icon"><SiAirbnb /></span>anyplce</h3>
             </div>
         </header>
         <div className="confirm fs32 bold">
@@ -190,11 +190,11 @@ export function StayOrder() {
             <div className="details">
                 <div className="details-modal">
                     <div className="stay-details">
-                        <img src={require(`../assets/img/${stay.imgUrls[0]}.jpg`)} alt="" />
+                        <img src={stay.imgUrls[0]} alt="" />
                         <div>
                             <div className="fs12 grey-71">Entire place</div>
                             <div className="fs14 mar-t4 pad-b24">{stay.name}</div>
-                            <div className="fs12 flex center"><AiFillStar /> <div><span className="bold">{getReviewsAvg()}</span> <span className="grey-71">({stay.reviews.length} reviews)</span></div></div>
+                            <div className="fs12 flex center"><AiFillStar /> <div><span className="bold">{stay.reviewsRate}</span> <span className="grey-71">({stay.reviews.length} reviews)</span></div></div>
                         </div>
                     </div>
                     <div className="protection">Your booking is protected by

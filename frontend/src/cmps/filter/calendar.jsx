@@ -37,17 +37,19 @@ export function CalendarMain({ filterBy, onChangeDate, num, type }) {
 //     }
 //   }
 
-  return (
-    <DatePicker
-      selected={filterBy.checkIn}
-      onChange={onChangeDate}
-      startDate={filterBy.checkIn}
-      endDate={filterBy.checkOut}
-      monthsShown={numOfCalendar}
-      selectsRange
-      open={true}
-      inline
-      className="dayPicker"
-    />
-  );
+    return(<DatePicker
+            selected={filterBy.checkIn}
+            onChange={onChangeDate}
+            startDate={filterBy.checkIn}
+            endDate={filterBy.checkOut}
+            monthsShown={numOfCalendar}
+            selectsRange
+            open={true}
+            minDate={new Date()}
+            inline
+            className="dayPicker"
+        />
+    )
+    
+    
 }

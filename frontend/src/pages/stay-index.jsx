@@ -12,12 +12,15 @@ import { SearchBar } from '../cmps/filter/search-bar.jsx'
 import { filterService } from '../services/filterService.js'
 import { store } from '../store/store.js'
 import { SEARCH_BAR_OPEN } from '../store/stay.reducer.js'
+import { useState } from 'react'
 
 
 export function StayIndex() {
 
     const stays = useSelector(storeState => storeState.stayModule.stays)
     const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
+    const userPreference = useSelector(storeState => storeState.filterModule.filter)
+    // const [saveQueryOfSession, setSaveQueryOfSession]=useState(filterService.getEmptyFilter())
     const navigate = useNavigate()
 
     const { filterBy } = useParams()
@@ -37,7 +40,6 @@ export function StayIndex() {
         }
     }
 
-
     async function onEditStay(ev, stay) {
         ev.stopPropagation()
         navigate(`/stay/edit/${stay._id}`)
@@ -46,36 +48,40 @@ export function StayIndex() {
 
     function onOpenStay(ev, stay) {
         ev.stopPropagation()
-        navigate(`/room/${stay._id}`)
+        const params=queryToParams(userPreference)
+        navigate(`/room/${stay._id}/${params}`)
     }
 
     function onClickOutSideTheBar(event) {
-        console.log('click:')
         event.preventDefault()
-        console.log('openSearchBar:', openSearchBar)
         if (!openSearchBar) return
         store.dispatch({
             type: SEARCH_BAR_OPEN,
             open: false,
         })
-
     }
 
-
+    function onToSearch (filter){
+        const params=queryToParams(filter)
+        navigate(`/${params}`)
+    }
     function queryToParams(filter) {
         filter.checkIn = filterService.getDateToFilter(filter.checkIn)
         filter.checkOut = filterService.getDateToFilter(filter.checkOut)
         const queryParams =
             `where=${filter.where}&checkIn=${filter.checkIn}&checkOut=${filter.checkOut}&label=${filter.label}`
         // &adults=${guests.adults}&children=${guests.children}`    
-        navigate(`/${queryParams}`)
+        return queryParams
     }
+
 
 
     return (
         <div className='index-layout'>
             <div className='app-header index-layout full'>
-                <AppHeader queryToParams={queryToParams} stay={false} />
+                <AppHeader queryToParams={onToSearch} 
+                // onLookOutParams={onLookOutParams}
+                stay={false}  />
             </div>
             <StayList stays={stays} onRemoveStay={onRemoveStay}
                 onEditStay={onEditStay} onOpenStay={onOpenStay}

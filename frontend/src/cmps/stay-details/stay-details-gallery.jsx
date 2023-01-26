@@ -7,12 +7,14 @@ export function StayDetailsGallery({ stay }) {
         {/* <img src={require(`../../assets/img/s101/0.jpg`)} alt="" /> */}
         <section className="gallery">
           {stay.imgUrls.map((img, idx) => {
-           return <img className={`gallery-item-${idx}`} src={require(`../../assets/img/${img}.jpg`)} alt=""/>
+           return <img className={`gallery-item-${idx}`} src={img} alt=""/>
           })}
         </section>
       </section>
     )
 }
+
+// require(`../../assets/img/${img}.jpg`) 
 
 // {/* /* // <img src={`../../assets/img/${img}.jpg`} alt="image" />
 // //

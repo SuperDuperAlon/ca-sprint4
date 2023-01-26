@@ -37,7 +37,7 @@ export function RootCmp() {
                             list:
                                 preview
                              */}
-          <Route path="/room/:stayId" element={<StayDetails />} />
+          <Route path="/room/:stayId/:filterBy" element={<StayDetails />} />
             
 
           {/* 

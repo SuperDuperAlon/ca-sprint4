@@ -1,6 +1,10 @@
+// 
+import { AiOutlinePlus } from 'react-icons/ai'
+
+
 export function GuestsCounter({filter,onCountChange}){
 
-    // guestsModalOpen
+    
     return(
         <div className="guests-modal-open">
         <div className="guest">
@@ -9,9 +13,9 @@ export function GuestsCounter({filter,onCountChange}){
                 <h5>Ages 13 or above</h5>
             </div>
             <div className="counter">
-                <button className="btn-counter" onClick={() => onCountChange('adults', -1)}>-</button>
+                <button className="btn-counter" disabled={!filter.guests.adults} onClick={() => onCountChange('adults', -1)}>-</button>
                 {filter.guests.adults}
-                <button className="btn-counter" onClick={() => onCountChange('adults', 1)}>+</button>
+                <button className="btn-counter" onClick={() => onCountChange('adults', 1)}><AiOutlinePlus/></button>
             </div>
         </div>
         <div className="guest">
@@ -20,7 +24,7 @@ export function GuestsCounter({filter,onCountChange}){
                 <h5>Ages 2–12</h5>
             </div>
             <div className="counter">
-                <button className="btn-counter" onClick={() => onCountChange('children', -1)}>-</button>
+                <button className="btn-counter" disabled={!filter.guests.children} onClick={() => onCountChange('children', -1)}>-</button>
                 {filter.guests.children}
                 <button className="btn-counter" onClick={() => onCountChange('children', 1)}>+</button>
             </div>
@@ -31,7 +35,7 @@ export function GuestsCounter({filter,onCountChange}){
                 <h5>Under 2</h5>
             </div>
             <div className="counter">
-                <button className="btn-counter" onClick={() => onCountChange('infants', -1)}>-</button>
+                <button className="btn-counter"  disabled={!filter.guests.infants} onClick={() => onCountChange('infants', -1)}>-</button>
                 {filter.guests.infants}
                 <button className="btn-counter" onClick={() => onCountChange('infants', 1)}>+</button>
             </div>
@@ -42,7 +46,7 @@ export function GuestsCounter({filter,onCountChange}){
                 <h5>Bringing a service animal?</h5>
             </div>
             <div className="counter">
-                <button className="btn-counter" onClick={() => onCountChange('pets', -1)}>-</button>
+                <button className="btn-counter" disabled={!filter.guests.pets} onClick={() => onCountChange('pets', -1)}>-</button>
                 {filter.guests.pets}
                 <button className="btn-counter" onClick={() => onCountChange('pets', 1)}>+</button>
             </div>
