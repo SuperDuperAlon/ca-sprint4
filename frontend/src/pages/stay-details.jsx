@@ -64,6 +64,15 @@ export function StayDetails() {
     }
   }
 
+  function onClickOutSideTheBar(event) {
+    event.preventDefault()
+    if (!openSearchBar) return
+    store.dispatch({
+        type: SEARCH_BAR_OPEN,
+        open: false,
+    })
+}
+
   // async function onAddOrder() {
   //   try {
   //     console.log("this is a test frm details");
