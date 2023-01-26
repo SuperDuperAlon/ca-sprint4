@@ -65,11 +65,12 @@ export function StayIndex() {
         const params=queryToParams(filter)
         navigate(`/${params}`)
     }
+
     function queryToParams(filter) {
         filter.checkIn = filterService.getDateToFilter(filter.checkIn)
         filter.checkOut = filterService.getDateToFilter(filter.checkOut)
         const queryParams =
-            `where=${filter.where}&checkIn=${filter.checkIn}&checkOut=${filter.checkOut}&label=${filter.label}`
+            `where=${filter.where}&checkIn=${filter.checkIn}&checkOut=${filter.checkOut}&label=${filter.label}&adults=${filter.guests.adults}&children=${filter.guests.children}&infants=${filter.guests.infants}&pets=${filter.guests.pets}`
         // &adults=${guests.adults}&children=${guests.children}`    
         return queryParams
     }
