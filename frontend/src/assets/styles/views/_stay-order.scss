@@ -11,6 +11,14 @@
         padding: 64px 0 48px;
         max-width: 1120px;
         margin: 0 auto;
+        display: flex;
+        align-items: center;
+
+        img{
+            height: 40px;
+            width: fit-content;
+            margin-right: 8px;
+        }
     }
     .main-order{
         max-width: 1120px;
@@ -25,6 +33,10 @@
                 border-radius: rem(12px);
                 height: max-content;
                 margin-bottom: rem(24px);
+                .icon-svg{
+                    width: 35px;
+                    fill: rgb(227, 28, 95);
+                }
             }
             .payment-container{
                 border-top: 1px solid rgb(221, 221, 221);
@@ -54,6 +66,10 @@
                         border: 2px solid rgb(7, 7, 7);
                     }
                 }
+                
+            }
+            .confirm-btn{
+                margin-top: 44px;
             }
             .login-sign-up{
                 border-top: 1px solid rgb(221, 221, 221);

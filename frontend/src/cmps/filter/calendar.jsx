@@ -37,6 +37,7 @@ export function CalendarMain({ filterBy, onChangeDate, num, type }) {
 //       numOfCalendar = 1;
 //     }
 //   }
+  console.log(filterBy);
 
     return(<DatePicker
             selected={filterBy.checkIn}

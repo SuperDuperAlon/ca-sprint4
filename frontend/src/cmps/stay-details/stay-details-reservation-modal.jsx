@@ -27,6 +27,8 @@ export function StayDetailsOrderModal({ stay }) {
 
   console.log(filterBy)
 
+  
+
   async function onReserve() {
 
 
@@ -56,9 +58,10 @@ export function StayDetailsOrderModal({ stay }) {
   }
   // guests, ...filterBy.guests[field] = filterBy.guests[field]
   function onCountChange(field, diff) {
-    console.log(+filterBy[field]);
-    const prevGuests = { ...filterBy, [field] : +filterBy[field] + diff }
-    setFilterBy({ ...filterBy, prevGuests })
+    console.log(filterBy[field]);
+    // const prevGuests = { ...filterBy, [field] : filterBy[field]  + diff }
+    // console.log(prevGuests);
+    setFilterBy({...filterBy, [field] : filterBy[field]  + diff})
 }
 
   console.log(filterBy)
@@ -95,7 +98,7 @@ export function StayDetailsOrderModal({ stay }) {
               <div className="date-container flex column guests">
                 <div className="upp-left-14-600 bold fs9">GUESTS</div>
                   <div className="upp-left-14-600 fs14 ">
-                    {(filterBy?.adults>1 || filterBy?.children>0)? +filterBy.adults+ +filterBy.children + ' guests' : '1 guest'} 
+                    {(filterBy?.adults>1 || filterBy?.children>0)? filterBy.adults+ filterBy.children + ' guests' : '1 guest'} 
                     </div>                                       
               </div>
                 {isGuestsClicked ? <BiChevronUp className="guests-arrow"/> : <BiChevronDown className="guests-arrow"/>}
