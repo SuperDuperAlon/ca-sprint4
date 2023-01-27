@@ -100,160 +100,28 @@
       grid-column: 2;
     }
   }
+}
+
     // grid-template-columns:
     //   minmax(0,80px) minmax(auto, $x-large-breakpoint) minmax(0,80px);
 
-    // > * {
-    //   grid-column: 2;
-    // }
-    // }
-  }
-
-  // // Details
-
-  // @include for-details-sm-layout {
-  //   // background-color: yellow;
-
-  //   grid-template-columns: minmax($pad-20) minmax(
-  //       auto,
-  //       $small-breakpoint-details
-  //     ) minmax($pad-20);
+  //   grid-template-columns:
+  //     1.5rem minmax(auto, $small-breakpoint-details)
+  //     1.5rem;
   // }
-
   // @include for-details-md-layout {
   //   // background-color: rgb(0, 255, 68);
-  //   grid-template-columns: minmax(40px, 1fr) minmax(
-  //       auto,
-  //       $medium-breakpoint-details
-  //     ) minmax(40px, 1fr);
+  //   grid-template-columns:
+  //     minmax(40px, 1fr) minmax(auto, $medium-breakpoint-details)
+  //     minmax(40px, 1fr);
   // }
 
   // @include for-details-lg-layout {
   //   // background-color: orange;
-  //   grid-template-columns: minmax(40px, 1fr) minmax(
-  //       auto,
-  //       $large-breakpoint-details
-  //     ) minmax(40px, 1fr);
-  // }
-
-  // @include for-details-xl-layout {
-  //   // background-color: red;
-
-  //   grid-template-columns: minmax(80px, 1fr) minmax(
-  //       auto,
-  //       $x-large-breakpoint-details
-  //     ) minmax(80px, 1fr);
-
-  //   > * {
-  //     grid-column: 2;
-  //   }
-  // }
-
-  .clickOutSideTheBox {
-    // background-color: rgb(158, 114, 32);
-    width: 100vw;
-    height: 100vh;
-    z-index: 55;
-    position: absolute;
-  }
-
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 20px;
-  }
-
-  // .container-layout-setting{
-  // @include for-narrow-layout {
-  //     grid-template-columns:
-  //         minmax(20px, 1fr)
-  //         minmax(auto, $small-breakpoint)
-  //         minmax(20px, 1fr);
-  // }
-  // @include for-tablet-layout {
-  //     grid-template-columns:
-  //         minmax(minmax($pad-20, 1fr), 1fr)
-  //         minmax(auto, $medium-breakpoint)
-  //         minmax(minmax($pad-20, 1fr), 1fr);
-  // }
-  // @include for-wide-layout {
-  //     grid-template-columns:
-  //         minmax(80px, 1fr)
-  //         minmax(100vw, $desktop-breakpoint)
-  //         minmax(80px, 1fr);
-  //     > * {
-  //         grid-column: 2;
-  //     }
-
-  // }
-  // }
-
-// .container-layout-setting{
-// @include for-narrow-layout {
-//     grid-template-columns:
-//         minmax(20px, 1fr)
-//         minmax(auto, $small-breakpoint)
-//         minmax(20px, 1fr);
-// }
-// @include for-tablet-layout {
-//     grid-template-columns:
-//         minmax(minmax($pad-20, 1fr), 1fr)
-//         minmax(auto, $medium-breakpoint)
-//         minmax(minmax($pad-20, 1fr), 1fr);
-// }
-// @include for-wide-layout {
-//     grid-template-columns:
-//         minmax(80px, 1fr)
-//         minmax(100vw, $desktop-breakpoint)
-//         minmax(80px, 1fr);
-//     > * {
-//         grid-column: 2;
-//     }
-
-// }
-// }
-
-// .details-layout{
-//   display: grid;
-//   > * {
-//     grid-column: 2
-//   }
-
-// }
-
-  // @include for-mobile-layout {
-  //   // background-color: yellow;
-
   //   grid-template-columns:
-  //     minmax($pad-40, 1fr) minmax(auto, $small-breakpoint) minmax($pad-40, 1fr);
-
+  //     minmax(40px, 1fr) minmax(auto, $large-breakpoint-details)
+  //     minmax(40px, 1fr);
   // }
 
-  // @include for-tablet-layout {
-  //   // background-color: rgb(0, 255, 68);
-  //   grid-template-columns:
-  //     minmax($pad-40, 1fr) minmax(auto, $medium-breakpoint) minmax($pad-40, 1fr);
 
-  // }
-
-  // @include for-normal-layout {
-  //   // background-color: orange;
-  //   grid-template-columns:
-  //     minmax($pad-40, 1fr) minmax(auto, $large-breakpoint) minmax($pad-40, 1fr);
-
-  // }
-
-  // @include for-wide-layout {
-  //   // background-color: red;
-
-  //   grid-template-columns:
-  //     1fr minmax(auto, $x-large-breakpoint) 1fr;
-
-  //   > * {
-  //     grid-column: 2;
-  //   }
-  // }
-
-  // Details
-
-
+  
