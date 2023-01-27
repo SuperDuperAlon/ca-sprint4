@@ -1,3 +1,5 @@
+import axios from "axios"
+
 export const utilService = {
     makeId,
     makeLorem,
@@ -12,7 +14,8 @@ export const utilService = {
     getShortDate,
     getRandomFloatInclusive,
     toActualPrice,
-    updateDimensions
+    updateDimensions,
+    getImg
 }
 
 function makeId(length = 6) {
@@ -65,6 +68,16 @@ function debounce(func, timeout = 300){
       timer = setTimeout(() => { func.apply(this, args) }, timeout)
     }
 }
+async function getImg() {
+    try{
+      const imgData = await axios.get('https://randomuser.me/api/?inc=picture')
+      return imgData.data.results[0].picture.thumbnail
+    } 
+    catch(err){
+      console.log(err)
+    }
+    
+    }
 
 function saveToStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value))

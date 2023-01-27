@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
 import { ImgUploader } from '../cmps/img-uploader'
+import { logout } from '../store/user.actions'
 
-export function LoginSignup({onOrderStay}) {
+export function LoginSignup({onClickedLogin, isClickedSignUp}) {
     const [credentials, setCredentials] = useState({ username: '', password: '', fullname: '' })
-    const [isSignup, setIsSignup] = useState(false)
+    const [isSignup, setIsSignup] = useState(isClickedSignUp)
     const [users, setUsers] = useState([])
 
     useEffect(() => {
         loadUsers()
     }, [])
+
     
     async function loadUsers() {
         try{
@@ -38,7 +40,7 @@ export function LoginSignup({onOrderStay}) {
         try{
             const loggedInUser = await userService.login(credentials)
             if(loggedInUser){
-                onOrderStay(loggedInUser)
+                onClickedLogin(loggedInUser)
                 clearState()
             }
         }
@@ -53,13 +55,15 @@ export function LoginSignup({onOrderStay}) {
         try{
             const loggedInUser = await userService.signup(credentials)
             if(loggedInUser){
-                onOrderStay(loggedInUser)
+                onClickedLogin(loggedInUser)
                 clearState()
             } 
         } catch (err){
             console.log(err)
         }
     }
+
+    
 
     function toggleSignup() {
         setIsSignup(!isSignup)

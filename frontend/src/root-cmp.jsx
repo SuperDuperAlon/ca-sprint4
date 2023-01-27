@@ -5,6 +5,7 @@ import { AppHeader } from "./cmps/app-header";
 import { AppFooter } from "./cmps/app-footer";
 import { UserDetails } from "./pages/user-details";
 import { StayIndex } from "./pages/stay-index";
+import { Dashboard } from "./pages/dashboard";
 import { StayDetails } from "./pages/stay-details.jsx";
 import { StayOrder } from "./pages/stay-order.jsx";
 import { StayEdit } from "./pages/stay-edit";
@@ -38,6 +39,8 @@ export function RootCmp() {
                                 preview
                              */}
           <Route path="/room/:stayId/:filter" element={<StayDetails />} />
+          
+          <Route path="/dashboard/:hostId" element={<Dashboard />} />
             
 
           {/* 

@@ -95,7 +95,7 @@ export function SearchBar({ onToSearch }) {
         filterBy.where = filter.where
         filterBy.guests = filter.guests
 
-        console.log('filterBy:',filterBy )
+        // console.log('filterBy:',filterBy )
 
         onToSearch(filterBy)
         store.dispatch({

@@ -13,10 +13,12 @@ import { SearchBar } from './filter/search-bar'
 import { SecondaryFilter } from '../pages/secondary-filter'
 import { useState } from 'react'
 import { filterService } from '../services/filterService'
+import { LoginMenu } from './login-menu'
 
 export function AppHeader({onToSearch, stay}) {
     const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
     const navigate = useNavigate()
+    const [isMenuOpen , setIsMenuOpen] = useState(false)
 
     function onChangeStaySearchBar(option) {
         store.dispatch({
@@ -82,23 +84,26 @@ export function AppHeader({onToSearch, stay}) {
                         </div>
                     </div>
 
-                    <div className="login-menu rounded-full">
+                    <div onClick={()=>setIsMenuOpen(!isMenuOpen)} className="login-menu rounded-full">
                         <span className='menu fs-14 lh-20'>
                             <AiOutlineMenu />
                         </span>
                         <span className='person mar-l12 fs12'>
                             <IoPersonCircleSharp />
                         </span>
+                        
                     </div>
+                        
                 </div>
             </main>
+            {isMenuOpen && <LoginMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen}/>}
             <div className='cover-filter full'>
                 <div className={openSearchBar? "open": ''}></div>
             </div>
            { !openSearchBar && <div className="line full"></div>}
             <SearchBar onToSearch={onToSearch} />
             {!stay && <SecondaryFilter onToSearch={onToSearch} />}
-
+            
         </>
     )
 }

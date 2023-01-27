@@ -14,6 +14,7 @@ export const orderService = {
   remove,
   // addOrderMsg,
   getEmptyOrder,
+  getOrders
 }
 window.cs = orderService
 
@@ -30,6 +31,17 @@ async function query(filterBy) {
 function getById(orderId) {
   return storageService.get(STORAGE_KEY, orderId)
   // return httpService.get(`order/${orderId}`)
+}
+
+async function getOrders(hostId){
+  try{
+    let data= await storageService.query(STORAGE_KEY)
+    const regex = new RegExp(hostId, 'i')
+    data = data.filter(order => regex.test(order.hostId) )
+    return data 
+  }catch(err){
+    console.log(err)
+  }
 }
 
 async function remove(orderId) {
