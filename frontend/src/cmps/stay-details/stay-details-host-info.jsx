@@ -54,21 +54,40 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
               </div>
             </div>
             <div className="host">
-              <div className="host-content">
-                <div className="fw600 mar-b4">
-                  {stay.host.fullname} is a Superhost
-                </div>
-                <div className="fs14 dark-content">
-                  Superhosts are experienced, highly rated hosts who are
-                  committed to providing great stays for guests.
-                </div>
-              </div>
+              {stay.host.isSuperhost && (
+                <>
+                  <div className="host-content">
+                    <div className="fw600 mar-b4">
+                      {stay.host.fullname} is a Superhost
+                    </div>
+                    <div className="fs14 dark-content">
+                      Superhosts are experienced, highly rated hosts who are
+                      committed to providing great stays for guests.
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {!stay.host.isSuperhost && (
+                <>
+                  <div className="host-content"></div>
+                  <div className="host-content">
+                    <div className="fw600 mar-b4"> Highly rated Host</div>
+                    <div className="fs14 dark-content">
+                      {stay.host.fullname} has received 5-star ratings from 100%
+                      of recent guests.
+                    </div>
+                  </div>
+                </>
+              )}
+
               <div className="host-content">
                 <div className="fw600 mar-b4"> Great location</div>
                 <div className="fs14 dark-content">
                   100% of recent guests gave the location a 5-star rating.
                 </div>
               </div>
+
               <div className="host-content">
                 <div className="fw600 mar-b4">Dive right in</div>
                 <div className="fs14 dark-content">
@@ -116,13 +135,13 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
               <div className="amenities-list">
                 <div>
                   <img
+                    src={require("../../assets/img/icons/TV.svg")}
                     className="amenities-icons"
-                    src="../../assets/img/icons/TV.svg"
-                    alt=""
+                    alt="TV"
                   />
                   <div>TV</div>
                 </div>
-                <div>
+                {/* <div>
                   <img
                     className="amenities-icons"
                     src="../../assets/img/icons/Gym.svg"
@@ -177,7 +196,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                     alt=""
                   />
                   <div>Private Entrance</div>
-                </div>
+                </div> */}
 
                 {/* {stay.amenities.map((amenities, idx) => {
                   if (idx < 10) return (
@@ -233,15 +252,32 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
               </div>
             </div>
             <div className="host">
-              <div className="host-content">
-                <div className="fw600 mar-b4">
-                  {stay.host.fullname} is a Superhost
-                </div>
-                <div className="fs14 dark-content">
-                  Superhosts are experienced, highly rated hosts who are
-                  committed to providing great stays for guests.
-                </div>
-              </div>
+              {stay.host.isSuperhost && (
+                <>
+                  <div className="host-content">
+                    <div className="fw600 mar-b4">
+                      {stay.host.fullname} is a Superhost
+                    </div>
+                    <div className="fs14 dark-content">
+                      Superhosts are experienced, highly rated hosts who are
+                      committed to providing great stays for guests.
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {!stay.host.isSuperhost && (
+                <>
+                  <div className="host-content"></div>
+                  <div className="host-content">
+                    <div className="fw600 mar-b4"> Highly rated Host</div>
+                    <div className="fs14 dark-content">
+                      {stay.host.fullname} has received 5-star ratings from 100%
+                      of recent guests.
+                    </div>
+                  </div>
+                </>
+              )}
               <div className="host-content">
                 <div className="fw600 mar-b4"> Great location</div>
                 <div className="fs14 dark-content">
