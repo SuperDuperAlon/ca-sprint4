@@ -7,16 +7,16 @@ import { GoogleMap } from "../reusable/google-map";
 export function StayDetailsMap({ stay, isMobile }) {
   console.log(stay);
 
-  var coordinates = {
-    lat: stay.loc.lat,
-    lng: stay.loc.lan,
-  };
+  // var coordinates = {
+  //   lat: stay.loc.lat,
+  //   lng: stay.loc.lan,
+  // };
   const zoom = 16;
 
   if (!stay) return;
   else
     return (
-      <section className="stay-details-map">
+      <section className="stay-details-map">  
         {!isMobile && (
           <>
             <div className="lh26 fs22 fw600 mar-b24">Where You'll Be</div>
