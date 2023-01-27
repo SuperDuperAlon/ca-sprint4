@@ -28,11 +28,11 @@ async function getStayById(req, res) {
 }
 
 async function addStay(req, res) {
-  // const {loggedinUser} = req
+  const {loggedinUser} = req
 
   try {
     const stay = req.body
-    // stay.owner = loggedinUser
+    stay.owner = loggedinUser
     const addedStay = await stayService.add(stay)
     res.json(addedStay)
   } catch (err) {
