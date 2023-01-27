@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === 'production') {
 const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const reviewRoutes = require('./api/review/review.routes')
-const carRoutes = require('./api/car/car.routes')
+const stayRoutes = require('./api/stay/stay.routes')
 const {setupSocketAPI} = require('./services/socket.service')
 
 // routes
@@ -34,11 +34,11 @@ app.all('*', setupAsyncLocalStorage)
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/review', reviewRoutes)
-app.use('/api/car', carRoutes)
+app.use('/api/stay', stayRoutes)
 setupSocketAPI(http)
 
 // Make every server-side-route to match the index.html
-// so when requesting http://localhost:3030/index.html/car/123 it will still respond with
+// so when requesting http://localhost:3030/index.html/stay/123 it will still respond with
 // our SPA (single page app) (the index.html file) and allow vue/react-router to take it from there
 app.get('/**', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'))
