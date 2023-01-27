@@ -6,8 +6,9 @@ async function getStays(req, res) {
   try {
     logger.debug('Getting Stays')
     const filterBy = {
-      txt: req.query.txt || ''
+      name: req.query.txt || ''
     }
+    console.log(filterBy);
     const stays = await stayService.query(filterBy)
     res.json(stays)
   } catch (err) {
@@ -28,11 +29,11 @@ async function getStayById(req, res) {
 }
 
 async function addStay(req, res) {
-  const {loggedinUser} = req
+  // const {loggedinUser} = req
 
   try {
     const stay = req.body
-    stay.owner = loggedinUser
+    // stay.owner = loggedinUser
     const addedStay = await stayService.add(stay)
     res.json(addedStay)
   } catch (err) {
@@ -44,7 +45,9 @@ async function addStay(req, res) {
 
 async function updateStay(req, res) {
   try {
+    console.log('update test');
     const stay = req.body
+    console.log(stay);
     const updatedStay = await stayService.update(stay)
     res.json(updatedStay)
   } catch (err) {

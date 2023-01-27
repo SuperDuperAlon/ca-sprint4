@@ -7,11 +7,20 @@ const router = express.Router()
 // middleware that is specific to this router
 // router.use(requireAuth)
 
+
+
 router.get('/', log, getStays)
 router.get('/:id', getStayById)
-router.post('/', requireAuth, addStay)
-router.put('/:id', requireAuth, updateStay)
-router.delete('/:id', requireAuth, removeStay)
+router.post('/', addStay)
+router.put('/:id', updateStay)
+router.delete('/:id', removeStay)
+
+
+// router.get('/', log, getStays)
+// router.get('/:id', getStayById)
+// router.post('/', requireAuth, addStay)
+// router.put('/:id', requireAuth, updateStay)
+// router.delete('/:id', requireAuth, removeStay)
 // router.delete('/:id', requireAuth, requireAdmin, removeStay)
 
 router.post('/:id/msg', requireAuth, addStayMsg)
