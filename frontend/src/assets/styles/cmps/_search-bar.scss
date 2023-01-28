@@ -1,0 +1,503 @@
+.search {
+    background-color: #fff;
+    position: relative;
+    max-width: 100%;
+    max-height: 0;
+    z-index: 30;
+
+    .close {
+        transform: scaleY(0)
+    }
+
+    .search-row {
+       display: none;
+
+    }
+
+}
+
+.black-screen {
+    position: fixed;
+    inset: 0;
+    background-color: #45414196;
+    z-index: 14;
+}
+
+.search-bar-wide{
+    display: none;
+}
+
+.search-modal-wide {
+    display: none;
+}
+
+.search-modal-wide {
+    display: none;
+}
+
+
+
+@media (min-width: $large-breakpoint) {
+
+
+     .react-datepicker__month-container{
+            margin: 0 16px;
+        }
+
+    .checkIn,
+    .checkOut {
+        @include padding-br;
+      
+    }
+
+    .where-model {
+
+
+        grid-template-columns: 250px 1fr;
+
+        .search-by-region {
+            padding-left: 40px;
+        }
+    }
+}
+
+@media (min-width: $medium-breakpoint) {
+
+
+    .search {
+    
+        .search-row {
+            display: grid;
+            grid-template-columns: 1fr minmax(650px, 850px) 1fr;
+    
+            >* {
+                grid-column: 2;
+                // @include flex-center;
+            }
+    
+        }
+    
+    }
+
+    .search-bar-wide {
+        @include flex-center;
+        flex-direction: row;
+        background-color: $white;
+        border: solid 0.5px $clr-border-between-div;
+        max-height: 65px;
+        border-radius: 100vw;
+        font-size: 0.8rem;
+        max-width: 99%;
+    
+        &.bar-active {
+            background-color: #ebebeb;
+            
+        }
+    
+        .option-cover {
+            border-radius: 100vw;
+        }
+    
+    
+        .bar-input {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+    
+        label {
+            @include fontWeightBold;
+    
+        }
+    
+        input, label{
+            font-size: 15px;
+            &::placeholder {
+                font-size: 15px;
+            }
+            text-overflow: ellipsis;
+                
+        }
+    
+        input[type="text"] {
+            background: none;
+            border: none;
+            text-overflow: ellipsis;
+            // width: max-content;
+            font-size: 16px;
+    
+        }
+    
+        input[type="text"]:focus {
+            outline: none;
+        }
+    
+        ::placeholder {
+            font-size: 0.75rem;
+            @include fontWeightLight;
+        }
+    
+    
+        .location {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1 0 28%;
+            padding: 12px 12px 12px 30px;
+    
+            &:hover {
+                @include butHoverOn;
+            }
+    
+            .btn-left{
+                margin-left: 50px;
+                
+            }
+    
+            input,label{
+                width: 140px;
+            }
+    
+        }
+    
+        .search-active {
+            border-radius: 100vw;
+            background-color: $white;
+            transform: scale(1.02);
+            box-shadow: 0 0 0 1px rgb(0 0 0 / 4%), 0 8px 16px rgb(0 0 0 / 15%);
+        }
+    
+        .btn-rs {
+            display: flex;
+            align-self: center;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+            opacity: 0;
+            min-height: 24px;
+            min-height: 24px;
+            border-radius: 50%;
+            background-color: #ebebeb;
+            cursor: default;
+           
+    
+            &.show-btn {
+                opacity: 1;
+                font-weight: 400;
+                cursor: pointer;
+            }
+    
+        }
+    
+        .check-date {
+            @include flex-center;
+            display: flex;
+            flex: 1 0 24%;
+            
+            .checkIn,
+            .checkOut {
+                // padding: 8px 12px;
+                display: flex;
+                @include padding-br;
+    
+                &:hover {
+                    @include butHoverOn;
+                    cursor: pointer;
+                }
+    
+                input {
+                    max-width: 80px;
+                    
+                }
+    
+                p {
+                    margin: 0;
+                    padding: 0;
+    
+                }
+            }
+        }
+    
+        .search-option {
+            
+            flex: 1 0 28%;
+    
+            &:hover {
+                @include butHoverOn;
+                cursor: pointer;
+            }
+        }
+    
+        .guests {
+    
+            display: flex;
+            @include flex-center;
+            border-radius: 100vw;
+            justify-content: flex-start;
+            padding: 5px 0;
+    
+            input {
+                max-width: 80px;
+            }
+    
+            .bar-input{
+                margin-left: 20px;
+                margin-right: auto;
+            }
+    
+            &.active{
+                .search-icon{
+                    margin-right: 5px;
+                }
+    
+            }
+    
+            .search-icon {
+                margin-left: auto;
+                display: flex;
+                align-items: center;
+                border-radius: 50px;
+                margin-right: 10px;
+    
+                .icon {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 16px 14px;
+                    // padding:  1px 16px;
+                    background-color: rgb(255,56,92);
+                    color: $white;
+                    font-size: 1.4em;
+                    border-radius: 50%;
+                    @include fontWeightBold;
+    
+                    &.active {
+                        border-radius: 100vw;
+                        @include fontWeightBold;
+                        transform: translateX(-5px);
+    
+                        &::after {
+                            margin-left: 5px;
+                            content: "Search";
+                        }
+                    }
+                }
+            }
+    
+        }
+    
+        hover {
+            align-self: center;
+            @include butHoverOn;
+            cursor: pointer;
+        }
+    
+        .line-separate{
+            height: 24px;
+            width: 0.5px;
+            background-color: $clr-border-between-div;
+        }
+    
+    
+    }
+
+    .search-modal-wide {
+        display: flex;
+        z-index: 15;
+        border-radius: 32px;
+        margin-top: 16px;
+        max-width: 99%;
+    
+        >* {
+            background-color: #fff;
+            width: 100%;
+        }
+    
+        .day-picker-modal {
+            line-height: 1.5em;
+    
+            @include for-search-bar-open;
+    
+            >* {
+                @include flex-center
+            }
+    
+            @include for-calendar;
+    
+            .react-datepicker{
+                font-size: 14px;
+            }
+    
+            .react-datepicker__month-container{
+                margin: 0;
+            }
+            
+            .react-datepicker__header {
+                border-bottom: 0;
+                padding: 0;
+                margin-bottom: 14px;
+                .react-datepicker__day-name{
+                    margin: 1px;
+                    vertical-align: middle;
+    
+                }
+            }
+            
+    
+            .react-datepicker__day{
+                // border-radius: 0;
+                padding: 14px;
+                line-height: 1.5em;
+                margin: 1px;
+                vertical-align: middle;
+    
+                &:hover{
+                    border-radius: 50%;
+    
+                }
+            }
+    
+            .react-datepicker__day{
+                &--range-start{border-radius: 50%;}
+                &--range-end{border-radius: 50%;}
+                &--selecting-range-start{border-radius: 50%;}
+            }
+        }
+    
+        .icon-cover-gray {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $clr-border-between-div;
+            width: 48px;
+            height: 48px;
+            border-radius: 15px;
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+    
+        .quick-results-by-text-modal {
+    
+            display: grid;
+            grid-template-columns: 1fr 1fr
+        }
+    
+    
+        .where-model {
+    
+            @include for-search-bar-open;
+            display: grid;
+            grid-template-columns: 32% 1fr;
+            
+    
+            .show-recent-search {
+                h1 {
+                    font-size: $font-size-search-bar;
+                }
+    
+                .recent-search-list {
+                    margin-top: 12px;
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    grid-template-rows: repeat(5, 1fr);
+    
+                    .last-search {
+                        display: flex;
+                        align-items: center;
+    
+                        .search-details {
+                            >* {
+                                margin: 0;
+                                padding: 0;
+                                font-size: $font-size-search-bar;
+                            }
+    
+                            .last-se {
+    
+                                &::before {
+                                    content: ".";
+                                    position: relative;
+                                    top: -3px
+                                }
+    
+                            }
+                        }
+                    }
+                }
+    
+    
+            }
+    
+            .search-by-region {
+                padding-left: auto;
+                border-left: solid 1px $clr-border-between-div;
+    
+                h1 {
+                    font-size: $font-size-search-bar;
+                    grid-area: 1/1/2/-1;
+                }
+    
+                .recent-search-list {
+                    display: flex;
+                }
+    
+                .region-options {
+                    display: grid;
+                    grid-template-columns: repeat(3, $region-pic-width);
+    
+    
+                    .regin-img {
+                        padding: 10px;
+    
+                        img {
+                            width: $regin-img;
+                            border-radius: 15px;
+    
+                            &:hover {
+                                outline: 0.5px solid black;
+                            }
+                        }
+                    }
+    
+                    h3 {
+                        @include fontWeightLight;
+                        font-size: $font-size-search-bar;
+                    }
+                }
+            }
+    
+        }
+    
+        .guests-adding-modal {
+            @include for-search-bar-open-small;
+            margin-left: auto;
+            min-width: fit-content;
+    
+            @include for-guest-counter;
+        
+            .guests-modal-open {
+    
+                padding: 1rem 2rem;
+                grid-area: 1/2/2/3;
+    
+                .guest{
+                    .counter{
+                        // min-width: 32px;
+                        .btn-counter{
+                            padding: 0px;
+                            width: 32px;
+                            height: 32px;
+                        
+                        }
+                    }
+                }
+    
+            }
+        }
+    }
+
+    .search-bar-small{
+       display: none;
+    }
+}
+

@@ -2,7 +2,8 @@ export const filterService={
     getEmptyFilter,
     getDateToFilter,
     getParamsToObj,
-    showChosenDate
+    showChosenDate,
+    getReginImg
 }
 
 function  getDateToFilter(date){
@@ -56,4 +57,33 @@ function getEmptyFilter() {
         const month = date.toLocaleString('default', { month: 'short' })
         const day = date.getDate()
         return month+' '+day
+    }
+
+    function getReginImg(){
+        return[
+            {
+                src:"https://a0.muscache.com/pictures/f9ec8a23-ed44-420b-83e5-10ff1f071a13.jpg",
+                label:'I’m flexible'
+            },
+            {
+                src:"https://a0.muscache.com/im/pictures/66355b01-4695-4db9-b292-c149c46fb1ca.jpg?im_w=320",
+                label:'Middle East'
+            },
+            {
+                src:"https://a0.muscache.com/im/pictures/ea5598d7-2b07-4ed7-84da-d1eabd9f2714.jpg?im_w=320",
+                label:'Italy'
+            },
+            {
+                src:"https://a0.muscache.com/im/pictures/4e762891-75a3-4fe1-b73a-cd7e673ba915.jpg?im_w=320",
+                label:'United States'
+            },
+            {
+                src:"https://a0.muscache.com/im/pictures/f0ece7c0-d9b2-49d5-bb83-64173d29cbe3.jpg?im_w=320",
+                label:'France'
+            },
+            {
+                src:"https://a0.muscache.com/im/pictures/06a30699-aead-492e-ad08-33ec0b383399.jpg?im_w=320",
+                label:'Africa'
+            }
+        ]
     }

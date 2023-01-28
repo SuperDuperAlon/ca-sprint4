@@ -87,7 +87,6 @@
 @mixin butHoverOn {
     background:   #e0ddddf6;
     border-radius: 100vw;
-    transform: scale(1.02);
 }
 
 @mixin fontWeightLight {
@@ -114,15 +113,13 @@
 
 @mixin for-calendar {
 
-
+       
         input {
             display: none;
         }
 
 
         .date-options {
-            // min-width: 300px;
-            // padding: 8px;
             min-height: 30px;
             margin-bottom: 1.3em;
 
@@ -133,13 +130,16 @@
             display: flex;
             flex-direction: row;
             width: fit-content;
+            font-family: circular;
         }
 
         .react-datepicker__header {
             background-color: $white;
 
             .react-datepicker__current-month {
-                margin-bottom: 0.5em
+                font-size: 1rem;
+                margin-bottom: 0.5em;
+                font-weight: 600;
             }
 
         }
@@ -152,6 +152,10 @@
         .react-datepicker__day--in-range:not(.react-datepicker__day--selected, .react-datepicker__day--range-end, .react-datepicker__day--outside-month) {
             background-color: $clr-box-radius;
             color: black;
+        }
+
+        .react-datepicker__day--outside-month{
+            opacity: 0;
         }
 
         .react-datepicker__day {
