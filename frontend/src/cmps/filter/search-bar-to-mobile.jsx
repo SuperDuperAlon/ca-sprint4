@@ -60,7 +60,6 @@ export function SearchBarToMobile({onToSearch}) {
             open: false
         })
     }
-
     return (<>
 
         <div className={`search-option-to-mobile full ${!openSearchBar ? 'close-bar' : ''}`}>
