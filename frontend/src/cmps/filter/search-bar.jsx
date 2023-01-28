@@ -104,6 +104,8 @@ export function SearchBar({ onToSearch }) {
         })
     }
 
+    
+
     function onExitTheSearchBar(event){
         store.dispatch({
             type: SEARCH_BAR_OPEN,
