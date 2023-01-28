@@ -9,6 +9,8 @@ import { orderService } from "../services/order.service"
 import { addOrder, updateOrder } from "../store/order.actions"
 import { LoginSignup } from "../cmps/login-signup"
 import { useRef } from "react"
+import { userService } from "../services/user.service"
+import { logout } from "../store/user.actions"
 
 export function StayOrder() {
 
@@ -19,8 +21,10 @@ export function StayOrder() {
     const [orderToEdit, setOrderToEdit] = useState(orderService.getEmptyOrder())
     const [isLoggedInUser, setIsLoggedInUser] = useState(false)
     const [isConfirm, setIsConfirm]  = useState(false)
+    const [loggedInUser, setLoggedInUser] = useState(userService.getLoggedinUser())
     const navigate = useNavigate()
     const confirmInterval = useRef(null)
+
 
     useEffect(() => {
         // Clear the interval when the component unmounts
@@ -29,16 +33,18 @@ export function StayOrder() {
 
     useEffect(() => {
         loadStay()
-
+        loggedInUser && setIsLoggedInUser(true)
     }, [])
 
-    // console.log(stay)
-    console.log(orderDetails)
+  
+    // console.log(loggedInUser)
 
 
+    // function loadLoggedInUser(){
+    //     if (loggedInUser) set(isLoggedInUser) 
+    // }
 
-
-    async function onOrderStay(loggedInUser) {
+    async function onClickedLogin(loggedInUser) {
         setIsLoggedInUser(true)
 
         // const order = {
@@ -67,39 +73,21 @@ export function StayOrder() {
         // }
         // console.log(order)
 
-        orderToEdit.hostId = stay.host._id
-        orderToEdit.totalPrice = getFullPrice()
-        orderToEdit.startDate = orderDetails.checkIn
-        orderToEdit.endDate = orderDetails.checkOut
-        orderToEdit.guests.adults = orderDetails.adults
-        orderToEdit.guests.children = orderDetails.children
-        orderToEdit.guests.infants = orderDetails.infants
-        orderToEdit.guests.pets = orderDetails.pets
-        orderToEdit.stay._id = stay._id
-        orderToEdit.stay.name = stay.name
-        orderToEdit.stay.price = stay.price
-        orderToEdit.buyer._id = loggedInUser._id
-        orderToEdit.buyer.fullname = loggedInUser.fullname
+    }
 
-        // setOrderToEdit(order)
-
-        try {
-            if (orderToEdit._id) {
-                const savedOrder = await updateOrder(orderToEdit)
-            } else {
-                const savedOrder = await addOrder(orderToEdit)
-                console.log("order saved", savedOrder)
-            }
-            // showSuccessMsg('Car saved!')
-            // navigate("/")
-        } catch (err) {
+    async function onLogOut(){
+        try{
+            const loggedInUser = await logout()
+            setIsLoggedInUser(false)
+            
+        } catch (err){
             console.log(err)
         }
     }
 
-    function onLogin() {
-        setIsLoggedInUser(true)
-    }
+    // function onLogin() {
+    //     setIsLoggedInUser(true)
+    // }
 
     function getGuests() {
         const totalGuests = `${+orderDetails.adults + +orderDetails.children} guests`
@@ -128,8 +116,35 @@ export function StayOrder() {
         return countDays > 1 ? strCalc + ' nights' : strCalc + ' night'
     }
 
-    function confirmOrder(){
-        confirmInterval.current = setTimeout( () => setIsConfirm(true) ,2000)    
+    async function confirmOrder(){
+        orderToEdit.hostId = stay.host._id
+        orderToEdit.totalPrice = getFullPrice()
+        orderToEdit.startDate = orderDetails.checkIn
+        orderToEdit.endDate = orderDetails.checkOut
+        orderToEdit.guests.adults = orderDetails.adults
+        orderToEdit.guests.children = orderDetails.children
+        orderToEdit.guests.infants = orderDetails.infants
+        orderToEdit.guests.pets = orderDetails.pets
+        orderToEdit.stay._id = stay._id
+        orderToEdit.stay.name = stay.name
+        orderToEdit.stay.price = stay.price
+        orderToEdit.buyer._id = loggedInUser._id
+        orderToEdit.buyer.fullname = loggedInUser.fullname
+
+        // setOrderToEdit(order)
+
+        try {
+            if (orderToEdit._id) {
+                const savedOrder = await updateOrder(orderToEdit)
+            } else {
+                const savedOrder = await addOrder(orderToEdit)
+                console.log("order saved", savedOrder)
+            }
+            confirmInterval.current = setTimeout( () => setIsConfirm(true) ,2000) 
+        } catch (err) {
+            console.log(err)
+        }
+           
     }
 
     if (!stay) return <div>loading...</div>
@@ -139,12 +154,13 @@ export function StayOrder() {
                 <h3><span className="airbnb-icon"><SiAirbnb /></span>anyplce</h3>
             </div>
         </header>
+        <button onClick={onLogOut}></button> 
         {!isConfirm &&<div className="confirm fs32 bold">
             <button className="clean-btn fs32 pad-r32">{'<'}</button>
             Confirm and pay
         </div>}
         {isConfirm && <div className="confirm fs32 bold">
-            <button className="clean-btn fs32 pad-r32">{'<'}</button>
+            <button onClick={()=>navigate('/')} className="clean-btn fs32 pad-r32">{'<'}</button>
             <img src="https://icons.veryicon.com/png/o/miscellaneous/8atour/success-35.png" />
             Reservation success!
         </div>}
@@ -166,7 +182,7 @@ export function StayOrder() {
                         </div>
                         <div className="bold under-line">Edit</div>
                     </div>
-                    <div className={isLoggedInUser ? "guests-container flex space-between pad-b50 border-bottom" : "guests-container flex space-between pad-b24"}>
+                    <div className={isLoggedInUser ? "guests-container flex space-between pad-b38 border-bottom" : "guests-container flex space-between pad-b24"}>
                         <div><span className="bold">Guests</span>
                             <div className="mar-t8">{getGuests()}</div>
                         </div>
@@ -198,7 +214,7 @@ export function StayOrder() {
 
                 </div>
                 {!isLoggedInUser && <div className="login-sign-up">
-                    <LoginSignup onOrderStay={onOrderStay} />
+                    <LoginSignup onClickedLogin={onClickedLogin} />
                 </div>}
 
             </div>

@@ -28,7 +28,7 @@
 // Details
 
 @mixin for-details-sm-layout {
-    @media (min-width: 425px) {
+    @media (min-width: $padded-s-details) {
         @content;
     }
 }

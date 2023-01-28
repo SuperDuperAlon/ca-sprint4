@@ -1,0 +1,49 @@
+.dashboard{
+
+    .charts-section{
+        padding: 40px 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(300px,450px));
+        justify-content: center;
+        gap: rem(15px);
+        .chart-container{
+            width: 100%;
+            box-shadow: #0000001f 0 6px 16px;
+            padding: 24px;
+            border-radius: 12px;
+            max-height: 250px;
+        }
+    }
+    .table-container{
+        margin: auto;
+        max-width: 80%;
+        .css-quj9j6-MuiTable-root{
+            
+                .css-1ygcj2i-MuiTableCell-root{
+                    font-family: circular;
+                    font-weight: 800;
+                    color: #909399
+                    
+                }
+                .css-1ex1afd-MuiTableCell-root{
+                    font-family: circular;
+                }
+            
+
+        }
+        .table{
+            width: 100%;
+            font-size: rem(14px);
+            .table-row{
+                font-weight: 800;
+                color: #909399
+            }
+            .table-row-body{
+
+                &:hover{
+                    background-color: rgba(128, 128, 128, 0.074);
+                }
+            }
+        }
+    }
+}

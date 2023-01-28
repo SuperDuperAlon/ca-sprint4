@@ -66,11 +66,12 @@ export function StayIndex() {
     }
 
     function queryToParams(filter) {
-        filter.guests = Object.values(filter.guests).reduce((a, b) => a + b, 0)
+        // console.log(filter);
+        // filter.guests = Object.values(filter.guests).reduce((a, b) => a + b, 0)
         filter.checkIn = filterService.getDateToFilter(filter.checkIn)
         filter.checkOut = filterService.getDateToFilter(filter.checkOut)
         const queryParams =
-            `where=${filter.where}&checkIn=${filter.checkIn}&checkOut=${filter.checkOut}&label=${filter.label}&adults=${filter.guests.adults}&children=${filter.guests.children}&infants=${filter.guests.infants}&pets=${filter.guests.pets}&=guest${filter.guests}`
+            `where=${filter.where}&checkIn=${filter.checkIn}&checkOut=${filter.checkOut}&label=${filter.label}&adults=${filter.guests.adults}&children=${filter.guests.children}&infants=${filter.guests.infants}&pets=${filter.guests.pets}`
             // &adults=${guests.adults}&children=${guests.children}`    
         return queryParams
     }

@@ -5,6 +5,7 @@ import { userService } from "./user.service.js"
 import { storageService } from "./async-storage.service.js"
 import { filterService } from "./filterService.js"
 import { stayData } from "./stay.data.js"
+import axios from "axios"
 
 
 const STORAGE_KEY = "stay_db"
@@ -17,11 +18,23 @@ export const stayService = {
     remove,
     addStayMsg,
     getEmptyStay,
-    setDefaultLabelFilter
+    setDefaultLabelFilter,
+    getListings
+    
     
 }
 window.cs = stayService
 
+async function getListings(hostId){
+  try{
+    let data= await storageService.query(STORAGE_KEY)
+    const regex = new RegExp(hostId, 'i')
+    data = data.filter(listing => regex.test(listing.host._id) )
+    return data 
+  }catch(err){
+    console.log(err)
+  }
+}
 
 async function query(filterBy) {
   let data= await storageService.query(STORAGE_KEY)

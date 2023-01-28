@@ -9,9 +9,8 @@ import { StayDetailsReviews } from "../cmps/stay-details/stay-details-reviews";
 import { StayDetailsHostDetails } from "../cmps/stay-details/stay-details-host-details";
 import { StayDetailsMap } from "../cmps/stay-details/stay-details-map";
 import { StayDetailsCarousel } from "../cmps/stay-details/stay-details-carousel";
-import { orderService } from "../services/order.service";
 import { stayService } from "../services/stay.service";
-// import { BasicModal } from "../cmps/modal";
+// import { BasicModal } from "../cmps/modal"
 import { AppHeader } from "../cmps/app-header";
 import { InnerNavStay } from "../cmps/stay-details/stay-details-inner-nav";
 import React from "react";
@@ -21,42 +20,39 @@ import { SEARCH_BAR_OPEN } from "../store/stay.reducer";
 import { store } from "../store/store";
 
 export function StayDetails() {
-  // const [orderToEdit, setOrderToEdit] = useState(orderService.getEmptyOrder())
-  const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
+  const openSearchBar = useSelector(
+    (storeState) => storeState.stayModule.searchModalOpen
+  );
   const { stayId } = useParams();
   const [stay, setStay] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
-
-// console.log(width);
-
-  const updateDimensions = () => {
-    setWidth(window.innerWidth);
-  };
-  useEffect(() => {
-    window.addEventListener("resize", updateDimensions);
-    window.addEventListener("resize", isMobileReady(window.innerWidth));
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
-
-  function isMobileReady(width) {
-    console.log(width);
-    if (width > 768) {
-      setIsMobile(false);
-      loadStay();
-    } else if (width < 768) {
-      setIsMobile(true);
-      loadStay();
-    }
-  }
 
   useEffect(() => {
     loadStay();
   }, []);
 
+  useEffect(() => {
+    window.addEventListener("resize", updateDimensions);
+    // window.addEventListener("resize", )
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
+  function updateDimensions() {
+    setWidth(window.innerWidth);
+    isMobileReady(window.innerWidth);
+  }
+
+  function isMobileReady(width) {
+    console.log(width);
+    if (width > 687) {
+      setIsMobile(false);
+    } else if (width < 687) {
+      setIsMobile(true);
+    }
+  }
+
   async function loadStay() {
-    console.log(stayId);
     try {
       const stay = await stayService.getById(stayId);
       setStay(stay);
@@ -66,13 +62,13 @@ export function StayDetails() {
   }
 
   function onClickOutSideTheBar(event) {
-    event.preventDefault()
-    if (!openSearchBar) return
+    event.preventDefault();
+    if (!openSearchBar) return;
     store.dispatch({
-        type: SEARCH_BAR_OPEN,
-        open: false,
-    })
-}
+      type: SEARCH_BAR_OPEN,
+      open: false,
+    });
+  }
 
   if (!stay) return console.log("no map");
   else
@@ -92,26 +88,29 @@ export function StayDetails() {
             </div>
             {/* <BasicModal /> */}
             <StayDetailsReviews stay={stay} />
-            <StayDetailsMap stay={stay} />
+            {/* <StayDetailsMap stay={stay} /> */}
             <StayDetailsHostDetails stay={stay} />
-            {openSearchBar && <div className="black-screen full"
-              onClick={onClickOutSideTheBar}
-            ></div>}
+            {openSearchBar && (
+              <div
+                className="black-screen full"
+                onClick={onClickOutSideTheBar}
+              ></div>
+            )}
           </>
         )}
 
         {isMobile && (
           <>
-            <StayDetailsCarousel imgs={stay.imgUrls} />
-            <StayDetailsLocationInfo stay={stay} isMobile={isMobile} />
-            <StayDetailsHostInfo stay={stay} isMobile={isMobile} />
-            <StayDetailsReviews stay={stay} isMobile={isMobile} />
-            <StayDetailsHostDetails stay={stay} isMobile={isMobile} />
-            <StayDetailsMobileFooter stay={stay} />
+
+              <StayDetailsCarousel imgs={stay.imgUrls} />
+              <StayDetailsLocationInfo stay={stay} isMobile={isMobile} />
+              <StayDetailsHostInfo stay={stay} isMobile={isMobile} />
+              <StayDetailsReviews stay={stay} isMobile={isMobile} />
+              <StayDetailsHostDetails stay={stay} isMobile={isMobile} />
+              <StayDetailsMobileFooter stay={stay} />
+
           </>
         )}
-
-        {/* {isMobile && } */}
       </section>
     );
 }
