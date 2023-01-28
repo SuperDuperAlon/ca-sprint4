@@ -7,7 +7,7 @@ const initialState = {
     filter:{
     checkIn:null,
     checkOut:null,
-    where:null,
+    where:"",
     guests:{
         adults:0,
         children:0,

@@ -41,7 +41,7 @@ export function SearchBar({ onToSearch }) {
     }
 
     useEffect(() => {
-        if (!filter.where || !filter.checkIn) {
+        if (filter.where || filter.checkIn) {
             store.dispatch({
                 type: SET_FILTER,
                 filter
