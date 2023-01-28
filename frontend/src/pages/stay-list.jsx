@@ -35,7 +35,7 @@ export function StayList({
                 {!!stay.reviews.length && (
                   <span className="flex center">
                     <AiFillStar />{" "}
-                    {`${stay.reviewsRate}`}
+                    {`${+(stay.reviewsRate)}`}
                     {/* {stay.reviews.reduce(
                       (acc, review) => review.rate + acc,0) / stay.reviews.length }
                     {" "}({stay.reviews.length}) */}
