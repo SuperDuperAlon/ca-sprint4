@@ -20,12 +20,9 @@ $pad-5: 5px;
 $pad-15: 15px;
 $pad-12: 12px;
 $pad-20: 20px;
+$pad-24: 24px;
 $pad-40:40px;
 $pad-80:80px;
-$pad-15: 15px;
-$pad-8: 8px;
-$pad-40: 40px;
-$pad-80: 80px;
 
 // Breakpoints
 $small-breakpoint: 639px;
@@ -49,7 +46,7 @@ $medium-breakpoint-details: 688px;
 $large-breakpoint-details: 944px;
 $x-large-breakpoint-details: 1280px;
 
-$padded-s-details: $small-breakpoint-details;
+$padded-s-details: $small-breakpoint-details + 2 * $pad-24;
 $padded-m-details: $medium-breakpoint-details + 2 * $pad-40;
 $padded-l-details: $large-breakpoint-details + 2 * $pad-40;
 $padded-xl-details: $x-large-breakpoint-details + 2 * $pad-80;
