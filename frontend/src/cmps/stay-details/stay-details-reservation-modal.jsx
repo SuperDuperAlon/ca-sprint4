@@ -14,6 +14,7 @@ import { filterService } from "../../services/filterService"
 import {MdStar} from "react-icons/md"
 import {BiChevronDown, BiChevronUp} from "react-icons/bi"
 import { GuestsCounter } from "../filter/guests-counter"
+import { utilService } from "../../services/util.service"
 
 export function StayDetailsOrderModal({ stay }) {
   const [startDate, setStartDate] = useState(null)
@@ -23,11 +24,11 @@ export function StayDetailsOrderModal({ stay }) {
   const [isGuestsClicked, setIsGuestsClicked] = useState(false)
   const { stayId , filter } = useParams()
   const [filterBy, setFilterBy] = useState(filterService.getParamsToObj(filter))
+  // const [daysCount, setDaysCount] = useState(null)
   const navigate = useNavigate()
 
-  console.log(filterBy)
 
-
+const serviceFee = 55
 
   async function onReserve() {
 
@@ -38,15 +39,20 @@ export function StayDetailsOrderModal({ stay }) {
     navigate(`/book/stay/${stay._id}/${queryParams}`)
   }
 
+  // const numOfDays = calculateDays()
+
   function calculateDays(){
     const days = (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24)
+    // setDaysCount(days)
     return days>1 ? days+ ' nights' : days + ' night'
   }
 
+  // console.log(daysCount);
+
   function onChangeDate(dates){
-        console.log(dates);
         const checkIn = dates[0]
         const checkOut = dates[1]
+        // calculateDays()
         if(dates[1]){
             toggleDatePicker()
         }
@@ -58,13 +64,11 @@ export function StayDetailsOrderModal({ stay }) {
   }
   // guests, ...filterBy.guests[field] = filterBy.guests[field]
   function onCountChange(field, diff) {
-    console.log(filterBy[field]);
     // const prevGuests = { ...filterBy, [field] : filterBy[field]  + diff }
     // console.log(prevGuests);
     setFilterBy({...filterBy, [field] : filterBy[field]  + diff})
 }
 
-  console.log(filterBy)
   if (!stay) return 
   else return (
       <section className="order-form-container">
@@ -115,18 +119,24 @@ export function StayDetailsOrderModal({ stay }) {
           Reserve
         </button>
         <div className="order-form-msg mar-b24">You won't be charged yet</div>
+        {/* {!daysCount && 
+        <>
+        </>} */}
+        {/* {daysCount > 0 && 
+        <> */}
         <div className="order-form-pricing mar-b24">
-          <div className="under-line">${filterBy.checkOut && `${stay.price} X ${calculateDays()}`} </div>
-          <div>${filterBy.checkOut && stay.price * (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24) }</div>
+          <div className="under-line">${filterBy.checkOut && `${utilService.toActualPrice(stay.price)} X ${calculateDays()}`} </div>
+          <div>${filterBy.checkOut && utilService.toActualPrice((stay.price) * (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24))}</div>
         </div>
         <div className="order-form-pricing mar-b24">
           <div className="under-line">Service fee</div>
-          <div>$12</div>
+          <div>${serviceFee}</div>
         </div>
         <div className="order-form-total-price">
           <div className="bold">Total</div>
-          <div>${filterBy.checkOut && stay.price * (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24)}</div>
+          <div>${filterBy.checkOut && utilService.toActualPrice(stay.price * (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24) + serviceFee)}</div>
         </div>
+        {/* </>}  */}
         <div>
         </div>
       </section>
