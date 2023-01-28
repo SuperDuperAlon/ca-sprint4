@@ -33,7 +33,11 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 </div>
                 <div>
                   {" "}
-                  {`2 guests · ${
+                  {`${
+                    stay.capacity > 1
+                      ? stay.capacity + " guests"
+                      : stay.capacity + " guest"
+                  } · ${
                     stay.bedrooms > 1
                       ? stay.bedrooms + " bedrooms"
                       : stay.bedrooms + " bedroom"
@@ -139,8 +143,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div className="host-content">
                   <div className="fw600 mar-b4">Great location</div>
                   <div className="fs14 dark-content">
-                    100% of recent guests gave the check-in process a 5-star
-                    rating.
+                    100% of recent guests gave the location a 5-star rating.
                   </div>
                 </div>
               </div>
@@ -158,16 +161,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
               <button className="link">Learn more</button>
             </div>
             <div className="room-description">
-              <div className="lh24 mar-b16">
-                Relax, rejuvenate and unplug in this unique contemporary
-                Birdbox. Feel close to nature in ultimate comfort. Enjoy the
-                view of the epic mountain range of Blegja and the Førdefjord.
-                Feel the true Norwegian countryside calmness of birds chirping,
-                rivers flowing and trees in the wind. Explore the countryside
-                area, walk down to the fjord and take a swim, hike the
-                surrounding mountains, relax with a good book & meditate. Enjoy
-                the unique Birdbox experience. #Birdboxing
-              </div>
+              <div className="lh24 mar-b16">{stay.summary}</div>
               <button className="link">Show more</button>
             </div>
             <div className="bedding">
@@ -271,7 +265,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
             </div>
 
             <div className="calendar">
-              <div className="fw600 fs22">3 nights in Forde</div>
+              <div className="fw600 fs22">Vacate in {stay.loc.city}</div>
               <div className="day-picker-modal inner">
                 <CalendarMain filterBy={filter} onChangeDate={onChangeDate} />
               </div>
@@ -287,7 +281,11 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 </div>
                 <div>
                   {" "}
-                  {`2 guests · ${
+                  {`${
+                    stay.capacity > 1
+                      ? stay.capacity + " guests"
+                      : stay.capacity + " guest"
+                  } · ${
                     stay.bedrooms > 1
                       ? stay.bedrooms + " bedrooms"
                       : stay.bedrooms + " bedroom"
@@ -393,8 +391,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div className="host-content">
                   <div className="fw600 mar-b4">Great location</div>
                   <div className="fs14 dark-content">
-                    100% of recent guests gave the check-in process a 5-star
-                    rating.
+                    100% of recent guests gave the location a 5-star rating.
                   </div>
                 </div>
               </div>
@@ -413,16 +410,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
             </div>
 
             <div className="room-description">
-              <div className="lh24 mar-b16">
-                Relax, rejuvenate and unplug in this unique contemporary
-                Birdbox. Feel close to nature in ultimate comfort. Enjoy the
-                view of the epic mountain range of Blegja and the Førdefjord.
-                Feel the true Norwegian countryside calmness of birds chirping,
-                rivers flowing and trees in the wind. Explore the countryside
-                area, walk down to the fjord and take a swim, hike the
-                surrounding mountains, relax with a good book & meditate. Enjoy
-                the unique Birdbox experience. #Birdboxing
-              </div>
+              <div className="lh24 mar-b16">{stay.summary}</div>
               <button className="link">Show more</button>
             </div>
 
@@ -517,7 +505,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
             </div>
 
             <div className="calendar">
-              <div className="fw600 fs22">3 nights in Forde</div>
+              <div className="fw600 fs22">Vacate in {stay.loc.city}</div>
               <div className="day-picker-modal inner">
                 <CalendarMain filterBy={filter} onChangeDate={onChangeDate} />
               </div>

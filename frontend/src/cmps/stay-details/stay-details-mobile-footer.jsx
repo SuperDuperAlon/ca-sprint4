@@ -5,10 +5,10 @@ export function StayDetailsMobileFooter({ stay }) {
       <div className="flex row space-between">
         <div>
           <div className="fs16 fw600">
-            $337 <span className="fs14">night</span>
+            ${stay.price} <span className="fs14">night</span>
           </div>
           <div className="fs14">
-            <button className="link">303 reviews</button>
+            <button className="link">{stay.reviews.length} reviews</button>
           </div>
         </div>
         <div>

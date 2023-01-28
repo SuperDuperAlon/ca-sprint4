@@ -22,7 +22,7 @@ export function StayDetailsLocationInfo({ stay, isMobile }) {
                   </span>
                   4.88 · <Link to={`/reviews/`}>{stay.reviews.length} reviews</Link>
                 </div>
-                · {stay.host.isSuperhost && <div className="fw400">Supehost ·</div> }
+                · {stay.host.isSuperhost && <div className="fw400">Superhost ·</div> }
                 <div className="mar-l4">
                   <Link to={`/location/`}>
                     {stay.loc.city}, {stay.loc.address}, {stay.loc.country}
