@@ -10,9 +10,10 @@ import { stayService } from '../services/stay.service';
 import { useParams } from 'react-router';
 import { orderService } from '../services/order.service';
 import { useEffect, useState } from 'react';
+// import { CategoryScale } from "chart.js";
 
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, RadialLinearScale } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
+import { Bar, Doughnut} from 'react-chartjs-2';
 
 ChartJS.register(RadialLinearScale,ArcElement, Tooltip, Legend);
 
@@ -28,15 +29,17 @@ export function Dashboard() {
     const { hostId } = useParams()
     const [listings, setListings] = useState(null)
     const [orders, setOrders] = useState(null)
+    // const [labels, setLabels] = useState([])
+    const [doughnutData, setDoughnutData] = useState({})
 
-
-
-useEffect(()=>{
-    loadHost()
-},[])
-
-console.log(listings)
-console.log(orders)
+    
+    useEffect(()=>{
+        loadHost()
+    },[])
+    
+console.log(doughnutData)
+// console.log(listings)
+// console.log(orders)
 
 async function loadHost(){
     try{
@@ -44,26 +47,40 @@ async function loadHost(){
         const orders = await orderService.getOrders(hostId)
         setListings(listings)
         setOrders(orders)
+        setDoughnutData(getData())
     }
     catch (err){
         console.log(err)
     }
 
 }
+// !acc.includes(order.stay.name) && acc.push(order.stay.name)
+function getData(){
+    // orders.forEach((order)=> !labels.includes(order.stay.name) && labels.push(order.stay.name))
+    const constChartData = orders.reduce((acc, order)=>{
+        acc[order.stay.name] = acc[order.stay.name] ? ++acc[order.stay.name] : 1
+        return acc
+    }, 
+    {})
+    return constChartData
+}
 
+// function getData(){
+//     orders.forEach((order)=> !labels.includes(order.stay.name) && labels.push(order.stay.name)
+// }
 
 function calculateStatus(status){
     const sumStatus  = orders.reduce((acc, order)=> order.status === status && acc + 1, 0 )
     return sumStatus>0 ? sumStatus : 0
 }
 
-const data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    const dataDoughnut = {
+    labels: Object.keys(doughnutData),
     
     datasets: [
         {
-            label: 'number of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: 'reservations',
+            data: Object.values(doughnutData),
             
             options:{
                     plugins:{
@@ -95,11 +112,43 @@ const data = {
     ],
 }
 
+const dataBar = {
+        labels:  ['Oct','Nov','Dec', 'Jan'],
+        datasets: [{
+          label: 'My First Dataset',
+          data: [65, 59, 80, 81],
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(201, 203, 207, 0.2)'
+          ],
+          borderColor: [
+            'rgb(255, 99, 132)',
+            'rgb(255, 159, 64)',
+            'rgb(255, 205, 86)',
+            'rgb(75, 192, 192)',
+            'rgb(54, 162, 235)',
+            'rgb(153, 102, 255)',
+            'rgb(201, 203, 207)'
+          ],
+          borderWidth: 1
+        }]
+    }
+
+
+
     if (!orders) return <div>loading...</div>
     return (
         <section className="dashboard">
             <div className="charts-section">
-                <div className='chart-container'>Revenue / month</div>
+                <div className='chart-container'>
+                    <div>Revenue / month</div>
+                    <div><Bar data={dataBar} /></div>
+                </div>
                 <div className="chart-container">
                     <div>Reservations status</div>
                     <div>Pending: {calculateStatus('pending')}</div>
@@ -108,7 +157,7 @@ const data = {
                 </div>
                 <div className="chart-container">
                     <div>Reservations / listing</div>
-                    <div className='flex'><Doughnut data={data} /></div>
+                    <div className='flex'><Doughnut data={dataDoughnut} /></div>
                 </div>
             </div>
             <div className='table-container'>
