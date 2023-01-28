@@ -13,6 +13,7 @@ import { filterService } from '../services/filterService.js'
 import { store } from '../store/store.js'
 import { SEARCH_BAR_OPEN } from '../store/stay.reducer.js'
 import { useState } from 'react'
+import { SearchBarToMobile } from '../cmps/filter/search-bar-to-mobile.jsx'
 
 
 export function StayIndex() {
@@ -99,6 +100,7 @@ export function StayIndex() {
                 onClick={onClickOutSideTheBar}
             >
             </div>}
+            <SearchBarToMobile onToSearch={onToSearch}/>
         </div >
     )
 }
