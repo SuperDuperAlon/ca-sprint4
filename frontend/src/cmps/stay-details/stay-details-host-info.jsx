@@ -48,31 +48,100 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
               </div>
               <div className="avatar-lg">
                 <img
+                  className="host-icons-svg"
                   src={require("../../assets/img/other/DOGE.jpg")}
                   alt="avatar-lg"
                 />
               </div>
             </div>
             <div className="host">
-              <div className="host-content">
-                <div className="fw600 mar-b4">
-                  {stay.host.fullname} is a Superhost
+              {stay.host.isSuperhost && (
+                <>
+                  <div className="flex row">
+                    <div className="host-icon">
+                      <img
+                        className="host-icons-svg"
+                        src={
+                          require("../../assets/img/icons/Details-Top-Page/superhost.svg")
+                            .default
+                        }
+                        alt=""
+                      />
+                    </div>
+                    <div className="host-content">
+                      <div className="fw600 mar-b4">
+                        {stay.host.fullname} is a Superhost
+                      </div>
+                      <div className="fs14 dark-content">
+                        Superhosts are experienced, highly rated hosts who are
+                        committed to providing great stays for guests.
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {!stay.host.isSuperhost && (
+                <>
+                  <div className="flex row">
+                    <div className="host-icon">
+                      <img
+                        src={
+                          require("../../assets/img/icons/Details-Top-Page/highly-rated-host.svg")
+                            .default
+                        }
+                        className="host-icons-svg"
+                        alt=""
+                      />
+                    </div>
+                    <div className="host-content">
+                      <div className="fw600 mar-b4">Highly rated Host</div>
+                      <div className="fs14 dark-content">
+                        {stay.host.fullname} has received 5-star ratings from
+                        95% of recent guests.
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              <div className="flex row">
+                <div className="host-icon">
+                  <img
+                    className="host-icons-svg"
+                    src={
+                      require("../../assets/img/icons/Details-Top-Page/check-in-expirience.svg")
+                        .default
+                    }
+                    alt=""
+                  />
                 </div>
-                <div className="fs14 dark-content">
-                  Superhosts are experienced, highly rated hosts who are
-                  committed to providing great stays for guests.
+                <div className="host-content">
+                  <div className="fw600 mar-b4">Great check-in experience</div>
+                  <div className="fs14 dark-content">
+                    100% of recent guests gave the check-in process a 5-star
+                    rating.
+                  </div>
                 </div>
               </div>
-              <div className="host-content">
-                <div className="fw600 mar-b4"> Great location</div>
-                <div className="fs14 dark-content">
-                  100% of recent guests gave the location a 5-star rating.
+
+              <div className="flex row">
+                <div className="host-icon">
+                  <img
+                    className="host-icons-svg"
+                    src={
+                      require("../../assets/img/icons/Details-Top-Page/great-location.svg")
+                        .default
+                    }
+                    alt=""
+                  />
                 </div>
-              </div>
-              <div className="host-content">
-                <div className="fw600 mar-b4">Dive right in</div>
-                <div className="fs14 dark-content">
-                  Free cancellation before Mar 21.
+                <div className="host-content">
+                  <div className="fw600 mar-b4">Great location</div>
+                  <div className="fs14 dark-content">
+                    100% of recent guests gave the check-in process a 5-star
+                    rating.
+                  </div>
                 </div>
               </div>
             </div>
@@ -116,16 +185,16 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
               <div className="amenities-list">
                 <div>
                   <img
+                    src={require("../../assets/img/icons/TV.svg").default}
                     className="amenities-icons"
-                    src="../../assets/img/icons/TV.svg"
-                    alt=""
+                    alt="TV"
                   />
                   <div>TV</div>
                 </div>
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Gym.svg"
+                    src={require("../../assets/img/icons/Gym.svg").default}
                     alt=""
                   />
                   <div>Gym</div>
@@ -133,7 +202,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Doorman.svg"
+                    src={require("../../assets/img/icons/Doorman.svg").default}
                     alt=""
                   />
                   <div>Doorman</div>
@@ -141,7 +210,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Hangers.svg"
+                    src={require("../../assets/img/icons/Hangers.svg").default}
                     alt=""
                   />
                   <div>Hangers</div>
@@ -149,7 +218,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Wifi.svg"
+                    src={require("../../assets/img/icons/Wifi.svg").default}
                     alt=""
                   />
                   <div>Wifi</div>
@@ -157,7 +226,10 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/mountain-view.svg"
+                    src={
+                      require("../../assets/img/icons/mountain-view.svg")
+                        .default
+                    }
                     alt=""
                   />
                   <div>Mountain View</div>
@@ -165,7 +237,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Safe.svg"
+                    src={require("../../assets/img/icons/Safe.svg").default}
                     alt=""
                   />
                   <div>Safe</div>
@@ -173,7 +245,10 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/private-entrance.svg"
+                    src={
+                      require("../../assets/img/icons/private-entrance.svg")
+                        .default
+                    }
                     alt=""
                   />
                   <div>Private Entrance</div>
@@ -232,26 +307,95 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 />
               </div>
             </div>
+
             <div className="host">
-              <div className="host-content">
-                <div className="fw600 mar-b4">
-                  {stay.host.fullname} is a Superhost
+              {stay.host.isSuperhost && (
+                <>
+                  <div className="flex row">
+                    <div className="host-icon">
+                      <img
+                        className="host-icons-svg"
+                        src={
+                          require("../../assets/img/icons/Details-Top-Page/superhost.svg")
+                            .default
+                        }
+                        alt=""
+                      />
+                    </div>
+                    <div className="host-content">
+                      <div className="fw600 mar-b4">
+                        {stay.host.fullname} is a Superhost
+                      </div>
+                      <div className="fs14 dark-content">
+                        Superhosts are experienced, highly rated hosts who are
+                        committed to providing great stays for guests.
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              {!stay.host.isSuperhost && (
+                <>
+                  <div className="flex row">
+                    <div className="host-icon">
+                      <img
+                        src={
+                          require("../../assets/img/icons/Details-Top-Page/highly-rated-host.svg")
+                            .default
+                        }
+                        className="host-icons-svg"
+                        alt=""
+                      />
+                    </div>
+                    <div className="host-content">
+                      <div className="fw600 mar-b4">Highly rated Host</div>
+                      <div className="fs14 dark-content">
+                        {stay.host.fullname} has received 5-star ratings from
+                        95% of recent guests.
+                      </div>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              <div className="flex row">
+                <div className="host-icon">
+                  <img
+                    className="host-icons-svg"
+                    src={
+                      require("../../assets/img/icons/Details-Top-Page/check-in-expirience.svg")
+                        .default
+                    }
+                    alt=""
+                  />
                 </div>
-                <div className="fs14 dark-content">
-                  Superhosts are experienced, highly rated hosts who are
-                  committed to providing great stays for guests.
+                <div className="host-content">
+                  <div className="fw600 mar-b4">Great check-in experience</div>
+                  <div className="fs14 dark-content">
+                    100% of recent guests gave the check-in process a 5-star
+                    rating.
+                  </div>
                 </div>
               </div>
-              <div className="host-content">
-                <div className="fw600 mar-b4"> Great location</div>
-                <div className="fs14 dark-content">
-                  100% of recent guests gave the location a 5-star rating.
+
+              <div className="flex row">
+                <div className="host-icon">
+                  <img
+                    className="host-icons-svg"
+                    src={
+                      require("../../assets/img/icons/Details-Top-Page/great-location.svg")
+                        .default
+                    }
+                    alt=""
+                  />
                 </div>
-              </div>
-              <div className="host-content">
-                <div className="fw600 mar-b4">Dive right in</div>
-                <div className="fs14 dark-content">
-                  Free cancellation before Mar 21.
+                <div className="host-content">
+                  <div className="fw600 mar-b4">Great location</div>
+                  <div className="fs14 dark-content">
+                    100% of recent guests gave the check-in process a 5-star
+                    rating.
+                  </div>
                 </div>
               </div>
             </div>
@@ -313,7 +457,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/TV.svg"
+                    src={require("../../assets/img/icons/TV.svg").default}
                     alt=""
                   />
                   <div>TV</div>
@@ -321,7 +465,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Gym.svg"
+                    src={require("../../assets/img/icons/Gym.svg").default}
                     alt=""
                   />
                   <div>Gym</div>
@@ -329,7 +473,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Doorman.svg"
+                    src={require("../../assets/img/icons/Doorman.svg").default}
                     alt=""
                   />
                   <div>Doorman</div>
@@ -337,7 +481,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Hangers.svg"
+                    src={require("../../assets/img/icons/Hangers.svg").default}
                     alt=""
                   />
                   <div>Hangers</div>
@@ -345,7 +489,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Wifi.svg"
+                    src={require("../../assets/img/icons/Wifi.svg").default}
                     alt=""
                   />
                   <div>Wifi</div>
@@ -353,7 +497,10 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/mountain-view.svg"
+                    src={
+                      require("../../assets/img/icons/mountain-view.svg")
+                        .default
+                    }
                     alt=""
                   />
                   <div>Mountain View</div>

@@ -169,7 +169,7 @@ export function SearchBar({ onToSearch }) {
                                 <label htmlFor="guests">Who</label>
                                 <input type='text' name='guests' id='guests' placeholder="Add guests"
                                     value={filter?.guests.adults > 0 || filter?.guests.children > 0 ?
-                                        `Guests: ${filter.guests.adults + filter.guests.children}` : '' }
+                                        `${filter.guests.adults + filter.guests.children} guests `: '' }
                                     readOnly={true}
                                     onChange={null}
                                 />
@@ -247,11 +247,11 @@ export function SearchBar({ onToSearch }) {
                             </div>
                         </div>
                     </div>}
-                    {(onActiveNow === 'location' && filter.where) && <div className="quick-results-by-text-modal">
+                    {/* {(onActiveNow === 'location' && filter.where) && <div className="quick-results-by-text-modal">
                         <div className="icon-cover-gray">
                             <IoLocationOutline />
                         </div>
-                    </div>}
+                    </div>} */}
                     {onActiveNow === 'guests' &&
                         <div className="guests-adding-modal">
                             <GuestsCounter filter={filter} onCountChange={onCountChange} parentCmp={'searchBar'} />

@@ -1,7 +1,17 @@
-.app-footer{
-    background-color: #111;
-    // color: $clr4;
-    padding: 20px;
-    margin: 10px;
-    text-align: center;
+.app-footer {
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-top: 1px solid rgb(221, 221, 221);
+  > * {
+    padding: 1.5rem 1rem;
+  }
+//   >:not(:last-child) {
+//     border-right: black solid 1px;
+//   }
+
+  .li-icon, .gh-icon {
+    padding: 0.5rem 0.25rem;
+  }
 }

@@ -14,7 +14,6 @@ import { AmenitiesModal } from "./cmps/modals/amenities-modal";
 import { Orders } from "./pages/orders";
 import { OrderDetails } from "./cmps/order-details";
 import { OrderEdit } from "./pages/order-edit";
-// import { AppFooter } from './cmps/app-footer'
 // import { UserDetails } from './pages/user-details'
 
 export function RootCmp() {
@@ -81,6 +80,7 @@ export function RootCmp() {
           <Route path="/amenities/" element={<AmenitiesModal />} />
         </Routes>
       </main>
+      <AppFooter />
       {/* <AppFooter /> */}
     </div>
   );

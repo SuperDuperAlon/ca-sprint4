@@ -16,14 +16,14 @@ export function StayDetailsLocationInfo({ stay, isMobile }) {
             <div className="info-header fs26 fw600 lh30">{stay.name}</div>
             <div className="secondary-info fs14 flex align-center">
               <div className="locations-attr fs14 fw600">
-                <div className="mar-r8">
+                <div className="mar-r4">
                   <span className="fs16">
                     <MdStar />
                   </span>
-                  4.88 · <Link to={`/reviews/`}>303 Reviews</Link>
+                  4.88 · <Link to={`/reviews/`}>{stay.reviews.length} reviews</Link>
                 </div>
-                ·
-                <div className="mar-l8">
+                · {stay.host.isSuperhost && <div className="fw400">Supehost ·</div> }
+                <div className="mar-l4">
                   <Link to={`/location/`}>
                     {stay.loc.city}, {stay.loc.address}, {stay.loc.country}
                   </Link>

@@ -74,7 +74,7 @@ export function StayDetailsOrderModal({ stay }) {
             ${stay.price} <span className="fs16">night</span>{" "}
           </div>
           <div className="fs14 fw600">
-          <MdStar />4.7 ·<button className="sml-review-btn"><Link to={`/review/`}>3 reviews</Link> </button>{" "}
+          <MdStar />4.88 ·<button className="sml-review-btn"><Link to={`/review/`}>{stay.reviews.length} reviews</Link> </button>{" "}
           </div>
         </div>
         <div className="set-dates">
