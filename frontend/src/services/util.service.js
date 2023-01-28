@@ -113,16 +113,7 @@ async function getImg() {
       console.log(err)
     }
 }
-async function getImg() {
-    try{
-      const imgData = await axios.get('https://randomuser.me/api/?inc=picture')
-      return imgData.data.results[0].picture.thumbnail
-    } 
-    catch(err){
-      console.log(err)
-    }
-    
-    }
+
 
 function saveToStorage(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
