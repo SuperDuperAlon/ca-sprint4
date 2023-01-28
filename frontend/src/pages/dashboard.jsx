@@ -12,10 +12,10 @@ import { orderService } from '../services/order.service';
 import { useEffect, useState } from 'react';
 // import { CategoryScale } from "chart.js";
 
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, RadialLinearScale } from 'chart.js';
 import { Bar, Doughnut} from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, RadialLinearScale, CategoryScale} from 'chart.js';
 
-ChartJS.register(RadialLinearScale,ArcElement, Tooltip, Legend);
+ChartJS.register(RadialLinearScale,ArcElement, Tooltip, Legend, CategoryScale);
 
 
 
