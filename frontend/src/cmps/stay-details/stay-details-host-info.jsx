@@ -135,16 +135,16 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
               <div className="amenities-list">
                 <div>
                   <img
-                    src={require("../../assets/img/icons/TV.svg")}
+                    src={require("../../assets/img/icons/TV.svg").default}
                     className="amenities-icons"
                     alt="TV"
                   />
                   <div>TV</div>
                 </div>
-                {/* <div>
+                <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Gym.svg"
+                    src={require("../../assets/img/icons/Gym.svg").default}
                     alt=""
                   />
                   <div>Gym</div>
@@ -152,7 +152,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Doorman.svg"
+                    src={require("../../assets/img/icons/Doorman.svg").default}
                     alt=""
                   />
                   <div>Doorman</div>
@@ -160,7 +160,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Hangers.svg"
+                    src={require("../../assets/img/icons/Hangers.svg").default}
                     alt=""
                   />
                   <div>Hangers</div>
@@ -168,7 +168,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Wifi.svg"
+                    src={require("../../assets/img/icons/Wifi.svg").default}
                     alt=""
                   />
                   <div>Wifi</div>
@@ -176,7 +176,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/mountain-view.svg"
+                    src={require("../../assets/img/icons/mountain-view.svg").default}
                     alt=""
                   />
                   <div>Mountain View</div>
@@ -184,7 +184,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Safe.svg"
+                    src={require("../../assets/img/icons/Safe.svg").default}
                     alt=""
                   />
                   <div>Safe</div>
@@ -192,11 +192,11 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/private-entrance.svg"
+                    src={require("../../assets/img/icons/private-entrance.svg").default}
                     alt=""
                   />
                   <div>Private Entrance</div>
-                </div> */}
+                </div>
 
                 {/* {stay.amenities.map((amenities, idx) => {
                   if (idx < 10) return (
@@ -349,7 +349,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/TV.svg"
+                    src={require("../../assets/img/icons/TV.svg").default}
                     alt=""
                   />
                   <div>TV</div>
@@ -357,7 +357,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Gym.svg"
+                    src={require("../../assets/img/icons/Gym.svg").default}
                     alt=""
                   />
                   <div>Gym</div>
@@ -365,7 +365,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Doorman.svg"
+                    src={require("../../assets/img/icons/Doorman.svg").default}
                     alt=""
                   />
                   <div>Doorman</div>
@@ -373,7 +373,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Hangers.svg"
+                    src={require("../../assets/img/icons/Hangers.svg").default}
                     alt=""
                   />
                   <div>Hangers</div>
@@ -381,7 +381,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/Wifi.svg"
+                    src={require("../../assets/img/icons/Wifi.svg").default}
                     alt=""
                   />
                   <div>Wifi</div>
@@ -389,7 +389,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 <div>
                   <img
                     className="amenities-icons"
-                    src="../../assets/img/icons/mountain-view.svg"
+                    src={require("../../assets/img/icons/mountain-view.svg").default}
                     alt=""
                   />
                   <div>Mountain View</div>
