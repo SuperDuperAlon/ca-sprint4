@@ -23,12 +23,11 @@ export function StayIndex() {
     const userPreference = useSelector(storeState => storeState.filterModule.filter)
     const navigate = useNavigate()
     const { filterBy } = useParams()
-
+     
     useEffect(() => {
         loadStays(filterBy)
-        if (!!filterBy?.where === '') { navigate('/') }
+        if (!!filterBy?.where === '' || !!filterBy?.checkIn) { navigate('/') }
     }, [filterBy])
-
 
     async function onRemoveStay(ev, stayId) {
         ev.stopPropagation()
@@ -53,7 +52,6 @@ export function StayIndex() {
     }
 
     function onClickOutSideTheBar(event) {
-        event.preventDefault()
         if (!openSearchBar) return
         store.dispatch({
             type: SEARCH_BAR_OPEN,
@@ -67,13 +65,10 @@ export function StayIndex() {
     }
 
     function queryToParams(filter) {
-        // console.log(filter);
-        // filter.guests = Object.values(filter.guests).reduce((a, b) => a + b, 0)
         filter.checkIn = filterService.getDateToFilter(filter.checkIn)
         filter.checkOut = filterService.getDateToFilter(filter.checkOut)
         const queryParams =
             `where=${filter.where}&checkIn=${filter.checkIn}&checkOut=${filter.checkOut}&label=${filter.label}&adults=${filter.guests.adults}&children=${filter.guests.children}&infants=${filter.guests.infants}&pets=${filter.guests.pets}`
-            // &adults=${guests.adults}&children=${guests.children}`    
         return queryParams
     }
 
@@ -87,14 +82,12 @@ export function StayIndex() {
         >
             <div className='app-header index-layout full'>
                 <AppHeader onToSearch={onToSearch}
-                    // onLookOutParams={onLookOutParams}
                     stay={false} />
             </div>
             <StayList stays={stays} onRemoveStay={onRemoveStay}
                 onEditStay={onEditStay} onOpenStay={onOpenStay}
                 onClickOutSideTheBar={onClickOutSideTheBar}
                 openSearchBar={openSearchBar}
-            // listInnerRef={listInnerRef}
             />
             {openSearchBar && <div className="black-screen full"
                 onClick={onClickOutSideTheBar}

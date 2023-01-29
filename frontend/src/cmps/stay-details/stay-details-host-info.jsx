@@ -513,7 +513,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
               </button>
             </div>
             <div>
-              <StayDetailsMap stay={stay} isMobile={isMobile} />
+              {/* <StayDetailsMap stay={stay} isMobile={isMobile} /> */}
             </div>
 
             <div className="calendar">
@@ -527,5 +527,3 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
       </section>
     );
 }
-
-// require("../../assets/img/other/DOGE.jpg")

@@ -12,19 +12,43 @@ import { SET_FILTER } from "../../store/filter.reducer"
 
 import { FiSearch } from 'react-icons/fi'
 import { BsClock } from 'react-icons/bs'
+import { IoLocationOutline } from 'react-icons/io5'
 import { MdClear } from 'react-icons/md'
 
 import { SEARCH_BAR_OPEN } from "../../store/stay.reducer"
 import { store } from "../../store/store"
+import { searchByKey } from "../../store/filter.action"
 
 export function SearchBar({ onToSearch }) {
     const [onActiveNow, setActiveNow] = useState(null)
     const [filter, setFilter] = useState(filterService.getEmptyFilter())
+    const [quickResByText, setQuickResByText] = useState([])
     let { filterBy } = useParams()
     const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
     const searchInBox = useRef(null)
 
     useOutsideAlerter(searchInBox)
+    
+    useEffect(() => {
+        if (filter.where || filter.checkIn) {
+            store.dispatch({
+                type: SET_FILTER,
+                filter
+            })
+        }
+        setActiveNow(openSearchBar)
+    }, [openSearchBar])
+
+    useEffect(() => {
+        quickLocationSuggests()
+    }, [filter.where])
+
+    async function quickLocationSuggests() {
+        if (filter?.where?.trim()) {
+            const searchRes = await searchByKey(filter.where)
+            setQuickResByText(searchRes)
+        }
+    }
 
     function useOutsideAlerter(ref) {
         useEffect(() => {
@@ -40,15 +64,6 @@ export function SearchBar({ onToSearch }) {
         }, [ref])
     }
 
-    useEffect(() => {
-        if (!filter.where || !filter.checkIn) {
-            store.dispatch({
-                type: SET_FILTER,
-                filter
-            })
-        }
-        setActiveNow(openSearchBar)
-    }, [openSearchBar])
 
     function onChangeDate(dates) {
         const checkIn = dates[0]
@@ -85,7 +100,6 @@ export function SearchBar({ onToSearch }) {
     }
 
     function onClickSearch(event) {
-        event.preventDefault()
         setActiveNow(null)
         if (filterBy) {
             filterBy = filterService.getParamsToObj(filterBy)
@@ -104,13 +118,9 @@ export function SearchBar({ onToSearch }) {
         })
     }
 
-    
-
-    function onExitTheSearchBar(event){
-        store.dispatch({
-            type: SEARCH_BAR_OPEN,
-            open: false,
-        })
+    function changeWhereOption(option){
+        setFilter({ ...filter, where: option })
+        setActiveNow('checkIn')
     }
 
     return (
@@ -216,6 +226,7 @@ export function SearchBar({ onToSearch }) {
                                             Feb 13-15
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -251,6 +262,23 @@ export function SearchBar({ onToSearch }) {
                             </div>
                         </div>
                     </div>}
+
+                    {(onActiveNow === 'location' && filter?.where && quickResByText?.length) && <div className="text-option-to-search">
+                        {quickResByText.map((textOption) => (
+                            <li key={textOption} className='text-option'
+                                onClick={()=>changeWhereOption(textOption)}
+                                >
+                                <div className="icon-cover-gray">
+                                    <IoLocationOutline />
+                                </div>
+                                <div className="fs16">
+                                    {textOption}
+                                </div>
+                            </li>
+
+                        ))}
+                    </div>}
+
                     {onActiveNow === 'guests' &&
                         <div className="guests-adding-modal">
                             <GuestsCounter filter={filter} onCountChange={onCountChange} parentCmp={'searchBar'} />

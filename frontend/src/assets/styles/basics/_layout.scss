@@ -42,18 +42,10 @@
 
 .details-layout {
 
-  >* {
-    grid-column: 2;
-
-    &.full {
-      grid-column: 1 /-1;
-    }
-  }
-
-  // Details
-  display: grid;
-
-  >* {
+   // Details
+   display: grid;
+   
+   > * {
     grid-column: 2;
   }
 
@@ -93,3 +85,26 @@
   }
 }
 
+    // grid-template-columns:
+    //   minmax(0,80px) minmax(auto, $x-large-breakpoint) minmax(0,80px);
+
+  //   grid-template-columns:
+  //     1.5rem minmax(auto, $small-breakpoint-details)
+  //     1.5rem;
+  // }
+  // @include for-details-md-layout {
+  //   // background-color: rgb(0, 255, 68);
+  //   grid-template-columns:
+  //     minmax(40px, 1fr) minmax(auto, $medium-breakpoint-details)
+  //     minmax(40px, 1fr);
+  // }
+
+  // @include for-details-lg-layout {
+  //   // background-color: orange;
+  //   grid-template-columns:
+  //     minmax(40px, 1fr) minmax(auto, $large-breakpoint-details)
+  //     minmax(40px, 1fr);
+  // }
+
+
+  
