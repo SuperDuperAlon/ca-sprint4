@@ -23,10 +23,11 @@ export function StayIndex() {
     const userPreference = useSelector(storeState => storeState.filterModule.filter)
     const navigate = useNavigate()
     const { filterBy } = useParams()
+
+
      
     useEffect(() => {
         loadStays(filterBy)
-        if (!!filterBy?.where === '' || !!filterBy?.checkIn) { navigate('/') }
     }, [filterBy])
 
     async function onRemoveStay(ev, stayId) {
@@ -61,6 +62,7 @@ export function StayIndex() {
 
     function onToSearch(filter) {
         const params = queryToParams(filter)
+        console.log('params:',params )
         navigate(`/${params}`)
     }
 

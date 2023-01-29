@@ -60,7 +60,7 @@ function replaceNullToZeros(filter) {
 
 function getEmptyFilter() {
     return {
-        where: null,
+        where: '',
         checkIn: null,
         checkOut: null,
         guests: {
