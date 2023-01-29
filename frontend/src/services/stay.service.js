@@ -36,11 +36,10 @@ async function getListings(hostId) {
   }
 }
 
-async function query(filterBy = filterService.getEmptyFilter()) {
+async function query(filterBy) {
   const queryParams = `?where=${filterBy.where}`;
-  // console.log(queryParams);
-  // console.log(BASE_URL + queryParams);
   const stays = await httpService.get(BASE_URL + queryParams);
+  // console.log(stays);
   return stays
 
   // let data= await storageService.query(STORAGE_KEY)

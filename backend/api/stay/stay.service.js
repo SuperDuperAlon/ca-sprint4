@@ -8,23 +8,16 @@ const fs = require("fs");
 
 async function query(filterBy = { where: "" }) {
   try {
-    // console.log(filterBy, 'stayservice filter By');
-    // const criteria = {
-    //   loc: { $regex: filterBy.where, $options: "i" },
-    // }
     console.log(filterBy, " service");
     const criteria = _buildCriteria(filterBy);
     // console.log(filterBy, 'stayService');
     console.log(criteria, "service");
     const collection = await dbService.getCollection("stay");
     // var stays = await collection.find({'loc.country': {$regex: new RegExp (criteria, 'ig')}}).toArray()
-    // var stays = await collection.find({'loc.country': {$regex: new RegExp (criteria, 'ig')}}).toArray()
-    // { 'loc.country': { '$regex': /Port/gi } }
-    var stays = await collection.find( criteria ).toArray();
-    // console.log(stays, 'stays service');
-    // var stays = await collection.find(criteria).toArray()
-    // console.log(criteria, 'service criteria');
-    // console.log(stays, 'service stays');
+  
+    // { 'loc.country': { '$regex': /Ista/gi } }
+    var stays = await collection.find(criteria ).toArray();
+
     return stays.slice(0, 20);
   } catch (err) {
     logger.error("cannot find stays", err);

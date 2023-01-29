@@ -4,6 +4,7 @@ import { store } from '../store/store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { SET_STAYS, ADD_STAY, REMOVE_STAY, UPDATE_STAY } from "./stay.reducer.js"
 import { SET_SCORE } from "./user.reducer.js"
+import { filterService } from "../services/filterService"
 
 // Action Creators:
 export function getActionRemoveStay(stayId) {
@@ -26,9 +27,10 @@ export function getActionUpdateStay(stay) {
     }
 }
 
-export async function loadStays(filter=null) {
+export async function loadStays(filter) {
     try {
         const stays = await stayService.query(filter)
+        // Might change to Empty Filter
         store.dispatch({
             type: SET_STAYS,
             stays: stays
