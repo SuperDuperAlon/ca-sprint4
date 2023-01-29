@@ -12,19 +12,62 @@ import { SET_FILTER } from "../../store/filter.reducer"
 
 import { FiSearch } from 'react-icons/fi'
 import { BsClock } from 'react-icons/bs'
+import { IoLocationOutline } from 'react-icons/io5'
 import { MdClear } from 'react-icons/md'
 
 import { SEARCH_BAR_OPEN } from "../../store/stay.reducer"
 import { store } from "../../store/store"
+import { searchByKey } from "../../store/filter.action"
 
 export function SearchBar({ onToSearch }) {
     const [onActiveNow, setActiveNow] = useState(null)
     const [filter, setFilter] = useState(filterService.getEmptyFilter())
+    const [quickResByText, setQuickResByText] = useState([])
     let { filterBy } = useParams()
     const openSearchBar = useSelector(storeState => storeState.stayModule.searchModalOpen)
     const searchInBox = useRef(null)
 
     useOutsideAlerter(searchInBox)
+
+    useEffect(() => {
+            store.dispatch({
+                type: SET_FILTER,
+                filter
+            })
+    },[onActiveNow])
+    
+    useEffect(() => {
+        let filterFromParams
+        if (filterBy) {
+            filterFromParams = filterService.getParamsToObj(filterBy)
+            filterFromParams.guests = {
+                adults: filterFromParams.adults,
+                children: filterFromParams.children,
+                infants: filterFromParams.infants,
+                pets: filterFromParams.pets
+            }
+            delete filterFromParams.adults
+            delete filterFromParams.children
+            delete filterFromParams.infants
+            delete filterFromParams.pets
+        } else {
+            filterFromParams = filterService.getEmptyFilter()
+        }
+        setFilter(filterFromParams)
+        setActiveNow(openSearchBar)
+    }, [openSearchBar])
+
+
+    useEffect(() => {
+        quickLocationSuggests()
+    }, [filter.where])
+
+    async function quickLocationSuggests() {
+        if (filter?.where?.trim()) {
+            const searchRes = await searchByKey(filter.where)
+            setQuickResByText(searchRes)
+        }
+    }
 
     function useOutsideAlerter(ref) {
         useEffect(() => {
@@ -40,15 +83,6 @@ export function SearchBar({ onToSearch }) {
         }, [ref])
     }
 
-    useEffect(() => {
-        if (!filter.where || !filter.checkIn) {
-            store.dispatch({
-                type: SET_FILTER,
-                filter
-            })
-        }
-        setActiveNow(openSearchBar)
-    }, [openSearchBar])
 
     function onChangeDate(dates) {
         const checkIn = dates[0]
@@ -85,32 +119,30 @@ export function SearchBar({ onToSearch }) {
     }
 
     function onClickSearch(event) {
-        event.preventDefault()
+        // console.log('filter:', filter)
         setActiveNow(null)
-        if (filterBy) {
-            filterBy = filterService.getParamsToObj(filterBy)
-        } else {
-            filterBy = filterService.getEmptyFilter()
-        }
-        filterBy.checkIn = filter.checkIn
-        filterBy.checkOut = filter.checkOut
-        filterBy.where = filter.where
-        filterBy.guests = filter.guests
+        // if (filterBy) {
+        //     filterBy = filterService.getParamsToObj(filterBy)
+        // } else {
+        //     filterBy = filterService.getEmptyFilter()
+        // }
+        // filterBy = filter
+        // filterBy.checkIn = filter.checkIn
+        // filterBy.checkOut = filter.checkOut
+        // filterBy.where = filter.where
+        // filterBy.guests = filter.guests
 
-        onToSearch(filterBy)
+        onToSearch(filter)
         store.dispatch({
             type: SEARCH_BAR_OPEN,
             open: false
         })
     }
 
-    
+    function changeWhereOption(option) {
+        setFilter({ ...filter, where: option })
+        setActiveNow('checkIn')
 
-    function onExitTheSearchBar(event){
-        store.dispatch({
-            type: SEARCH_BAR_OPEN,
-            open: false,
-        })
     }
 
     return (
@@ -179,7 +211,8 @@ export function SearchBar({ onToSearch }) {
                                 <label htmlFor="guests">Who</label>
                                 <input type='text' name='guests' id='guests' placeholder="Add guests"
                                     value={filter?.guests.adults > 0 || filter?.guests.children > 0 ?
-                                        `${filter.guests.adults + filter.guests.children} guests ` : ''}
+                                        `${filter.guests.adults + filter.guests.children} guests ` : ''
+                                    }
                                     readOnly={true}
                                     onChange={null}
                                 />
@@ -216,6 +249,7 @@ export function SearchBar({ onToSearch }) {
                                             Feb 13-15
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -251,6 +285,23 @@ export function SearchBar({ onToSearch }) {
                             </div>
                         </div>
                     </div>}
+
+                    {(onActiveNow === 'location' && filter?.where && quickResByText?.length) && <div className="text-option-to-search">
+                        {quickResByText.map((textOption) => (
+                            <li key={textOption} className='text-option'
+                                onClick={() => changeWhereOption(textOption)}
+                            >
+                                <div className="icon-cover-gray">
+                                    <IoLocationOutline />
+                                </div>
+                                <div className="fs16">
+                                    {textOption}
+                                </div>
+                            </li>
+
+                        ))}
+                    </div>}
+
                     {onActiveNow === 'guests' &&
                         <div className="guests-adding-modal">
                             <GuestsCounter filter={filter} onCountChange={onCountChange} parentCmp={'searchBar'} />

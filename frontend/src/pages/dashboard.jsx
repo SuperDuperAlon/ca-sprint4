@@ -7,56 +7,95 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import { stayService } from '../services/stay.service';
-import { useParams } from 'react-router';
+import { Navigate, useNavigate, useParams } from 'react-router';
 import { orderService } from '../services/order.service';
 import { useEffect, useState } from 'react';
 // import { CategoryScale } from "chart.js";
 
 import { Bar, Doughnut} from 'react-chartjs-2';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, RadialLinearScale, CategoryScale} from 'chart.js';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, RadialLinearScale, CategoryScale, LinearScale, BarElement} from 'chart.js';
+import { utilService } from '../services/util.service';
+import { loadOrders, updateOrder } from '../store/order.actions';
+import { useSelector } from 'react-redux';
 
-ChartJS.register(RadialLinearScale,ArcElement, Tooltip, Legend, CategoryScale);
+ChartJS.register(RadialLinearScale,ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement);
 
 
 
-// const rows = [
-//     createData('Carla', 'Nice house', new Date().toLocaleDateString(), new Date().toLocaleDateString(), 5000, 'approved', <button>approve</button>),
-//     createData('Louis', 'Nice house', new Date().toLocaleDateString(), new Date().toLocaleDateString(), 3000, 'appending', <button>approve</button>),
-// ]
+
 
 
 export function Dashboard() {
     const { hostId } = useParams()
     const [listings, setListings] = useState(null)
-    const [orders, setOrders] = useState(null)
+    // const [orders, setOrders] = useState(null)
     // const [labels, setLabels] = useState([])
     const [doughnutData, setDoughnutData] = useState({})
+    const [barData, setBarData] = useState({})
 
+    const navigate = useNavigate()
+    const orders = useSelector(storeState => storeState.orderModule.orders)
+    const user = useSelector(storeState => storeState.orderModule.orders)
     
     useEffect(()=>{
+        // loadOrders(host)
+        // loadHost(hostId)
+        loadOrders(hostId)
         loadHost()
     },[])
+
+    useEffect(()=>{
+        setDoughnutData(getDoughnutData())
+        setBarData( getBarData())
+    },[orders])
     
-console.log(doughnutData)
-// console.log(listings)
+
 // console.log(orders)
+// console.log(doughnutData)
+// console.log(barData)
+console.log(listings);
+    
 
 async function loadHost(){
     try{
         const listings = await stayService.getListings(hostId)
-        const orders = await orderService.getOrders(hostId)
         setListings(listings)
-        setOrders(orders)
-        setDoughnutData(getData())
+        console.log(listings);    
     }
     catch (err){
         console.log(err)
     }
 
 }
-// !acc.includes(order.stay.name) && acc.push(order.stay.name)
-function getData(){
-    // orders.forEach((order)=> !labels.includes(order.stay.name) && labels.push(order.stay.name))
+
+async function handelStatus(currOrder, status){
+    try {
+        const orderIndex = orders.findIndex((order)=> order._id === currOrder._id)
+        currOrder.status = status
+        const updatedOrder = await updateOrder(currOrder)
+        orders.splice(orderIndex, 1, updatedOrder)
+        // setOrders(orders
+    } catch(err){
+        console.log(err)
+    }
+    // const orderIndex = orders.findIndex((order)=> order._id === currOrder._id)
+    // currOrder.status = status
+    // orders.splice(orderIndex, 1, currOrder)
+    // setOrders(orders)
+   
+}
+
+function getBarData(){
+    const constChartData = orders.reduce((acc, order)=>{
+        acc[utilService.getMonthName(new Date(order.startDate))] =  ++ order.totalPrice
+        acc[utilService.getMonthName(new Date(order.startDate))] = acc[utilService.getMonthName(new Date(order.startDate))] ? (acc[utilService.getMonthName(new Date(order.startDate))] += order.totalPrice) : order.totalPrice
+        return acc
+    }, 
+    {})
+    return constChartData
+}
+
+function getDoughnutData(){
     const constChartData = orders.reduce((acc, order)=>{
         acc[order.stay.name] = acc[order.stay.name] ? ++acc[order.stay.name] : 1
         return acc
@@ -65,13 +104,10 @@ function getData(){
     return constChartData
 }
 
-// function getData(){
-//     orders.forEach((order)=> !labels.includes(order.stay.name) && labels.push(order.stay.name)
-// }
 
 function calculateStatus(status){
-    const sumStatus  = orders.reduce((acc, order)=> order.status === status && acc + 1, 0 )
-    return sumStatus>0 ? sumStatus : 0
+    const sumStatus  = orders.reduce((acc, order)=> (order.status === status)? acc + 1 : acc+0 , 0 )
+    return sumStatus
 }
 
     const dataDoughnut = {
@@ -112,11 +148,20 @@ function calculateStatus(status){
     ],
 }
 
+const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'left',
+      }
+  }
+}
+
 const dataBar = {
-        labels:  ['Oct','Nov','Dec', 'Jan'],
+        labels:  Object.keys(barData),
         datasets: [{
-          label: 'My First Dataset',
-          data: [65, 59, 80, 81],
+          label: 'revenue',
+          data: Object.values(barData),
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(255, 159, 64, 0.2)',
@@ -144,20 +189,24 @@ const dataBar = {
     if (!orders) return <div>loading...</div>
     return (
         <section className="dashboard">
+            <nav>
+                <button className='dashboard-btn mar-r8' onClick={()=>navigate(`/dashboard/${hostId}`)}>Reservations</button>
+                <button className='dashboard-btn ' onClick={()=>navigate(`/listings/${hostId}`)}>Listings</button>
+            </nav>
             <div className="charts-section">
                 <div className='chart-container'>
-                    <div>Revenue / month</div>
-                    <div><Bar data={dataBar} /></div>
+                    <div className='fs22 bold pad-b16'>Revenue / month</div>
+                    <div><Bar options={options} data={dataBar} /></div>
                 </div>
                 <div className="chart-container">
-                    <div>Reservations status</div>
-                    <div>Pending: {calculateStatus('pending')}</div>
-                    <div>Approved: {calculateStatus('approved')} </div>
-                    <div>Rejected: {calculateStatus('rejected')} </div>
+                    <div className='fs22 bold pad-b38'>Reservations status</div>
+                    <div className='fs18 pad-b24 flex space-between'><div>Pending:</div> <div className='grey-76'>{calculateStatus('pending')}</div></div>
+                    <div className='fs18 pad-b24 flex space-between'><div>Approved:</div> <div className='turquoise'>{calculateStatus('approved')}</div> </div>
+                    <div className='fs18 pad-b24 flex space-between'><div>Rejected:</div> <div className='pink'>{calculateStatus('rejected')}</div></div>
                 </div>
                 <div className="chart-container">
-                    <div>Reservations / listing</div>
-                    <div className='flex'><Doughnut data={dataDoughnut} /></div>
+                    <div className='fs22 bold pad-b8'>Reservations / listing</div>
+                    <div className='flex'>{doughnutData ? <Doughnut options={options} data={dataDoughnut} /> : <div class="loader"></div>}</div>
                 </div>
             </div>
             <div className='table-container'>
@@ -172,7 +221,7 @@ const dataBar = {
                                 <TableCell ><TableSortLabel>Check-out</TableSortLabel></TableCell>
                                 <TableCell ><TableSortLabel>Total price</TableSortLabel></TableCell>
                                 <TableCell >Status</TableCell>
-                                <TableCell >Action</TableCell>
+                                <TableCell align='center'>Action</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -185,11 +234,11 @@ const dataBar = {
                                         {order.buyer.fullname}
                                     </TableCell>
                                     <TableCell >{order.stay.name}</TableCell>
-                                    <TableCell >{order.startDate}</TableCell>
-                                    <TableCell >{order.endDate}</TableCell>
-                                    <TableCell >{order.totalPrice}</TableCell>
+                                    <TableCell >{new Date(order.startDate).toLocaleDateString()}</TableCell>
+                                    <TableCell >{new Date(order.endDate).toLocaleDateString()}</TableCell>
+                                    <TableCell >${order.totalPrice}</TableCell>
                                     <TableCell >{order.status}</TableCell>
-                                    <TableCell ><button onClick={()=>console.log('yes') }>Approve</button><button>Reject</button></TableCell>
+                                    <TableCell align='center'><button className='dashboard-btn-turquoise' onClick={()=> handelStatus(order, 'approved') }>Approve</button><button className='dashboard-btn-pink' onClick={()=> handelStatus(order, 'rejected')}>Reject</button></TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

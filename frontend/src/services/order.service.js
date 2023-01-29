@@ -20,7 +20,10 @@ window.cs = orderService
 
 async function query(filterBy) {
   try {
-    return storageService.query(STORAGE_KEY)
+    let data= await storageService.query(STORAGE_KEY)
+    const regex = new RegExp(filterBy, 'i')
+    data = data.filter(order => regex.test(order.hostId) )
+    return data
   } catch (err) {
     console.log(err)
   }
@@ -100,70 +103,136 @@ function _createOrders() {
     orders = [
       {
         _id: "o1225",
-        hostId: "u102",
+        hostId: "622f3402e36c59e6164facbf",
         buyer: {
-          _id: "u101",
-          fullname: "User 1",
+          _id: "622f3402e36c59e6164facbe",
+          fullname: "Christina",
         },
-        totalPrice: 160,
-        startDate: "2025/10/15",
-        endDate: "2025/10/17",
+        totalPrice: 1900,
+        startDate: "01/20/2022",
+        endDate: "01/10/2022",
         guests: {
           adults: 2,
           kids: 1,
         },
         stay: {
-          _id: "h102",
-          name: "Milano",
-          price: 160.0,
+          _id: "622f337a75c7d36e498aab0b",
+          name: "Elegant Flat in the Center",
+          price: 190.0,
         },
         msgs: [],
         status: "pending", // pending, approved
+      },
+      {
+        _id: "o1226",
+        hostId: "622f3402e36c59e6164facbf",
+        buyer: {
+          _id: "622f3402e36c59e6164facc0",
+          fullname: "Paula",
+        },
+        totalPrice: 950,
+        startDate: "01/05/2023",
+        endDate: "01/09/2023",
+        guests: {
+          adults: 2,
+          kids: 1,
+        },
+        stay: {
+          _id: "622f337a75c7d36e498aab0b",
+          name: "Elegant Flat in the Center",
+          price: 190.0,
+        },
+        msgs: [],
+        status: "complete", // pending, approved
       },
       {
         _id: "o1227",
-        hostId: "u102",
+        hostId: "622f3402e36c59e6164facbf",
         buyer: {
-          _id: "u102",
-          fullname: "User 1",
+          _id: "622f3402e36c59e6164facc2",
+          fullname: "Andrius",
         },
-        totalPrice: 160,
-        startDate: "2025/10/15",
-        endDate: "2025/10/17",
+        totalPrice: 780,
+        startDate: "01/05/2023",
+        endDate: "01/09/2023",
         guests: {
           adults: 2,
           kids: 1,
         },
         stay: {
-          _id: "h102",
-          name: "House Of Uncle My",
-          price: 80.0,
+          _id: "622f337b75c7d36e498aabac",
+          name: "Ultra Comfy Flat & Perfect Location",
+          price: 195,
         },
         msgs: [],
-        status: "pending", // pending, approved
+        status: "complete", // pending, approved
+      },
+      {
+        _id: "o1228",
+        hostId: "622f3402e36c59e6164facbf",
+        buyer: {
+          _id: "622f3402e36c59e6164facc4",
+          fullname: "Patricia",
+        },
+        totalPrice: 585,
+        startDate: "12/27/2022",
+        endDate: "12/30/2022",
+        guests: {
+          adults: 2,
+          kids: 1,
+        },
+        stay: {
+          _id: "622f337b75c7d36e498aabac",
+          name: "Ultra Comfy Flat & Perfect Location",
+          price: 195,
+        },
+        msgs: [],
+        status: "complete", // pending, approved
       },
       {
         _id: "o1229",
-        hostId: "u102",
+        hostId: "622f3402e36c59e6164facbf",
         buyer: {
-          _id: "u103",
-          fullname: "User 1",
+          _id: "622f3402e36c59e6164facbb",
+          fullname: "Michael",
         },
-        totalPrice: 160,
-        startDate: "2025/10/15",
-        endDate: "2025/10/17",
+        totalPrice: 1330,
+        startDate: "12/20/2022",
+        endDate: "12/27/2022",
         guests: {
           adults: 2,
           kids: 1,
         },
         stay: {
-          _id: "h102",
-          name: "House Of Uncle My",
-          price: 80.0,
+          _id: "622f337a75c7d36e498aab0b",
+          name: "Elegant Flat in the Center",
+          price: 190,
         },
         msgs: [],
-        status: "pending", // pending, approved
+        status: "complete", // pending, approved
       },
+      {
+        _id: "o1230",
+        hostId: "622f3402e36c59e6164facbf",
+        buyer: {
+          _id: "622f3402e36c59e6164facbc",
+          fullname: "Héloïse",
+        },
+        totalPrice: 1330,
+        startDate: "11/20/2022",
+        endDate: "11/27/2022",
+        guests: {
+          adults: 2,
+          kids: 1,
+        },
+        stay: {
+          _id: "622f337a75c7d36e498aab0b",
+          name: "Elegant Flat in the Center",
+          price: 190,
+        },
+        msgs: [],
+        status: "complete", // pending, approved
+      }
     ]
     utilService.saveToStorage(STORAGE_KEY, orders)
   }

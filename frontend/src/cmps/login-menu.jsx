@@ -14,12 +14,13 @@ export function LoginMenu({isMenuOpen ,setIsMenuOpen}) {
   const handleClose = () => setOpen(false)
   const navigate = useNavigate()
 
-  
-  
-  
+  console.log(open)
+
   function handleOpen(isSignup){
+    
     setOpen(true)
     setIsClickedSignUp(isSignup)
+    // setIsMenuOpen(false)
   }
 
   function onClickedLogin(loggedInUser){
@@ -42,7 +43,8 @@ export function LoginMenu({isMenuOpen ,setIsMenuOpen}) {
   return (
     <div className="login-header">
       {/* <button onClick={handleOpen}>Open modal</button> */}
-      {!loggedInUser && <section className="login-menu-open">
+      {!loggedInUser && 
+      <section className="login-menu-open"> 
          <div onClick={()=>handleOpen(true)} className="nav-btn border-bottom">Sign up</div>
         <div onClick={()=>handleOpen(false)} className="nav-btn">Log in</div>
      </section>}
