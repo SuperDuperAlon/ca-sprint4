@@ -17,6 +17,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend, RadialLinearScale, Categ
 import { utilService } from '../services/util.service';
 import { loadOrders, updateOrder } from '../store/order.actions';
 import { useSelector } from 'react-redux';
+import { AppHeader } from '../cmps/app-header';
 
 ChartJS.register(RadialLinearScale,ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement);
 
@@ -189,6 +190,7 @@ const dataBar = {
     if (!orders) return <div>loading...</div>
     return (
         <section className="dashboard">
+            <div className='header-container full border-bottom'><AppHeader origin={'dashboard'}/></div>
             <nav>
                 <button className='dashboard-btn mar-r8' onClick={()=>navigate(`/dashboard/${hostId}`)}>Reservations</button>
                 <button className='dashboard-btn ' onClick={()=>navigate(`/listings/${hostId}`)}>Listings</button>
@@ -200,9 +202,9 @@ const dataBar = {
                 </div>
                 <div className="chart-container">
                     <div className='fs22 bold pad-b38'>Reservations status</div>
-                    <div className='fs18 pad-b24 flex space-between'><div>Pending:</div> <div className='grey-76'>{calculateStatus('pending')}</div></div>
-                    <div className='fs18 pad-b24 flex space-between'><div>Approved:</div> <div className='turquoise'>{calculateStatus('approved')}</div> </div>
-                    <div className='fs18 pad-b24 flex space-between'><div>Rejected:</div> <div className='pink'>{calculateStatus('rejected')}</div></div>
+                    <div className='fs18 pad-b24 flex space-between'><div>Pending</div> <div className='grey-76'>{calculateStatus('pending')}</div></div>
+                    <div className='fs18 pad-b24 flex space-between'><div>Approved</div> <div className='turquoise'>{calculateStatus('approved')}</div> </div>
+                    <div className='fs18 pad-b24 flex space-between'><div>Rejected</div> <div className='pink'>{calculateStatus('rejected')}</div></div>
                 </div>
                 <div className="chart-container">
                     <div className='fs22 bold pad-b8'>Reservations / listing</div>

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { ImgCarousel } from "../cmps/img-carousel"
 import { stayService } from "../services/stay.service"
 import { AiFillStar } from "react-icons/ai"
+import { AppHeader } from "../cmps/app-header"
 
 export function Listings(){
     const { hostId } = useParams()
@@ -28,11 +29,13 @@ export function Listings(){
     }
 
     if (!listings) return <div>Loading...</div>
-    return <section className="listings">
+    return <section className="listings-main">
+        <AppHeader origin={'dashboard'}/>
         <nav>
                 <button className='dashboard-btn mar-r8' onClick={()=>navigate(`/dashboard/${hostId}`)}>Reservations</button>
                 <button className='dashboard-btn ' onClick={()=>navigate(`/listings/${hostId}`)}>Listings</button>
             </nav>
+           <div className="listings"> 
         <ul className="stay-list">
         {listings.map((stay) => (
           <li
@@ -77,6 +80,7 @@ export function Listings(){
           </li>
         ))}
       </ul>
+      </div>
     </section>
 
 }

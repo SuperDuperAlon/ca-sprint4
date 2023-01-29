@@ -1,5 +1,31 @@
+
 .dashboard{
     min-height: 90vh;
+    display: grid;
+    grid-template-columns: minmax($pad-24, 1fr) minmax(250px, $small-breakpoint) minmax($pad-24,
+    1fr);
+
+>* {
+  grid-column: 2;
+
+  &.full {
+    grid-column: 1 /-1;
+  }
+}
+
+@include for-wide-layout {
+    grid-template-columns:
+      // minmax($pad-40,1fr) minmax($x-large-breakpoint, 1700px) minmax($pad-40,1fr);
+      80px minmax($x-large-breakpoint, auto) 80px;
+  }
+    .header-container{
+        // display: grid;
+        // >* {
+        //     grid-column: 2;
+        // }
+        padding: 0 80px;
+    }
+   
     nav{
         padding: 50px 0px 20px;
         text-align: center;
@@ -12,7 +38,7 @@
     .charts-section{
         padding: 40px 0px 60px;
         display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(300px,450px));
+        grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
         justify-content: center;
         gap: rem(15px);
         .chart-container{
@@ -31,7 +57,7 @@
     }
     .table-container{
         margin: auto;
-        max-width: 80%;
+        width: 100%;
         padding-bottom: 60px;
 
         .css-quj9j6-MuiTable-root{

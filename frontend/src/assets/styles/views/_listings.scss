@@ -1,8 +1,6 @@
-.listings{
-    display: grid;
-    grid-template-columns:  repeat(auto-fit, minmax(250px, 350px)) ;
-    gap : 25px ;
-    margin: 80px;
+.listings-main{
+    padding:0 80px;
+    min-height: 89vh;
     nav{
         padding: 50px 0px 20px;
         text-align: center;
@@ -11,5 +9,16 @@
             font-size: 19px;
             font-weight: 800;
         }
+    }
+    .listings{
+        
+        gap : 25px ;
+
+        .stay-list{
+            display: grid;
+            grid-template-columns:  repeat(auto-fit, minmax(250px, 350px)) ;
+            gap : 25px ;
+        }
+       
     }
 }
