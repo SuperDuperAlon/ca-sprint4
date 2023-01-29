@@ -901,7 +901,7 @@
         margin-top: 16px;
         transition: transform 0.5s ease, box-shadow 0.4s, opacity 0.4s;
         border-radius: 50px;
-        border: 1px solid $clr-border-between-div;
+        border: 2px solid $clr-border-between-div;
 
         &:hover {
             box-shadow: 0 1px 2px rgb(0 0 0 / 8%), 0 4px 12px rgb(0 0 0 / 5%);
@@ -1135,7 +1135,7 @@
 
                     >* {
                         stroke-width: 3;
-                        font-size: 1.2rem;
+                        font-size: 0.9rem;
                     }
                 }
             }
