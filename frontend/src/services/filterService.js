@@ -15,13 +15,22 @@ export const filterService = {
 
 function getDateToFilter(date) {
     if (!date) return null
-    const day = date.getDate()
-    const month = date.getMonth() + 1
-    const year = date.getFullYear()
-    return year + '-' + month + '-' + day
+    try {
+        const day = date.getDate()
+        const month = date.getMonth() + 1
+        const year = date.getFullYear()
+        return year + '-' + month + '-' + day
+    }catch{
+        date=new Date(date)
+        const day = date.getDate()
+        const month = date.getMonth() + 1
+        const year = date.getFullYear()
+        return year + '-' + month + '-' + day
+    }
 }
 
 function getParamsToObj(filterBy) {
+    if (!filterBy) { return getEmptyFilter() }
     let query = filterBy.split('&').map(x => x.split('=').map(y => y.trim()))
         .reduce((a, x) => {
             a[x[0]] = x[1]
@@ -103,11 +112,11 @@ function getReginImg() {
 async function queryByText(text) {
     let data = await storageService.query(STORAGE_KEY)
     const regex = new RegExp(text, 'i')
-    data= data.reduce((acc, curr) => {
+    data = data.reduce((acc, curr) => {
         if (!acc.includes(curr.loc.city) && regex.test(curr.loc.city))
             acc.push(curr.loc.city)
         return acc
     }, [])
-    return data.slice(0,5)
+    return data.slice(0, 5)
 
 }

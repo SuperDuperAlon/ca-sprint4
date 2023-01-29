@@ -29,7 +29,16 @@ export function SearchBar({ onToSearch }) {
 
     useOutsideAlerter(searchInBox)
     
+    
     useEffect(() => {
+        // const filterFromParams=filterService.getParamsToObj(filterBy)
+        // filterFromParams.guests={
+        //     adults:filterFromParams.adults,
+        //     children:filterFromParams.children,
+        //     infants:filterFromParams.infants,
+        //     pets:filterFromParams.pets
+        // }
+        // setFilter(filterFromParams)
         if (filter.where || filter.checkIn) {
             store.dispatch({
                 type: SET_FILTER,
@@ -106,6 +115,7 @@ export function SearchBar({ onToSearch }) {
         } else {
             filterBy = filterService.getEmptyFilter()
         }
+        filterBy=filter
         filterBy.checkIn = filter.checkIn
         filterBy.checkOut = filter.checkOut
         filterBy.where = filter.where
@@ -120,7 +130,6 @@ export function SearchBar({ onToSearch }) {
 
     function changeWhereOption(option){
         setFilter({ ...filter, where: option })
-        setActiveNow('checkIn')
     }
 
     return (
@@ -189,7 +198,8 @@ export function SearchBar({ onToSearch }) {
                                 <label htmlFor="guests">Who</label>
                                 <input type='text' name='guests' id='guests' placeholder="Add guests"
                                     value={filter?.guests.adults > 0 || filter?.guests.children > 0 ?
-                                        `${filter.guests.adults + filter.guests.children} guests ` : ''}
+                                        `${filter.guests.adults + filter.guests.children} guests ` : ''
+                                    }
                                     readOnly={true}
                                     onChange={null}
                                 />

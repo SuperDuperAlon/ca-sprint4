@@ -1,4 +1,3 @@
-import { async } from 'q'
 import { useNavigate } from 'react-router'
 import { filterService } from '../services/filterService.js'
 import { stayService } from '../services/stay.service.js'
