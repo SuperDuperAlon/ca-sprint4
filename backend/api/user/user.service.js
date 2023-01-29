@@ -29,7 +29,6 @@ async function query(filterBy = {}) {
             // user.createdAt = Date.now() - (1000 * 60 * 60 * 24 * 3) // 3 days ago
             return user
         })
-        console.log(users);
         return users
     } catch (err) {
         logger.error('cannot find users', err)

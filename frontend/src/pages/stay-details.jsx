@@ -34,7 +34,6 @@ export function StayDetails() {
 
   useEffect(() => {
     window.addEventListener("resize", updateDimensions);
-    // window.addEventListener("resize", )
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
@@ -44,7 +43,6 @@ export function StayDetails() {
   }
 
   function isMobileReady(width) {
-    console.log(width);
     if (width > 687) {
       setIsMobile(false);
     } else if (width < 687) {
@@ -70,7 +68,7 @@ export function StayDetails() {
     });
   }
 
-  if (!stay) return console.log("no map");
+  if (!stay) return <div>Loading</div>;
   else
     return (
       <section className="details-layout full">
@@ -86,9 +84,8 @@ export function StayDetails() {
               <StayDetailsHostInfo stay={stay} isMobile={isMobile} />
               <StayDetailsOrderModal stay={stay} />
             </div>
-            {/* <BasicModal /> */}
             <StayDetailsReviews stay={stay} />
-            {/* <StayDetailsMap stay={stay} /> */}
+            <StayDetailsMap stay={stay} />
             <StayDetailsHostDetails stay={stay} />
             {openSearchBar && (
               <div
@@ -101,7 +98,6 @@ export function StayDetails() {
 
         {isMobile && (
           <>
-
               <StayDetailsCarousel imgs={stay.imgUrls} />
               <StayDetailsLocationInfo stay={stay} isMobile={isMobile} />
               <StayDetailsHostInfo stay={stay} isMobile={isMobile} />

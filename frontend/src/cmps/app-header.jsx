@@ -20,8 +20,6 @@ export function AppHeader({onToSearch, stay ,onClickOutSideTheBar, origin}) {
     const navigate = useNavigate()
     const [isMenuOpen , setIsMenuOpen] = useState(false)
 
-    console.log(isMenuOpen)
-
     function onChangeStaySearchBar(option) {
         store.dispatch({
             type: SEARCH_BAR_OPEN,

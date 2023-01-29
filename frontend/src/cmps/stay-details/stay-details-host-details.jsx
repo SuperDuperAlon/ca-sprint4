@@ -1,7 +1,8 @@
-import { MdStar } from "react-icons/md"
+import { Link } from "react-router-dom";
+import { MdStar } from "react-icons/md";
 
 export function StayDetailsHostDetails({ stay }) {
-  if (!stay) return console.log("booboo")
+  if (!stay) return console.log("booboo");
   else
     return (
       <section className="stay-details-host-details mar-b24 ">
@@ -24,21 +25,25 @@ export function StayDetailsHostDetails({ stay }) {
           <div>
             <div className="fw600 mar-b24">
               <MdStar />
-              63 Reviews
+              <button className="link">
+                <Link to="#">{stay.reviews.length} reviews</Link>{" "}
+              </button>
             </div>
-            <div className="lh24 mar-b24">
-              I am a marine biologist, journalist and photographer and worked
-              for Greepeace, WWF International and United Nations Environment
-              Program.
-            </div>
+            <div className="lh24 mar-b24">{stay.host.about}</div>
             <div>
-              <div className="fw600 mar-b8">
-                {stay.host.fullname} is a Superhost
-              </div>
-              <div>
-                Superhosts are experienced, highly rated hosts who are committed
-                to providing great stays for guests.
-              </div>
+              {stay.host.isSuperhost && (
+                <>
+                  <div className="fw600 mar-b8">
+                    {stay.host.fullname} is a Superhost
+                  </div>
+                  <div>
+                    Superhosts are experienced, highly rated hosts who are
+                    committed to providing great stays for guests.
+                  </div>
+                </>
+              )}
+
+              {!stay.host.isSuperhost && <></>}
             </div>
           </div>
           <div className="flex column mar-b8">
@@ -47,7 +52,7 @@ export function StayDetailsHostDetails({ stay }) {
                 Languages: English, Français, Italiano, Русский, Español, Türkçe
               </div>
               <div>Response rate: 100%</div>
-              <div>Response time: within an hour</div>
+              <div>Response time: {stay.host.responseTime}</div>
             </div>
             <div>
               <button className="white-open-btn">Contact Host</button>
@@ -55,5 +60,5 @@ export function StayDetailsHostDetails({ stay }) {
           </div>
         </div>
       </section>
-    )
+    );
 }

@@ -14,6 +14,7 @@ import { store } from '../store/store.js'
 import { SEARCH_BAR_OPEN } from '../store/stay.reducer.js'
 import { useState } from 'react'
 import { SearchBarToMobile } from '../cmps/filter/search-bar-to-mobile.jsx'
+import { stayService } from '../services/stay.service.js'
 
 
 export function StayIndex() {
@@ -23,10 +24,10 @@ export function StayIndex() {
     const userPreference = useSelector(storeState => storeState.filterModule.filter)
     const navigate = useNavigate()
     const { filterBy } = useParams()
+
      
     useEffect(() => {
-        loadStays(filterBy)
-        if (!!filterBy?.where === '' || !!filterBy?.checkIn) { navigate('/') }
+        loadStays(filterService.getParamsToObj(filterBy))
     }, [filterBy])
 
     async function onRemoveStay(ev, stayId) {
@@ -60,6 +61,7 @@ export function StayIndex() {
     }
 
     function onToSearch(filter) {
+        loadStays(filter)
         const params = queryToParams(filter)
         navigate(`/${params}`)
     }
