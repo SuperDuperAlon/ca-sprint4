@@ -29,7 +29,6 @@ export function StayIndex() {
         if (!!filterBy?.where === '' || !!filterBy?.checkIn) { navigate('/') }
     }, [filterBy])
 
-
     async function onRemoveStay(ev, stayId) {
         ev.stopPropagation()
         try {
@@ -53,7 +52,6 @@ export function StayIndex() {
     }
 
     function onClickOutSideTheBar(event) {
-        event.preventDefault()
         if (!openSearchBar) return
         store.dispatch({
             type: SEARCH_BAR_OPEN,
@@ -84,14 +82,12 @@ export function StayIndex() {
         >
             <div className='app-header index-layout full'>
                 <AppHeader onToSearch={onToSearch}
-                    // onLookOutParams={onLookOutParams}
                     stay={false} />
             </div>
             <StayList stays={stays} onRemoveStay={onRemoveStay}
                 onEditStay={onEditStay} onOpenStay={onOpenStay}
                 onClickOutSideTheBar={onClickOutSideTheBar}
                 openSearchBar={openSearchBar}
-            // listInnerRef={listInnerRef}
             />
             {openSearchBar && <div className="black-screen full"
                 onClick={onClickOutSideTheBar}
