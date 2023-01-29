@@ -7,7 +7,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TableSortLabel from '@mui/material/TableSortLabel';
 import { stayService } from '../services/stay.service';
-import { useParams } from 'react-router';
+import { Navigate, useNavigate, useParams } from 'react-router';
 import { orderService } from '../services/order.service';
 import { useEffect, useState } from 'react';
 // import { CategoryScale } from "chart.js";
@@ -22,10 +22,7 @@ ChartJS.register(RadialLinearScale,ArcElement, Tooltip, Legend, CategoryScale, L
 
 
 
-// const rows = [
-//     createData('Carla', 'Nice house', new Date().toLocaleDateString(), new Date().toLocaleDateString(), 5000, 'approved', <button>approve</button>),
-//     createData('Louis', 'Nice house', new Date().toLocaleDateString(), new Date().toLocaleDateString(), 3000, 'appending', <button>approve</button>),
-// ]
+
 
 
 export function Dashboard() {
@@ -36,33 +33,34 @@ export function Dashboard() {
     const [doughnutData, setDoughnutData] = useState({})
     const [barData, setBarData] = useState({})
 
+    const navigate = useNavigate()
     const orders = useSelector(storeState => storeState.orderModule.orders)
+    const user = useSelector(storeState => storeState.orderModule.orders)
     
     useEffect(()=>{
-        // loadOrders(hostId)
-        loadHost(hostId)
+        // loadOrders(host)
+        // loadHost(hostId)
+        loadOrders(hostId)
+        loadHost()
     },[])
+
+    useEffect(()=>{
+        setDoughnutData(getDoughnutData())
+        setBarData( getBarData())
+    },[orders])
     
 
-
-
+// console.log(orders)
+// console.log(doughnutData)
+// console.log(barData)
+console.log(listings);
     
 
 async function loadHost(){
     try{
         const listings = await stayService.getListings(hostId)
-        const orders = await loadOrders(hostId)
         setListings(listings)
-        // setOrders(orders)
-        console.log(orders)
-        if (orders){
-            setDoughnutData(getDoughnutData())
-            setBarData( getBarData())
-        }
-        
-        // setDoughnutData(getDoughnutData())
-        // setBarData( getBarData())
-    
+        console.log(listings);    
     }
     catch (err){
         console.log(err)
@@ -76,7 +74,7 @@ async function handelStatus(currOrder, status){
         currOrder.status = status
         const updatedOrder = await updateOrder(currOrder)
         orders.splice(orderIndex, 1, updatedOrder)
-        // setOrders(orders)
+        // setOrders(orders
     } catch(err){
         console.log(err)
     }
@@ -191,6 +189,10 @@ const dataBar = {
     if (!orders) return <div>loading...</div>
     return (
         <section className="dashboard">
+            <nav>
+                <button className='dashboard-btn mar-r8' onClick={()=>navigate(`/dashboard/${hostId}`)}>Reservations</button>
+                <button className='dashboard-btn ' onClick={()=>navigate(`/listings/${hostId}`)}>Listings</button>
+            </nav>
             <div className="charts-section">
                 <div className='chart-container'>
                     <div className='fs22 bold pad-b16'>Revenue / month</div>
@@ -204,7 +206,7 @@ const dataBar = {
                 </div>
                 <div className="chart-container">
                     <div className='fs22 bold pad-b8'>Reservations / listing</div>
-                    <div className='flex'>{orders ? <Doughnut options={options} data={dataDoughnut} /> : <div class="loader"></div>}</div>
+                    <div className='flex'>{doughnutData ? <Doughnut options={options} data={dataDoughnut} /> : <div class="loader"></div>}</div>
                 </div>
             </div>
             <div className='table-container'>
@@ -232,9 +234,9 @@ const dataBar = {
                                         {order.buyer.fullname}
                                     </TableCell>
                                     <TableCell >{order.stay.name}</TableCell>
-                                    <TableCell >{order.startDate}</TableCell>
-                                    <TableCell >{order.endDate}</TableCell>
-                                    <TableCell >{order.totalPrice}</TableCell>
+                                    <TableCell >{new Date(order.startDate).toLocaleDateString()}</TableCell>
+                                    <TableCell >{new Date(order.endDate).toLocaleDateString()}</TableCell>
+                                    <TableCell >${order.totalPrice}</TableCell>
                                     <TableCell >{order.status}</TableCell>
                                     <TableCell align='center'><button className='dashboard-btn-turquoise' onClick={()=> handelStatus(order, 'approved') }>Approve</button><button className='dashboard-btn-pink' onClick={()=> handelStatus(order, 'rejected')}>Reject</button></TableCell>
                                 </TableRow>

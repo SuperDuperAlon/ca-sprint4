@@ -1,0 +1,15 @@
+.listings{
+    display: grid;
+    grid-template-columns:  repeat(auto-fit, minmax(250px, 350px)) ;
+    gap : 25px ;
+    margin: 80px;
+    nav{
+        padding: 50px 0px 20px;
+        text-align: center;
+        .dashboard-btn{
+            background: none;
+            font-size: 19px;
+            font-weight: 800;
+        }
+    }
+}

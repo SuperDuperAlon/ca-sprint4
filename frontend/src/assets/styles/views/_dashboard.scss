@@ -1,5 +1,14 @@
 .dashboard{
     min-height: 90vh;
+    nav{
+        padding: 50px 0px 20px;
+        text-align: center;
+        .dashboard-btn{
+            background: none;
+            font-size: 19px;
+            font-weight: 800;
+        }
+    }
     .charts-section{
         padding: 40px 0px 60px;
         display: grid;
