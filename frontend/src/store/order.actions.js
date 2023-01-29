@@ -31,6 +31,7 @@ export async function loadOrders(filter=null) {
           type: SET_ORDERS,
           orders: orders
       })
+      return orders
 
   } catch (err) {
       console.log('Cannot load orders', err)

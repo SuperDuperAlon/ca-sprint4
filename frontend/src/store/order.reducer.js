@@ -12,21 +12,12 @@ export const REMOVE_ORDER = 'REMOVE_ORDER'
 export const ADD_ORDER = 'ADD_ORDER'
 export const UPDATE_ORDER = 'UPDATE_ORDER'
 
-const initialState = 
-
-{
-  checkIn: null,
-  checkOut: null,
-  where: '',
-  guests: {
-    adults: 1,
-    children: 0,
-    infants: 0,
-    pets: 0,
-  },
-  count: 1,
+const initialState = {
   orders: []
+  
 }
+
+
 
 export function orderReducer(state = initialState, action) {
   var newState = state
@@ -35,7 +26,7 @@ export function orderReducer(state = initialState, action) {
     // Orders CRUDL
     case SET_ORDERS:
       newState = { ...state, orders: action.orders }
-      console.log(newState)
+      // console.log(newState)
       break
   case REMOVE_ORDER:
       // const lastRemovedStay = state.orders.find(order => order._id === action.orderId)

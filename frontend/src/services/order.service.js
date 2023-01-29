@@ -20,7 +20,10 @@ window.cs = orderService
 
 async function query(filterBy) {
   try {
-    return storageService.query(STORAGE_KEY)
+    let data= await storageService.query(STORAGE_KEY)
+    const regex = new RegExp(filterBy, 'i')
+    data = data.filter(order => regex.test(order.hostId) )
+    return data
   } catch (err) {
     console.log(err)
   }
