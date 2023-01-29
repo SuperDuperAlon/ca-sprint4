@@ -1,5 +1,6 @@
 import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
+import { userData } from './user.data'
 import { utilService } from './util.service'
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
@@ -101,23 +102,7 @@ function getLoggedinUser() {
 function _createUsers(){
     let users = utilService.loadFromStorage(STORAGE_KEY)
       if (!users || !users.length) {
-        users = [
-            {
-                "_id": "u101",
-                "fullname": "User 1",
-                "imgUrl": "/img/img1.jpg",
-                "username": "user1",
-                "password": "secret"
-              },
-              {
-                "_id": "u102",
-                "fullname": "Dudi Du",
-                "imgUrl": "/img/img2.jpg",
-                "username": "user2",
-                "password": "secret",
-                // "isOwner" : true // OPTIONAL
-              }
-        ]
+        users = userData.getUserData()
         utilService.saveToStorage(STORAGE_KEY, users)
       }
 }
