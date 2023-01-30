@@ -26,7 +26,7 @@ export function StayOrder() {
     const [loggedInUser, setLoggedInUser] = useState(userService.getLoggedinUser())
     const [isMsgReceived, setIsMsgReceived] = useState(false)
     const navigate = useNavigate()
-    const timer = setRef(null)
+    const timer = useRef(null)
     const confirmInterval = useRef(null)
 
     useEffect(()=>{
