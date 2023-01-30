@@ -5,11 +5,7 @@ const logger = require("../../services/logger.service");
 async function getOrders(req, res) {
   try {
     const hostId = req.query?.host
-    console.log(hostId , 'getorders backend');
     logger.debug("Getting Orders");
-    // const filterBy = {
-    //   where: req.query?.where || "",
-    // }
     const orders = await orderService.query(hostId);
     res.json(orders);
   } catch (err) {
@@ -36,6 +32,7 @@ async function addOrder(req, res) {
     const order = req.body;
     // order.owner = loggedinUser;
     const addedOrder = await orderService.add(order);
+    // insert emit on making order
     res.json(addedOrder);
   } catch (err) {
     logger.error("Failed to add order", err);
