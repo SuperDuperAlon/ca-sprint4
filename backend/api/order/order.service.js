@@ -6,13 +6,9 @@ const { log } = require("../../middlewares/logger.middleware");
 const fs = require("fs");
 
 async function query(hostId) {
-  console.log(hostId, 'query,service');
   try {
     // console.log(filterBy, "service");
     const criteria = _buildCriteria(hostId);
-    console.log(criteria, 'orderService');
-
-
     const collection = await dbService.getCollection("order");
     // console.log(collection);
     var orders = await collection.find(criteria).toArray()
@@ -43,7 +39,7 @@ async function add(order) {
   try {
     const collection = await dbService.getCollection("order");
     await collection.insertOne(order);
-    console.log(ObjectId(order._id).getTimestamp());
+    console.log('order:', order)
     return order;
   } catch (err) {
     logger.error("cannot insert order", err);

@@ -11,6 +11,8 @@ import { LoginSignup } from "../cmps/login-signup"
 import { useRef } from "react"
 import { userService } from "../services/user.service"
 import { logout } from "../store/user.actions"
+import { socketService, SOCKET_EVENT_ORDER_APPROVED } from "../services/socket.service"
+
 
 export function StayOrder() {
 
@@ -25,6 +27,9 @@ export function StayOrder() {
     const navigate = useNavigate()
     const confirmInterval = useRef(null)
 
+    useEffect(()=>{
+        socketService.on(SOCKET_EVENT_ORDER_APPROVED,gotMsg)
+    },[])
 
     useEffect(() => {
         // Clear the interval when the component unmounts
@@ -147,6 +152,10 @@ export function StayOrder() {
            
     }
 
+    function gotMsg(){
+        console.log('got in dashboard:')
+    }
+
     if (!stay) return <div>loading...</div>
     return <section className="stay-order">
         <header className="header">
@@ -189,8 +198,8 @@ export function StayOrder() {
                         </div>
                         <div className="bold under-line">Edit</div>
                     </div>
-                    {isLoggedInUser && <button onClick={confirmOrder} className="reserve-btn full-width fs16 confirm-btn">Approved</button>}
-                    {/* {isLoggedInUser && <button onClick={confirmOrder} className="reserve-btn full-width fs16 confirm-btn">{!isConfirm ? <>Confirm</>: <>Approved</>}</button>} */}
+                    {/* {isLoggedInUser && <button onClick={confirmOrder} className="reserve-btn full-width fs16 confirm-btn">Confirm</button>} */}
+                    {isLoggedInUser && <button onClick={confirmOrder} className="reserve-btn full-width fs16 confirm-btn">{!isConfirm ? <>Confirm</>: <>Pending</>}</button>}
                     {!isLoggedInUser && <div className="payment-container mar-b24">
                         <div className="pad-t32 pad-b24 fs22 bold">Choose how to pay</div>
                         <label htmlFor="0">

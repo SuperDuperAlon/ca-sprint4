@@ -1,12 +1,23 @@
 const orderService = require("./order.service.js");
+const socketService = require('../../services/socket.service')
+
 
 const logger = require("../../services/logger.service");
 
 async function getOrders(req, res) {
   try {
     const hostId = req.query?.host
+    console.log(':', )
     logger.debug("Getting Orders");
     const orders = await orderService.query(hostId);
+    console.log('time to emit:')
+
+    socketService.emitToUser({
+      type:'order-request',
+      data:'You have new order in pending',
+      userId:hostId
+    })
+
     res.json(orders);
   } catch (err) {
     logger.error("Failed to get orders", err);
@@ -26,13 +37,14 @@ async function getOrderById(req, res) {
 } 
 
 async function addOrder(req, res) {
-  // const { loggedinUser } = req;
 
   try {
     const order = req.body;
     // order.owner = loggedinUser;
     const addedOrder = await orderService.add(order);
-    // insert emit on making order
+
+    // socketService.emitToUser({ type: 'order-request', data: "You have new reservation",  hostId: order._id })
+
     res.json(addedOrder);
   } catch (err) {
     logger.error("Failed to add order", err);

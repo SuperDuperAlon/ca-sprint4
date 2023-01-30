@@ -10,7 +10,8 @@ import { stayService } from '../services/stay.service';
 import { Navigate, useNavigate, useParams } from 'react-router';
 import { orderService } from '../services/order.service';
 import { useEffect, useState } from 'react';
-// import { CategoryScale } from "chart.js";
+
+import {socketService, SOCKET_EVENT_ORDER_REQUEST} from '../services/socket.service'
 
 import { Bar, Doughnut} from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, RadialLinearScale, CategoryScale, LinearScale, BarElement} from 'chart.js';
@@ -20,10 +21,6 @@ import { useSelector } from 'react-redux';
 import { AppHeader } from '../cmps/app-header';
 
 ChartJS.register(RadialLinearScale,ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement);
-
-
-
-
 
 
 export function Dashboard() {
@@ -36,7 +33,10 @@ export function Dashboard() {
 
     const navigate = useNavigate()
     const orders = useSelector(storeState => storeState.orderModule.orders)
-    // const user = useSelector(storeState => storeState.orderModule.orders)
+    
+    useEffect(()=>{
+        socketService.on(SOCKET_EVENT_ORDER_REQUEST, gotMsg)
+    },[])
     
     useEffect(()=>{
         // loadOrders(host)
@@ -84,6 +84,10 @@ async function handelStatus(currOrder, status){
     // orders.splice(orderIndex, 1, currOrder)
     // setOrders(orders)
    
+}
+
+function gotMsg(){
+    console.log('got in dashboard:')
 }
 
 function getBarData(){
