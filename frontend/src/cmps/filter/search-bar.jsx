@@ -119,19 +119,7 @@ export function SearchBar({ onToSearch }) {
     }
 
     function onClickSearch(event) {
-        // console.log('filter:', filter)
         setActiveNow(null)
-        // if (filterBy) {
-        //     filterBy = filterService.getParamsToObj(filterBy)
-        // } else {
-        //     filterBy = filterService.getEmptyFilter()
-        // }
-        // filterBy = filter
-        // filterBy.checkIn = filter.checkIn
-        // filterBy.checkOut = filter.checkOut
-        // filterBy.where = filter.where
-        // filterBy.guests = filter.guests
-
         onToSearch(filter)
         store.dispatch({
             type: SEARCH_BAR_OPEN,

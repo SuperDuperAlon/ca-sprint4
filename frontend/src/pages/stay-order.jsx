@@ -158,12 +158,13 @@ export function StayOrder() {
         {!isConfirm &&<div className="confirm fs32 bold">
             <button className="clean-btn fs32 pad-r32">{'<'}</button>
             Confirm and pay
+            <button disable className="clean-btn fs32 pad-r32"></button>
         </div>}
-        {isConfirm && <div className="confirm fs32 bold">
+        {isConfirm && orderToEdit.status=== 'approved' ? <div className="confirm fs32 bold">
             <button onClick={()=>navigate('/')} className="clean-btn fs32 pad-r32">{'<'}</button>
             <img src="https://icons.veryicon.com/png/o/miscellaneous/8atour/success-35.png" />
             Reservation success!
-        </div>}
+        </div> : <div></div>}
         <div className="main-order">
 
             <div className="order-details-container">
@@ -188,7 +189,8 @@ export function StayOrder() {
                         </div>
                         <div className="bold under-line">Edit</div>
                     </div>
-                    {isLoggedInUser && <button onClick={confirmOrder} className="reserve-btn full-width fs16 confirm-btn">Confirm</button>}
+                    {isLoggedInUser && <button onClick={confirmOrder} className="reserve-btn full-width fs16 confirm-btn">Approved</button>}
+                    {/* {isLoggedInUser && <button onClick={confirmOrder} className="reserve-btn full-width fs16 confirm-btn">{!isConfirm ? <>Confirm</>: <>Approved</>}</button>} */}
                     {!isLoggedInUser && <div className="payment-container mar-b24">
                         <div className="pad-t32 pad-b24 fs22 bold">Choose how to pay</div>
                         <label htmlFor="0">
@@ -242,7 +244,7 @@ export function StayOrder() {
                             <div className="under-line">Service fee</div>
                             <div>$12</div>
                         </div>
-                        <div className="flex space-between pad-t16 bold">
+                        <div className="flex space-between pad-t16 bold last-div">
                             <div>Total (USD)</div>
                             <div>${(getFullPrice() + 12).toLocaleString()}</div>
                         </div>

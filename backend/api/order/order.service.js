@@ -5,19 +5,21 @@ const ObjectId = require("mongodb").ObjectId;
 const { log } = require("../../middlewares/logger.middleware");
 const fs = require("fs");
 
-async function query() {
+async function query(hostId) {
+  console.log(hostId, 'query,service');
   try {
     // console.log(filterBy, "service");
-    // const criteria = _buildCriteria(filterBy);
-    // console.log(filterBy, 'orderService');
+    const criteria = _buildCriteria(hostId);
+    console.log(criteria, 'orderService');
+
 
     const collection = await dbService.getCollection("order");
     // console.log(collection);
-    // var orders = await collection.find({'loc.country': {$regex: new RegExp (criteria, 'ig')}}).toArray()
+    var orders = await collection.find(criteria).toArray()
 
     // { 'loc.country': { '$regex': /Ista/gi } }
-    var orders = await collection.find().toArray();
-    console.log(orders, "from service");
+    // var orders = await collection.find().toArray();
+    // console.log(orders, "from service");
     return orders;
   } catch (err) {
     logger.error("cannot find orders", err);
@@ -25,14 +27,14 @@ async function query() {
   }
 }
 
-async function getById(orderId) {
+async function getById(hostId) {
   try {
     const collection = await dbService.getCollection("order");
-    console.log(orderId);
-    const order = collection.findOne({ _id: ObjectId(orderId) });
+    console.log(hostId);
+    const order = collection.find({ "hostId": hostId });
     return order;
   } catch (err) {
-    logger.error(`while finding order ${orderId}`, err);
+    logger.error(`while finding order ${hostId}`, err);
     throw err;
   }
 }
@@ -41,6 +43,7 @@ async function add(order) {
   try {
     const collection = await dbService.getCollection("order");
     await collection.insertOne(order);
+    console.log(ObjectId(order._id).getTimestamp());
     return order;
   } catch (err) {
     logger.error("cannot insert order", err);
@@ -81,6 +84,13 @@ async function update(order, orderId) {
     throw err;
   }
 }
+function _buildCriteria(hostId) {
+  const criteria = {}
+  if (hostId) criteria['hostId'] = hostId
+  console.log(criteria, 'backend');
+  return criteria
+}
+
 
 module.exports = {
   remove,

@@ -36,7 +36,7 @@ export function Dashboard() {
 
     const navigate = useNavigate()
     const orders = useSelector(storeState => storeState.orderModule.orders)
-    const user = useSelector(storeState => storeState.orderModule.orders)
+    // const user = useSelector(storeState => storeState.orderModule.orders)
     
     useEffect(()=>{
         // loadOrders(host)
@@ -88,7 +88,7 @@ async function handelStatus(currOrder, status){
 
 function getBarData(){
     const constChartData = orders.reduce((acc, order)=>{
-        acc[utilService.getMonthName(new Date(order.startDate))] =  ++ order.totalPrice
+        acc[utilService.getMonthName(new Date(order.startDate))] +=   order.totalPrice
         acc[utilService.getMonthName(new Date(order.startDate))] = acc[utilService.getMonthName(new Date(order.startDate))] ? (acc[utilService.getMonthName(new Date(order.startDate))] += order.totalPrice) : order.totalPrice
         return acc
     }, 
@@ -227,7 +227,9 @@ const dataBar = {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {orders.map((order) => (
+                            {orders
+                            .sort((a, b) => new Date(a.startDate) > new Date(b.startDate) ? -1 : 1)
+                            .map((order) => (
                                 <TableRow className='table-row-body'
                                     key={order._id}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -238,8 +240,8 @@ const dataBar = {
                                     <TableCell >{order.stay.name}</TableCell>
                                     <TableCell >{new Date(order.startDate).toLocaleDateString()}</TableCell>
                                     <TableCell >{new Date(order.endDate).toLocaleDateString()}</TableCell>
-                                    <TableCell >${order.totalPrice}</TableCell>
-                                    <TableCell >{order.status}</TableCell>
+                                    <TableCell >${utilService.toActualPrice(order.totalPrice)}</TableCell>
+                                    <TableCell ><span className={`capitalize ${order.status}`}>{order.status}</span></TableCell>
                                     <TableCell align='center'><button className='dashboard-btn-turquoise' onClick={()=> handelStatus(order, 'approved') }>Approve</button><button className='dashboard-btn-pink' onClick={()=> handelStatus(order, 'rejected')}>Reject</button></TableCell>
                                 </TableRow>
                             ))}
