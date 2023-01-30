@@ -1,4 +1,10 @@
 @media ((max-width: $small-breakpoint-details)) {
+  .details-carousel {
+    height: 65vw;
+    img {
+      overflow-clip-margin: unset;
+    }
+  }
   .details-locations-info {
     padding: 1.5rem 0;
     .info-header {
