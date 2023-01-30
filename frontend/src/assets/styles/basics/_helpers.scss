@@ -70,6 +70,9 @@
 .uppercase {
   text-transform: uppercase;
 }
+.capitalize {
+  text-transform:capitalize;
+}
 
 // Margins
 //left
@@ -372,4 +375,20 @@
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.complete{
+  color: $grey
+}
+
+.approved, .Approved{
+  color: #00a699
+}
+.rejected{
+  color: #ff5a5f
+}
+
+.pending{
+  color: rgb(247, 168, 0)
+
 }
