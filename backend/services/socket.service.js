@@ -3,6 +3,7 @@ const logger = require('./logger.service')
 var gIo = null
 
 function setupSocketAPI(http) {
+    // listen to all the socket request 
     gIo = require('socket.io')(http, {
         cors: {
             origin: '*',
@@ -17,7 +18,7 @@ function setupSocketAPI(http) {
             if (socket.myTopic === topic) return
             if (socket.myTopic) {
                 socket.leave(socket.myTopic)
-                logger.info(`Socket is leaving topic ${socket.myTopic} [id: ${socket.id}]`)
+                logger.info(`Socket is leaving topic ${socket.myTopic} [id: ${socket.id}]`) 
             }
             socket.join(topic)
             socket.myTopic = topic

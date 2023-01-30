@@ -23,7 +23,7 @@ router.put('/:id', requireAuth, updateStay)
 router.delete('/:id', requireAuth, removeStay)
 // router.delete('/:id', requireAuth, requireAdmin, removeStay)
 
-router.post('/:id/msg', requireAuth, addStayMsg)
-router.delete('/:id/msg/:msgId', requireAuth, removeStayMsg)
+// router.post('/:id/msg', requireAuth, addStayMsg)
+// router.delete('/:id/msg/:msgId', requireAuth, removeStayMsg)
 
 module.exports = router

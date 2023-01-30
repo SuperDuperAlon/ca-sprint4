@@ -6,9 +6,7 @@ const cookieParser = require('cookie-parser')
 const app = express()
 const http = require('http').createServer(app)
 app.use(express.json())
-// app.use((req, res, next) => {
-//     console.log(req.body);
-// })
+
 // Express App Config
 // app.use(cookieParser())
 // app.use(express.json())
@@ -29,6 +27,7 @@ const authRoutes = require('./api/auth/auth.routes')
 const userRoutes = require('./api/user/user.routes')
 const reviewRoutes = require('./api/review/review.routes')
 const stayRoutes = require('./api/stay/stay.routes')
+const orderRoutes = require('./api/order/order.routes')
 const {setupSocketAPI} = require('./services/socket.service')
 
 // routes
@@ -39,6 +38,7 @@ app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/review', reviewRoutes)
 app.use('/api/stay', stayRoutes)
+app.use('/api/order', orderRoutes)
 setupSocketAPI(http)
 
 // Make every server-side-route to match the index.html
