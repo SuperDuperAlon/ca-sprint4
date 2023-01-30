@@ -1,9 +1,18 @@
 
 .dashboard{
+    text-transform: capitalize;
     min-height: 90vh;
     display: grid;
     grid-template-columns: minmax($pad-24, 1fr) minmax(250px, $small-breakpoint) minmax($pad-24,
     1fr);
+
+    .main-header{
+        .logo{
+            .text-next-to-logo{
+                text-transform: lowercase;
+            }
+        }
+    }
 
 >* {
   grid-column: 2;
@@ -111,4 +120,31 @@
             }
         }
     }
+}
+
+.order-status{
+    font-family:  circular;
+    position: fixed;
+    width: 100vw;
+    height: 0px;
+    display: flex;
+    bottom: 10%;
+    transition: transform 0.6s;
+    .text{
+        @include flex-center;
+        padding: 24px 36px;
+        background-color: #dc0e64;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 800;
+        color: white;
+        letter-spacing: 1.2px;
+        text-transform: capitalize;
+    }
+    &.close{
+        transition: transform 0.3s;
+        transform: translateX(-886px)  scaleX(0.1);
+
+    }
+
 }

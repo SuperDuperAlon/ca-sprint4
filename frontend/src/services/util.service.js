@@ -191,14 +191,14 @@ function getFullMonthName(date) {
 
 function getShortDate(checkIn, checkOut) {
   const month = getMonthName(new Date(checkIn));
-  console.log(month);
   const startDay = new Date(checkIn).getDate();
   const endDay = new Date(checkOut).getDate();
   return `${month} ${startDay} - ${endDay}`;
 }
 
 function toActualPrice(x) {
-  return x.toLocaleString("us-EN");
+  
+  return x.toLocaleString("us-EN",{minimumFractionDigits: 0});
 }
 
 function updateDimensions() {

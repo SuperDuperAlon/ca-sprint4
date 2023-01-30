@@ -6,13 +6,9 @@ const { log } = require("../../middlewares/logger.middleware");
 const fs = require("fs");
 
 async function query(hostId) {
-  console.log(hostId, 'query,service');
   try {
     // console.log(filterBy, "service");
     const criteria = _buildCriteria(hostId);
-    console.log(criteria, 'orderService');
-
-
     const collection = await dbService.getCollection("order");
     // console.log(collection);
     var orders = await collection.find(criteria).toArray()
@@ -43,7 +39,7 @@ async function add(order) {
   try {
     const collection = await dbService.getCollection("order");
     await collection.insertOne(order);
-    // console.log(ObjectId(order._id).getTimestamp());
+    console.log('order:', order)
     return order;
   } catch (err) {
     logger.error("cannot insert order", err);
@@ -68,15 +64,12 @@ async function update(order, orderId) {
       status: order.status,
       totalPrice: order.totalPrice,
     };
-    console.log(orderId);
-    console.log(order);
-
-    // console.log(orderToSave);
+    console.log('order in service:', order._id)
+    console.log('orderId:', orderId)
     const collection = await dbService.getCollection("order");
-    // console.log(orderId);
-    await collection.updateOne({ _id: ObjectId(orderId) }, { $set: order });
-
-    // const entryToUpdate =
+    // await collection.updateOne({ _id: ObjectId(orderId) }, { $set: order });
+    await collection.updateOne({ _id: ObjectId(orderId) }, { $set: orderToSave });
+    // await collection.updateOne({ _id: orderId }, { $set: order });
 
     return orderToSave;
   } catch (err) {

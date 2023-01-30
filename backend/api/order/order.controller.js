@@ -1,16 +1,16 @@
 const orderService = require("./order.service.js");
+const socketService = require('../../services/socket.service')
+
 
 const logger = require("../../services/logger.service");
 
 async function getOrders(req, res) {
   try {
     const hostId = req.query?.host
-    console.log(hostId , 'getorders backend');
     logger.debug("Getting Orders");
-    // const filterBy = {
-    //   where: req.query?.where || "",
-    // }
     const orders = await orderService.query(hostId);
+   
+
     res.json(orders);
   } catch (err) {
     logger.error("Failed to get orders", err);
@@ -31,12 +31,19 @@ async function getOrderById(req, res) {
 } 
 
 async function addOrder(req, res) {
-  // const { loggedinUser } = req;
 
   try {
     const order = req.body;
     // order.owner = loggedinUser;
     const addedOrder = await orderService.add(order);
+
+    socketService.emitTo({
+      type:'order-request',
+      data:'You have new order in pending',
+      userId:order.hostId
+    })
+    // socketService.emitToUser({ type: 'order-request', data: "You have new reservation",  hostId: order._id })
+
     res.json(addedOrder);
   } catch (err) {
     logger.error("Failed to add order", err);
@@ -48,6 +55,8 @@ async function deleteOrder(req, res) {
   try {
     const orderId = req.params.id;
     const removedId = await orderService.remove(orderId);
+
+
     res.send(removedId);
   } catch (err) {
     logger.error("Failed to remove order", err);
@@ -59,11 +68,15 @@ async function deleteOrder(req, res) {
 async function updateOrder(req, res) {
   try {
     const order = req.body;
-    console.log(order);
-    console.log(order, 'controller');
     const orderId = req.params.id;
+    console.log('order:',order.buyer._id  )
+
     const updatedOrder = await orderService.update(order, orderId);
-    // console.log(updatedOrder, 'cntrlr');
+    socketService.emitTo({
+      type:'order-approved',
+      data:'Your order was approved',
+      userId:order.buyer._id
+    })
     res.json(updatedOrder);
   } catch (err) {
     logger.error("Failed to update order", err);

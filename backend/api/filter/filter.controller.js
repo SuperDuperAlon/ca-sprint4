@@ -6,9 +6,7 @@ async function getStaysByText(req, res) {
   try {
     logger.debug("searchByText");
     text= req.query?.text || ""
-    
     const data = await filterService.query(text);
-    console.log('data:', data)
     res.json(data);
   } catch (err) {
     logger.error("Failed to get stays", err);

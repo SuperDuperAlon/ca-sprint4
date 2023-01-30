@@ -14,9 +14,8 @@ export const UPDATE_ORDER = 'UPDATE_ORDER'
 // export const SET_ORDER = 'SET_ORDER'
 
 const initialState = {
-  orders: [],
-  order: null
-  
+  orders: []
+
 }
 
 
@@ -31,24 +30,19 @@ export function orderReducer(state = initialState, action) {
       newState = { ...state, orders: action.orders }
       // console.log(newState)
       break
-  case REMOVE_ORDER:
+    case REMOVE_ORDER:
       // const lastRemovedStay = state.orders.find(order => order._id === action.orderId)
       orders = state.orders.filter(order => order._id !== action.orderId)
-      newState = { ...state, orders}
+      newState = { ...state, orders }
       break
-  case ADD_ORDER:
+    case ADD_ORDER:
       newState = { ...state, orders: [...state.orders, action.order] }
       break
-  case UPDATE_ORDER:
+    case UPDATE_ORDER:
       orders = state.orders.map(order => (order._id === action.order._id) ? action.order : order)
       newState = { ...state, orders }
       break
-      // case SET_ORDER:
-      //       order = state.orders.find(order => order._id === action.orderId)
-      //       console.log(order);
-      //       newState = { ...state, order }
-      //       break
-      
+
     // Count Actions
     case COUNT_ADULTS:
       newState = {
@@ -100,12 +94,12 @@ export function orderReducer(state = initialState, action) {
     case SET_CHECK_OUT_DATE:
       newState = { ...state, checkOut: action.date }
       break
-      
-      // Set WHERE
-      case SET_WHERE_TO_LOOK:
-        newState = { ...state, where: action.value }
-        break
-      
+
+    // Set WHERE
+    case SET_WHERE_TO_LOOK:
+      newState = { ...state, where: action.value }
+      break
+
 
     default:
       return state

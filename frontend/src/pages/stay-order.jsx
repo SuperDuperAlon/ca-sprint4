@@ -12,6 +12,8 @@ import { useRef } from "react"
 import { userService } from "../services/user.service"
 import { logout } from "../store/user.actions"
 import { useSelector } from 'react-redux'
+import { socketService, SOCKET_EVENT_ORDER_APPROVED } from "../services/socket.service"
+
 
 export function StayOrder() {
 
@@ -24,11 +26,20 @@ export function StayOrder() {
     const [isConfirm, setIsConfirm]  = useState(false)
     const [loggedInUser, setLoggedInUser] = useState(userService.getLoggedinUser())
     const [sentOrder, setSentOrder] = useState(null)
+    const [isMsgReceived, setIsMsgReceived] = useState(false)
     const navigate = useNavigate()
+    const timer = useRef(null)
     const confirmInterval = useRef(null)
-    
 
-    // console.log(order)
+    useEffect(()=>{
+        socketService.on(SOCKET_EVENT_ORDER_APPROVED,gotMsg)
+    },[])
+
+
+    function gotMsg() {
+        console.log('order:approved')
+
+    }
 
     useEffect(() => {
         // Clear the interval when the component unmounts

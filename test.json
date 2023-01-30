@@ -1,0 +1,126 @@
+[{
+    "hostId": "622f3402e36c59e6164facbf",
+    "buyer": {
+      "_id": "622f3402e36c59e6164facbe",
+      "fullname": "Christina"
+    },
+    "totalPrice": 1900,
+    "startDate": "01/20/2022",
+    "endDate": "01/10/2022",
+    "guests": {
+      "adults": 2,
+      "children": 1
+    },
+    "stay": {
+      "_id": "622f337a75c7d36e498aab0b",
+      "name": "Elegant Flat in the Center",
+      "price": 190
+    },
+    "msgs": [],
+    "status": "pending"
+  },
+  {
+    "hostId": "622f3402e36c59e6164facbf",
+    "buyer": {
+      "_id": "622f3402e36c59e6164facc0",
+      "fullname": "Paula"
+    },
+    "totalPrice": 950,
+    "startDate": "01/05/2023",
+    "endDate": "01/09/2023",
+    "guests": {
+      "adults": 2,
+      "children": 1
+    },
+    "stay": {
+      "_id": "622f337a75c7d36e498aab0b",
+      "name": "Elegant Flat in the Center",
+      "price": 190
+    },
+    "msgs": [],
+    "status": "complete"
+  },
+  {
+    "hostId": "622f3402e36c59e6164facbf",
+    "buyer": {
+      "_id": "622f3402e36c59e6164facc2",
+      "fullname": "Andrius"
+    },
+    "totalPrice": 780,
+    "startDate": "01/05/2023",
+    "endDate": "01/09/2023",
+    "guests": {
+      "adults": 2,
+      "children": 1
+    },
+    "stay": {
+      "_id": "622f337b75c7d36e498aabac",
+      "name": "Ultra Comfy Flat & Perfect Location",
+      "price": 195
+    },
+    "msgs": [],
+    "status": "complete"
+  },
+  {
+    "hostId": "622f3402e36c59e6164facbf",
+    "buyer": {
+      "_id": "622f3402e36c59e6164facc4",
+      "fullname": "Patricia"
+    },
+    "totalPrice": 585,
+    "startDate": "12/27/2022",
+    "endDate": "12/30/2022",
+    "guests": {
+      "adults": 2,
+      "children": 1
+    },
+    "stay": {
+      "_id": "622f337b75c7d36e498aabac",
+      "name": "Ultra Comfy Flat & Perfect Location",
+      "price": 195
+    },
+    "msgs": [],
+    "status": "complete"
+  },
+  {
+    "hostId": "622f3402e36c59e6164facbf",
+    "buyer": {
+      "_id": "622f3402e36c59e6164facbb",
+      "fullname": "Michael"
+    },
+    "totalPrice": 1330,
+    "startDate": "12/20/2022",
+    "endDate": "12/27/2022",
+    "guests": {
+      "adults": 2,
+      "children": 1
+    },
+    "stay": {
+      "_id": "622f337a75c7d36e498aab0b",
+      "name": "Elegant Flat in the Center",
+      "price": 190
+    },
+    "msgs": [],
+    "status": "complete"
+  },
+  {
+    "hostId": "622f3402e36c59e6164facbf",
+    "buyer": {
+      "_id": "622f3402e36c59e6164facbc",
+      "fullname": "Héloïse"
+    },
+    "totalPrice": 1330,
+    "startDate": "11/20/2022",
+    "endDate": "11/27/2022",
+    "guests": {
+      "adults": 2,
+      "children": 1
+    },  
+    "stay": {
+      "_id": "622f337a75c7d36e498aab0b",
+      "name": "Elegant Flat in the Center",
+      "price": 190
+    },
+    "msgs": [],
+    "status": "complete"
+  }]
