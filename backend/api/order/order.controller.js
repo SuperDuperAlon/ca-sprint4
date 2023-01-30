@@ -7,16 +7,9 @@ const logger = require("../../services/logger.service");
 async function getOrders(req, res) {
   try {
     const hostId = req.query?.host
-    console.log(':', )
     logger.debug("Getting Orders");
     const orders = await orderService.query(hostId);
-    console.log('time to emit:')
-
-    socketService.emitToUser({
-      type:'order-request',
-      data:'You have new order in pending',
-      userId:hostId
-    })
+   
 
     res.json(orders);
   } catch (err) {
@@ -43,6 +36,11 @@ async function addOrder(req, res) {
     // order.owner = loggedinUser;
     const addedOrder = await orderService.add(order);
 
+    socketService.emitTo({
+      type:'order-request',
+      data:'You have new order in pending',
+      userId:order.hostId
+    })
     // socketService.emitToUser({ type: 'order-request', data: "You have new reservation",  hostId: order._id })
 
     res.json(addedOrder);
@@ -56,6 +54,8 @@ async function deleteOrder(req, res) {
   try {
     const orderId = req.params.id;
     const removedId = await orderService.remove(orderId);
+
+
     res.send(removedId);
   } catch (err) {
     logger.error("Failed to remove order", err);
@@ -67,11 +67,15 @@ async function deleteOrder(req, res) {
 async function updateOrder(req, res) {
   try {
     const order = req.body;
-    console.log(order);
-    console.log(order, 'controller');
     const orderId = req.params.id;
+    console.log('order:',order.buyer._id  )
+
     const updatedOrder = await orderService.update(order, orderId);
-    // console.log(updatedOrder, 'cntrlr');
+    socketService.emitTo({
+      type:'order-approved',
+      data:'Your order was approved',
+      userId:order.buyer._id
+    })
     res.json(updatedOrder);
   } catch (err) {
     logger.error("Failed to update order", err);

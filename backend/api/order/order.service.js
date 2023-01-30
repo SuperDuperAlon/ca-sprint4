@@ -64,15 +64,12 @@ async function update(order, orderId) {
       status: order.status,
       totalPrice: order.totalPrice,
     };
-    console.log(orderId);
-    console.log(order);
-
-    // console.log(orderToSave);
+    console.log('order in service:', order._id)
+    console.log('orderId:', orderId)
     const collection = await dbService.getCollection("order");
-    // console.log(orderId);
-    await collection.updateOne({ _id: ObjectId(orderId) }, { $set: order });
-
-    // const entryToUpdate =
+    // await collection.updateOne({ _id: ObjectId(orderId) }, { $set: order });
+    await collection.updateOne({ _id: ObjectId(orderId) }, { $set: orderToSave });
+    // await collection.updateOne({ _id: orderId }, { $set: order });
 
     return orderToSave;
   } catch (err) {
