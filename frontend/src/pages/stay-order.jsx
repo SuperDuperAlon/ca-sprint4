@@ -24,12 +24,20 @@ export function StayOrder() {
     const [isLoggedInUser, setIsLoggedInUser] = useState(false)
     const [isConfirm, setIsConfirm]  = useState(false)
     const [loggedInUser, setLoggedInUser] = useState(userService.getLoggedinUser())
+    const [isMsgReceived, setIsMsgReceived] = useState(false)
     const navigate = useNavigate()
+    const timer = useRef(null)
     const confirmInterval = useRef(null)
 
     useEffect(()=>{
         socketService.on(SOCKET_EVENT_ORDER_APPROVED,gotMsg)
     },[])
+
+
+    function gotMsg() {
+        console.log('order:approved')
+
+    }
 
     useEffect(() => {
         // Clear the interval when the component unmounts
@@ -150,10 +158,6 @@ export function StayOrder() {
             console.log(err)
         }
            
-    }
-
-    function gotMsg(){
-        console.log('got in dashboard:')
     }
 
     if (!stay) return <div>loading...</div>

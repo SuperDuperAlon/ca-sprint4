@@ -58,7 +58,7 @@ async function save(order) {
   var savedOrder
   if (order._id) {
     // savedOrder = await storageService.put(STORAGE_KEY, order)
-    savedOrder = await httpService.put(`order/${order._id}`)
+    savedOrder = await httpService.put(`order/${order._id}`, order)
   } else {
     // Later, owner is set by the backend
     // order.owner = userService.getLoggedinUser()
