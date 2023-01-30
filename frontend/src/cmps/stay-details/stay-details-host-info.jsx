@@ -53,7 +53,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
               <div className="avatar-lg">
                 <img
                   className="host-icons-svg"
-                  src={require("../../assets/img/other/DOGE.jpg")}
+                  src={require("../../assets/img/people/0.jpg")}
                   alt="avatar-lg"
                 />
               </div>

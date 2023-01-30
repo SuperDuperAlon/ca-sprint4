@@ -43,6 +43,7 @@ async function add(order) {
   try {
     const collection = await dbService.getCollection("order");
     await collection.insertOne(order);
+    console.log(ObjectId(order._id).getTimestamp());
     return order;
   } catch (err) {
     logger.error("cannot insert order", err);

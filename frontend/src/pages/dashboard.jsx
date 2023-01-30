@@ -227,7 +227,9 @@ const dataBar = {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {orders.map((order) => (
+                            {orders
+                            .sort((a, b) => new Date(a.startDate) > new Date(b.startDate) ? -1 : 1)
+                            .map((order) => (
                                 <TableRow className='table-row-body'
                                     key={order._id}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

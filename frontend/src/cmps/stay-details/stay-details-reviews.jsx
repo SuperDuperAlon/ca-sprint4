@@ -73,7 +73,7 @@ export function StayDetailsReviews({ stay, isMobile }) {
                         <div className="review-feedback-personal mar-b12 flex">
                           <div className="avatar-md mar-r8">
                             <img
-                              src={require("../../assets/img/other/DOGE.jpg")}
+                              src={require(`../../assets/img/people/${idx+1}.jpg`)}
                               alt="avatar-md"
                             />
                           </div>
