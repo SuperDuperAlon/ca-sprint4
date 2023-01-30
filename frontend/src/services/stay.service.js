@@ -25,15 +25,11 @@ export const stayService = {
 window.cs = stayService;
 
 async function getListings(hostId) {
-  try {
-    let data = await storageService.query(STORAGE_KEY);
-
-    const regex = new RegExp(hostId, "i");
-    data = data.filter((listing) => regex.test(listing.host._id));
-    return data;
-  } catch (err) {
-    console.log(err);
-  }
+  const queryParams = `?hostId=${hostId}`;
+  const stays = await httpService.get(BASE_URL + queryParams);
+  // console.log(stays);
+  // return stays
+  return stays
 }
 
 async function query(filterBy) {

@@ -38,6 +38,7 @@ export function StayOrder() {
 
     function gotMsg() {
         console.log('order:approved')
+        setSentOrder('approved')  
 
     }
 
@@ -95,7 +96,7 @@ export function StayOrder() {
         try{
             const loggedInUser = await logout()
             setIsLoggedInUser(false)
-            setSentOrder(null)
+            // setSentOrder(null)
             
         } catch (err){
             console.log(err)
