@@ -107,7 +107,6 @@ function setDefaultLabelFilter() {
 
 function getEmptyStay() {
   return {
-    _id: "",
     name: "",
     type: "",
     imgUrls: ["s101/0"],

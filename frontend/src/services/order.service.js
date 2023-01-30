@@ -5,24 +5,26 @@ import { userService } from "./user.service.js"
 import { storageService } from "./async-storage.service.js"
 
 const STORAGE_KEY = "order_db"
-_createOrders()
+// _createOrders()
+const BASE_URL = "order/"
 
 export const orderService = {
   query,
-  getById,
+  // getById,
   save,
-  remove,
-  // addOrderMsg,
+  // remove,
+  // // addOrderMsg,
   getEmptyOrder,
-  getOrders
+  // getOrders
 }
 window.cs = orderService
 
-async function query(filterBy) {
+async function query(hostId) {
+  const queryParams = `?host=${hostId}`;
   try {
-    let data= await storageService.query(STORAGE_KEY)
-    const regex = new RegExp(filterBy, 'i')
-    data = data.filter(order => regex.test(order.hostId) )
+    let data= await httpService.get(BASE_URL + queryParams)
+    // const regex = new RegExp(order, 'i')
+    // data = data.filter(order => regex.test(order.hostId) )
     return data
   } catch (err) {
     console.log(err)
@@ -31,36 +33,37 @@ async function query(filterBy) {
   // return httpService.get(STORAGE_KEY, filterBy)
 }
 
-function getById(orderId) {
-  return storageService.get(STORAGE_KEY, orderId)
-  // return httpService.get(`order/${orderId}`)
-}
+// function getById(orderId) {
+//   // return storageService.get(STORAGE_KEY, orderId)
+//   return httpService.get(`order/${orderId}`)
+// }
 
-async function getOrders(hostId){
-  try{
-    let data= await storageService.query(STORAGE_KEY)
-    const regex = new RegExp(hostId, 'i')
-    data = data.filter(order => regex.test(order.hostId) )
-    return data 
-  }catch(err){
-    console.log(err)
-  }
-}
+// async function getOrders(hostId){
+//   try{
+//     let data= await storageService.query(STORAGE_KEY)
+//     const regex = new RegExp(hostId, 'i')
+//     data = data.filter(order => regex.test(order.hostId) )
+//     return data 
+//   }catch(err){
+//     console.log(err)
+//   }
+// }
 
-async function remove(orderId) {
-  await storageService.remove(STORAGE_KEY, orderId)
-  // return httpService.delete(`order/${orderId}`)
-}
+// async function remove(orderId) {
+//   // await storageService.remove(STORAGE_KEY, orderId)
+//   return httpService.delete(`order/${orderId}`)
+// }
+
 async function save(order) {
   var savedOrder
   if (order._id) {
-    savedOrder = await storageService.put(STORAGE_KEY, order)
-    // savedOrder = await httpService.put(`order/${order._id}`, order)
+    // savedOrder = await storageService.put(STORAGE_KEY, order)
+    savedOrder = await httpService.put(`order/${order._id}`)
   } else {
     // Later, owner is set by the backend
     // order.owner = userService.getLoggedinUser()
-    savedOrder = await storageService.post(STORAGE_KEY, order)
-    // savedOrder = await httpService.post('order', order)
+    // savedOrder = await storageService.post(STORAGE_KEY, order)
+    savedOrder = await httpService.post('order', order)
   }
   return savedOrder
 }
@@ -72,7 +75,6 @@ async function save(order) {
 
 function getEmptyOrder() {
   return {
-    _id: "",
     hostId: "",
     buyer: {
       _id: "",

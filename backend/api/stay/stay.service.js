@@ -12,10 +12,10 @@ async function query(filterBy = { where: "" }) {
     // console.log(filterBy, 'stayService');
     console.log(criteria, "service");
     const collection = await dbService.getCollection("stay");
-    // var stays = await collection.find({'loc.country': {$regex: new RegExp (criteria, 'ig')}}).toArray()
+    var stays = await collection.find(criteria).toArray()
   
     // { 'loc.country': { '$regex': /Ista/gi } }
-    var stays = await collection.find(criteria ).toArray();
+    // var stays = await collection.find(criteria ).toArray();
 
     return stays.slice(0, 20);
   } catch (err) {
@@ -112,7 +112,7 @@ function _buildCriteria(filterBy) {
   // $regex: new RegExp(filterBy.name, 'ig')
   console.log(txtCriteria, "txt - buildCritera");
   criteria = {
-    "loc.country": txtCriteria,
+    "loc.address": txtCriteria,
   };
 
   // .country = txtCriteria

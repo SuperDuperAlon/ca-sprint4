@@ -4,11 +4,13 @@ const logger = require("../../services/logger.service");
 
 async function getOrders(req, res) {
   try {
+    const hostId = req.query?.host
+    console.log(hostId , 'getorders backend');
     logger.debug("Getting Orders");
     // const filterBy = {
     //   where: req.query?.where || "",
     // }
-    const orders = await orderService.query();
+    const orders = await orderService.query(hostId);
     res.json(orders);
   } catch (err) {
     logger.error("Failed to get orders", err);
@@ -56,6 +58,7 @@ async function deleteOrder(req, res) {
 async function updateOrder(req, res) {
   try {
     const order = req.body;
+    console.log(order);
     console.log(order, 'controller');
     const orderId = req.params.id;
     const updatedOrder = await orderService.update(order, orderId);
