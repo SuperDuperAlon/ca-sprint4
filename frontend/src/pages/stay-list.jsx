@@ -35,7 +35,7 @@ export function StayList({
                 {!!stay.reviews.length && (
                   <span className="flex center">
                     <AiFillStar />{" "}
-                    {`${+(stay.reviewsRate)}`}
+                    {stay.reveiwRate? stay.reveiwRate : +(utilService.getRandomFloatInclusive(4,5).toFixed(2))}
                     {/* {stay.reviews.reduce(
                       (acc, review) => review.rate + acc,0) / stay.reviews.length }
                     {" "}({stay.reviews.length}) */}
@@ -44,7 +44,7 @@ export function StayList({
               </h4>
             </div>
             <p className="over-flow">{stay.name}</p>
-            <p>{stay.beds > 1 ? stay.beds + ' beds' : stay.beds + ' bed'} </p>
+            <p>{stay.beds ? (stay.beds > 1 ? stay.beds + ' beds' : stay.beds + ' bed') : (stay.bedrooms*2+1) + ' beds'} </p>
             {/* <p>
               {utilService.getDistanceFromLatLonInKm(
                 31.771959,

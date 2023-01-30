@@ -5,6 +5,8 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { FiShare, FiHeart } from "react-icons/fi";
 import { MdStar } from "react-icons/md";
+import { utilService } from "../../services/util.service";
+
 
 export function StayDetailsLocationInfo({ stay, isMobile }) {
   if (!stay) return console.log("lala");
@@ -20,12 +22,12 @@ export function StayDetailsLocationInfo({ stay, isMobile }) {
                   <span className="fs16">
                     <MdStar />
                   </span>
-                  4.88 · <Link to={`/reviews/`}>{stay.reviews.length} reviews</Link>
+                  {stay.reveiwRate? stay.reveiwRate : utilService.getRandomFloatInclusive(4,5).toFixed(2)} · <Link to={`/reviews/`}>{stay.reviews.length} reviews</Link>
                 </div>
                 · {stay.host.isSuperhost && <div className="fw400">Superhost ·</div> }
                 <div className="mar-l4">
                   <Link to={`/location/`}>
-                    {stay.loc.city}, {stay.loc.address}, {stay.loc.country}
+                     {stay.loc.address}
                   </Link>
                 </div>
               </div>
@@ -54,9 +56,9 @@ export function StayDetailsLocationInfo({ stay, isMobile }) {
               <div className="locations-attr fs14 fw600">
                 <div className="mar-r4">
                   <span className="fs14">
-                    <MdStar />
+                  <AiFillStar />
                   </span>{" "}
-                  {stay.reviewsRate} ·
+                  {stay.reveiwRate ? stay.reveiwRate : utilService.getRandomFloatInclusive(4,5).toFixed(2)} ·
                   <Link to={`/reviews/`}>{stay.reviews.length} Reviews</Link>
                 </div>
                 ·

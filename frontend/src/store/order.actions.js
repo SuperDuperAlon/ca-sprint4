@@ -71,3 +71,15 @@ export async function updateOrder(order) {
       throw err
   }
 }
+
+
+// export async function loadOrder(orderId) {
+//   try {
+//       const order = await orderService.getById(orderId)
+//       console.log(order);
+//       store.dispatch({ type: SET_ORDER, order })
+//   } catch (err) {
+//       // showErrorMsg('Cannot load user')
+//       console.log('Cannot load user', err)
+//   }
+// }
