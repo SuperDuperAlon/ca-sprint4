@@ -27,14 +27,14 @@ async function query(hostId) {
   }
 }
 
-async function getById(hostId) {
+async function getById(orderId) {
   try {
+    console.log(orderId , 'service back');
     const collection = await dbService.getCollection("order");
-    console.log(hostId);
-    const order = collection.find({ "hostId": hostId });
+    const order = collection.findOne({ _id: ObjectId(orderId) });
     return order;
   } catch (err) {
-    logger.error(`while finding order ${hostId}`, err);
+    logger.error(`while finding order ${orderId}`, err);
     throw err;
   }
 }
@@ -43,7 +43,7 @@ async function add(order) {
   try {
     const collection = await dbService.getCollection("order");
     await collection.insertOne(order);
-    console.log(ObjectId(order._id).getTimestamp());
+    // console.log(ObjectId(order._id).getTimestamp());
     return order;
   } catch (err) {
     logger.error("cannot insert order", err);

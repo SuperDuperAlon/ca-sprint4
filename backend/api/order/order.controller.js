@@ -22,6 +22,7 @@ async function getOrderById(req, res) {
   try {
     const orderId = req.params.id;
     const order = await orderService.getById(orderId);
+    console.log(orderId , 'order-controller');
     res.json(order);
   } catch (err) {
     logger.error("Failed to get order", err);

@@ -6,11 +6,12 @@ import { utilService } from "../services/util.service"
 import { SiAirbnb } from 'react-icons/si'
 import { AiFillStar } from 'react-icons/ai'
 import { orderService } from "../services/order.service"
-import { addOrder, updateOrder } from "../store/order.actions"
+import { addOrder, loadOrder, updateOrder } from "../store/order.actions"
 import { LoginSignup } from "../cmps/login-signup"
 import { useRef } from "react"
 import { userService } from "../services/user.service"
 import { logout } from "../store/user.actions"
+import { useSelector } from 'react-redux'
 
 export function StayOrder() {
 
@@ -22,9 +23,12 @@ export function StayOrder() {
     const [isLoggedInUser, setIsLoggedInUser] = useState(false)
     const [isConfirm, setIsConfirm]  = useState(false)
     const [loggedInUser, setLoggedInUser] = useState(userService.getLoggedinUser())
+    const [sentOrder, setSentOrder] = useState(null)
     const navigate = useNavigate()
     const confirmInterval = useRef(null)
+    
 
+    // console.log(order)
 
     useEffect(() => {
         // Clear the interval when the component unmounts
@@ -34,13 +38,14 @@ export function StayOrder() {
     useEffect(() => {
         loadStay()
         loggedInUser && setIsLoggedInUser(true)
+        // loadOrder('63d7ab30d8610c0abc6bbcde')
     }, [])
 
   
-    // console.log(loggedInUser)
+    console.log(sentOrder)
 
 
-    // function loadLoggedInUser(){
+    // function loadLoggedInUser()
     //     if (loggedInUser) set(isLoggedInUser) 
     // }
 
@@ -79,6 +84,7 @@ export function StayOrder() {
         try{
             const loggedInUser = await logout()
             setIsLoggedInUser(false)
+            setSentOrder(null)
             
         } catch (err){
             console.log(err)
@@ -139,8 +145,10 @@ export function StayOrder() {
             } else {
                 const savedOrder = await addOrder(orderToEdit)
                 console.log("order saved", savedOrder)
+                setSentOrder(savedOrder)
             }
-            confirmInterval.current = setTimeout( () => setIsConfirm(true) ,2000) 
+            // confirmInterval.current = setTimeout( () => setIsConfirm(true) ,2000)
+            setIsConfirm(true) 
         } catch (err) {
             console.log(err)
         }
@@ -151,7 +159,7 @@ export function StayOrder() {
     return <section className="stay-order">
         <header className="header">
             <div className="logo-general" onClick={() => navigate('/')}>
-                <h3><span className="airbnb-icon"><SiAirbnb /></span>anyplce</h3>
+                <h3 className="text-next-to-logo"><span className="airbnb-icon"><SiAirbnb /></span>nyplce</h3>
             </div>
         </header>
         <button onClick={onLogOut}></button> 
@@ -160,11 +168,12 @@ export function StayOrder() {
             Confirm and pay
             <button disable className="clean-btn fs32 pad-r32"></button>
         </div>}
-        {isConfirm && orderToEdit.status=== 'approved' ? <div className="confirm fs32 bold">
+        {isConfirm  && 
+        <div> {sentOrder==='approved'? <div className="confirm fs32 bold">
             <button onClick={()=>navigate('/')} className="clean-btn fs32 pad-r32">{'<'}</button>
             <img src="https://icons.veryicon.com/png/o/miscellaneous/8atour/success-35.png" />
-            Reservation success!
-        </div> : <div></div>}
+            Reservation confirmed!
+        </div> : <div className="confirm fs24 bold">Waiting for approval...</div>}</div>}
         <div className="main-order">
 
             <div className="order-details-container">
@@ -189,7 +198,8 @@ export function StayOrder() {
                         </div>
                         <div className="bold under-line">Edit</div>
                     </div>
-                    {isLoggedInUser && <button onClick={confirmOrder} className="reserve-btn full-width fs16 confirm-btn">Approved</button>}
+                    {(isLoggedInUser && !sentOrder) ? <button onClick={confirmOrder} className="reserve-btn full-width fs16 confirm-btn">Confirm</button> : <button onClick={confirmOrder} className="reserve-btn full-width fs16 confirm-btn btn-disabled" disabled>Confirmed</button>}
+                     {/* <div className={sentOrder.status==='pending' ? "order-status": "order-status"}>{sentOrder.status === 'pending' ? 'Waiting for approval' : 'Your reservation is confirmed!'}</div>} */}
                     {/* {isLoggedInUser && <button onClick={confirmOrder} className="reserve-btn full-width fs16 confirm-btn">{!isConfirm ? <>Confirm</>: <>Approved</>}</button>} */}
                     {!isLoggedInUser && <div className="payment-container mar-b24">
                         <div className="pad-t32 pad-b24 fs22 bold">Choose how to pay</div>

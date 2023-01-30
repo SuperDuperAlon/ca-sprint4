@@ -15,6 +15,7 @@ export const orderService = {
   // remove,
   // // addOrderMsg,
   getEmptyOrder,
+  getById
   // getOrders
 }
 window.cs = orderService
@@ -33,10 +34,10 @@ async function query(hostId) {
   // return httpService.get(STORAGE_KEY, filterBy)
 }
 
-// function getById(orderId) {
-//   // return storageService.get(STORAGE_KEY, orderId)
-//   return httpService.get(`order/${orderId}`)
-// }
+function getById(orderId) {
+  // return storageService.get(STORAGE_KEY, orderId)
+  return httpService.get(`order/${orderId}`)
+}
 
 // async function getOrders(hostId){
 //   try{
@@ -150,7 +151,7 @@ function _createOrders() {
     //     "hostId": "622f3402e36c59e6164facbf",
     //     "buyer": {
     //       "_id": "622f3402e36c59e6164facc2",
-    //       "fullname": "Andrius",
+    //       "fullname": "Никита",
     //     },
     //     "totalPrice": "780",
     //     "startDate": "01/05/2023",

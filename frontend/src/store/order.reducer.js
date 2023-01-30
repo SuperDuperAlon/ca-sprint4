@@ -11,9 +11,11 @@ export const SET_ORDERS = 'SET_ORDERS'
 export const REMOVE_ORDER = 'REMOVE_ORDER'
 export const ADD_ORDER = 'ADD_ORDER'
 export const UPDATE_ORDER = 'UPDATE_ORDER'
+// export const SET_ORDER = 'SET_ORDER'
 
 const initialState = {
-  orders: []
+  orders: [],
+  order: null
   
 }
 
@@ -22,6 +24,7 @@ const initialState = {
 export function orderReducer(state = initialState, action) {
   var newState = state
   var orders
+  var order
   switch (action.type) {
     // Orders CRUDL
     case SET_ORDERS:
@@ -40,6 +43,11 @@ export function orderReducer(state = initialState, action) {
       orders = state.orders.map(order => (order._id === action.order._id) ? action.order : order)
       newState = { ...state, orders }
       break
+      // case SET_ORDER:
+      //       order = state.orders.find(order => order._id === action.orderId)
+      //       console.log(order);
+      //       newState = { ...state, order }
+      //       break
       
     // Count Actions
     case COUNT_ADULTS:
