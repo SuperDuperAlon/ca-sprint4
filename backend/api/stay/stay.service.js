@@ -7,17 +7,11 @@ const fs = require("fs");
 
 async function query(filterBy = { where: "" }) {
   try {
-    console.log(filterBy, " service");
     const criteria = _buildCriteria(filterBy);
-    // console.log(filterBy, 'stayService');
-    console.log(criteria, "service");
     const collection = await dbService.getCollection("stay");
-    // var stays = await collection.find({'loc.country': {$regex: new RegExp (criteria, 'ig')}}).toArray()
-  
-    // { 'loc.country': { '$regex': /Ista/gi } }
     var stays = await collection.find(criteria ).toArray();
-
     return stays.slice(0, 20);
+
   } catch (err) {
     logger.error("cannot find stays", err);
     throw err;
@@ -106,25 +100,23 @@ async function removeStayMsg(stayId, msgId) {
 
 function _buildCriteria(filterBy) {
   let criteria = {};
-  console.log("we here");
-
   const txtCriteria = { $regex: new RegExp(filterBy.where, "ig") };
-  // $regex: new RegExp(filterBy.name, 'ig')
   console.log(txtCriteria, "txt - buildCritera");
-  criteria = {
-    "loc.country": txtCriteria,
-  };
-
-  // .country = txtCriteria
-  // [
-  //   {
-  //       country: txtCriteria
-  //   },
-  //   // {
-  //     city: txtCriteria
+  // criteria = {
+  //   "loc.country": txtCriteria,
   // }
-  // ]
-  // console.log(criteria.loc.country, 'jkjk');
+  criteria.$or = [
+    {
+      "loc.country": txtCriteria,
+    },
+    {
+      "loc.city": txtCriteria,
+    },
+    {
+      "loc.address": txtCriteria,
+    }
+  ]
+
   return criteria;
 }
 
