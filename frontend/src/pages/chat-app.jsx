@@ -14,8 +14,10 @@ export function ChatApp() {
     const botTimeoutRef = useRef()
 
     useEffect(() => {
+        // adding messages 
         socketService.on(SOCKET_EVENT_ADD_MSG, addMsg)
         return () => {
+            // clear the socket at the end
             socketService.off(SOCKET_EVENT_ADD_MSG, addMsg)
             botTimeoutRef.current && clearTimeout(botTimeoutRef.current)
         }
@@ -39,9 +41,9 @@ export function ChatApp() {
 
     function sendMsg(ev) {
         ev.preventDefault()
-        const from = loggedInUser?.fullname || 'Me'
-        const newMsg = { from, txt: msg.txt }
-        socketService.emit(SOCKET_EMIT_SEND_MSG, newMsg)
+        const from = loggedInUser?.fullname || 'Me' //get the name from who is coming 
+        const newMsg = { from, txt: msg.txt } //compile the massage and from who is
+        socketService.emit(SOCKET_EMIT_SEND_MSG, newMsg) //sending the massage
         if (isBotMode) sendBotResponse()
         // for now - we add the msg ourself
         addMsg(newMsg)
