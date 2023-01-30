@@ -159,11 +159,11 @@ export function StayOrder() {
             <button className="clean-btn fs32 pad-r32">{'<'}</button>
             Confirm and pay
         </div>}
-        {isConfirm && <div className="confirm fs32 bold">
+        {isConfirm && orderToEdit.status=== 'approved' ? <div className="confirm fs32 bold">
             <button onClick={()=>navigate('/')} className="clean-btn fs32 pad-r32">{'<'}</button>
             <img src="https://icons.veryicon.com/png/o/miscellaneous/8atour/success-35.png" />
             Reservation success!
-        </div>}
+        </div> : <div></div>}
         <div className="main-order">
 
             <div className="order-details-container">
