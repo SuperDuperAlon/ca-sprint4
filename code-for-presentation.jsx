@@ -12,16 +12,18 @@ function updateDimensions() {
   isMobileReady(window.innerWidth)
 }
 
-//   Sets state to Mobile or Desktop / Tablet
+//   Sets state to Mobile or Desktop / Tablet -- need to refactor to short if
+// set let variable inside the check
+// Look for better name for isMobileReady function
 function isMobileReady(width) {
   if (width > 687) {
     setIsMobile(false)
-  } else if (width < 687) {
+  } else if (width <= 687) {
     setIsMobile(true)
   }
 }
 
-// Reusable application to the functions
+// Reusable application to the functions -- Short if to check state
 {
   !isMobile && (
     <>
