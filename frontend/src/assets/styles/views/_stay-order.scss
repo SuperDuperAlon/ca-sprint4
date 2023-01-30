@@ -1,4 +1,5 @@
 .stay-order{
+    font-family: circular;
     letter-spacing: 0.04rem;
     min-height: 90vh;
     .header{
@@ -126,6 +127,8 @@
                         width: 30%;
                         border-radius: 0.5rem;                        
                     }
+
+                   
                 }
                 .protection{
                     padding: rem(24px) 0;
@@ -160,4 +163,91 @@
         border: 7px solid rgb(34, 34, 34);
         
     }
+}
+
+@media (max-width: $padded-s) {
+    .stay-order{
+     .header{
+        display: none;
+     }
+
+    .confirm{
+        position: sticky;
+        z-index: 2;
+        background-color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        top: 0;
+        padding:24px ;
+        font-size: 16px;
+        font-weight: 700;
+        .clean-btn{
+            font-size: 16px;
+            font-weight: 700;
+            padding: 0;
+        }
+     }
+    .main-order{
+        overflow-y: scroll;
+        display: grid;
+        grid-template-columns:24px auto 24px;
+    
+        .order-details-container{
+            border: 0;
+            width: 100%;
+            grid-area: 2/2/3/3;
+
+        }
+        .confirm-btn{
+            margin-top: 24px;
+            margin-bottom: 24px;
+        }
+
+        .details{
+            width: 100%;
+            grid-area: 1/2/2/3;
+
+            .details-modal{
+                padding: 0;
+                border: 0;
+                position: relative;
+                max-width: none;
+                width: 100%;
+                .price-details{
+                    .last-div{
+                        margin-bottom: 20px;
+                    }
+
+                }
+                
+                   
+                
+                .stay-details{
+                    flex-direction: column;
+                    .fs14{
+                        padding-bottom: 0;
+                    }
+                    img{
+                        width: 50%;
+                        aspect-ratio: 1/0.8;
+                    }
+
+                    
+
+                }
+
+            }
+            
+        }
+
+       
+
+
+
+
+    }
+       
+    }
+    
 }

@@ -13,14 +13,6 @@
     }
   }
 
-  // Main Page
-
-  // @include for-mobile-layout {
-  //   grid-template-columns: minmax($pad-20, 1fr) minmax(300px, $small-breakpoint) minmax(
-  //       $pad-20,
-  //       1fr
-  //     );
-  // }
 
   @include for-tablet-layout {
     grid-template-columns: minmax($pad-20, 1fr) minmax(auto, $medium-breakpoint) minmax($pad-20,
