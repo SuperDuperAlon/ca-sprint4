@@ -1,31 +1,29 @@
-const [isMobile, setIsMobile] = useState(false)
-const [width, setWidth] = useState(window.innerWidth)
+const [isMobile, setIsMobile] = useState(false);
+
+const MOBILE_WIDTH = 687;
 
 useEffect(() => {
-  window.addEventListener('resize', updateDimensions)
-  return () => window.removeEventListener('resize', updateDimensions)
-}, [])
+  window.addEventListener("resize", updateDimensions);
+  return () => window.removeEventListener("resize", updateDimensions);
+}, []);
 
-//   Listens to changes in Screensize
+//   Listens to changes in Screensize and sets the state to Mobile or Desktop / Tablet
 function updateDimensions() {
-  setWidth(window.innerWidth)
-  isMobileReady(window.innerWidth)
+  setIsMobile(window.innerWidth < MOBILE_WIDTH);
 }
 
-//   Sets state to Mobile or Desktop / Tablet -- need to refactor to short if
-// set let variable inside the check
-// Look for better name for isMobileReady function
-function isMobileReady(width) {
-  if (width > 687) {
-    setIsMobile(false)
-  } else if (width <= 687) {
-    setIsMobile(true)
-  }
-}
-
-// Reusable application to the functions -- Short if to check state
+// Reusable application to the functions
 {
-  !isMobile && (
+  isMobile ? (
+    <>
+      <StayDetailsCarousel />
+      <StayDetailsLocationInfo isMobile={isMobile} />
+      <StayDetailsHostInfo isMobile={isMobile} />
+      <StayDetailsReviews isMobile={isMobile} />
+      <StayDetailsHostDetails isMobile={isMobile} />
+      <StayDetailsMobileFooter />
+    </>
+  ) : (
     <>
       <StayDetailsLocationInfo isMobile={isMobile} />
       <StayDetailsGallery />
@@ -36,17 +34,33 @@ function isMobileReady(width) {
       <StayDetailsMap />
       <StayDetailsHostDetails isMobile={isMobile} />
     </>
-  )
+  );
 }
-{
-  isMobile && (
-    <>
-      <StayDetailsCarousel />
-      <StayDetailsLocationInfo isMobile={isMobile} />
-      <StayDetailsHostInfo isMobile={isMobile} />
-      <StayDetailsReviews isMobile={isMobile} />
-      <StayDetailsHostDetails isMobile={isMobile} />
-      <StayDetailsMobileFooter />
-    </>
-  )
-}
+
+// The code below is more readable in our eyes - we'd like your input on what to keep
+
+//   !isMobile && (
+//     <>
+//       <StayDetailsLocationInfo isMobile={isMobile} />
+//       <StayDetailsGallery />
+//       <InnerNavStay />
+//       <StayDetailsHostInfo isMobile={isMobile} />
+//       <StayDetailsOrderModal />
+//       <StayDetailsReviews isMobile={isMobile} />
+//       <StayDetailsMap />
+//       <StayDetailsHostDetails isMobile={isMobile} />
+//     </>
+//   );
+// }
+// {
+//   isMobile && (
+//     <>
+//       <StayDetailsCarousel />
+//       <StayDetailsLocationInfo isMobile={isMobile} />
+//       <StayDetailsHostInfo isMobile={isMobile} />
+//       <StayDetailsReviews isMobile={isMobile} />
+//       <StayDetailsHostDetails isMobile={isMobile} />
+//       <StayDetailsMobileFooter />
+//     </>
+//   );
+// }
