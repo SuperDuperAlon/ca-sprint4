@@ -25,9 +25,10 @@ export function StayDetails() {
   );
   const { stayId } = useParams();
   const [stay, setStay] = useState(null);
-  // const [isMobile, setIsMobile] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth<687);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 687);
+  // const [width, setWidth] = useState(window.innerWidth);
+
+  const MOBILE_WIDTH = 687;
 
   useEffect(() => {
     loadStay();
@@ -39,17 +40,17 @@ export function StayDetails() {
   }, []);
 
   function updateDimensions() {
-    setWidth(window.innerWidth);
-    isMobileReady(window.innerWidth);
+    // setWidth(window.innerWidth);
+    setIsMobile(window.innerWidth < MOBILE_WIDTH);
   }
 
-  function isMobileReady(width) {
-    if (width > 687) {
-      setIsMobile(false);
-    } else if (width < 687) {
-      setIsMobile(true);
-    }
-  }
+  // function isMobileReady(width) {
+  //   if (width > MOBILE_WIDTH) {
+  //     setIsMobile(false);
+  //   } else if (width < 687) {
+  //     setIsMobile(true);
+  //   }
+  // }
 
   async function loadStay() {
     try {
@@ -102,6 +103,7 @@ export function StayDetails() {
               <StayDetailsCarousel imgs={stay.imgUrls} />
               <StayDetailsLocationInfo stay={stay} isMobile={isMobile} />
               <StayDetailsHostInfo stay={stay} isMobile={isMobile} />
+              <StayDetailsMap stay={stay} />
               <StayDetailsReviews stay={stay} isMobile={isMobile} />
               <StayDetailsHostDetails stay={stay} isMobile={isMobile} />
               <StayDetailsMobileFooter stay={stay} />
