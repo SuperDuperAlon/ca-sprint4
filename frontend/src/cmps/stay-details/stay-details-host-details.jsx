@@ -10,7 +10,7 @@ export function StayDetailsHostDetails({ stay }) {
           <div className="avatar-lg mar-r8">
             {" "}
             <img
-              src={require("../../assets/img/other/DOGE.jpg")}
+              src={require("../../assets/img/people/0.jpg")}
               alt="avatar-lg"
             />
           </div>
