@@ -178,7 +178,7 @@ export function StayOrder() {
         {!isConfirm &&<div className="confirm fs32 bold">
             <button className="clean-btn fs32 pad-r32">{'<'}</button>
             Confirm and pay
-            <button disable className="clean-btn fs32 pad-r32"></button>
+            <button disable="true" className="clean-btn fs32 pad-r32"></button>
         </div>}
         {isConfirm  && 
         <div> {sentOrder==='approved'? <div className="confirm fs32 bold">
@@ -194,7 +194,7 @@ export function StayOrder() {
                         <div className="bold mar-b8">This is a rare find.</div>
                         <div>Mega's place is usually booked.</div>
                     </div>
-                    <section className="icon-svg"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><g stroke="none"><path d="m32.62 6 9.526 11.114-18.146 23.921-18.147-23.921 9.526-11.114z" fill-opacity=".2"></path><path d="m34.4599349 2 12.8243129 14.9616983-23.2842478 30.6928721-23.28424779-30.6928721 12.82431289-14.9616983zm-17.9171827 16h-12.52799999l18.25899999 24.069zm27.441 0h-12.528l-5.73 24.069zm-14.583 0h-10.802l5.4012478 22.684zm-15.92-12.86-9.30799999 10.86h11.89399999zm19.253-1.141h-17.468l2.857 12.001h11.754zm1.784 1.141-2.586 10.86h11.894z"></path></g></svg></section>
+                    <section className="icon-svg"><svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="presentation" focusable="false"><g stroke="none"><path d="m32.62 6 9.526 11.114-18.146 23.921-18.147-23.921 9.526-11.114z" fillOpacity=".2"></path><path d="m34.4599349 2 12.8243129 14.9616983-23.2842478 30.6928721-23.28424779-30.6928721 12.82431289-14.9616983zm-17.9171827 16h-12.52799999l18.25899999 24.069zm27.441 0h-12.528l-5.73 24.069zm-14.583 0h-10.802l5.4012478 22.684zm-15.92-12.86-9.30799999 10.86h11.89399999zm19.253-1.141h-17.468l2.857 12.001h11.754zm1.784 1.141-2.586 10.86h11.894z"></path></g></svg></section>
                 </div>
                 <div>
                     <div className="fs22 bold pad-b24">Your trip</div>

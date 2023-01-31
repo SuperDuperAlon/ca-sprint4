@@ -6,11 +6,12 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 export function GoogleMap({ stay, isMobile }) {
   var style = { color: "#ff5a5f", fontSize: "3rem" };
+  console.log('stay.loc.lat:',stay.loc.lat )
 
   const defaultProps = {
     center: {
-      lat: stay.loc.lat,
-      lng: stay.loc.lan,
+      lat: 41.0986007,
+      lng: 28.998675,
     },
     zoom: 11,
     icon: <RiMapPin2Fill style={style} />,

@@ -37,6 +37,7 @@ export function Dashboard() {
     const navigate = useNavigate()
     const orders = useSelector(storeState => storeState.orderModule.orders)
 
+
     useEffect(() => {
         socketService.on(SOCKET_EVENT_ORDER_REQUEST, gotMsg)
     }, [])
@@ -67,7 +68,6 @@ export function Dashboard() {
         try {
             const orderIndex = orders.findIndex((order) => order._id === currOrder._id)
             currOrder.status = status
-            console.log('currOrder:',currOrder )
             const updatedOrder = await updateOrder(currOrder)
             orders.splice(orderIndex, 1, updatedOrder)
         } catch (err) {
@@ -81,11 +81,17 @@ export function Dashboard() {
     }
 
     function gotMsg() {
-        setIsMsgReceived(true)
+        timer.cur=setTimeout(() => {
+            setIsMsgReceived(true)
+            clearTimeout(timer.cur)
+        },1500)
+
+
         timer.curr = setTimeout(() => {
             setIsMsgReceived(false)
-            clearTimeout(timer)
-        }, 10000)
+            clearTimeout(timer.curr)
+        }, 7000)
+    
     }
 
     function getBarData() {
