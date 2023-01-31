@@ -410,11 +410,10 @@
       flex-direction: row;
     }
     .host-details {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      display: flex;
+      flex-direction: column;
       > * {
         padding: 0 0.5rem;
-        margin-right: 4rem;
       }
     }
   }
@@ -499,7 +498,7 @@
   .details-img-container {
     grid-column: 1 / -1;
     .details-stay-img {
-      aspect-ratio: 15/10;
+      // aspect-ratio: 15/10;
       object-fit: fill;
     }
 
