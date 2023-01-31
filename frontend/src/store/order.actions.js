@@ -26,7 +26,6 @@ export function getActionUpdateOrder(order) {
 export async function loadOrders(filter=null) {
   try {
       const orders = await orderService.query(filter)
-      console.log(orders)
       store.dispatch({
           type: SET_ORDERS,
           orders: orders
@@ -72,3 +71,15 @@ export async function updateOrder(order) {
       throw err
   }
 }
+
+
+// export async function loadOrder(orderId) {
+//   try {
+//       const order = await orderService.getById(orderId)
+//       console.log(order);
+//       store.dispatch({ type: SET_ORDER, order })
+//   } catch (err) {
+//       // showErrorMsg('Cannot load user')
+//       console.log('Cannot load user', err)
+//   }
+// }

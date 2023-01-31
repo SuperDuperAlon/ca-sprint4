@@ -7,7 +7,8 @@
         height: 80px;
         padding-left: rem(24px);
         align-items: center;
-        box-shadow: 0 1px 0 #ebebeb 
+        box-shadow: 0 1px 0 #ebebeb ;
+        color: #dc0e64
     }
     .confirm{
         padding: 64px 0 48px;
@@ -72,6 +73,18 @@
             }
             .confirm-btn{
                 margin-top: 45px;
+                &.btn-disabled{
+                    background:  linear-gradient(to right, rgb(230 30 77 / 30%) 0%, rgb(227 28 95 / 38%) 50%, rgb(215 4 102 / 29%) 100%);
+                }
+            }
+            .order-status{
+                font-size: 20px;
+                border: 1px solid rgb(221, 221, 221);
+                padding: 1.5rem;
+                border-radius: 0.75rem;
+                height: max-content;
+                margin-top: 55px;
+                font-weight: bold;
             }
             .login-sign-up{
                 border-top: 1px solid rgb(221, 221, 221);

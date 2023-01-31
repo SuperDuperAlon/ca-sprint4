@@ -15,7 +15,7 @@ export function StayDetailsReviews({ stay, isMobile }) {
           <>
             <div className="fs22 fw600 mar-b32 flex align-center">
               <MdStar />
-              4.88 · {stay.reviews.length} reviews
+              {stay.reveiwRate ? stay.reveiwRate : utilService.getRandomFloatInclusive(4,5).toFixed(2)} · {stay.reviews.length} reviews
             </div>
             <div className="details-review-ratings mar-b16">
               <div className="review-rating">
