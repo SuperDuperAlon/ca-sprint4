@@ -25,7 +25,8 @@ export function StayDetails() {
   );
   const { stayId } = useParams();
   const [stay, setStay] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth<687);
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
