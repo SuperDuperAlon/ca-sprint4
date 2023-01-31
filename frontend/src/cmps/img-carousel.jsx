@@ -21,7 +21,7 @@ export function ImgCarousel({ imgs }) {
     }
 
     return (<div className="img-container">
-        <Carousel sx={{'&:hover': {opacity:1}}} className="carousel" show={1.5} autoPlay={false} navButtonsAlwaysVisible={false} animation="slide" cycleNavigation={false} navButtonsProps={{ 
+        <Carousel sx={{'&:hover': {opacity:`1 !important`}}} className="carousel" show={1.5} autoPlay={false} navButtonsAlwaysVisible={false} animation="slide" cycleNavigation={false} navButtonsProps={{ 
         className : 'nav-btn',
     }} indicatorContainerProps={{
         className :'indicators',
