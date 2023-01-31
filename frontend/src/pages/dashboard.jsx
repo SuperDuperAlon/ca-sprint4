@@ -38,6 +38,7 @@ export function Dashboard() {
     const orders = useSelector(storeState => storeState.orderModule.orders)
 
 
+
     useEffect(() => {
         socketService.on(SOCKET_EVENT_ORDER_REQUEST, gotMsg)
     }, [])
@@ -81,11 +82,8 @@ export function Dashboard() {
     }
 
     function gotMsg() {
-        timer.cur=setTimeout(() => {
-            setIsMsgReceived(true)
-            clearTimeout(timer.cur)
-        },1500)
-
+        
+        setIsMsgReceived(true)
 
         timer.curr = setTimeout(() => {
             setIsMsgReceived(false)

@@ -1,5 +1,4 @@
 
-// import { ScrollingCarousel } from "@trendyol-js/react-carousel"
 import React, { useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router"
 import { filterService } from "../services/filterService"

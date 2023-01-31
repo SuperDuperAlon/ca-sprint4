@@ -61,6 +61,7 @@
 
         }
     }
+
     align-items: center;
     position: sticky;
     top: 60px;
@@ -125,61 +126,83 @@
     }
 
 
-.MuiBox-root {
-    flex: 1 0 auto;
+    .MuiBox-root {
+        flex: 1 0 auto;
 
-}
+        .MuiTabs-root {
 
-.MuiTab-root {
-    flex-direction: row;
-    max-width: fit-content;
-    font-family: circular;
-    text-transform: none;
-}
+            overflow: hidden;
+            min-height: 48px;
+            -webkit-overflow-scrolling: touch;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
 
-.MuiTabScrollButton-root {
-    display: none;
-}
+            .MuiTabs-scroller {
+                position: relative;
+                display: inline-block;
+                -webkit-flex: 1 1 auto;
+                -ms-flex: 1 1 auto;
+                flex: 1 1 auto;
+                white-space: nowrap;
+                scrollbar-width: none;
+                overflow-x: auto;
+                overflow-y: hidden
+            }
 
-.css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
-    color: #ffffff;
-    white-space: nowrap;
-    padding: 4px;
-}
 
 
-.MuiTabs-root:active {
-    background-color: rgba(255, 255, 255, 0);
-}
+        }
 
-.css-1aquho2-MuiTabs-indicator {
-    background-color: #ffffff00;
-}
+    }
 
-.css-145v6pe-MuiButtonBase-root-MuiTabScrollButton-root {
-    border-radius: 50%;
-    border: 0.1px rgba(0, 0, 0, 0.329) solid;
-    opacity: 1;
-    height: 2rem;
-    width: 2rem;
-    align-self: center;
-    padding: 0;
+    .MuiTab-root {
+        flex-direction: row;
+        max-width: fit-content;
+        font-family: circular;
+        text-transform: none;
+    }
 
-    &.Mui-disabled {
+    .MuiTabScrollButton-root {
         display: none;
     }
 
-    &:hover {
-        cursor: pointer;
+    .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+        color: #ffffff;
+        white-space: nowrap;
+        padding: 4px;
     }
 
-}
 
-.css-jnbkl4 {
-    border-color: #dddddd00;
-    background-color: transparent;
+    .MuiTabs-root:active {
+        background-color: rgba(255, 255, 255, 0);
+    }
 
-}
+    .css-145v6pe-MuiButtonBase-root-MuiTabScrollButton-root {
+        border-radius: 50%;
+        border: 0.1px rgba(0, 0, 0, 0.329) solid;
+        opacity: 1;
+        height: 2rem;
+        width: 2rem;
+        align-self: center;
+        padding: 0;
+
+        &.Mui-disabled {
+            display: none;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+
+    }
+
+    .css-jnbkl4 {
+        border-color: #dddddd00;
+        background-color: transparent;
+
+    }
 
 }
 
