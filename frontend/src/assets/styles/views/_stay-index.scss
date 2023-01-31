@@ -1,59 +1,64 @@
 .stay-list {
     display: grid;
-    grid-template-columns:  repeat(auto-fit, minmax(250px, 1fr)) ;
-    gap : 25px ;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
     z-index: 5;
     position: relative;
- 
-    .stay-img{
+
+    .stay-img {
         aspect-ratio: 1/1;
         object-fit: cover;
         border-radius: 0.8rem;
         height: 100%;
         position: relative;
-        
+
     }
-    h4, p{
+
+    h4,
+    p {
         margin: 0;
         line-height: 1.2;
         letter-spacing: 0.4px;
     }
-    h4{
+
+    h4 {
         font-size: 0.9375rem;
         font-weight: 600;
     }
 
-    h4 span{
+    h4 span {
         font-weight: 400;
     }
-    p{
-        color: $grey;
+
+    p {
+        color: rgb(118, 118, 118);
         font-size: 1rem;
         overflow: hidden;
         white-space: nowrap;
         max-width: 80%;
     }
 
-    .star{
+    .star {
         font-size: 0.7rem;
         align-self: center;
     }
-    .stay-preview{
 
-        &:hover{
+    .stay-preview {
+
+        &:hover {
             cursor: pointer;
         }
     }
 
-    .img-container{
+    .img-container {
         // display: flex;
         // position: relative;
         // position: absolute;
         display: block;
         margin-bottom: 10px;
     }
-    
-    .remove-btn{
+
+    .remove-btn {
         // position: absolute;
         // top: 50%;
         // right: 50px;
@@ -62,75 +67,85 @@
     }
 
 
-    .carousel{
-        
+    .carousel {
 
-        .nav-btn{
+
+        .nav-btn {
             background-color: white;
             border-radius: 50%;
             color: black;
             padding: '3px';
-            opacity : 0;  
+            opacity: 0;
             height: 30px;
             width: 30px;
             // &:hover{
             //     background-color: white;
             //     opacity: 1;
             // }
-        }
-
-
-        .css-ktslay-MuiButtonBase-root-MuiIconButton-root:hover{
-            opacity : 1 !important;
-            border-color: rgba(0,0,0,0.08);
-            box-shadow: 0 0 0 1px transparent,0 0 0 4px transparent,0 6px 16px rgba(0,0,0,0.12);
-            transform: scale(1.04);
-        }
-        
-        .css-e8vs8u{
-            opacity : 1 !important;
-            border-color: rgba(0,0,0,0.08);
-            box-shadow: 0 0 0 1px transparent,0 0 0 4px transparent,0 6px 16px rgba(0,0,0,0.12);
-            transform: scale(1.04);
-        }
-            
-        
-        .css-aq8pb7-MuiSvgIcon-root{
-            font-size: 0.6rem;
-        }
-        .indicators{
-            position: absolute;
-            z-index : 10;
-            bottom: 0;
-            margin-bottom: 15px;    
-            
-        }
-
-        .indicator {
-            margin-right: 0.2rem;
-        }
-        .active{
-            color: white;
-        }
-        &:hover{
-            .nav-btn{
-                transition: 0.5s ;
-                opacity: 1;
+            &:hover {
+                opacity: 1 !important;
+                border-color: rgba(0, 0, 0, 0.08) !important;
+                box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, 0 6px 16px rgba(0, 0, 0, 0.12) !important;
+                transform: scale(1.04) !important;
+                background-color: aqua;
             }
         }
 
-        // .css-ktslay-MuiButtonBase-root-MuiIconButton-root:hover{
-        //     opacity : 1
+
+        // .css-ktslay-MuiButtonBase-root-MuiIconButton-root:hover {
+        //     opacity: 1 !important;
+        //     border-color: rgba(0, 0, 0, 0.08);
+        //     box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, 0 6px 16px rgba(0, 0, 0, 0.12);
+        //     transform: scale(1.04);
         // }
+
+        // .css-1f8sh1y {
+        //     .css-1abc02a {
+        //         .css-e8vs8u:hover {
+        //             opacity: 1 !important;
+        //             &:hover {
+        //                 border-color: rgba(0, 0, 0, 0.08);
+        //                 box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, 0 6px 16px rgba(0, 0, 0, 0.12);
+        //                 transform: scale(1.04);
+        //             }
+        //         }
+        //     }
+
+
+            .css-aq8pb7-MuiSvgIcon-root {
+                font-size: 0.6rem;
+            }
+
+            .indicators {
+                position: absolute;
+                z-index: 10;
+                bottom: 0;
+                margin-bottom: 15px;
+
+            }
+
+            .indicator {
+                margin-right: 0.2rem;
+            }
+
+            .active {
+                color: white;
+            }
+
+            &:hover {
+                .nav-btn {
+                    transition: 0.5s;
+                    opacity: 1;
+                }
+            }
+
+            // .css-ktslay-MuiButtonBase-root-MuiIconButton-root:hover{
+            //     opacity : 1
+            // }
+        }
+
     }
+
+    // .page-top{
+
     
-}
-
-// .page-top{
-   
-// }
-
-
-
-
-

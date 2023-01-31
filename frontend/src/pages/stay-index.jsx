@@ -16,6 +16,8 @@ import { useState } from 'react'
 import { SearchBarToMobile } from '../cmps/filter/search-bar-to-mobile.jsx'
 import { stayService } from '../services/stay.service.js'
 
+import '../assets/styles/views/_stay-index.scss'
+
 
 export function StayIndex() {
 
