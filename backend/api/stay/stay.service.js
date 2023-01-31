@@ -9,8 +9,8 @@ async function query(filterBy = { where: "" }) {
   try {
     const criteria = _buildCriteria(filterBy);
     const collection = await dbService.getCollection("stay");
-    var stays = await collection.find(criteria ).toArray();
-    return stays.slice(0, 20);
+    var stays = await collection.find( criteria ).toArray();
+    return stays.slice(0, 40);
 
   } catch (err) {
     logger.error("cannot find stays", err);
