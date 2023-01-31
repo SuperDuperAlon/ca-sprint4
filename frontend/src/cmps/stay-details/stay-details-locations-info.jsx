@@ -18,11 +18,11 @@ export function StayDetailsLocationInfo({ stay, isMobile }) {
               <div className="locations-attr fs14 fw600">
                 <div className="mar-r4">
                   <span className="fs16">
-                    <MdStar />
+                    <AiFillStar />
                   </span>
-                  4.88 · <Link to={`/reviews/`}>{stay.reviews.length} reviews</Link>
+                  4.88 ·  <Link to={`/reviews/`}>{stay.reviews.length} reviews</Link>
                 </div>
-                · {stay.host.isSuperhost && <div className="fw400">Superhost ·</div> }
+                · {" "}{stay.host.isSuperhost && <div className="fw400">Superhost ·</div> }
                 <div className="mar-l4">
                   <Link to={`/location/`}>
                     {stay.loc.city}, {stay.loc.address}, {stay.loc.country}

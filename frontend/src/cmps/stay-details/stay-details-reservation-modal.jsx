@@ -28,6 +28,7 @@ export function StayDetailsOrderModal({ stay }) {
   const navigate = useNavigate()
 
 
+
 const serviceFee = 55
 
   async function onReserve() {
@@ -125,8 +126,8 @@ const serviceFee = 55
         {/* {daysCount > 0 && 
         <> */}
         <div className="order-form-pricing mar-b24">
-          <div className="under-line">${filterBy.checkOut && `${utilService.toActualPrice(stay.price)} X ${calculateDays()}`} </div>
-          <div>${filterBy.checkOut && utilService.toActualPrice((stay.price) * (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24))}</div>
+          <div className="under-line">${filterBy.checkOut ?  `${utilService.toActualPrice(stay.price)} X ${calculateDays()}` : 0} </div>
+          <div>${filterBy.checkOut ? utilService.toActualPrice((stay.price) * (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24)) : 0}</div>
         </div>
         <div className="order-form-pricing mar-b24">
           <div className="under-line">Service fee</div>
@@ -134,7 +135,7 @@ const serviceFee = 55
         </div>
         <div className="order-form-total-price">
           <div className="bold">Total</div>
-          <div>${filterBy.checkOut && utilService.toActualPrice(stay.price * (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24) + serviceFee)}</div>
+          <div>${filterBy.checkOut ? utilService.toActualPrice(stay.price * (new Date(filterBy.checkOut)-new Date(filterBy.checkIn))/(1000 * 60 * 60 * 24) + serviceFee) : 0}</div>
         </div>
         {/* </>}  */}
         <div>

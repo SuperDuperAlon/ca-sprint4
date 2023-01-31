@@ -87,7 +87,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
 
               {!stay.host.isSuperhost && (
                 <>
-                  <div className="flex row">
+                  <div className="flex row mar-b24">
                     <div className="host-icon">
                       <img
                         src={
@@ -109,7 +109,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 </>
               )}
 
-              <div className="flex row">
+              <div className="flex row mar-b24">
                 <div className="host-icon">
                   <img
                     className="host-icons-svg"
@@ -129,7 +129,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
                 </div>
               </div>
 
-              <div className="flex row">
+              <div className="flex row mar-b24">
                 <div className="host-icon">
                   <img
                     className="host-icons-svg"
@@ -166,7 +166,14 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
             </div>
             <div className="bedding">
               <div className="fw600 fs22 pad-b24">Where you'll sleep </div>
-              <div className="bedding-desc-rect">
+              <div className="bedding-desc-rect mar-r16">
+                <div className="icon mar-b16">
+                  <MdOutlineKingBed style={{ fontSize: "1.5rem" }} />
+                </div>
+                <div className="fw600 mar-b8">Bedroom </div>
+                <div className="fs14">1 king bed</div>
+              </div>
+              <div className="bedding-desc-rect mar-r16">
                 <div className="icon mar-b16">
                   <MdOutlineKingBed style={{ fontSize: "1.5rem" }} />
                 </div>
@@ -300,7 +307,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
               </div>
               <div className="avatar-lg">
                 <img
-                  src={require("../../assets/img/other/DOGE.jpg")}
+                  src={require("../../assets/img/people/0.jpg")}
                   alt="avatar-lg"
                 />
               </div>
@@ -416,7 +423,14 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
 
             <div className="bedding">
               <div className="fw600 fs22 pad-b24">Where you'll sleep </div>
-              <div className="bedding-desc-rect">
+              <div className="bedding-desc-rect mar-r16">
+                <div className="icon mar-b16">
+                  <MdOutlineKingBed style={{ fontSize: "1.5rem" }} />
+                </div>
+                <div className="fw600">Bedroom </div>
+                <div className="fs14">1 king bed</div>
+              </div>
+              <div className="bedding-desc-rect mar-r16">
                 <div className="icon mar-b16">
                   <MdOutlineKingBed style={{ fontSize: "1.5rem" }} />
                 </div>

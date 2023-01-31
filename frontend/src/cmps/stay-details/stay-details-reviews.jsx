@@ -109,7 +109,7 @@ export function StayDetailsReviews({ stay, isMobile }) {
             </div>
             <div className="details-review-feedback mar-t16">
               {stay.reviews.map((review, idx) => {
-                if (idx < 6) {
+                if (idx < 4) {
                   return (
                     <div
                       className="review-feedback flex column  mar-b24"
@@ -117,7 +117,7 @@ export function StayDetailsReviews({ stay, isMobile }) {
                     >
                       <div className="review-feedback-personal mar-b12 flex">
                         <div className="avatar-md mar-r8">
-                          <img src={review.by.imgUrl} alt="avatar-md" />
+                          <img src={require(`../../assets/img/people/${idx+1}.jpg`)} />
                         </div>
                         <div className="review-feedback-personal-reviewer">
                           <div className="review-name fw600">
