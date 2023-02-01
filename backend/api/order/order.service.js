@@ -7,15 +7,12 @@ const fs = require("fs");
 
 async function query(hostId) {
   try {
-    // console.log(filterBy, "service");
     const criteria = _buildCriteria(hostId);
     const collection = await dbService.getCollection("order");
-    // console.log(collection);
     var orders = await collection.find(criteria).toArray()
 
     // { 'loc.country': { '$regex': /Ista/gi } }
     // var orders = await collection.find().toArray();
-    // console.log(orders, "from service");
     return orders;
   } catch (err) {
     logger.error("cannot find orders", err);
@@ -39,7 +36,6 @@ async function add(order) {
   try {
     const collection = await dbService.getCollection("order");
     await collection.insertOne(order);
-    console.log('order:', order)
     return order;
   } catch (err) {
     logger.error("cannot insert order", err);
@@ -80,7 +76,6 @@ async function update(order, orderId) {
 function _buildCriteria(hostId) {
   const criteria = {}
   if (hostId) criteria['hostId'] = hostId
-  console.log(criteria, 'backend');
   return criteria
 }
 

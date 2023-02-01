@@ -116,9 +116,7 @@ function _buildCriteria(filterBy) {
 
     const criteria = {}
     if (filterBy.fullname) {
-        console.log(filterBy.txt);
         const txtCriteria = { $regex: filterBy.fullname, $options: 'i' }
-        console.log(txtCriteria);
 
         criteria.$or = [
             // {
