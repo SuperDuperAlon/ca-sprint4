@@ -1,76 +1,65 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react"
+import { useParams } from "react-router-dom"
 
-import { StayDetailsHostInfo } from "../cmps/stay-details/stay-details-host-info";
-import { StayDetailsGallery } from "../cmps/stay-details/stay-details-gallery";
-import { StayDetailsLocationInfo } from "../cmps/stay-details/stay-details-locations-info";
-import { StayDetailsOrderModal } from "../cmps/stay-details/stay-details-reservation-modal";
-import { StayDetailsReviews } from "../cmps/stay-details/stay-details-reviews";
-import { StayDetailsHostDetails } from "../cmps/stay-details/stay-details-host-details";
-import { StayDetailsMap } from "../cmps/stay-details/stay-details-map";
-import { StayDetailsCarousel } from "../cmps/stay-details/stay-details-carousel";
-import { stayService } from "../services/stay.service";
-// import { BasicModal } from "../cmps/modal"
-import { AppHeader } from "../cmps/app-header";
-import { InnerNavStay } from "../cmps/stay-details/stay-details-inner-nav";
-import React from "react";
-import { StayDetailsMobileFooter } from "../cmps/stay-details/stay-details-mobile-footer";
-import { useSelector } from "react-redux";
-import { SEARCH_BAR_OPEN } from "../store/stay.reducer";
-import { store } from "../store/store";
+import { StayDetailsHostInfo } from "../cmps/stay-details/stay-details-host-info"
+import { StayDetailsGallery } from "../cmps/stay-details/stay-details-gallery"
+import { StayDetailsLocationInfo } from "../cmps/stay-details/stay-details-locations-info"
+import { StayDetailsOrderModal } from "../cmps/stay-details/stay-details-reservation-modal"
+import { StayDetailsReviews } from "../cmps/stay-details/stay-details-reviews"
+import { StayDetailsHostDetails } from "../cmps/stay-details/stay-details-host-details"
+import { StayDetailsMap } from "../cmps/stay-details/stay-details-map"
+import { StayDetailsCarousel } from "../cmps/stay-details/stay-details-carousel"
+import { stayService } from "../services/stay.service"
+import { AppHeader } from "../cmps/app-header"
+import { InnerNavStay } from "../cmps/stay-details/stay-details-inner-nav"
+import React from "react"
+import { StayDetailsMobileFooter } from "../cmps/stay-details/stay-details-mobile-footer"
+import { useSelector } from "react-redux"
+import { SEARCH_BAR_OPEN } from "../store/stay.reducer"
+import { store } from "../store/store"
 
 export function StayDetails() {
   const openSearchBar = useSelector(
     (storeState) => storeState.stayModule.searchModalOpen
-  );
-  const { stayId } = useParams();
-  const [stay, setStay] = useState(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 687);
-  // const [width, setWidth] = useState(window.innerWidth);
+  )
+  const { stayId } = useParams()
+  const [stay, setStay] = useState(null)
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 687)
 
-  const MOBILE_WIDTH = 687;
-
-  useEffect(() => {
-    loadStay();
-  }, []);
+  const MOBILE_WIDTH = 687
 
   useEffect(() => {
-    window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
-  }, []);
+    loadStay()
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener("resize", updateDimensions)
+    return () => window.removeEventListener("resize", updateDimensions)
+  }, [])
 
   function updateDimensions() {
-    // setWidth(window.innerWidth);
-    setIsMobile(window.innerWidth < MOBILE_WIDTH);
+    setIsMobile(window.innerWidth < MOBILE_WIDTH)
   }
-
-  // function isMobileReady(width) {
-  //   if (width > MOBILE_WIDTH) {
-  //     setIsMobile(false);
-  //   } else if (width < 687) {
-  //     setIsMobile(true);
-  //   }
-  // }
 
   async function loadStay() {
     try {
-      const stay = await stayService.getById(stayId);
-      setStay(stay);
+      const stay = await stayService.getById(stayId)
+      setStay(stay)
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   }
 
   function onClickOutSideTheBar(event) {
-    event.preventDefault();
-    if (!openSearchBar) return;
+    event.preventDefault()
+    if (!openSearchBar) return
     store.dispatch({
       type: SEARCH_BAR_OPEN,
       open: false,
-    });
+    })
   }
 
-  if (!stay) return <div>Loading</div>;
+  if (!stay) return console.log("loading")
   else
     return (
       <section className="details-layout full">
@@ -100,16 +89,15 @@ export function StayDetails() {
 
         {isMobile && (
           <>
-              <StayDetailsCarousel imgs={stay.imgUrls} />
-              <StayDetailsLocationInfo stay={stay} isMobile={isMobile} />
-              <StayDetailsHostInfo stay={stay} isMobile={isMobile} />
-              <StayDetailsMap stay={stay} />
-              <StayDetailsReviews stay={stay} isMobile={isMobile} />
-              <StayDetailsHostDetails stay={stay} isMobile={isMobile} />
-              <StayDetailsMobileFooter stay={stay} />
-
+            <StayDetailsCarousel imgs={stay.imgUrls} />
+            <StayDetailsLocationInfo stay={stay} isMobile={isMobile} />
+            <StayDetailsHostInfo stay={stay} isMobile={isMobile} />
+            <StayDetailsMap stay={stay} />
+            <StayDetailsReviews stay={stay} isMobile={isMobile} />
+            <StayDetailsHostDetails stay={stay} isMobile={isMobile} />
+            <StayDetailsMobileFooter stay={stay} />
           </>
         )}
       </section>
-    );
+    )
 }

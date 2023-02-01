@@ -32,58 +32,15 @@ export function RootCmp() {
 
           <Route path="/stay/edit" element={<StayEdit />} />
           <Route path="/stay/edit/:stayId" element={<StayEdit />} />
-          {/* cmps
-                            filter by where and dates
-                            filter by prefrence 
-                            list:
-                                preview
-                             */}
           <Route path="/room/:stayId/:filter" element={<StayDetails />} />
-          
           <Route path="/dashboard/:hostId" element={<Dashboard />} />
-          <Route path="/listings/:hostId" element={<Listings/>} />
-            
-
-          {/* 
-                                cmps:
-                                -phtose
-                                -amenities
-                                -reviews
-                                -loaction
-                            -resrvation preview */}
-
-            <Route path="/book/stay/:id/" element={<StayOrder/>}>
-                <Route path="/book/stay/:id/:filterBy" element={<StayOrder />} />  
-            </Route> 
-          {/* 
-                                cmps:
-                                -resrvation deatils
-                                -payment options
-                                -resrvation preview*/}
-
-          {/* <Route path="/guest/inbox/:id" element={<UserMsgs />} /> */}
-          {/* cmps:
-                                    -messages preview
-                                    -chet box
-                                    -resrvation deatials */}
-
-          {/* <Route path="/contact_host/:id" element={<SendMsgsToHost />} /> */}
-          {/* 
-                                cmps:
-                                -location ask about
-                                -text box
-                                -resrvation preview*/}
-          {/* <Route path="/users/show/:id" element={<UserDetails />} /> */}
-          {/* 
-                                cmps:
-                                -user deatails
-                                -reviews wrote on */}
-          {/* <Route path="/hosting" element={<PropertyCollcation />} /> */}
+          <Route path="/listings/:hostId" element={<Listings />} />
+          <Route path="/book/stay/:id/" element={<StayOrder />}>
+            <Route path="/book/stay/:id/:filterBy" element={<StayOrder />} />
+          </Route>
           <Route path="/amenities/" element={<AmenitiesModal />} />
         </Routes>
       </main>
-      <AppFooter />
-      {/* <AppFooter /> */}
     </div>
   );
 }
