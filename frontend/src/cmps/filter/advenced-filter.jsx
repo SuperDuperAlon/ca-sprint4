@@ -27,7 +27,6 @@ export function AdvancedFilter() {
         event.preventDefault()
         onSelectedFilter(travelOption)
         const filter=travelOption
-        console.log('getDateToFilter(filter.checkOut):',filterService.getDateToFilter(filter.checkOut) )
         const checkOut=filterService.getDateToFilter(filter.checkOut)
         const checkIn=filterService.getDateToFilter(filter.checkIn)
         const queryParams = 

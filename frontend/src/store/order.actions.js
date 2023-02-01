@@ -52,7 +52,6 @@ export async function removeOrder(orderId) {
 export async function addOrder(order) {
   try {
       const savedOrder = await orderService.save(order)
-      console.log('Added order', savedOrder)
       store.dispatch(getActionAddOrder(savedOrder))
       return savedOrder
   } catch (err) {
@@ -76,7 +75,6 @@ export async function updateOrder(order) {
 // export async function loadOrder(orderId) {
 //   try {
 //       const order = await orderService.getById(orderId)
-//       console.log(order);
 //       store.dispatch({ type: SET_ORDER, order })
 //   } catch (err) {
 //       // showErrorMsg('Cannot load user')

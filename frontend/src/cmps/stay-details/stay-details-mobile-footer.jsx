@@ -13,7 +13,6 @@ export function StayDetailsMobileFooter({ stay }) {
 
 function onReserve() {
     // const queryParams = `checkIn=${filterBy.checkIn}&checkOut=${filterBy.checkOut}&adults=${filterBy.adults}&children=${filterBy.children}&infants=${filterBy.infants}&pets=${filterBy.pets}`;
-    // console.log("sjjsjsj");
     // navigate(`/book/stay/${stay._id}/${queryParams}`);
   }
 

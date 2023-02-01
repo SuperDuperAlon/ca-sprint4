@@ -20,7 +20,6 @@ export function Listings(){
         try{
             const listings = await stayService.getListings(hostId)
             setListings(listings)
-            console.log(listings)   
         }
         catch (err){
             console.log(err)

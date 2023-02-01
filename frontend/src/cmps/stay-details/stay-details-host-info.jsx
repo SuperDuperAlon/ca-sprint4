@@ -8,7 +8,6 @@ import { filterService } from "../../services/filterService";
 import { StayDetailsMap } from "./stay-details-map";
 
 export function StayDetailsHostInfo({ stay, isMobile }) {
-  console.log(isMobile);
   const [reviewModalOpen, setReviewModalOpen] = useState(false);
   const handleOpenReviewModal = () => setReviewModalOpen(true);
   const handleCloseReviewModal = () => setReviewModalOpen(false);

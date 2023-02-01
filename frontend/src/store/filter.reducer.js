@@ -35,7 +35,6 @@ export function filterReducer(state = initialState, action) {
     // guest
         // case CHANGE_GUEST_ADULTS:           
         // filter={...state.filter ,guests:{...state.filter.guests, adults:"1"}}
-        // console.log('filter:', filter)
         //    newState = { ...state,  filter: {...state.filter.guests.adults, ...state.filter.guests.adults+=action.change}}
         //    break
 
