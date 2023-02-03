@@ -1,4 +1,4 @@
-##Anyplace
+## Anyplace
 
 Coding Academy Bootcamp final Project - Anyplace, an AirBNB inspired clone
 
