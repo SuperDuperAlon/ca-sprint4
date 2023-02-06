@@ -70,8 +70,7 @@ export function StayDetails() {
     });
   }
 
-  if (!stay) return <div>Loading</div>;
-  else
+  if (!stay) return <div></div>;
     return (
       <section className="details-layout full">
         {!isMobile && (
