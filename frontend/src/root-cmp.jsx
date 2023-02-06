@@ -82,7 +82,6 @@ export function RootCmp() {
           <Route path="/amenities/" element={<AmenitiesModal />} />
         </Routes>
       </main>
-      <AppFooter />
       {/* <AppFooter /> */}
     </div>
   );
