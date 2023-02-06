@@ -51,9 +51,6 @@
     }
 
     .img-container {
-        // display: flex;
-        // position: relative;
-        // position: absolute;
         display: block;
         margin-bottom: 10px;
     }
@@ -78,6 +75,7 @@
             opacity: 0;
             height: 30px;
             width: 30px;
+
             // &:hover{
             //     background-color: white;
             //     opacity: 1;
@@ -91,60 +89,39 @@
         }
 
 
-        // .css-ktslay-MuiButtonBase-root-MuiIconButton-root:hover {
-        //     opacity: 1 !important;
-        //     border-color: rgba(0, 0, 0, 0.08);
-        //     box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, 0 6px 16px rgba(0, 0, 0, 0.12);
-        //     transform: scale(1.04);
+        // .css-aq8pb7-MuiSvgIcon-root {
+        //     font-size: 0.6rem;
         // }
-
-        // .css-1f8sh1y {
-        //     .css-1abc02a {
-        //         .css-e8vs8u:hover {
-        //             opacity: 1 !important;
-        //             &:hover {
-        //                 border-color: rgba(0, 0, 0, 0.08);
-        //                 box-shadow: 0 0 0 1px transparent, 0 0 0 4px transparent, 0 6px 16px rgba(0, 0, 0, 0.12);
-        //                 transform: scale(1.04);
-        //             }
-        //         }
-        //     }
-
-
-            .css-aq8pb7-MuiSvgIcon-root {
-                font-size: 0.6rem;
-            }
-
-            .indicators {
-                position: absolute;
-                z-index: 10;
-                bottom: 0;
-                margin-bottom: 15px;
-
-            }
-
-            .indicator {
-                margin-right: 0.2rem;
-            }
-
-            .active {
-                color: white;
-            }
-
-            &:hover {
-                .nav-btn {
-                    transition: 0.5s;
-                    opacity: 1;
-                }
-            }
-
-            // .css-ktslay-MuiButtonBase-root-MuiIconButton-root:hover{
-            //     opacity : 1
-            // }
+        .MuiSvgIcon-root {
+            font-size: 0.6rem !important;
         }
 
+        .indicators {
+            position: absolute;
+            z-index: 10;
+            bottom: 0;
+            margin-bottom: 15px;
+
+        }
+
+        .indicator {
+            margin-right: 0.2rem;
+        }
+
+        .active {
+            color: white;
+        }
+
+        &:hover {
+            .nav-btn {
+                transition: 0.5s;
+                opacity: 1;
+            }
+        }
+
+        
     }
 
-    // .page-top{
+}
 
-    
+// .page-top{
