@@ -125,6 +125,7 @@ export function StayOrder() {
     }
 
     function getFullPrice() {
+        console.log('stay:', stay)
         const { price } = stay
         return price * (new Date(orderDetails.checkOut) - new Date(orderDetails.checkIn)) / (1000 * 60 * 60 * 24)
     }
@@ -167,7 +168,7 @@ export function StayOrder() {
            
     }
 
-    if (!stay) return <div>loading...</div>
+    if (!stay) return <div></div>
     return <section className="stay-order">
         <header className="header">
             <div className="logo-general" onClick={() => navigate('/')}>
