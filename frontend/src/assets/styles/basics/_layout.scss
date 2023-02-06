@@ -61,13 +61,11 @@
   }
 
   @include for-details-lg-layout {
-    // background-color: orange;
     grid-template-columns:
       minmax(40px, 1fr) minmax(auto, $large-breakpoint-details) minmax(40px, 1fr);
   }
 
   @include for-details-xl-layout {
-    // background-color: red;
 
     grid-template-columns:
       minmax(80px, 1fr) minmax(auto, $x-large-breakpoint-details) minmax(80px, 1fr);

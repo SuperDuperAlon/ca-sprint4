@@ -1043,6 +1043,14 @@
     }
   }
 
+  .calendar {
+    .day-picker-modal {
+      .react-datepicker__month-container:last-child {
+        display: none;
+      }
+    }
+  }
+
   .order-form {
     width: 370px;
 
@@ -1073,6 +1081,9 @@
 
   .calendar {
     .day-picker-modal {
+      display: flex;
+      justify-content: flex-end;
+      scale: 80%;
       .react-datepicker > :last-child {
         display: block;
       }
@@ -1097,4 +1108,17 @@
       grid-template-columns: 1fr 1fr;
     }
   }
+}
+
+@media (min-width: 1440px) {
+.calendar {
+  .day-picker-modal {
+    display: flex;
+    justify-content: flex-start;
+    scale: 100%;
+    .react-datepicker > :last-child {
+      display: block;
+    }
+  }
+}
 }
