@@ -69,7 +69,6 @@ async function updateOrder(req, res) {
   try {
     const order = req.body;
     const orderId = req.params.id;
-    console.log('order:',order.buyer._id  )
 
     const updatedOrder = await orderService.update(order, orderId);
     socketService.emitTo({

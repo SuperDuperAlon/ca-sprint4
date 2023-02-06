@@ -14,6 +14,5 @@ export const filterServiceReq = {
 async function queryByText(text) {
   const queryParams = `?text=${text}`;
   const stays = await httpService.get(BASE_URL + queryParams);
-  // console.log(stays);
   return stays
 }

@@ -26,13 +26,11 @@ export function OrderEdit() {
 
   async function onSaveOrder(ev) {
     ev.preventDefault()
-    // console.log(orderToEdit)
     try {
       if (orderToEdit._id) {
         const savedOrder = await updateOrder(orderToEdit)
       } else {
         const savedOrder = await addOrder(orderToEdit)
-        console.log("order saved", savedOrder)
       }
       // showSuccessMsg('Car saved!')
       navigate("/")
@@ -43,8 +41,6 @@ export function OrderEdit() {
 
   function handleDateChange({ target }) {
     let { value, type, name: field } = target
-    console.log(field)
-    console.log(value)
     value = type === "number" ? +value : value
     setOrderToEdit((prevOrder) => ({ ...prevOrder, [field]: value }))
   }
@@ -69,7 +65,6 @@ export function OrderEdit() {
   //   }))
   // } else
 
-  console.log(orderToEdit)
 
   return (
     <section>

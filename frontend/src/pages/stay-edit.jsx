@@ -35,13 +35,12 @@ export function StayEdit(){
 
     async function onSaveStay(ev){
         ev.preventDefault()
-        // console.log(stayToEdit)
+
         try{
             if(stayToEdit._id){
                 const savedStay = await updateStay(stayToEdit)
             }else{
                 const savedStay = await addStay(stayToEdit)
-                console.log('stay saved', savedStay)
             }
             // showSuccessMsg('Car saved!')
             navigate('/')

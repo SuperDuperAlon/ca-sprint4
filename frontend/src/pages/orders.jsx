@@ -34,8 +34,6 @@ export function Orders() {
     navigate(`/orders/${order._id}/edit`)
 }
 
-  console.log(orders)
-
   return (
     <section>
       <h1>Orders</h1>

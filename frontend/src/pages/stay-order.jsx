@@ -37,7 +37,6 @@ export function StayOrder() {
 
 
     function gotMsg() {
-        console.log('order:approved')
         setSentOrder('approved')  
 
     }
@@ -88,7 +87,7 @@ export function StayOrder() {
         //     msgs: [],
         //     status: "pending"
         // }
-        // console.log(order)
+
 
     }
 
@@ -157,7 +156,6 @@ export function StayOrder() {
                 const savedOrder = await updateOrder(orderToEdit)
             } else {
                 const savedOrder = await addOrder(orderToEdit)
-                console.log("order saved", savedOrder)
                 setSentOrder(savedOrder)
             }
             // confirmInterval.current = setTimeout( () => setIsConfirm(true) ,2000)

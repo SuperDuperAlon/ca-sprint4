@@ -27,7 +27,6 @@ async function query(text) {
 function _buildCriteria(text) {
   let criteria = {};
   const txtCriteria = { $regex: new RegExp(text, "ig") };
-  console.log(txtCriteria, "txt - buildCritera");
   // criteria = {
   //   "loc.country": txtCriteria,
   // }

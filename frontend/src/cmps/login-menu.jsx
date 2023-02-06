@@ -14,8 +14,6 @@ export function LoginMenu({isMenuOpen ,setIsMenuOpen}) {
   const handleClose = () => setOpen(false)
   const navigate = useNavigate()
 
-  console.log(open)
-
   function handleOpen(isSignup){
     
     setOpen(true)

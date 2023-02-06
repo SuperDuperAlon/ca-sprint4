@@ -48,8 +48,6 @@ const serviceFee = 55
     return days>1 ? days+ ' nights' : days + ' night'
   }
 
-  // console.log(daysCount);
-
   function onChangeDate(dates){
         const checkIn = dates[0]
         const checkOut = dates[1]

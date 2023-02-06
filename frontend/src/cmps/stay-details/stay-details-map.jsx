@@ -5,7 +5,6 @@ import { GoogleMap } from "../reusable/google-map";
 // const AnyReactComponent = ({ text }) => <div>{text}</div>
 
 export function StayDetailsMap({ stay, isMobile }) {
-  console.log(stay);
 
   // var coordinates = {
   //   lat: stay.loc.lat,

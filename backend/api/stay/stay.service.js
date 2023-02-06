@@ -101,7 +101,6 @@ async function removeStayMsg(stayId, msgId) {
 function _buildCriteria(filterBy) {
   let criteria = {};
   const txtCriteria = { $regex: new RegExp(filterBy.where, "ig") };
-  console.log(txtCriteria, "txt - buildCritera");
   // criteria = {
   //   "loc.country": txtCriteria,
   // }
