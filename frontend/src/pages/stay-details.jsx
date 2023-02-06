@@ -59,8 +59,7 @@ export function StayDetails() {
     })
   }
 
-  if (!stay) return console.log("loading")
-  else
+  if (!stay) return <div></div>;
     return (
       <section className="details-layout full">
         {!isMobile && (

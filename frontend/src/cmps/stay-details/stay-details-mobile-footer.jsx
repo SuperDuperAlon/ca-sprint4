@@ -17,8 +17,6 @@ function onReserve() {
   }
 
 
-  if (!stay) return <div>Loading</div>;
-  else
     return (
       // <section className="details-layout">
       <div className="stay-details-mobile-footer details-layout">

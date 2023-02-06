@@ -1,17 +1,16 @@
-const [isMobile, setIsMobile] = useState(false);
-​
-const MOBILE_WIDTH = 687;
-​
+const [isMobile, setIsMobile] = useState(false)
+const MOBILE_WIDTH = 687
+
 useEffect(() => {
-  window.addEventListener("resize", updateDimensions);
-  return () => window.removeEventListener("resize", updateDimensions);
-}, []);
-​
+  window.addEventListener("resize", updateDimensions)
+  return () => window.removeEventListener("resize", updateDimensions)
+}, [])
+
 //   Listens to changes in Screensize and sets the state to Mobile or Desktop / Tablet
 function updateDimensions() {
-  setIsMobile(window.innerWidth < MOBILE_WIDTH);
+  setIsMobile(window.innerWidth < MOBILE_WIDTH)
 }
-​
+
 // Reusable application to the functions
 {
   isMobile ? (
@@ -34,5 +33,5 @@ function updateDimensions() {
       <StayDetailsMap />
       <StayDetailsHostDetails isMobile={isMobile} />
     </>
-  );
+  )
 }

@@ -193,7 +193,6 @@ export function Dashboard() {
 
 
 
-    if (!orders) return <div>loading...</div>
     return (
         <section className="dashboard">
             <div className='header-container full border-bottom'><AppHeader origin={'dashboard'} />
