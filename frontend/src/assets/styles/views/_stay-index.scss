@@ -92,8 +92,13 @@
         // .css-aq8pb7-MuiSvgIcon-root {
         //     font-size: 0.6rem;
         // }
-        .MuiSvgIcon-root {
-            font-size: 0.6rem !important;
+        .indicators {
+            .MuiSvgIcon-root {
+                &.MuiSvgIcon-fontSizeMedium {
+                    font-size: 0.6rem !important;
+
+                }
+            }
         }
 
         .indicators {
@@ -119,7 +124,7 @@
             }
         }
 
-        
+
     }
 
 }
