@@ -270,138 +270,6 @@
     }
   }
 
-  // .order-form-container {
-  //   display: flex;
-  //   justify-content: flex-end;
-  //   padding-top: 3rem;
-  //   .day-picker-modal {
-  //     position: relative;
-  //     left: -400px;
-
-  //     .react-datepicker {
-  //       box-shadow: rgb(0 0 0 / 20%) 0px 6px 20px;
-  //       left: 50px;
-  //       padding: 20px;
-  //     }
-
-  //     @include for-calendar;
-
-  //     .react-datepicker__day-name {
-  //       width: 35px;
-  //     }
-  //     .react-datepicker__day {
-  //       width: 35px;
-  //       padding: 8px;
-  //     }
-  //   }
-  // }
-
-  // .order-form {
-  //   display: flex;
-  //   flex-direction: column;
-  //   position: sticky;
-  //   position: -webkit-sticky;
-  //   top: 6rem;
-  //   height: fit-content;
-  //   width: 249px;
-  //   border: 1px solid rgb(221, 221, 221);
-  //   border-radius: 12px;
-  //   padding: 24px;
-  //   box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
-  //   margin-bottom: 3rem;
-  //   min-height: 56px;
-
-  //   .order-form-pricing,
-  //   .order-form-total-price {
-  //     @include flex-row-sb;
-  //   }
-
-  //   .order-info {
-  //     @include flex-col-sb;
-  //   }
-
-  //   .order-form-total-price {
-  //     border-top: 1px rgba(221, 221, 221, 1) solid;
-  //     padding-top: 1.5rem;
-  //   }
-  //   .order-form-msg {
-  //     display: flex;
-  //     justify-content: center;
-  //   }
-  //   > * {
-  //     // flex-direction: column;
-  //   }
-  //   .date-container {
-  //     padding: 12px 10px;
-  //     text-align: left;
-  //     color: black;
-  //   }
-  //   .date-container.guests {
-  //     width: 100%;
-  //   }
-
-  //   .guests-counter-container {
-  //     // border: 1px solid #b5adad;
-  //     // bottom: 0px;
-
-  //     @include for-guest-counter;
-  //     padding: 16px;
-  //     border-radius: 0.25rem;
-  //     box-shadow: rgb(0 0 0 / 15%) 0px 2px 6px, rgb(0 0 0 / 7%) 0px 0px 0px 1px;
-  //     position: absolute;
-  //     background-color: white;
-  //     width: 320px;
-  //     border-bottom: 0;
-  //     .guestsModalOpen {
-  //       padding: 0;
-  //       .guest {
-  //         display: flex;
-  //         justify-content: space-between;
-  //         align-items: center;
-  //         margin-bottom: 1.5rem;
-
-  //         h3 {
-  //           font-size: 1rem;
-  //         }
-
-  //         h5 {
-  //           font-size: rem(14px);
-  //           font-weight: 300;
-  //         }
-
-  //         .pet {
-  //           text-decoration: underline;
-  //           font-weight: bold;
-  //         }
-
-  //         .counter {
-  //           display: inline-flex;
-  //           width: 104px;
-  //           align-items: center;
-  //           justify-content: space-between;
-
-  //           .btn-counter {
-  //             border-radius: 50%;
-  //             width: rem(32px);
-  //             height: rem(32px);
-  //             background-color: white;
-  //             border: solid 1px rgb(176, 176, 176);
-  //             padding: 0;
-  //             margin: 0;
-
-  //             &:hover {
-  //               border-color: rgb(34, 34, 34);
-  //             }
-  //           }
-  //         }
-  //         &:not(:last-child) {
-  //           border-bottom: none;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-
   .stay-details-host-details {
     padding: 3rem 0;
     border-top: 1px rgb(221, 221, 221) solid;
@@ -434,7 +302,6 @@
     > * {
       grid-column: 2;
     }
-    // max-width: 1280px;
 
     .stay-inner-container {
       margin: 0 auto;
@@ -488,7 +355,6 @@
     border-top-width: 1px;
     border-top-style: solid;
     border-top-color: rgb(221, 221, 221);
-    // padding: 1rem 0;
     > * {
       grid-column: 2;
       padding: 1rem 0;
@@ -676,24 +542,12 @@
 
       .react-datepicker__header {
         border: none;
-        // > :first-child {
-        //   padding-left: 13px;
-        // }
-        // > :last-child {
-        //   padding-right: 13px;
-        // }
       }
 
       @include for-calendar;
 
       .react-datepicker__month-container {
         width: 100%;
-        // > :first-child {
-        //   padding-right: 13px;
-        // }
-        // > :last-child {
-        //   padding-left: 13px;
-        // }
       }
 
       .react-datepicker__day-names {
@@ -773,8 +627,6 @@
         .review-feedback-personal {
           display: flex;
           flex-direction: row;
-          // grid-template-columns: 1fr 1fr;
-          // flex-grow: 1;
           .review-feedback-personal-reviewer {
             display: flex;
             flex-direction: column;
@@ -803,7 +655,6 @@
     .review-feedback {
       width: 80%;
       p.review-description {
-        // width: 100%;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 3;
@@ -977,7 +828,6 @@
     > * {
       grid-column: 2;
     }
-    // max-width: 1280px;
 
     .stay-inner-container {
       margin: 0 auto;
@@ -1006,9 +856,6 @@
           padding: 28px 0;
           text-decoration: none;
           margin-right: 1rem;
-          // > *:not(:last-child) {
-          //   margin-right: 1rem;
-          // }
         }
 
         & a:hover {
@@ -1043,6 +890,14 @@
     }
   }
 
+  .calendar {
+    .day-picker-modal {
+      .react-datepicker__month-container:last-child {
+        display: none;
+      }
+    }
+  }
+
   .order-form {
     width: 370px;
 
@@ -1073,6 +928,9 @@
 
   .calendar {
     .day-picker-modal {
+      display: flex;
+      justify-content: flex-end;
+      scale: 80%;
       .react-datepicker > :last-child {
         display: block;
       }
@@ -1095,6 +953,19 @@
   .stay-details-reviews {
     .details-review-reviews {
       grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .calendar {
+    .day-picker-modal {
+      display: flex;
+      justify-content: flex-start;
+      scale: 100%;
+      .react-datepicker > :last-child {
+        display: block;
+      }
     }
   }
 }
