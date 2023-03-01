@@ -15,7 +15,7 @@ Made by:
 <img width="948" alt="image" src="https://user-images.githubusercontent.com/95693400/222195312-b57f2640-c01c-44c2-99ca-435d0c52e8a2.png">
 
 <div class="mobile apps">
-<img width="200"  marging=25px alt="image" src="https://user-images.githubusercontent.com/95693400/222199150-29350101-d5e2-4c0a-890c-aa3f7df7c3b9.png">
-<img width="200" alt="image" src="https://user-images.githubusercontent.com/95693400/222199609-bdb36e9b-6173-4452-adf7-52b3ab985038.png">
+<!-- <img width="200"  marging=25px alt="image" src="https://user-images.githubusercontent.com/95693400/222199150-29350101-d5e2-4c0a-890c-aa3f7df7c3b9.png"> -->
+<!-- <img width="200" alt="image" src="https://user-images.githubusercontent.com/95693400/222199609-bdb36e9b-6173-4452-adf7-52b3ab985038.png"> -->
 
 </div>
