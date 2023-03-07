@@ -89,7 +89,7 @@ export function StayDetails() {
       {isMobile && (
         <>
           <StayDetailsCarousel imgs={stay.imgUrls} />
-          <StayDetailsLocationInfo stay={stay} />
+          <StayDetailsLocationInfo stay={stay} isMobile={isMobile} />
           <StayDetailsHostInfo stay={stay} isMobile={isMobile} />
           <StayDetailsMap stay={stay} />
           <StayDetailsReviews stay={stay} isMobile={isMobile} />
