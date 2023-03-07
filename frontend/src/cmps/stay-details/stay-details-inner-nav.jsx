@@ -1,8 +1,8 @@
-// import { ArrowLeft, ArrowRight, Search, LogoFull } from "../services/svg.service"
-
-import React, { useEffect } from "react"
+import { useEffect } from "react"
 
 export function InnerNavStay() {
+  const links = ["Photos", "Amenities", "Reviews", "Location"]
+
   useEffect(() => {
     const header = document.querySelector(".stay-header-inner-nav")
     const nav = document.querySelector(".stay-inner-container")
@@ -21,24 +21,17 @@ export function InnerNavStay() {
         nav.style.top = 0
       })
     }
-  }, []) // <-- empty array means 'run once'
+  }, [])
 
   return (
     <div className="stay-header-inner-nav">
       <div className="stay-inner-container details-layout full">
         <ul className="stay-inner-nav clean-list">
-          <li>
-            <a href="#">Photos</a>
-          </li>
-          <li>
-            <a href="#">Amenities</a>
-          </li>
-          <li>
-            <a href="#">Reviews</a>
-          </li>
-          <li>
-            <a href="#">Location</a>
-          </li>
+          {links.map((link) => (
+            <li>
+              <a href="#">{link}</a>
+            </li>
+          ))}
         </ul>
       </div>
     </div>
