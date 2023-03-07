@@ -93,7 +93,7 @@ export function StayDetails() {
           <StayDetailsHostInfo stay={stay} isMobile={isMobile} />
           <StayDetailsMap stay={stay} />
           <StayDetailsReviews stay={stay} isMobile={isMobile} />
-          <StayDetailsHostDetails stay={stay} isMobile={isMobile} />
+          <StayDetailsHostDetails stay={stay}/>
           <StayDetailsMobileFooter stay={stay} />
         </>
       )}
