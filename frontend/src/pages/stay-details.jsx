@@ -71,7 +71,7 @@ export function StayDetails() {
           <StayDetailsGallery stay={stay} />
           <InnerNavStay />
           <div className="stay-details-midsection">
-            <StayDetailsHostInfo stay={stay} isMobile={isMobile} />
+            <StayDetailsHostInfo stay={stay} />
             <StayDetailsOrderModal stay={stay} />
           </div>
           <StayDetailsReviews stay={stay} />
@@ -89,7 +89,7 @@ export function StayDetails() {
       {isMobile && (
         <>
           <StayDetailsCarousel imgs={stay.imgUrls} />
-          <StayDetailsLocationInfo stay={stay} isMobile={isMobile} />
+          <StayDetailsLocationInfo stay={stay} />
           <StayDetailsHostInfo stay={stay} isMobile={isMobile} />
           <StayDetailsMap stay={stay} />
           <StayDetailsReviews stay={stay} isMobile={isMobile} />
