@@ -5,8 +5,7 @@ import { MdStar } from "react-icons/md";
 import { utilService } from "../../services/util.service";
 
 export function StayDetailsReviews({ stay, isMobile }) {
-  // const checkDate = getMonthYear('2017-01-07T05:00:00.000Z')
-  if (!stay) return console.log("loading");
+  if (!stay) return <h1>Loading...</h1>;
   else
     return (
       <section className="stay-details-reviews">

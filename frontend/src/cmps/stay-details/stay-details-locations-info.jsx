@@ -22,7 +22,7 @@ export function StayDetailsLocationInfo({ stay, isMobile }) {
                   <span className="fs16">
                     <AiFillStar />
                   </span>
-                  {stay.reveiwRate? stay.reveiwRate : utilService.getRandomFloatInclusive(4,5).toFixed(2)} ·  <Link to={`/reviews/`}>{stay.reviews.length} reviews</Link>
+                  {stay.reveiwRate ? stay.reveiwRate : utilService.getRandomFloatInclusive(4,5).toFixed(2)} ·  <Link to={`/reviews/`}>{stay.reviews.length} reviews</Link>
                 </div>
                 · {" "}{stay.host.isSuperhost && <div className="fw400">Superhost ·</div> }
                 <div className="mar-l4">

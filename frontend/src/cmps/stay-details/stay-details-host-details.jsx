@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { MdStar } from "react-icons/md";
 
 export function StayDetailsHostDetails({ stay, isMobile }) {
-  if (!stay) return console.log("booboo");
+  if (!stay) return <h1>Loading...</h1>;
   else
     return (
       <section className="stay-details-host-details mar-b24 ">
