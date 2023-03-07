@@ -3,11 +3,11 @@ export function StayDetailsGallery({ stay }) {
   else
     return (
       <section className="stay-details-gallery">
-        <section className="gallery">
+        <div className="gallery">
           {stay.imgUrls.map((img, idx) => {
            return <img className={`gallery-item-${idx}`} src={img} alt=""/>
           })}
-        </section>
+        </div>
       </section>
     )
 }

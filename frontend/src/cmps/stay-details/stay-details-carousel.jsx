@@ -3,7 +3,6 @@ import Carousel from "react-material-ui-carousel"
 
 export function StayDetailsCarousel({ imgs }) {
 
-console.log(imgs);
     const [imgIdx, setImgIdx] = useState(0)
 
     function prevImg(ev) {
