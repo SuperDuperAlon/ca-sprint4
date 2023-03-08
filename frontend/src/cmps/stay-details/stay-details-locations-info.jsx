@@ -16,8 +16,8 @@ export function StayDetailsLocationInfo({ stay, isMobile }) {
                 <AiFillStar />
               </span>
               {stay.reveiwRate
-                ? stay.reveiwRate
-                : utilService.getRandomFloatInclusive(4, 5).toFixed(2)}{" "}
+                ? +stay.reveiwRate
+                : +utilService.getRandomFloatInclusive(4, 5).toFixed(2)}{" "}
               · <Link to={`/reviews/`}>{stay.reviews.length} reviews</Link>
             </div>
             ·{stay.host.isSuperhost && <div className="fw400">Superhost ·</div>}
@@ -25,9 +25,9 @@ export function StayDetailsLocationInfo({ stay, isMobile }) {
               <Link to={`/location/`}>{stay.loc.address}</Link>
             </div>
           </div>
-          {isMobile ? 
-            ''
-           : 
+          {isMobile ? (
+            ""
+          ) : (
             <div className="details-locations-info-actions fs14 lh18 ">
               <button className="save-share fw600">
                 <div>
@@ -42,7 +42,7 @@ export function StayDetailsLocationInfo({ stay, isMobile }) {
                 <div className="txt-d-ul mar-l8">Save</div>
               </button>
             </div>
-          }
+          )}
         </div>
       </div>
     );
