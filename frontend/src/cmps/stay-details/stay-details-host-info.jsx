@@ -13,6 +13,34 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
   const handleCloseReviewModal = () => setReviewModalOpen(false);
   const [filter, setFilter] = useState(filterService.getEmptyFilter());
 
+  const stayOptions = `${
+    !stay.capacity
+      ? ""
+      : stay.capacity && stay.capacity > 1
+      ? stay.capacity + " guests"
+      : stay.capacity + " guest"
+  } · ${
+    !stay.bedrooms
+      ? ""
+      : stay.bedrooms && stay.bedrooms > 1
+      ? stay.bedrooms + " bedrooms"
+      : stay.bedrooms + " bedroom"
+  } · ${
+    !stay.beds
+      ? ""
+      : stay.beds && stay.beds > 1
+      ? stay.beds + " beds"
+      : stay.beds + " bed"
+  } · ${
+    !stay.bathrooms
+      ? ""
+      : stay.bathrooms && stay.bathrooms > 1
+      ? stay.bathrooms + " bathrooms"
+      : stay.bathrooms + " bathroom"
+  }`;
+
+  const stayOptionsClean = stayOptions.replaceAll("·  ·", "·");
+
   function onChangeDate(dates) {
     const checkIn = dates[0];
     const checkOut = dates[1];
@@ -28,27 +56,11 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
             <div className="fs22 fw600 mar-b8">
               {stay.name} hosted by {stay.host.fullname}
             </div>
-            <div>
-              {`${
-                stay.capacity > 1
-                  ? stay.capacity + " guests"
-                  : stay.capacity + " guest"
-              } · ${
-                stay.bedrooms > 1
-                  ? stay.bedrooms + " bedrooms"
-                  : stay.bedrooms + " bedroom"
-              } · ${
-                stay.beds > 1 ? stay.beds + " beds" : stay.beds + " bed"
-              } · ${
-                stay.bathrooms > 1
-                  ? stay.bathrooms + " bathrooms"
-                  : stay.bathrooms + " bathroom"
-              }`}
-            </div>
+            <div>{stayOptionsClean}</div>
           </div>
           <div className="avatar-lg">
             <img
-              className="host-icons-svg" // DT
+              className="host-icons-svg"
               src={require("../../assets/img/people/0.jpg")}
               alt="avatar-lg"
             />
