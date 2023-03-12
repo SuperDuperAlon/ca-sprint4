@@ -33,12 +33,13 @@ export function RootCmp() {
           <Route path="/stay/edit" element={<StayEdit />} />
           <Route path="/stay/edit/:stayId" element={<StayEdit />} />
           <Route path="/room/:stayId/:filter" element={<StayDetails />} />
+          {/* <Route path="/room/:stayId/amenities/:filter" element={<AmenitiesModal />} /> */}
           <Route path="/dashboard/:hostId" element={<Dashboard />} />
           <Route path="/listings/:hostId" element={<Listings />} />
           <Route path="/book/stay/:id/" element={<StayOrder />}>
             <Route path="/book/stay/:id/:filterBy" element={<StayOrder />} />
           </Route>
-          <Route path="/amenities/" element={<AmenitiesModal />} />
+
         </Routes>
       </main>
       {/* <AppFooter /> */}

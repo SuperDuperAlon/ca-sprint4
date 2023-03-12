@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { MdOutlineKingBed } from "react-icons/md";
 import Box from "@mui/material/Box";
@@ -6,8 +7,16 @@ import Typography from "@mui/material/Typography";
 import { CalendarMain } from "../filter/calendar";
 import { filterService } from "../../services/filterService";
 import { StayDetailsMap } from "./stay-details-map";
+import { AmenitiesModal } from "../modals/amenities-modal";
 
 export function StayDetailsHostInfo({ stay, isMobile }) {
+  // const { stayId } = useParams();
+  // console.log(stayId);
+
+  const [amenitiesModal, setAmenitiesModal] = useState(false);
+  const openAmenitiesModal = () => setAmenitiesModal(true);
+  const closeAmenitiesModal = () => setAmenitiesModal(false);
+
   const [reviewModalOpen, setReviewModalOpen] = useState(false);
   const handleOpenReviewModal = () => setReviewModalOpen(true);
   const handleCloseReviewModal = () => setReviewModalOpen(false);
@@ -271,10 +280,8 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
               )
             })} */}
           </div>
-          <button className="white-open-btn">
-            <Link to={`/amenities/`}>
-              Show all {stay.amenities.length} amenities
-            </Link>
+          <button className="white-open-btn" onClick={openAmenitiesModal}>
+            Show all {stay.amenities.length} amenities
           </button>
         </div>
 
@@ -284,6 +291,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
             <CalendarMain filterBy={filter} onChangeDate={onChangeDate} />
           </div>
         </div>
+        {amenitiesModal ? <AmenitiesModal closeAmenitiesModal={closeAmenitiesModal} stay={stay}/> : ''}
       </section>
     );
 }
