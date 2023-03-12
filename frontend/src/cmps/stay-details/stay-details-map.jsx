@@ -14,7 +14,7 @@ export function StayDetailsMap({ stay, isMobile }) {
   if (!stay) return;
   else
     return (
-      <section className="stay-details-map">
+      <section className="stay-details-map" id="location">
         <div className="lh26 fs22 fw600 mar-b24">Where You'll Be</div>
         <GoogleMap stay={stay} isMobile={isMobile} />
         {isMobile ? 

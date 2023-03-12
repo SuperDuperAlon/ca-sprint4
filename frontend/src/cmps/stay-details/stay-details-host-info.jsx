@@ -197,7 +197,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
             <div className="fs14">1 king bed</div>
           </div>
         </div>
-        <div className="stay-details-amenities">
+        <div className="stay-details-amenities" id="amenities">
           <div className="fs22 fw600 mar-b24">What this place offers </div>
           <div className="amenities-list">
             <div>

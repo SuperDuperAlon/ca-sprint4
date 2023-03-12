@@ -23,7 +23,7 @@ export function StayDetailsReviews({ stay, isMobile }) {
   if (!stay) return <h1>Loading...</h1>;
   else
     return (
-      <section className="stay-details-reviews">
+      <section className="stay-details-reviews" id="reviews">
         <div className="fs22 fw600 mar-b32 flex align-center">
           <MdStar />
           {stay.reveiwRate

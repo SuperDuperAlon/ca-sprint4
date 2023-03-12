@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 
 export function InnerNavStay() {
-  const links = ["Photos", "Amenities", "Reviews", "Location"]
+  const links = ["photos", "amenities", "reviews", "location"]
 
   useEffect(() => {
     const header = document.querySelector(".stay-header-inner-nav")
@@ -29,7 +29,7 @@ export function InnerNavStay() {
         <ul className="stay-inner-nav clean-list">
           {links.map((link) => (
             <li>
-              <a href="#">{link}</a>
+              <a href={'#' + link} className="capitalize">{link}</a>
             </li>
           ))}
         </ul>
