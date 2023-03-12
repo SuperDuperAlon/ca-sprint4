@@ -22,24 +22,18 @@ export function SecondaryFilter({onToSearch}){
     // const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     //   setValue(newValue)
     // }
-
     
     function onFilter(label){
-
         setClickedLabel(label)
-        
         if (filterBy){
             filterBy= filterService.getParamsToObj(filterBy)
         } else{
             filterBy=filterService.getEmptyFilter()
         }
         filterBy.label=label
-
         onToSearch(filterBy)
-
-
     }
-    // flex space-between center
+
     return <section className="secondary-filter flex ">
 
 <Box sx={ {  width:'' , bgcolor: 'white' , borderBottom: 1, borderColor: 'divider' }}>
@@ -54,12 +48,9 @@ export function SecondaryFilter({onToSearch}){
                     <div className="icons-img"><img src={require(`../assets/img/filter-icons/${label}.jpg`)}/></div>
                     <div className="label">{label}</div>
                 </div>)} />
-
         </Tabs>
         </Box>
-
         <button className="extra-filters-container fs116 flex-center"><CgOptions/>Filters</button>
-        
     </section>
 
 }

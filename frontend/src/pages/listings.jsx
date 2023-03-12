@@ -24,7 +24,6 @@ export function Listings(){
         catch (err){
             console.log(err)
         }
-    
     }
 
     if (!listings) return <div>Loading...</div>

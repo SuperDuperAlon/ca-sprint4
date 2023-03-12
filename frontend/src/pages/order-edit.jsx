@@ -32,7 +32,6 @@ export function OrderEdit() {
       } else {
         const savedOrder = await addOrder(orderToEdit)
       }
-      // showSuccessMsg('Car saved!')
       navigate("/")
     } catch (err) {
       console.log(err)
@@ -65,11 +64,9 @@ export function OrderEdit() {
   //   }))
   // } else
 
-
   return (
     <section>
       <h1>Order Page</h1>
-
       <form onSubmit={onSaveOrder}>
         {/* Dates */}
         <input

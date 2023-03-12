@@ -1,8 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
-
 import { loadStays, removeStay } from '../store/stay.actions.js'
-
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { AppHeader } from '../cmps/app-header.jsx'
 import { StayList } from './stay-list.jsx'
@@ -15,9 +13,7 @@ import { SEARCH_BAR_OPEN } from '../store/stay.reducer.js'
 import { useState } from 'react'
 import { SearchBarToMobile } from '../cmps/filter/search-bar-to-mobile.jsx'
 import { stayService } from '../services/stay.service.js'
-
 import '../assets/styles/views/_stay-index.scss'
-
 
 export function StayIndex() {
 
@@ -27,7 +23,6 @@ export function StayIndex() {
     const navigate = useNavigate()
     const { filterBy } = useParams()
 
-     
     useEffect(() => {
         loadStays(filterService.getParamsToObj(filterBy))
     }, [filterBy])
@@ -45,7 +40,6 @@ export function StayIndex() {
     async function onEditStay(ev, stay) {
         ev.stopPropagation()
         navigate(`/stay/edit/${stay._id}`)
-
     }
 
     function onOpenStay(ev, stay) {

@@ -35,10 +35,8 @@ export function StayOrder() {
         socketService.on(SOCKET_EVENT_ORDER_APPROVED,gotMsg)
     },[])
 
-
     function gotMsg() {
         setSentOrder('approved')  
-
     }
 
     useEffect(() => {
@@ -52,9 +50,7 @@ export function StayOrder() {
         // loadOrder('63d7ab30d8610c0abc6bbcde')
     }, [])
 
-  
     console.log(sentOrder)
-
 
     // function loadLoggedInUser()
     //     if (loggedInUser) set(isLoggedInUser) 
@@ -87,8 +83,6 @@ export function StayOrder() {
         //     msgs: [],
         //     status: "pending"
         // }
-
-
     }
 
     async function onLogOut(){
@@ -96,7 +90,6 @@ export function StayOrder() {
             const loggedInUser = await logout()
             setIsLoggedInUser(false)
             // setSentOrder(null)
-            
         } catch (err){
             console.log(err)
         }
@@ -148,9 +141,7 @@ export function StayOrder() {
         orderToEdit.stay.price = stay.price
         orderToEdit.buyer._id = loggedInUser._id
         orderToEdit.buyer.fullname = loggedInUser.fullname
-
         // setOrderToEdit(order)
-
         try {
             if (orderToEdit._id) {
                 const savedOrder = await updateOrder(orderToEdit)
@@ -162,8 +153,7 @@ export function StayOrder() {
             setIsConfirm(true) 
         } catch (err) {
             console.log(err)
-        }
-           
+        } 
     }
 
     if (!stay) return <div></div>
@@ -186,7 +176,6 @@ export function StayOrder() {
             Reservation confirmed!
         </div> : <div className="confirm fs24 bold">Waiting for approval...</div>}</div>}
         <div className="main-order">
-
             <div className="order-details-container">
                 <div className="changed-content flex space-between">
                     <div>
@@ -239,9 +228,7 @@ export function StayOrder() {
                 {!isLoggedInUser && <div className="login-sign-up">
                     <LoginSignup onClickedLogin={onClickedLogin} />
                 </div>}
-
             </div>
-
             <div className="details">
                 <div className="details-modal">
                     <div className="stay-details">

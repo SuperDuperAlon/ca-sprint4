@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
-
 import { socketService, SOCKET_EMIT_SEND_MSG, SOCKET_EVENT_ADD_MSG, SOCKET_EMIT_SET_TOPIC } from '../services/socket.service'
 
 export function ChatApp() {
@@ -8,9 +7,7 @@ export function ChatApp() {
     const [msgs, setMsgs] = useState([])
     const [topic, setTopic] = useState('Love')
     const [isBotMode, setIsBotMode] = useState(false)
-
     const loggedInUser = useSelector(storeState => storeState.userModule.user)
-
     const botTimeoutRef = useRef()
 
     useEffect(() => {
@@ -58,7 +55,6 @@ export function ChatApp() {
     return (
         <section className="chat-app">
             <h2>Lets Chat about {topic}</h2>
-
             <label>
                 <input type="checkbox" name="isBotMode" checked={isBotMode}
                     onChange={({ target }) => setIsBotMode(target.checked)} />
@@ -78,7 +74,6 @@ export function ChatApp() {
                         checked={topic === 'Politics'} onChange={({ target }) => setTopic(target.value)} />
                     Politics
                 </label>
-
             </div>
 
             <form onSubmit={sendMsg}>

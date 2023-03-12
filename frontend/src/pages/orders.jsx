@@ -1,13 +1,11 @@
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
-
 import { loadOrders, removeOrder } from "../store/order.actions.js"
 import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 
 export function Orders() {
   const orders = useSelector((storeState) => storeState.orderModule.orders)
-
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -50,7 +48,6 @@ export function Orders() {
           </div>
         )
       })}
-
       <button><Link to="/orders/edit"> Add New</Link></button>
     </section>
   )

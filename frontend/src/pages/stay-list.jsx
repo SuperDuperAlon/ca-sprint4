@@ -4,9 +4,6 @@ import { IoIosStar } from "react-icons/io"
 import { AiFillStar } from "react-icons/ai"
 import { useRef } from "react";
 
-
-
-
 export function StayList({
   stays,
   onRemoveStay,
