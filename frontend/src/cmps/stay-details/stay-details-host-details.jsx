@@ -1,8 +1,15 @@
 import { Link } from "react-router-dom";
 import { MdStar } from "react-icons/md";
+import { ReviewModal } from "../modals/review-modal";
+import { useState } from "react";
 
 export function StayDetailsHostDetails({ stay }) {
-  if (!stay) return <h1>Loading...</h1>;
+  // Reviews Modal
+  const [reviewModal, setReviewModal] = useState(false);
+  const openReviewModal = () => setReviewModal(true);
+  const closeReviewModal = () => setReviewModal(false);
+
+  if (!stay) return console.log('wait')
   else
     return (
       <section className="stay-details-host-details mar-b24 ">
@@ -27,7 +34,7 @@ export function StayDetailsHostDetails({ stay }) {
             <div>
               <div className="fw600 mar-b24">
                 <MdStar />
-                <button className="link">
+                <button className="link" onClick={openReviewModal}>
                   <Link to="#">{stay.reviews.length} reviews</Link>{" "}
                 </button>
               </div>
@@ -64,6 +71,11 @@ export function StayDetailsHostDetails({ stay }) {
               </div>
             </div>
           </div>
+          {reviewModal ? (
+            <ReviewModal closeReviewModal={closeReviewModal} stay={stay} />
+          ) : (
+            ""
+          )}
         </>
       </section>
     );
