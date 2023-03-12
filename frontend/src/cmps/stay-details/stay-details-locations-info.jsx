@@ -27,7 +27,7 @@ export function StayDetailsLocationInfo({ stay, isMobile }) {
                   ? +stay.reveiwRate
                   : +utilService.getRandomFloatInclusive(4, 5).toFixed(2)}{" "}
                 ·{" "}
-                <button onClick={openReviewModal}>
+                <button onClick={openReviewModal} className="link">
                   {stay.reviews.length} reviews
                 </button>
               </div>
@@ -36,7 +36,7 @@ export function StayDetailsLocationInfo({ stay, isMobile }) {
                 <div className="fw400">Superhost ·</div>
               )}
               <div className="mar-l4">
-                <button>{stay.loc.address}</button>
+                <button className="link">{stay.loc.address}</button>
               </div>
             </div>
             {isMobile ? (
@@ -59,7 +59,11 @@ export function StayDetailsLocationInfo({ stay, isMobile }) {
             )}
           </div>
         </div>
-        {reviewModal ? <ReviewModal closeReviewModal={closeReviewModal} stay={stay}/> : ''}
+        {reviewModal ? (
+          <ReviewModal closeReviewModal={closeReviewModal} stay={stay} />
+        ) : (
+          ""
+        )}
       </>
     );
 }
