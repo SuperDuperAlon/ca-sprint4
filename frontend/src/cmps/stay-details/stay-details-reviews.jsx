@@ -20,7 +20,7 @@ export function StayDetailsReviews({ stay, isMobile }) {
   ];
   const idxCondition = isMobile ? 4 : 6;
 
-  if (!stay) return <h1>Loading...</h1>;
+  if (!stay) return console.log('wait');
   else
     return (
       <section className="stay-details-reviews" id="reviews">
