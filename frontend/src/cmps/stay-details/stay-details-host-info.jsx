@@ -13,13 +13,11 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
   // const { stayId } = useParams();
   // console.log(stayId);
 
+  // Amenities Modal
   const [amenitiesModal, setAmenitiesModal] = useState(false);
   const openAmenitiesModal = () => setAmenitiesModal(true);
   const closeAmenitiesModal = () => setAmenitiesModal(false);
-
-  const [reviewModalOpen, setReviewModalOpen] = useState(false);
-  const handleOpenReviewModal = () => setReviewModalOpen(true);
-  const handleCloseReviewModal = () => setReviewModalOpen(false);
+  
   const [filter, setFilter] = useState(filterService.getEmptyFilter());
 
   const stayOptions = `${

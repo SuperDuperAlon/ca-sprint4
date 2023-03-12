@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { CustomizedProgressBars } from "../reusable/progress-bar";
 import { MdStar } from "react-icons/md";
 import { utilService } from "../../services/util.service";
+import { ReviewModal } from "../modals/review-modal";
 
 export function StayDetailsReviews({ stay, isMobile }) {
+  // Reviews Modal
+  const [reviewModal, setReviewModal] = useState(false);
+  const openReviewModal = () => setReviewModal(true);
+  const closeReviewModal = () => setReviewModal(false);
+
   const reviewRatings = [
     "Cleanliness",
     "Accuracy",
@@ -11,7 +18,7 @@ export function StayDetailsReviews({ stay, isMobile }) {
     "Check In",
     "Value",
   ];
-  const idxCondition = isMobile ? 4 : 6
+  const idxCondition = isMobile ? 4 : 6;
 
   if (!stay) return <h1>Loading...</h1>;
   else
@@ -69,7 +76,7 @@ export function StayDetailsReviews({ stay, isMobile }) {
                     <div className="flex column space-between">
                       <p className="review-description">{review.txt}</p>
                       <div className="mar-t8">
-                        <button className="link">Show More</button>
+                        <button className="link" onClick={openReviewModal}>Show More</button>
                       </div>
                     </div>
                   </div>
@@ -78,6 +85,7 @@ export function StayDetailsReviews({ stay, isMobile }) {
             })}
           </div>
         </div>
+        {reviewModal ? <ReviewModal closeReviewModal={closeReviewModal} stay={stay}/> : ''}
       </section>
     );
 }
