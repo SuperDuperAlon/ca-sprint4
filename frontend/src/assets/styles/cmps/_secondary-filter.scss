@@ -1,177 +1,161 @@
 .secondary-filter {
-    align-items: center;
-    position: sticky;
-    top: 60px;
-    justify-content: space-between;
-    padding: 0.625rem 0 0 0;
-    gap: 2rem;
+  align-items: center;
+  position: sticky;
+  top: 60px;
+  justify-content: space-between;
+  padding: 0.625rem 0 0 0;
+  gap: 2rem;
 
-    .icons-container {
-        padding: 0.8rem 0;
-        margin-right: 2.5rem;
+  .icons-container {
+    padding: 0.8rem 0;
+    margin-right: 2.5rem;
 
-        &:last-of-type {
-            margin-right: 0;
-        }
+    &:last-of-type {
+      margin-right: 0;
     }
+  }
 
+  .label {
+    color: $clr-ligthtext;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.02rem;
+    font-family: circular;
+  }
 
-    .label {
-        color: $clr-ligthtext;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.02rem;
-        font-family: circular;
-    }
+  .icons-img {
+    opacity: 0.6;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .extra-filters-container {
+    display: none;
+  }
+
+  .icons-container:hover {
+    box-shadow: 0px 2px 0px 0px rgba(160, 160, 160, 0.372);
+    cursor: pointer;
 
     .icons-img {
-        opacity: 0.6;
-        height: 1.5rem;
-        width: 1.5rem;
-        margin-bottom: 0.5rem;
-
+      opacity: 1;
     }
 
+    .label {
+      color: black;
+    }
+  }
+
+  .clicked-label {
+    box-shadow: 0px 2px 0px 0px black;
+
+    .icons-img {
+      opacity: 1;
+    }
+
+    .label {
+      color: black;
+    }
+  }
+
+  .MuiTabs-indicator {
+    background-color: transparent;
+  }
+
+  .MuiBox-root {
+    flex: 1 0 auto;
+    border-color: #dddddd00;
+    background-color: transparent;
+
+    .MuiTabs-root {
+      overflow: hidden;
+      min-height: 48px;
+      -webkit-overflow-scrolling: touch;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+
+      .MuiTabs-scroller {
+        position: relative;
+        display: inline-block;
+        -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        white-space: nowrap;
+        scrollbar-width: none;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+    }
+  }
+
+  .MuiTab-root {
+    flex-direction: row;
+    max-width: fit-content;
+    font-family: circular;
+    text-transform: none;
+  }
+
+  .MuiTabScrollButton-root {
+    display: none;
+  }
+
+  // .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
+  .Mui-selected {
+    color: #ffffff !important;
+    white-space: nowrap;
+    padding: 4px;
+  }
+
+  .MuiTabs-root:active {
+    background-color: rgba(255, 255, 255, 0);
+  }
+
+  // .css-145v6pe-MuiButtonBase-root-MuiTabScrollButton-root {
+  .MuiTabs-scrollButtons {
+    border-radius: 50%;
+    border: 0.1px rgba(0, 0, 0, 0.329) solid;
+    opacity: 1;
+    height: 2rem;
+    width: 2rem;
+    align-self: center;
+    padding: 0;
+
+    &.Mui-disabled {
+      display: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  // .css-jnbkl4 {
+  //     border-color: #dddddd00;
+  //     background-color: transparent;
+  // }
+}
+
+@media (min-width: $medium-breakpoint) {
+  .secondary-filter {
     .extra-filters-container {
-        display: none;
-    }
+      @include flex-center;
+      padding: 7px 0px;
+      font-size: 0.9rem;
+      border: 1px solid #dddddd;
+      border-radius: 0.75rem;
+      padding: 0.7rem 1rem;
+      background-color: $white;
 
-    .icons-container:hover {
-        box-shadow: 0px 2px 0px 0px rgba(160, 160, 160, 0.372);
-        cursor: pointer;
-
-        .icons-img {
-            opacity: 1;
-        }
-
-        .label {
-            color: black;
-        }
-    }
-
-    .clicked-label {
-        box-shadow: 0px 2px 0px 0px black;
-
-        .icons-img {
-            opacity: 1;
-        }
-
-        .label {
-            color: black;
-
-        }
-    }
-
-
-    .MuiTabs-indicator{
-        background-color: transparent;
-    }
-
-
-    .MuiBox-root {
-        flex: 1 0 auto;
-        border-color: #dddddd00;
-        background-color: transparent;
-
-        .MuiTabs-root {
-
-            overflow: hidden;
-            min-height: 48px;
-            -webkit-overflow-scrolling: touch;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-
-            .MuiTabs-scroller {
-                position: relative;
-                display: inline-block;
-                -webkit-flex: 1 1 auto;
-                -ms-flex: 1 1 auto;
-                flex: 1 1 auto;
-                white-space: nowrap;
-                scrollbar-width: none;
-                overflow-x: auto;
-                overflow-y: hidden
-            }
-
-
-
-        }
-
-    }
-
-    .MuiTab-root {
-        flex-direction: row;
-        max-width: fit-content;
-        font-family: circular;
-        text-transform: none;
+      :first-child {
+        margin-right: 5px;
+      }
     }
 
     .MuiTabScrollButton-root {
-        display: none;
+      display: flex;
     }
-
-    // .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected {
-    .Mui-selected {
-        color: #ffffff !important;
-        white-space: nowrap;
-        padding: 4px;
-    }
-
-
-    .MuiTabs-root:active {
-        background-color: rgba(255, 255, 255, 0);
-    }
-
-    // .css-145v6pe-MuiButtonBase-root-MuiTabScrollButton-root {
-    .MuiTabs-scrollButtons {
-        border-radius: 50%;
-        border: 0.1px rgba(0, 0, 0, 0.329) solid;
-        opacity: 1;
-        height: 2rem;
-        width: 2rem;
-        align-self: center;
-        padding: 0;
-
-        &.Mui-disabled {
-            display: none;
-        }
-
-        &:hover {
-            cursor: pointer;
-        }
-
-    }
-
-    // .css-jnbkl4 {
-    //     border-color: #dddddd00;
-    //     background-color: transparent;
-    // }
-
-}
-
-
-@media (min-width: $medium-breakpoint) {
-    .secondary-filter {
-        .extra-filters-container {
-            @include flex-center;
-            padding: 7px 0px;
-            font-size: 0.9rem;
-            border: 1px solid #DDDDDD;
-            border-radius: 0.75rem;
-            padding: 0.7rem 1rem;
-            background-color: $white;
-
-            :first-child {
-                margin-right: 5px;
-            }
-        }
-
-        .MuiTabScrollButton-root {
-            display: flex;
-        }
-
-    }
-
+  }
 }
