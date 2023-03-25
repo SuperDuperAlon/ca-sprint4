@@ -26,8 +26,8 @@
 
   @include for-wide-layout {
     grid-template-columns:
-      // minmax($pad-40,1fr) minmax($x-large-breakpoint, 1700px) minmax($pad-40,1fr);
-      minmax(24px, 1fr) minmax(auto, $x-large-breakpoint) minmax(24px, 1fr)
+      minmax($pad-24,1fr) minmax($x-large-breakpoint, 1700px) minmax($pad-24,1fr);
+      // minmax(24px, 1fr) minmax(auto, $x-large-breakpoint) minmax(24px, 1fr)
   }
 }
 
