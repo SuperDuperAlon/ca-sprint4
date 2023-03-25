@@ -12,9 +12,7 @@
     }
     .secondary-info {
       .locations-attr {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
+        // flex-direction: row;
       }
     }
   }
@@ -236,6 +234,9 @@
           .review-feedback-description {
           }
         }
+      }
+      >:last-child{
+        margin-bottom: 0;
       }
     }
     .details-review-ratings {

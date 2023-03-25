@@ -76,7 +76,7 @@ export function StayDetailsHostInfo({ stay, isMobile }) {
         <div className="host">
           {stay.host.isSuperhost && (
             <>
-              <div className="flex row">
+              <div className="flex row mar-b24">
                 <div className="host-icon">
                   <img
                     className="host-icons-svg"
