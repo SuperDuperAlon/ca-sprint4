@@ -4,7 +4,7 @@ import { utilService } from "./util.service.js"
 import { userService } from "./user.service.js"
 import { storageService } from "./async-storage.service.js"
 import { filterService } from "./filterService.js"
-import { stayData } from "./stay.data.js"
+// import { stayData } from "./stay.data.js"
 // import { filterService } from "./filterService.js"
 import axios from "axios"
 
@@ -123,10 +123,10 @@ function getEmptyStay() {
   }
 }
 
-function _createStays() {
-  let stays = utilService.loadFromStorage(STORAGE_KEY);
-  if (!stays || !stays.length) {
-    stays = stayData.getStayData();
+// function _createStays() {
+//   let stays = utilService.loadFromStorage(STORAGE_KEY);
+//   if (!stays || !stays.length) {
+//     stays = stayData.getStayData();
 
     //     stays = [
     //       {
@@ -464,9 +464,9 @@ function _createStays() {
     //       }
     //   ]
 
-    utilService.saveToStorage(STORAGE_KEY, stays);
-  }
-}
+//     utilService.saveToStorage(STORAGE_KEY, stays);
+//   }
+// }
 
 // function getEmptyStay() {
 //     return {
