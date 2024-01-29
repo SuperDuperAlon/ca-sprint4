@@ -27,8 +27,8 @@ export function InnerNavStay() {
     <div className="stay-header-inner-nav">
       <div className="stay-inner-container details-layout full">
         <ul className="stay-inner-nav clean-list">
-          {links.map((link) => (
-            <li>
+          {links.map((link, idx) => (
+            <li key={idx}>
               <a href={'#' + link} className="capitalize">{link}</a>
             </li>
           ))}
