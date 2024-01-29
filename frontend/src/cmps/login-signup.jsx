@@ -14,7 +14,7 @@ export function LoginSignup({onClickedLogin, isClickedSignUp}) {
 
     
     async function loadUsers() {
-        try{
+        try {
             const users = await userService.getUsers()
             setUsers(users)
         }
@@ -62,8 +62,6 @@ export function LoginSignup({onClickedLogin, isClickedSignUp}) {
             console.log(err)
         }
     }
-
-    
 
     function toggleSignup() {
         setIsSignup(!isSignup)

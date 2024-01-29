@@ -7,7 +7,7 @@ import { userService } from '../services/user.service'
 import { logout } from '../store/user.actions'
 import { useNavigate } from 'react-router'
 
-export function LoginMenu({isMenuOpen ,setIsMenuOpen}) {
+export function LoginMenu({isMenuOpen, setIsMenuOpen}) {
   const [open, setOpen] = useState(false)
   const [isClickedSignUp, setIsClickedSignUp] = useState(false)
   const [loggedInUser, setIsLoggedInUser] = useState(userService.getLoggedinUser())
@@ -15,7 +15,6 @@ export function LoginMenu({isMenuOpen ,setIsMenuOpen}) {
   const navigate = useNavigate()
 
   function handleOpen(isSignup){
-    
     setOpen(true)
     setIsClickedSignUp(isSignup)
     // setIsMenuOpen(false)
@@ -27,17 +26,14 @@ export function LoginMenu({isMenuOpen ,setIsMenuOpen}) {
   }
 
   async function onLogOut(){
-    try{
+    try {
         const loggedInUser = await logout()
         setIsLoggedInUser(false)
-        
-    } catch (err){
+    } catch (err) {
         console.log(err)
     }
-    
 }
  
-
   return (
     <div className="login-header">
       {/* <button onClick={handleOpen}>Open modal</button> */}
