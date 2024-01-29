@@ -42,7 +42,6 @@ export function StayEdit(){
             }else{
                 const savedStay = await addStay(stayToEdit)
             }
-            // showSuccessMsg('Car saved!')
             navigate('/')
         }catch(err){
             console.log(err)
