@@ -44,6 +44,7 @@ a {
   color: inherit;
   cursor: pointer;
 }
+
 a:hover {
   text-decoration: underline;
 }
@@ -51,6 +52,7 @@ a:hover {
 ul {
   padding: 0;
 }
+
 li {
   list-style-type: none;
 }
@@ -60,16 +62,19 @@ button {
   color: black;
   border: none;
   font-family: circular;
-  &.sml-review-btn{
+
+  &.sml-review-btn {
     font-size: 14px;
     color: #717171;
     background-color: white;
   }
-  &.clean-btn{
+
+  &.clean-btn {
     border: none;
     background-color: white;
     padding-left: 0;
   }
+
   &.white-open-btn {
     font-weight: 600;
     font-size: 1rem;
@@ -78,6 +83,7 @@ button {
     border: 1px black solid;
     border-radius: 12px;
     transition: box-shadow 0.2s ease, transform 0.1s ease;
+
     & a {
       text-decoration: none;
     }
@@ -85,34 +91,41 @@ button {
     &:hover {
       background-color: #f7f7f7;
     }
+
     &:active {
       transform: scale(0.96);
       background-color: #f7f7f7;
     }
   }
+
   &.order-form-btn {
     padding: 0;
     background-color: white;
     display: flex;
-    color:#b5adad;
+    color: #b5adad;
     // min-height: 56px;
     width: 100%;
-    > * {
+
+    >* {
       width: 50%;
     }
+
     &.up {
       border: 1px solid;
       border-radius: 0.75rem 0.75rem 0 0;
+
       > :first-child {
         border-right: 1px solid #b5adad;
       }
     }
+
     &.down {
       border: 1px #b5adad solid;
       border-top: none;
       border-radius: 0 0 0.75rem 0.75rem;
       width: 100%;
-      .guests-arrow{
+
+      .guests-arrow {
         width: auto;
         padding-right: 10px;
         font-size: rem(28px);
@@ -120,20 +133,20 @@ button {
       }
     }
   }
+
   &.reserve-btn {
     color: white;
-    background: linear-gradient(
-      to right,
-      rgb(230, 30, 77) 0%,
-      rgb(227, 28, 95) 50%,
-      rgb(215, 4, 102) 100%
-    );
+    background: linear-gradient(to right,
+        rgb(230, 30, 77) 0%,
+        rgb(227, 28, 95) 50%,
+        rgb(215, 4, 102) 100%);
     border: none;
     min-width: 200px;
     height: 3rem;
     font-weight: 600;
     border-radius: 0.75rem;
   }
+
   &.link {
     text-decoration: underline;
     font-weight: 600;
@@ -143,6 +156,7 @@ button {
     padding: 0;
     width: fit-content;
   }
+
   &.save-share {
     background-color: rgba(0, 0, 0, 0);
     display: flex;
@@ -152,13 +166,15 @@ button {
     text-decoration: none;
     align-items: center;
 
-    > * {
+    >* {
       flex-direction: column;
       justify-content: space-around;
     }
+
     &:hover {
       background-color: #f7f7f7;
     }
+
     &:active {
       background-color: #f7f7f7;
       transform: scale(0.96);
@@ -167,9 +183,25 @@ button {
 }
 
 
-.logo-general{
+.logo-general {
   color: #dc0e64;
   font-weight: 900;
   font-size: 1.2em;
   padding: 0;
+}
+
+dialog {
+  position: absolute;
+  top: 100px;
+}
+
+.align-text-icon {
+  display: flex;
+
+  >* {
+    display: flex;
+    align-items: center;
+    line-height: normal;
+    margin-right: 4px;
+  }
 }
