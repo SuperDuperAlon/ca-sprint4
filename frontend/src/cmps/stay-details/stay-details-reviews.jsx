@@ -34,9 +34,9 @@ export function StayDetailsReviews({ stay, isMobile }) {
         <div className="details-review-ratings mar-b16">
           {isMobile
             ? ""
-            : reviewRatings.map((review) => {
+            : reviewRatings.map((review, idx) => {
                 return (
-                  <div className="review-rating">
+                  <div className="review-rating" key={idx}>
                     <div className="review-attr-type">{review}</div>
                     <div className="review-attr-rate fw600 fs12">
                       <CustomizedProgressBars bar={4.8} />
@@ -69,7 +69,7 @@ export function StayDetailsReviews({ stay, isMobile }) {
                           {review.by.fullname}
                         </div>
                         <div className="review-date grey-71 fs14">
-                          {utilService.getMonthYear(review.at.toString())}
+                          {/* {utilService.getMonthYear(review.at.toString())} */}
                         </div>
                       </div>
                     </div>
