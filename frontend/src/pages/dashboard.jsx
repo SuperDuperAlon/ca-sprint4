@@ -76,18 +76,14 @@ export function Dashboard() {
         // currOrder.status = status
         // orders.splice(orderIndex, 1, currOrder)
         // setOrders(orders)
-
     }
 
     function gotMsg() {
-        
         setIsMsgReceived(true)
-
         timer.curr = setTimeout(() => {
             setIsMsgReceived(false)
             clearTimeout(timer.curr)
         }, 7000)
-    
     }
 
     function getBarData() {
